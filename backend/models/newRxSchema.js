@@ -14,8 +14,16 @@ const newRxSchema = new Schema({
         type: String,
         require: true
     },
-    dateOfBirth: {
-        type: String,
+    dateOfBirthMonth: {
+        type: Number,
+        require: true
+    },
+    dateOfBirthDay: {
+        type: Number,
+        require: true
+    },
+    dateOfBirthYear: {
+        type: Number,
         require: true
     },
     address: {
