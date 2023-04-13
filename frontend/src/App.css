@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -43,15 +44,15 @@
 /*-------------------------------------------------------*/
 
 .input-body {
-  min-height: 100vh;
+
   background-color: #1d2b3a;
-  margin: 0;
-  padding: 0;
+  padding: 20px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   left: 50%;
+  border: 1px solid black;
 }
 
 
@@ -87,20 +88,20 @@
 
 .inputBox-rx-number input:valid+span,
 .inputBox-rx-number input:focus+span {
-  color: #fff205;
+  color: #11CAF0;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
   background: #1d2b3a;
-  border-left: 1px solid #fff205;
-  border-right: 1px solid #fff205;
+  border-left: 1px solid #11CAF0;
+  border-right: 1px solid #11CAF0;
   letter-spacing: 0.2em;
   opacity: 1;
 }
 
 .inputBox-rx-number input:valid,
 .inputBox-rx-number input:focus {
-  border: 1px solid #fff205;
+  border: 1px solid #11CAF0;
 }
 
 /*-------------------------------------------------------*/
@@ -151,20 +152,20 @@
 
 .inputBox-name input:valid+span,
 .inputBox-name input:focus+span {
-  color: #fff205;
+  color: #11CAF0;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
   background: #1d2b3a;
-  border-left: 1px solid #fff205;
-  border-right: 1px solid #fff205;
+  border-left: 1px solid #11CAF0;
+  border-right: 1px solid #11CAF0;
   letter-spacing: 0.2em;
   opacity: 1;
 }
 
 .inputBox-name input:valid,
 .inputBox-name input:focus {
-  border: 1px solid #fff205;
+  border: 1px solid #11CAF0;
 }
 
 /*-------------------------------------------------------*/
@@ -203,20 +204,20 @@
 .inputBox-dob input:valid+span,
 .inputBox-dob input:focus+span {
   opacity: 1;
-  color: #fff205;
+  color: #11CAF0;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
   background: #1d2b3a;
-  border-left: 1px solid #fff205;
-  border-right: 1px solid #fff205;
+  border-left: 1px solid #11CAF0;
+  border-right: 1px solid #11CAF0;
   letter-spacing: 0.2em;
 
 }
 
 .inputBox-dob input:valid,
 .inputBox-dob input:focus {
-  border: 1px solid #fff205;
+  border: 1px solid #11CAF0;
 }
 
 
@@ -239,20 +240,20 @@
 .dob-day-span input:valid+span,
 .dob-day-span input:focus+span {
   opacity: 1;
-  color: #fff205;
+  color: #11CAF0;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
   background: #1d2b3a;
-  border-left: 1px solid #fff205;
-  border-right: 1px solid #fff205;
+  border-left: 1px solid #11CAF0;
+  border-right: 1px solid #11CAF0;
   letter-spacing: 0.2em;
 
 }
 
 .dob-day-span input:valid,
 .dob-day-span input:focus {
-  border: 1px solid #fff205;
+  border: 1px solid #11CAF0;
 }
 
 
@@ -274,20 +275,20 @@
 .dob-year-span input:valid+span,
 .dob-year-span input:focus+span {
   opacity: 1;
-  color: #fff205;
+  color: #11CAF0;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
   background: #1d2b3a;
-  border-left: 1px solid #fff205;
-  border-right: 1px solid #fff205;
+  border-left: 1px solid #11CAF0;
+  border-right: 1px solid #11CAF0;
   letter-spacing: 0.2em;
 
 }
 
 .dob-year-span input:valid,
 .dob-year-span input:focus {
-  border: 1px solid #fff205;
+  border: 1px solid #11CAF0;
 }
 
 
@@ -326,20 +327,20 @@
 .inputBox-address input:valid+span,
 .inputBox-address input:focus+span {
   opacity: 1;
-  color: #fff205;
+  color: #11CAF0;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
   background: #1d2b3a;
-  border-left: 1px solid #fff205;
-  border-right: 1px solid #fff205;
+  border-left: 1px solid #11CAF0;
+  border-right: 1px solid #11CAF0;
   letter-spacing: 0.2em;
 
 }
 
 .inputBox-address input:valid,
 .inputBox-address input:focus {
-  border: 1px solid #fff205;
+  border: 1px solid #11CAF0;
 }
 
 /*-------------------------------------------------------*/
@@ -377,18 +378,18 @@
 .inputBox-drug input:valid+span,
 .inputBox-drug input:focus+span {
   opacity: 1;
-  color: #fff205;
+  color: #11CAF0;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
   background: #1d2b3a;
-  border-left: 1px solid #fff205;
-  border-right: 1px solid #fff205;
+  border-left: 1px solid #11CAF0;
+  border-right: 1px solid #11CAF0;
   letter-spacing: 0.2em;
 
 }
 
 .inputBox-drug input:valid,
 .inputBox-drug input:focus {
-  border: 1px solid #fff205;
+  border: 1px solid #11CAF0;
 }

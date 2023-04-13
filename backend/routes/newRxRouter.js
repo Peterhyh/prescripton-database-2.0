@@ -12,15 +12,22 @@ newRxRouter.route('/')
             })
             .catch(err => next(err));
     })
-    .post((req, res, next) => {
-        NewRx.create(req.body)
-            .then(rxData => {
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(rxData);
-            })
-            .catch(err => next(err));
+
+
+
+
+
+    .post(async (req, res, next) => {
+        res.statusCode = 401;
+        res.setHeader('Content-Type', 'text/plain');
+        res.end('POST method not supported yet')
+
     })
+
+
+
+
+
     .put((req, res) => {
         res.statusCode = 401;
         res.setHeader('Content-Type', 'text/plain');

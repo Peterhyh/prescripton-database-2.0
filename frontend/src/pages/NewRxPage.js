@@ -1,4 +1,4 @@
-import { Col, Row, Button } from 'reactstrap';
+import { Card, Col, Row, Button } from 'reactstrap';
 import { useFormik } from 'formik';
 import axios from 'axios';
 
@@ -31,16 +31,12 @@ const NewRxPage = () => {
         }
     });
     return (
-        <Container>
-            <Row>
-                <Col>
-                </Col>
-            </Row>
-        </Container>
         <form className='input-body' onSubmit={formik.handleSubmit}>
-            <div className='container d-flex justify-content-center align-items-center flex-column'>
 
+            <div className='container d-flex justify-content-center align-items-center flex-column'>
+                <h1 class='text-white p-5' >Data Entry</h1>
                 <div className='row inputBox-rx-number '>
+
                     <div class='col-md-12 '>
                         <input
                             name='rxNumber'
@@ -54,7 +50,7 @@ const NewRxPage = () => {
                 </div>
 
                 <div className='row inputBox-name'>
-                    <div class='col-md-6'>
+                    <div class='col-md-6 col-sm-6'>
                         <input
                             name='firstName'
                             type='text'
@@ -64,7 +60,7 @@ const NewRxPage = () => {
                         />
                         <span class='first-name-span'>First Name</span>
                     </div>
-                    <div class='col-md-6'>
+                    <div class='col-md-6 col-sm-6'>
                         <input
                             name='lastName'
                             type='text'
@@ -77,7 +73,7 @@ const NewRxPage = () => {
                 </div>
 
                 <div className='row inputBox-dob'>
-                    <div class='col-md-4'>
+                    <div class='col-md-4 col-sm-4'>
                         <input
                             name='dateOfBirthMonth'
                             type='text'
@@ -87,7 +83,7 @@ const NewRxPage = () => {
                         />
                         <span class='dob-month-span'>MM</span>
                     </div>
-                    <div class='col-md-4'>
+                    <div class='col-md-4 col-sm-4'>
                         <input
                             name='dateOfBirthDay'
                             type='text'
@@ -97,7 +93,7 @@ const NewRxPage = () => {
                         />
                         <span class='dob-day-span'>DD</span>
                     </div>
-                    <div class='col-md-4'>
+                    <div class='col-md-4 col-sm-4'>
                         <input
                             name='dateOfBirthYear'
                             type='text'
@@ -136,12 +132,13 @@ const NewRxPage = () => {
                 </div>
 
                 <Row>
-                    <Col class='mt-3'>
-                        <Button type='submit' color='primary'>Submit</Button>
+                    <Col class='p-5'>
+                        <Button type='submit' color='info' outline>Submit</Button>
                     </Col>
                 </Row>
 
             </div>
+
         </form >
     )
 };
