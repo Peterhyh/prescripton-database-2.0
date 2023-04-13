@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-
 }
 
 .App-logo {
@@ -41,10 +40,7 @@
   }
 }
 
-.input-container {
-  align-items: center;
-  justify-content: center;
-}
+/*-------------------------------------------------------*/
 
 .input-body {
   min-height: 100vh;
@@ -52,16 +48,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
 }
 
 
-.inputBox {
+.inputBox-rx-number {
   position: relative;
-  width: 250px;
+  width: 500px;
 }
 
-.inputBox input {
+.inputBox-rx-number input {
   width: 100%;
   padding: 10px;
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -73,18 +72,19 @@
   margin: 10px;
 }
 
-.inputBox span {
+.inputBox-rx-number span {
   position: absolute;
-  left: 0;
+  left: 30px;
   padding: 10px;
   pointer-events: none;
-  font-size: lem;
+  font-size: 1em;
   color: rgba(255, 255, 255, 0.25);
   text-transform: uppercase;
   transition: 0.3s;
+  top: 10px;
 }
 
-.inputBox input:focus+span {
+.inputBox-rx-number input:focus+span {
   color: #fff205;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
@@ -95,6 +95,282 @@
   letter-spacing: 0.2em;
 }
 
-.inputBox input:focus {
+.inputBox-rx-number input:focus {
+  border: 1px solid #fff205;
+}
+
+/*-------------------------------------------------------*/
+.inputBox-name {
+  position: relative;
+  width: 500px;
+}
+
+.inputBox-name input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #1d2b3a;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  margin: 10px;
+}
+
+/*-------------------------------------------------------*/
+.last-name-span {
+  position: absolute;
+  left: 280px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+}
+
+/*-------------------------------------------------------*/
+.first-name-span {
+  position: absolute;
+  left: 30px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+}
+
+.inputBox-name input:focus+span {
+  color: #fff205;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #1d2b3a;
+  border-left: 1px solid #fff205;
+  border-right: 1px solid #fff205;
+  letter-spacing: 0.2em;
+}
+
+.inputBox-name input:focus {
+  border: 1px solid #fff205;
+}
+
+/*-------------------------------------------------------*/
+
+.inputBox-dob {
+  position: relative;
+  width: 500px;
+}
+
+.inputBox-dob input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #1d2b3a;
+  border-radius: 5px;
+  outline: none;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 1em;
+  margin: 10px;
+}
+
+.dob-month-span {
+  position: absolute;
+  left: 30px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  opacity: 1;
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.inputBox-dob input:focus+span {
+  opacity: 1;
+  color: #fff205;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #1d2b3a;
+  border-left: 1px solid #fff205;
+  border-right: 1px solid #fff205;
+  letter-spacing: 0.2em;
+
+}
+
+.inputBox-dob input:focus {
+  border: 1px solid #fff205;
+}
+
+
+/*-------------------------------------------------------*/
+
+
+.dob-day-span {
+  position: absolute;
+  left: 200px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  opacity: 1;
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.dob-day-span input:focus+span {
+  opacity: 1;
+  color: #fff205;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #1d2b3a;
+  border-left: 1px solid #fff205;
+  border-right: 1px solid #fff205;
+  letter-spacing: 0.2em;
+
+}
+
+.dob-day-span input:focus {
+  border: 1px solid #fff205;
+}
+
+
+/*-------------------------------------------------------*/
+
+.dob-year-span {
+  position: absolute;
+  left: 370px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  opacity: 1;
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.dob-year-span input:focus+span {
+  opacity: 1;
+  color: #fff205;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #1d2b3a;
+  border-left: 1px solid #fff205;
+  border-right: 1px solid #fff205;
+  letter-spacing: 0.2em;
+
+}
+
+.dob-year-span input:focus {
+  border: 1px solid #fff205;
+}
+
+
+/*-------------------------------------------------------*/
+
+.inputBox-address {
+  position: relative;
+  width: 500px;
+}
+
+.inputBox-address input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #1d2b3a;
+  border-radius: 5px;
+  outline: none;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 1em;
+  margin: 10px;
+}
+
+.inputBox-address-span {
+  position: absolute;
+  left: 30px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  opacity: 1;
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+
+.inputBox-address input:focus+span {
+  opacity: 1;
+  color: #fff205;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #1d2b3a;
+  border-left: 1px solid #fff205;
+  border-right: 1px solid #fff205;
+  letter-spacing: 0.2em;
+
+}
+
+.inputBox-address input:focus {
+  border: 1px solid #fff205;
+}
+
+/*-------------------------------------------------------*/
+
+.inputBox-drug {
+  position: relative;
+  width: 500px;
+}
+
+.inputBox-drug input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #1d2b3a;
+  border-radius: 5px;
+  outline: none;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 1em;
+  margin: 10px;
+}
+
+.inputBox-drug-span {
+  position: absolute;
+  left: 30px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  opacity: 1;
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+
+.inputBox-drug input:focus+span {
+  opacity: 1;
+  color: #fff205;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #1d2b3a;
+  border-left: 1px solid #fff205;
+  border-right: 1px solid #fff205;
+  letter-spacing: 0.2em;
+
+}
+
+.inputBox-drug input:focus {
   border: 1px solid #fff205;
 }

@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card } from 'reactstrap';
+import { Container, Col } from 'reactstrap';
 import { useFormik } from 'formik';
 import axios from 'axios';
 
@@ -31,152 +31,106 @@ const NewRxPage = () => {
         }
     });
     return (
-        <Container >
-            <Card className='input-container'>
-                <form class='input-body'>
-                    <div class='inputBox'>
-                        <Row>
-                            <Col md='12'>
-                                <input
-                                    name='rxNumber'
-                                    type='number'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.rxNumber}
-                                    required
-                                />
-                                <span>Rx #</span>
-                            </Col>
-                            <Col md='6'>
-                                <input
-                                    name='firstName'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.firstName}
-                                    required
-                                />
-                                <span>First Name</span>
-                            </Col>
-                            <Col md='6'>
-                                <input
-                                    name='lastName'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.lastName}
-                                    required
-                                />
-                                <span>Last Name</span>
-                            </Col>
-                        </Row>
+        <form className='input-body' onSubmit={formik.handleSubmit}>
+            <div className='container d-flex justify-content-center align-items-center flex-column'>
+
+                <div className='row inputBox-rx-number '>
+                    <div class='col-md-12 '>
+                        <input
+                            name='rxNumber'
+                            type='number'
+                            onChange={formik.handleChange}
+                            value={formik.values.rxNumber}
+                            required
+                        />
+                        <span>Rx #</span>
                     </div>
-                </form>
-            </Card>
-        </Container>
-        // <form className='newrx-form' onSubmit={formik.handleSubmit}>
-        //     <Row>
-        //         <Col>
-        //             <input
-        //                 name='rxNumber'
-        //                 type='number'
-        //                 placeholder='Rx #'
-        //                 onChange={formik.handleChange}
-        //                 value={formik.values.rxNumber}
-        //             />
-        //         </Col>
-        //     </Row>
+                </div>
 
-        //     <Row>
-        //         <Col md='6'>
-        //             <input
-        //                 className='input'
-        //                 required
-        //                 name='firstName'
-        //                 type='text'
-        //                 onChange={formik.handleChange}
-        //                 value={formik.values.firstName}
-        //             />
-        //             <label className='placeholder'>First Name</label>
-        //         </Col>
-        //         <Col md='6'>
-        //             <FormGroup>
-        //                 <Input
-        //                     name='lastName'
-        //                     type='text'
-        //                     placeholder='Last Name'
-        //                     onChange={formik.handleChange}
-        //                     value={formik.values.lastName}
-        //                 />
-        //             </FormGroup>
-        //         </Col>
-        //     </Row>
+                <div className='row inputBox-name'>
+                    <div class='col-md-6'>
+                        <input
+                            name='firstName'
+                            type='text'
+                            onChange={formik.handleChange}
+                            value={formik.values.firstName}
+                            required
+                        />
+                        <span class='first-name-span'>First Name</span>
+                    </div>
+                    <div class='col-md-6'>
+                        <input
+                            name='lastName'
+                            type='text'
+                            onChange={formik.handleChange}
+                            value={formik.values.lastName}
+                            required
+                        />
+                        <span class='last-name-span'>Last Name</span>
+                    </div>
+                </div>
 
-        //     <Row>
-        //         <Col md='4'>
-        //             <FormGroup>
-        //                 <Input
-        //                     name='dateOfBirthMonth'
-        //                     type='text'
-        //                     placeholder='MM'
-        //                     onChange={formik.handleChange}
-        //                     value={formik.values.dateOfBirthMonth}
-        //                 />
-        //             </FormGroup>
-        //         </Col>
-        //         <Col md='4'>
-        //             <FormGroup>
-        //                 <Input
-        //                     name='dateOfBirthDay'
-        //                     type='text'
-        //                     placeholder='DD'
-        //                     onChange={formik.handleChange}
-        //                     value={formik.values.dateOfBirthDay}
-        //                 />
-        //             </FormGroup>
-        //         </Col>
-        //         <Col md='4'>
-        //             <FormGroup>
-        //                 <Input
-        //                     name='dateOfBirthYear'
-        //                     type='text'
-        //                     placeholder='YYYY'
-        //                     onChange={formik.handleChange}
-        //                     value={formik.values.dateOfBirthYear}
-        //                 />
-        //             </FormGroup>
-        //         </Col>
-        //     </Row>
+                <div className='row inputBox-dob'>
+                    <div class='col-md-4'>
+                        <input
+                            name='dateOfBirthMonth'
+                            type='text'
+                            onChange={formik.handleChange}
+                            value={formik.values.dateOfBirthMonth}
+                            required
+                        />
+                        <span class='dob-month-span'>MM</span>
+                    </div>
+                    <div class='col-md-4'>
+                        <input
+                            name='dateOfBirthDay'
+                            type='text'
+                            onChange={formik.handleChange}
+                            value={formik.values.dateOfBirthDay}
+                            required
+                        />
+                        <span class='dob-day-span'>DD</span>
+                    </div>
+                    <div class='col-md-4'>
+                        <input
+                            name='dateOfBirthYear'
+                            type='text'
+                            onChange={formik.handleChange}
+                            value={formik.values.dateOfBirthYear}
+                            required
+                        />
+                        <span class='dob-year-span'>YY</span>
+                    </div>
+                </div>
 
-        //     <Col>
-        //         <FormGroup>
-        //             <Input
-        //                 name='address'
-        //                 type='text'
-        //                 placeholder='Address'
-        //                 onChange={formik.handleChange}
-        //                 value={formik.values.address}
-        //             />
-        //         </FormGroup>
-        //     </Col>
+                <div className='row inputBox-address '>
+                    <div class='col-md-12 '>
+                        <input
+                            name='address'
+                            type='text'
+                            onChange={formik.handleChange}
+                            value={formik.values.address}
+                            required
+                        />
+                        <span class='inputBox-address-span'>Address</span>
+                    </div>
+                </div>
 
-        //     <Col>
-        //         <FormGroup>
-        //             <Input
-        //                 name='drug'
-        //                 type='text'
-        //                 placeholder='Drug'
-        //                 onChange={formik.handleChange}
-        //                 value={formik.values.drug}
-        //             />
-        //         </FormGroup>
-        //     </Col>
+                <div className='row inputBox-drug '>
+                    <div class='col-md-12 '>
+                        <input
+                            name='drug'
+                            type='text'
+                            onChange={formik.handleChange}
+                            value={formik.values.drug}
+                            required
+                        />
+                        <span class='inputBox-drug-span'>Drug</span>
+                    </div>
+                </div>
 
-        //     <Col>
-        //         <FormGroup>
-        //             <Button type='submit' color='primary' >Submit</Button>
-        //         </FormGroup>
-        //     </Col>
-
-        // </form>
-
+            </div>
+        </form >
     )
 };
 

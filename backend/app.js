@@ -10,7 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const newRxRouter = require('./routes/newRxRouter');
 
-const uri = '';
+const uri = 'mongodb+srv://peterhyh:KXMoyvSpMSdtAKvI@peterhyhcluster.n1g4sb0.mongodb.net/?retryWrites=true&w=majority';
 const connect = async () => {
   try {
     mongoose.connect(uri)

@@ -13,15 +13,32 @@ newRxRouter.route('/')
             .catch(err => next(err));
     })
     .post((req, res, next) => {
-        NewRx.create(req.body)
+        NewRx.find()
             .then(rxData => {
-                res.statusCode = 200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(rxData);
-                console.log(rxData);
+                if (rxData.lastName !== req.body.lastName) {
+                    NewRx.create()
+                        .then(data => {
+                            res.statusCode = 200;
+                            res.setHeader('Content-Type', 'application/json');
+                            res.json(data);
+                        })
+                        .catch(err => next(err));
+                } else {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'text/plain');
+                    res.end('Last name already exists in the database.');
+                }
             })
             .catch(err => next(err));
     })
+    // NewRx.create(req.body)
+    //     .then(rxData => {
+    //         res.statusCode = 200;
+    //         res.setHeader('Content-Type', 'application/json');
+    //         res.json(rxData);
+    //     })
+    //     .catch(err => next(err));
+    // })
     .put((req, res) => {
         res.statusCode = 401;
         res.setHeader('Content-Type', 'text/plain');
