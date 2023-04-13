@@ -82,8 +82,10 @@
   text-transform: uppercase;
   transition: 0.3s;
   top: 10px;
+  opacity: 1;
 }
 
+.inputBox-rx-number input:valid+span,
 .inputBox-rx-number input:focus+span {
   color: #fff205;
   transform: translateX(10px) translateY(-7px);
@@ -93,8 +95,10 @@
   border-left: 1px solid #fff205;
   border-right: 1px solid #fff205;
   letter-spacing: 0.2em;
+  opacity: 1;
 }
 
+.inputBox-rx-number input:valid,
 .inputBox-rx-number input:focus {
   border: 1px solid #fff205;
 }
@@ -128,6 +132,7 @@
   text-transform: uppercase;
   transition: 0.3s;
   top: 10px;
+  opacity: 1;
 }
 
 /*-------------------------------------------------------*/
@@ -141,8 +146,10 @@
   text-transform: uppercase;
   transition: 0.3s;
   top: 10px;
+  opacity: 1;
 }
 
+.inputBox-name input:valid+span,
 .inputBox-name input:focus+span {
   color: #fff205;
   transform: translateX(10px) translateY(-7px);
@@ -152,8 +159,10 @@
   border-left: 1px solid #fff205;
   border-right: 1px solid #fff205;
   letter-spacing: 0.2em;
+  opacity: 1;
 }
 
+.inputBox-name input:valid,
 .inputBox-name input:focus {
   border: 1px solid #fff205;
 }
@@ -175,6 +184,7 @@
   color: rgba(255, 255, 255, 0.25);
   font-size: 1em;
   margin: 10px;
+  color: #fff;
 }
 
 .dob-month-span {
@@ -190,6 +200,7 @@
   color: rgba(255, 255, 255, 0.25);
 }
 
+.inputBox-dob input:valid+span,
 .inputBox-dob input:focus+span {
   opacity: 1;
   color: #fff205;
@@ -203,6 +214,7 @@
 
 }
 
+.inputBox-dob input:valid,
 .inputBox-dob input:focus {
   border: 1px solid #fff205;
 }
@@ -224,6 +236,7 @@
   color: rgba(255, 255, 255, 0.25);
 }
 
+.dob-day-span input:valid+span,
 .dob-day-span input:focus+span {
   opacity: 1;
   color: #fff205;
@@ -237,6 +250,7 @@
 
 }
 
+.dob-day-span input:valid,
 .dob-day-span input:focus {
   border: 1px solid #fff205;
 }
@@ -257,6 +271,7 @@
   color: rgba(255, 255, 255, 0.25);
 }
 
+.dob-year-span input:valid+span,
 .dob-year-span input:focus+span {
   opacity: 1;
   color: #fff205;
@@ -270,6 +285,7 @@
 
 }
 
+.dob-year-span input:valid,
 .dob-year-span input:focus {
   border: 1px solid #fff205;
 }
@@ -289,7 +305,7 @@
   background: #1d2b3a;
   border-radius: 5px;
   outline: none;
-  color: rgba(255, 255, 255, 0.25);
+  color: #fff;
   font-size: 1em;
   margin: 10px;
 }
@@ -307,7 +323,7 @@
   color: rgba(255, 255, 255, 0.25);
 }
 
-
+.inputBox-address input:valid+span,
 .inputBox-address input:focus+span {
   opacity: 1;
   color: #fff205;
@@ -321,6 +337,7 @@
 
 }
 
+.inputBox-address input:valid,
 .inputBox-address input:focus {
   border: 1px solid #fff205;
 }
@@ -339,7 +356,7 @@
   background: #1d2b3a;
   border-radius: 5px;
   outline: none;
-  color: rgba(255, 255, 255, 0.25);
+  color: #fff;
   font-size: 1em;
   margin: 10px;
 }
@@ -357,7 +374,7 @@
   color: rgba(255, 255, 255, 0.25);
 }
 
-
+.inputBox-drug input:valid+span,
 .inputBox-drug input:focus+span {
   opacity: 1;
   color: #fff205;
@@ -371,6 +388,7 @@
 
 }
 
+.inputBox-drug input:valid,
 .inputBox-drug input:focus {
   border: 1px solid #fff205;
 }

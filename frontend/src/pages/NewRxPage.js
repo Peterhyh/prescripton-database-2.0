@@ -1,4 +1,4 @@
-import { Container, Col } from 'reactstrap';
+import { Col, Row, Button } from 'reactstrap';
 import { useFormik } from 'formik';
 import axios from 'axios';
 
@@ -20,7 +20,7 @@ const NewRxPage = () => {
                 rxNumber: values.rxNumber,
                 firstName: values.firstName,
                 lastName: values.lastName,
-                dateOfBirth: values.dateOfBirthMonth,
+                dateOfBirthMonth: values.dateOfBirthMonth,
                 dateOfBirthDay: values.dateOfBirthDay,
                 dateOfBirthYear: values.dateOfBirthYear,
                 address: values.address,
@@ -31,6 +31,12 @@ const NewRxPage = () => {
         }
     });
     return (
+        <Container>
+            <Row>
+                <Col>
+                </Col>
+            </Row>
+        </Container>
         <form className='input-body' onSubmit={formik.handleSubmit}>
             <div className='container d-flex justify-content-center align-items-center flex-column'>
 
@@ -128,6 +134,12 @@ const NewRxPage = () => {
                         <span class='inputBox-drug-span'>Drug</span>
                     </div>
                 </div>
+
+                <Row>
+                    <Col class='mt-3'>
+                        <Button type='submit' color='primary'>Submit</Button>
+                    </Col>
+                </Row>
 
             </div>
         </form >
