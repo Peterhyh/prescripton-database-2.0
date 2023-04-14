@@ -22,7 +22,7 @@ const LoginPage = () => {
     });
 
     return (
-        <Container>
+        <Container style={{ height: '100vh' }}>
             <Row className='d-flex justify-content-center align-items-center'>
                 <Col className='col-sm-5'>
                     <Card className='p-3 m-3'>

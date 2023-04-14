@@ -7,7 +7,6 @@ const RegisterUserPage = () => {
         initialValues: {
             firstName: '',
             lastName: '',
-            tel: '',
             username: '',
             password: '',
             confirmPassword: '',
@@ -16,7 +15,6 @@ const RegisterUserPage = () => {
             axios.post('http://localhost:3001/registerUser', {
                 firstName: values.firstName.toUpperCase(),
                 lastName: values.lastName.toUpperCase(),
-                tel: values.tel,
                 username: values.username.toLowerCase(),
                 password: values.password,
                 confirmPassword: values.confirmPassword,

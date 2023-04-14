@@ -9,6 +9,7 @@ const cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const newRxRouter = require('./routes/newRxRouter');
+const registerUserRouter = require('./routes/registerUserRouter');
 
 const uri = '';
 const connect = async () => {
