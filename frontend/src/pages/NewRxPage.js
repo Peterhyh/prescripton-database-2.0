@@ -1,4 +1,4 @@
-import { Col, Row, Button, Alert, Container } from 'reactstrap';
+import { Col, Row, Alert } from 'reactstrap';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -100,176 +100,171 @@ const NewRxPage = () => {
                     <Alert className='error-alert' isOpen={openError} color='danger' toggle={handleErrorDismiss}>
                         Duplicate data found in the database. Please try a different name.
                     </Alert>
-                    <div class='patient-container'>
-                        <h5 class='patient-title'>PATIENT INFORMATION:</h5>
-                        <div className='row inputBox-name'>
-                            <div class='col-md-6 col-sm-6'>
-                                <input
-                                    name='firstName'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.firstName}
-                                    required
-                                />
-                                <span class='first-name-span'>First Name</span>
-                            </div>
-                            <div class='col-md-6 col-sm-6'>
-                                <input
-                                    name='lastName'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.lastName}
-                                    required
-                                />
-                                <span class='last-name-span'>Last Name</span>
-                            </div>
+                    <h5 class='patient-title'>PATIENT INFORMATION:</h5>
+                    <div className='row inputBox-name'>
+                        <div class='col-sm-6'>
+                            <input
+                                name='firstName'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.firstName}
+                                required
+                            />
+                            <span class='first-name-span'>First Name</span>
                         </div>
-
-                        <div className='row inputBox-dob'>
-                            <div class='col-md-4 col-sm-4'>
-                                <input
-                                    name='dateOfBirthMonth'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.dateOfBirthMonth}
-                                    required
-                                />
-                                <span class='dob-month-span'>Birth Month</span>
-                            </div>
-                            <div class='col-md-4 col-sm-4'>
-                                <input
-                                    name='dateOfBirthDay'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.dateOfBirthDay}
-                                    required
-                                />
-                                <span class='dob-day-span'>Birth Day</span>
-                            </div>
-                            <div class='col-md-4 col-sm-4'>
-                                <input
-                                    name='dateOfBirthYear'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.dateOfBirthYear}
-                                    required
-                                />
-                                <span class='dob-year-span'>Birth Year</span>
-                            </div>
-                        </div>
-
-                        <div className='row inputBox-street '>
-                            <div class='col-md-12 '>
-                                <input
-                                    name='street'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.street}
-                                    required
-                                />
-                                <span class='inputBox-street-span'>Street</span>
-                            </div>
-                        </div>
-
-                        <div className='row inputBox-city-state-zip '>
-                            <div class='col-sm-4 '>
-                                <input
-                                    name='city'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.city}
-                                    required
-                                />
-                                <span class='inputBox-city-span'>City</span>
-                            </div>
-
-                            <div class='col-sm-4 '>
-                                <input
-                                    id='state'
-                                    name='state'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.state}
-                                    required
-                                />
-                                <span class='inputBox-state-span'>State</span>
-                            </div>
-
-                            <div class='col-sm-4 '>
-                                <input
-                                    name='zip'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.zip}
-                                    required
-                                />
-                                <span class='inputBox-zip-span'>Zip</span>
-                            </div>
+                        <div class='col-sm-6'>
+                            <input
+                                name='lastName'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.lastName}
+                                required
+                            />
+                            <span class='last-name-span'>Last Name</span>
                         </div>
                     </div>
 
-
-
-                    <div class='prescription-container'>
-                        <h5 class='prescription-title'>PRESCRIPTION:</h5>
-                        <div className='row inputBox-drug '>
-                            <div class='col-md-12 '>
-                                <input
-                                    name='drug'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.drug}
-                                    required
-                                />
-                                <span class='inputBox-drug-span'>Drug</span>
-                            </div>
+                    <div className='row inputBox-dob'>
+                        <div class='col-sm-4'>
+                            <input
+                                name='dateOfBirthMonth'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.dateOfBirthMonth}
+                                required
+                            />
+                            <span class='dob-month-span'>Birth Month</span>
                         </div>
-
-                        <div className='row inputBox-sig '>
-                            <div class='col-md-12 '>
-                                <input
-                                    name='direction'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.direction}
-                                    required
-                                />
-                                <span class='inputBox-sig-span'>Direction</span>
-                            </div>
+                        <div class='col-sm-4'>
+                            <input
+                                name='dateOfBirthDay'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.dateOfBirthDay}
+                                required
+                            />
+                            <span class='dob-day-span'>Birth Day</span>
                         </div>
-
-                        <div className='row inputBox-quanity-refills'>
-                            <div class='col-sm-4 '>
-                                <input
-                                    name='quanity'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.quanity}
-                                    required
-                                />
-                                <span class='inputBox-quanity-span'>Quanity</span>
-                            </div>
-                            <div class='col-sm-4 '>
-                                <input
-                                    name='refills'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.refills}
-                                    required
-                                />
-                                <span class='inputBox-refills-span'>Refills</span>
-                            </div>
-                            <div class='col-sm-4 '>
-                                <input
-                                    name='daySupply'
-                                    type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.daySupply}
-                                    required
-                                />
-                                <span class='inputBox-day-supply-span'>Day Supply</span>
-                            </div>
+                        <div class='col-sm-4'>
+                            <input
+                                name='dateOfBirthYear'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.dateOfBirthYear}
+                                required
+                            />
+                            <span class='dob-year-span'>Birth Year</span>
                         </div>
                     </div>
+
+                    <div className='row inputBox-street '>
+                        <div class='col-sm-12 '>
+                            <input
+                                name='street'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.street}
+                                required
+                            />
+                            <span class='inputBox-street-span'>Street</span>
+                        </div>
+                    </div>
+
+                    <div className='row inputBox-city-state-zip '>
+                        <div class='col-sm-4 '>
+                            <input
+                                name='city'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.city}
+                                required
+                            />
+                            <span class='inputBox-city-span'>City</span>
+                        </div>
+
+                        <div class='col-sm-4 '>
+                            <input
+                                id='state'
+                                name='state'
+                                onChange={formik.handleChange}
+                                value={formik.values.state}
+                                required
+                            />
+                            <span class='inputBox-state-span'>State</span>
+                        </div>
+
+                        <div class='col-sm-4 '>
+                            <input
+                                name='zip'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.zip}
+                                required
+                            />
+                            <span class='inputBox-zip-span'>Zip</span>
+                        </div>
+                    </div>
+
+                    <h5 class='prescription-title'>PRESCRIPTION:</h5>
+                    <div className='row inputBox-drug '>
+                        <div class='col-sm-12 '>
+                            <input
+                                name='drug'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.drug}
+                                required
+                            />
+                            <span class='inputBox-drug-span'>Drug</span>
+                        </div>
+                    </div>
+
+                    <div className='row inputBox-sig '>
+                        <div class='col-sm-12 '>
+                            <input
+                                name='direction'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.direction}
+                                required
+                            />
+                            <span class='inputBox-sig-span'>Direction</span>
+                        </div>
+                    </div>
+
+                    <div className='row inputBox-quanity-refills'>
+                        <div class='col-sm-4 '>
+                            <input
+                                name='quanity'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.quanity}
+                                required
+                            />
+                            <span class='inputBox-quanity-span'>Quanity</span>
+                        </div>
+                        <div class='col-sm-4 '>
+                            <input
+                                name='refills'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.refills}
+                                required
+                            />
+                            <span class='inputBox-refills-span'>Refills</span>
+                        </div>
+                        <div class='col-sm-4 '>
+                            <input
+                                name='daySupply'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.daySupply}
+                                required
+                            />
+                            <span class='inputBox-day-supply-span'>Day Supply</span>
+                        </div>
+                    </div>
+
                     <Row>
                         <Col className='data-entry-button'>
                             <button type='submit' class='patient-prescription-submit-button' outline>Submit</button>

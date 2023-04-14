@@ -4,8 +4,7 @@
 }
 
 .App {
-  text-align: center;
-  justify-content: center;
+  background-color: #262529;
 }
 
 .App-logo {
@@ -46,8 +45,17 @@
   }
 }
 
+.nav {
+  background-color: rgba(65, 4, 79, 0.5);
+}
+
 /*---------------------------------------------------------------------------------------NewRxPage form*/
 .success-alert {
+  position: absolute;
+  width: 100%
+}
+
+.error-alert {
   position: absolute;
   width: 100%
 }
@@ -66,7 +74,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  left: 50%;
+  flex-direction: column;
   border: 1px solid black;
 }
 
@@ -75,7 +83,7 @@
 }
 
 .prescription-container {
-  border: 3px solid #949BA4;
+  border: 1px solid #949BA4;
   width: 45%;
   display: flex;
   justify-content: center;
@@ -83,7 +91,6 @@
   flex-direction: column;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 5px 5px #949BA4;
 }
 
 .prescription-title {
@@ -93,7 +100,7 @@
 }
 
 .patient-container {
-  border: 3px solid #949BA4;
+  border: 1px solid #949BA4;
   width: 45%;
   display: flex;
   justify-content: center;
@@ -102,7 +109,6 @@
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 20px;
-  box-shadow: 5px 5px #949BA4;
 }
 
 .patient-title {
@@ -124,6 +130,7 @@
 .inputBox-name {
   position: relative;
   width: 500px;
+
 }
 
 .inputBox-name input {
