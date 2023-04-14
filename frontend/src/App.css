@@ -1,3 +1,8 @@
+* {
+  font-family: 'Zilla Slab', serif;
+  ;
+}
+
 .App {
   text-align: center;
   justify-content: center;
@@ -41,11 +46,21 @@
   }
 }
 
-/*-------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------NewRxPage form*/
+.success-alert {
+  position: absolute;
+  width: 100%
+}
+
+.new-rx-page-title {
+  padding: 15px;
+  color: #949BA4;
+  font-weight: bold;
+}
 
 .input-body {
 
-  background-color: #1d2b3a;
+  background-color: #262529;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
@@ -55,56 +70,57 @@
   border: 1px solid black;
 }
 
-
-.inputBox-rx-number {
-  position: relative;
-  width: 500px;
+.data-entry-button {
+  padding: 20px;
 }
 
-.inputBox-rx-number input {
-  width: 100%;
+.prescription-container {
+  border: 3px solid #949BA4;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: #1d2b3a;
-  border-radius: 5px;
-  outline: none;
-  color: #fff;
-  font-size: 1em;
-  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 5px #949BA4;
 }
 
-.inputBox-rx-number span {
-  position: absolute;
-  left: 30px;
+.prescription-title {
+  color: #949BA4;
   padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  color: rgba(255, 255, 255, 0.25);
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  opacity: 1;
+  font-weight: bold;
 }
 
-.inputBox-rx-number input:valid+span,
-.inputBox-rx-number input:focus+span {
-  color: #11CAF0;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.65em;
-  padding: 0 10px;
-  background: #1d2b3a;
-  border-left: 1px solid #11CAF0;
-  border-right: 1px solid #11CAF0;
-  letter-spacing: 0.2em;
-  opacity: 1;
+.patient-container {
+  border: 3px solid #949BA4;
+  width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px #949BA4;
 }
 
-.inputBox-rx-number input:valid,
-.inputBox-rx-number input:focus {
-  border: 1px solid #11CAF0;
+.patient-title {
+  color: #949BA4;
+  padding: 10px;
+  font-weight: bold;
 }
 
-/*-------------------------------------------------------*/
+.patient-prescription-submit-button {
+  color: #8D15FF;
+  background-color: #262529;
+  border: 1px solid #8D15FF;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+/*---------------------------------------------------------------------------------------inputBox-name*/
 .inputBox-name {
   position: relative;
   width: 500px;
@@ -113,8 +129,8 @@
 .inputBox-name input {
   width: 100%;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: #1d2b3a;
+  border: 1px solid #949BA4;
+  background: #262529;
   border-radius: 5px;
   outline: none;
   color: #fff;
@@ -122,28 +138,26 @@
   margin: 10px;
 }
 
-/*-------------------------------------------------------*/
 .last-name-span {
   position: absolute;
-  left: 280px;
+  left: 275px;
   padding: 10px;
   pointer-events: none;
   font-size: 1em;
-  color: rgba(255, 255, 255, 0.25);
+  color: #949BA4;
   text-transform: uppercase;
   transition: 0.3s;
   top: 10px;
   opacity: 1;
 }
 
-/*-------------------------------------------------------*/
 .first-name-span {
   position: absolute;
-  left: 30px;
+  left: 25px;
   padding: 10px;
   pointer-events: none;
   font-size: 1em;
-  color: rgba(255, 255, 255, 0.25);
+  color: #949BA4;
   text-transform: uppercase;
   transition: 0.3s;
   top: 10px;
@@ -152,24 +166,23 @@
 
 .inputBox-name input:valid+span,
 .inputBox-name input:focus+span {
-  color: #11CAF0;
+  color: #8D15FF;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #1d2b3a;
-  border-left: 1px solid #11CAF0;
-  border-right: 1px solid #11CAF0;
+  background: #262529;
+  border-left: 1px solid #8D15FF;
+  border-right: 1px solid #8D15FF;
   letter-spacing: 0.2em;
   opacity: 1;
 }
 
 .inputBox-name input:valid,
 .inputBox-name input:focus {
-  border: 1px solid #11CAF0;
+  border: 1px solid #8D15FF;
 }
 
-/*-------------------------------------------------------*/
-
+/*---------------------------------------------------------------------------------------inputBox-dob*/
 .inputBox-dob {
   position: relative;
   width: 500px;
@@ -178,132 +191,69 @@
 .inputBox-dob input {
   width: 100%;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: #1d2b3a;
+  border: 1px solid #949BA4;
+  background: #262529;
   border-radius: 5px;
   outline: none;
-  color: rgba(255, 255, 255, 0.25);
+  color: #fff;
   font-size: 1em;
   margin: 10px;
-  color: #fff;
+}
+
+.inputBox-dob span {
+  color: #949BA4;
+  text-transform: uppercase;
+  font-size: 1em;
+  pointer-events: none;
+  position: absolute;
+  top: 10px;
+  transition: 0.3s;
+  padding: 10px;
 }
 
 .dob-month-span {
-  position: absolute;
-  left: 30px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  opacity: 1;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  color: rgba(255, 255, 255, 0.25);
+  left: 25px;
+}
+
+.dob-day-span {
+  left: 193px;
+}
+
+.dob-year-span {
+  left: 360px;
 }
 
 .inputBox-dob input:valid+span,
 .inputBox-dob input:focus+span {
   opacity: 1;
-  color: #11CAF0;
+  color: #8D15FF;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #1d2b3a;
-  border-left: 1px solid #11CAF0;
-  border-right: 1px solid #11CAF0;
-  letter-spacing: 0.2em;
-
+  background: #262529;
+  border-left: 1px solid #8D15FF;
+  border-right: 1px solid #8D15FF;
+  letter-spacing: 0.07em;
 }
 
 .inputBox-dob input:valid,
 .inputBox-dob input:focus {
-  border: 1px solid #11CAF0;
+  border: 1px solid #8D15FF;
 }
 
 
-/*-------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------inputBox-street*/
 
-
-.dob-day-span {
-  position: absolute;
-  left: 200px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  opacity: 1;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  color: rgba(255, 255, 255, 0.25);
-}
-
-.dob-day-span input:valid+span,
-.dob-day-span input:focus+span {
-  opacity: 1;
-  color: #11CAF0;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.65em;
-  padding: 0 10px;
-  background: #1d2b3a;
-  border-left: 1px solid #11CAF0;
-  border-right: 1px solid #11CAF0;
-  letter-spacing: 0.2em;
-
-}
-
-.dob-day-span input:valid,
-.dob-day-span input:focus {
-  border: 1px solid #11CAF0;
-}
-
-
-/*-------------------------------------------------------*/
-
-.dob-year-span {
-  position: absolute;
-  left: 370px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  opacity: 1;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  color: rgba(255, 255, 255, 0.25);
-}
-
-.dob-year-span input:valid+span,
-.dob-year-span input:focus+span {
-  opacity: 1;
-  color: #11CAF0;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.65em;
-  padding: 0 10px;
-  background: #1d2b3a;
-  border-left: 1px solid #11CAF0;
-  border-right: 1px solid #11CAF0;
-  letter-spacing: 0.2em;
-
-}
-
-.dob-year-span input:valid,
-.dob-year-span input:focus {
-  border: 1px solid #11CAF0;
-}
-
-
-/*-------------------------------------------------------*/
-
-.inputBox-address {
+.inputBox-street {
   position: relative;
   width: 500px;
 }
 
-.inputBox-address input {
+.inputBox-street input {
   width: 100%;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: #1d2b3a;
+  border: 1px solid #949BA4;
+  background: #262529;
   border-radius: 5px;
   outline: none;
   color: #fff;
@@ -311,9 +261,9 @@
   margin: 10px;
 }
 
-.inputBox-address-span {
+.inputBox-street-span {
   position: absolute;
-  left: 30px;
+  left: 25px;
   padding: 10px;
   pointer-events: none;
   font-size: 1em;
@@ -321,29 +271,89 @@
   text-transform: uppercase;
   transition: 0.3s;
   top: 10px;
-  color: rgba(255, 255, 255, 0.25);
+  color: #949BA4;
 }
 
-.inputBox-address input:valid+span,
-.inputBox-address input:focus+span {
+.inputBox-street input:valid+span,
+.inputBox-street input:focus+span {
   opacity: 1;
-  color: #11CAF0;
+  color: #8D15FF;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #1d2b3a;
-  border-left: 1px solid #11CAF0;
-  border-right: 1px solid #11CAF0;
+  background: #262529;
+  border-left: 1px solid #8D15FF;
+  border-right: 1px solid #8D15FF;
   letter-spacing: 0.2em;
 
 }
 
-.inputBox-address input:valid,
-.inputBox-address input:focus {
-  border: 1px solid #11CAF0;
+.inputBox-street input:valid,
+.inputBox-street input:focus {
+  border: 1px solid #8D15FF;
 }
 
-/*-------------------------------------------------------*/
+/*---------------------------------------------------------------------------------------inputBox-city-state-zip*/
+
+.inputBox-city-state-zip {
+  position: relative;
+  width: 500px;
+}
+
+.inputBox-city-state-zip input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #949BA4;
+  background: #262529;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  margin: 10px;
+}
+
+.inputBox-city-state-zip span {
+  color: #949BA4;
+  text-transform: uppercase;
+  font-size: 1em;
+  pointer-events: none;
+  position: absolute;
+  top: 10px;
+  transition: 0.3s;
+  padding: 10px;
+}
+
+.inputBox-city-span {
+  left: 25px;
+}
+
+.inputBox-state-span {
+  left: 193px;
+}
+
+.inputBox-zip-span {
+  left: 360px;
+}
+
+.inputBox-city-state-zip input:valid+span,
+.inputBox-city-state-zip input:focus+span {
+  opacity: 1;
+  color: #8D15FF;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #262529;
+  border-left: 1px solid #8D15FF;
+  border-right: 1px solid #8D15FF;
+  letter-spacing: 0.2em;
+}
+
+.inputBox-city-state-zip input:valid,
+.inputBox-city-state-zip input:focus {
+  border: 1px solid #8D15FF;
+}
+
+/*---------------------------------------------------------------------------------------inputBox-drug*/
 
 .inputBox-drug {
   position: relative;
@@ -353,8 +363,8 @@
 .inputBox-drug input {
   width: 100%;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: #1d2b3a;
+  border: 1px solid #949BA4;
+  background: #262529;
   border-radius: 5px;
   outline: none;
   color: #fff;
@@ -364,7 +374,7 @@
 
 .inputBox-drug-span {
   position: absolute;
-  left: 30px;
+  left: 25px;
   padding: 10px;
   pointer-events: none;
   font-size: 1em;
@@ -372,24 +382,150 @@
   text-transform: uppercase;
   transition: 0.3s;
   top: 10px;
-  color: rgba(255, 255, 255, 0.25);
+  color: #949BA4;
 }
 
 .inputBox-drug input:valid+span,
 .inputBox-drug input:focus+span {
   opacity: 1;
-  color: #11CAF0;
+  color: #8D15FF;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #1d2b3a;
-  border-left: 1px solid #11CAF0;
-  border-right: 1px solid #11CAF0;
+  background: #262529;
+  border-left: 1px solid #8D15FF;
+  border-right: 1px solid #8D15FF;
   letter-spacing: 0.2em;
 
 }
 
 .inputBox-drug input:valid,
 .inputBox-drug input:focus {
-  border: 1px solid #11CAF0;
+  border: 1px solid #8D15FF;
+}
+
+/*---------------------------------------------------------------------------------------inputBox-sig */
+
+.inputBox-sig {
+  position: relative;
+  width: 500px;
+}
+
+.inputBox-sig input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #949BA4;
+  background: #262529;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  margin: 10px;
+}
+
+.inputBox-sig-span {
+  position: absolute;
+  left: 25px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  opacity: 1;
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+  color: #949BA4;
+}
+
+.inputBox-sig input:valid+span,
+.inputBox-sig input:focus+span {
+  opacity: 1;
+  color: #8D15FF;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #262529;
+  border-left: 1px solid #8D15FF;
+  border-right: 1px solid #8D15FF;
+  letter-spacing: 0.2em;
+
+}
+
+.inputBox-sig input:valid,
+.inputBox-sig input:focus {
+  border: 1px solid #8D15FF;
+}
+
+.inputBox-quanity-refills {
+  position: relative;
+  width: 500px;
+}
+
+.inputBox-quanity-refills input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #949BA4;
+  background: #262529;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  margin: 10px;
+}
+
+.inputBox-quanity-span {
+  position: absolute;
+  left: 25px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  opacity: 1;
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+  color: #949BA4;
+}
+
+.inputBox-refills-span {
+  position: absolute;
+  left: 193px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  opacity: 1;
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+  color: #949BA4;
+}
+
+.inputBox-day-supply-span {
+  position: absolute;
+  left: 360px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  opacity: 1;
+  text-transform: uppercase;
+  transition: 0.3s;
+  top: 10px;
+  color: #949BA4;
+}
+
+.inputBox-quanity-refills input:valid+span,
+.inputBox-quanity-refills input:focus+span {
+  opacity: 1;
+  color: #8D15FF;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #262529;
+  border-left: 1px solid #8D15FF;
+  border-right: 1px solid #8D15FF;
+  letter-spacing: 0.2em;
+
+}
+
+.inputBox-quanity-refills input:valid,
+.inputBox-quanity-refills input:focus {
+  border: 1px solid #8D15FF;
 }

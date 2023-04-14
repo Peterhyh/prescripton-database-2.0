@@ -17,11 +17,25 @@ newRxRouter.route('/')
 
 
 
-    .post(async (req, res, next) => {
-        res.statusCode = 401;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end('POST method not supported yet')
-
+    .post((req, res, next) => {
+        NewRx.findOne({ lastName: req.body.lastName })
+            .then(data => {
+                if (data) {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'text/plain')
+                    res.end('Last name has already been added to the database.');
+                } else {
+                    NewRx.create(req.body)
+                        .then(data => {
+                            console.log(data);
+                            res.statusCode = 200;
+                            res.setHeader('Content-Type', 'text/plain');
+                            res.json('Data was added to the database successfully.');
+                        })
+                        .catch(error => next(error));
+                }
+            })
+            .catch(error => next(error));
     })
 
 

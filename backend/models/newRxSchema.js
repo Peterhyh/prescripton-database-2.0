@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const newRxSchema = new Schema({
-    rxNumber: {
-        type: Number,
-        require: true
-    },
     firstName: {
         type: String,
         require: true
@@ -26,14 +22,42 @@ const newRxSchema = new Schema({
         type: Number,
         require: true
     },
-    address: {
+    street: {
         type: String,
+        require: true
+    },
+    city: {
+        type: String,
+        require: true
+    },
+    state: {
+        type: String,
+        require: true
+    },
+    zip: {
+        type: Number,
         require: true
     },
     drug: {
         type: String,
         require: true
-    }
+    },
+    quanity: {
+        type: Number,
+        require: true
+    },
+    refills: {
+        type: Number,
+        require: true
+    },
+    daySupply: {
+        type: Number,
+        require: true
+    },
+    direction: {
+        type: String,
+        require: true
+    },
 }, {
     timestamps: true
 });
