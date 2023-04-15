@@ -1,25 +1,8 @@
-import { Container, Row, Col, Card, CardHeader, CardBody, Input, Label, Form, FormGroup, Button } from 'reactstrap';
-import { useFormik } from 'formik';
+import { Container, Row, Col, Card, CardHeader, CardBody, Input, Label, FormGroup, Button } from 'reactstrap';
+import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
 
 const LoginPage = () => {
-
-    const formik = useFormik({
-        initialValues: {
-            username: '',
-            password: '',
-        },
-        onSubmit: (values) => {
-            axios.post('http://localhost:3001', {
-                username: values.username,
-                password: values.password
-            })
-                .then(response => {
-                    console.log(JSON.stringify(response));
-                })
-                .catch(err => console.error(err));
-        }
-    });
 
     return (
         <Container style={{ height: '100vh' }}>
@@ -30,40 +13,63 @@ const LoginPage = () => {
                             <h1>Login</h1>
                         </CardHeader>
                         <CardBody>
-                            <Form onSubmit={formik.handleSubmit}>
-                                <FormGroup>
-                                    <Label htmlFor='username'>Username</Label>
-                                    <Input
-                                        name='username'
-                                        type='string'
-                                        onChange={formik.handleChange}
+                            <Formik
+                                initialValues={{
+                                    username: '',
+                                    password: '',
+                                }}
+                                onSubmit={values => {
+                                    axios.post('https://localhost:3001/login', {
+                                        username: values.username,
+                                        password: values.password
+                                    })
+                                        .then(response => {
+                                            console.log(response.data);
+                                        })
+                                        .catch(error => {
+                                            console.log(error);
+                                        })
+                                }}
 
-                                    />
-                                </FormGroup>
+                            >
+                                <Form>
+                                    <FormGroup>
+                                        <Label htmlFor='username'>Username</Label>
+                                        <Field
+                                            id='username'
+                                            name='username'
+                                            type='text'
+                                            className='form-control'
+                                        />
+                                    </FormGroup>
 
-                                <FormGroup>
-                                    <Label htmlFor='password'>Password</Label>
-                                    <Input
-                                        name='password'
-                                        type='string'
-                                        onChange={formik.handleChange}
 
-                                    />
+                                    <FormGroup>
+                                        <Label htmlFor='password'>Password</Label>
+                                        <Field
+                                            id='password'
+                                            name='password'
+                                            type='password'
+                                            className='form-control'
+                                        />
+                                    </FormGroup>
 
-                                </FormGroup>
 
-                                <FormGroup className='d-flex justify-content-center align-items-center'>
-                                    <Button className='mt-3' type='submit' color='primary'>Login</Button>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Col>
-                                        <a href='/'>Forgot password</a>
-                                    </Col>
-                                    <Col>
-                                        <a href='/registerUser'>Create account</a>
-                                    </Col>
-                                </FormGroup>
-                            </Form>
+                                    <FormGroup className='d-flex justify-content-center align-items-center'>
+                                        <Button className='mt-3' type='submit' color='primary'>Login</Button>
+                                    </FormGroup>
+
+
+                                    <FormGroup>
+                                        <Col>
+                                            <a href='/'>Forgot password</a>
+                                        </Col>
+                                        <Col>
+                                            <a href='/registerUser'>Create account</a>
+                                        </Col>
+                                    </FormGroup>
+                                </Form>
+                            </Formik>
                         </CardBody>
                     </Card>
                 </Col>

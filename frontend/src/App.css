@@ -536,3 +536,10 @@
 .inputBox-quanity-refills input:focus {
   border: 1px solid #8D15FF;
 }
+
+
+/*----------------------------------------------------------------------------------------registerUserPage */
+.input.input-error,
+.select.input-error {
+  border-color: red;
+}
