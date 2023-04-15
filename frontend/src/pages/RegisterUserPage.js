@@ -35,6 +35,7 @@ const RegisterUserPage = () => {
 
     return (
         <Container style={{ height: '100vh', padding: '20px' }}>
+            <Button href='/' color='primary' outline>Back</Button>
             <Row className='d-flex justify-content-center'>
                 <Col className='col-sm-7'>
                     <Alert style={{ width: '100%' }} isOpen={openSuccessAlert} color='success' >

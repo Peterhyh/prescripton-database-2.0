@@ -1,11 +1,35 @@
-import { Container, Row, Col, Card, CardHeader, CardBody, Input, Label, FormGroup, Button } from 'reactstrap';
+import { Container, Row, Col, Card, CardHeader, CardBody, Alert, Label, FormGroup, Button } from 'reactstrap';
 import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 const LoginPage = () => {
 
+    let navigate = useNavigate();
+
+    const changeRoute = () => {
+        navigate('/newRx');
+    }
+
+    const [openErrorAlert, setOpenErrorAlert] = useState(false);
+
+    useEffect(() => {
+        const alertTimeout = setTimeout(() => {
+            setOpenErrorAlert(false)
+        }, 3000)
+
+        return () => clearTimeout(alertTimeout)
+    }, [openErrorAlert]);
+
     return (
         <Container style={{ height: '100vh' }}>
+            <Alert color='danger' isOpen={openErrorAlert}>
+                Incorrect username/password, please try again.
+            </Alert>
             <Row className='d-flex justify-content-center align-items-center'>
                 <Col className='col-sm-5'>
                     <Card className='p-3 m-3'>
@@ -19,12 +43,19 @@ const LoginPage = () => {
                                     password: '',
                                 }}
                                 onSubmit={values => {
-                                    axios.post('https://localhost:3001/login', {
+                                    axios.post('http://localhost:3001/login', {
                                         username: values.username,
                                         password: values.password
                                     })
                                         .then(response => {
-                                            console.log(response.data);
+                                            if (response.data === 'Incorrect username/password, please try again.') {
+                                                setOpenErrorAlert(!openErrorAlert);
+                                            } else if (response.data === 'Access granted') {
+                                                console.log('Access granted');
+                                                changeRoute();
+                                            } else {
+                                                alert('Error code: 500');
+                                            }
                                         })
                                         .catch(error => {
                                             console.log(error);

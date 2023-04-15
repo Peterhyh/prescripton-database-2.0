@@ -1,10 +1,10 @@
 const express = require('express');
 const registerUserRouter = express.Router();
-const RegisterUser = require('../models/registerUser');
+const User = require('../models/userSchema');
 
 registerUserRouter.route('/')
     .get((req, res, next) => {
-        RegisterUser.find()
+        User.find()
             .then(user => {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
@@ -14,7 +14,7 @@ registerUserRouter.route('/')
     })
 
     .post((req, res, next) => {
-        RegisterUser.findOne({ username: req.body.username })
+        User.findOne({ username: req.body.username })
             .then(user => {
                 if (user) {
                     console.log(user)
@@ -22,7 +22,7 @@ registerUserRouter.route('/')
                     res.setHeader('Content-Type', 'text/plain');
                     res.end('Username already exists');
                 } else {
-                    RegisterUser.create(req.body)
+                    User.create(req.body)
                         .then(user => {
                             console.log(user)
                             res.statusCode = 200;
@@ -41,7 +41,7 @@ registerUserRouter.route('/')
         res.end('PUT method is not supported on /registerUser');
     })
     .delete((req, res) => {
-        RegisterUser.deleteMany()
+        User.deleteMany()
             .then(response => {
                 console.log(response);
             })

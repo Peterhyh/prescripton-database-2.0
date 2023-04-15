@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const registerUserSchema = new Schema({
+const userSchema = new Schema({
     firstName: {
         type: String,
         require: true
@@ -30,6 +30,6 @@ const registerUserSchema = new Schema({
     timestamps: true
 });
 
-const RegisterUser = mongoose.model('RegisterUser', registerUserSchema);
+const User = mongoose.model('User', userSchema);
 
-module.exports = RegisterUser;
+module.exports = User;
