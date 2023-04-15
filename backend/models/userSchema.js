@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema({
     firstName: {
@@ -10,25 +11,15 @@ const userSchema = new Schema({
         type: String,
         require: true
     },
-    username: {
-        type: String,
-        require: true
-    },
     email: {
         type: String,
         require: true
     },
-    password: {
-        type: String,
-        require: true
-    },
-    confirmPassword: {
-        type: String,
-        require: true
-    }
 }, {
     timestamps: true
 });
+
+userSchema.plugin(passportLocalMongoose); //provides authenticate method and hashing and salting the passwords.
 
 const User = mongoose.model('User', userSchema);
 

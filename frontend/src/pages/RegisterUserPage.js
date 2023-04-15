@@ -56,25 +56,17 @@ const RegisterUserPage = () => {
                                     email: '',
                                     username: '',
                                     password: '',
-                                    confirmPassword: '',
                                 }}
                                 onSubmit={values => {
-                                    axios.post('http://localhost:3001/registerUser', {
+                                    axios.post('http://localhost:3001/users/signup', {
                                         firstName: values.firstName.toUpperCase(),
                                         lastName: values.lastName.toUpperCase(),
                                         email: values.email.toLowerCase(),
                                         username: values.username.toLowerCase(),
                                         password: values.password,
-                                        confirmPassword: values.confirmPassword,
                                     })
                                         .then(response => {
-                                            if (response.data === 'Username already exists') {
-                                                setOpenErrorAlert(!openErrorAlert);
-                                            } else if (response.data === 'Account was created successfully!') {
-                                                setOpenSuccessAlert(!openSuccessAlert);
-                                            } else {
-                                                alert('Error code: 500');
-                                            }
+                                            console.log(response);
                                         })
                                         .catch(error => {
                                             console.log(error);
