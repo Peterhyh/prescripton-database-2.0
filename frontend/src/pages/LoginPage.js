@@ -12,15 +12,27 @@ const LoginPage = () => {
     let navigate = useNavigate();
 
     const changeRoute = () => {
-        navigate('/newRx');
+        navigate('/');
     }
+
+    const [openSuccessMessage, setOpenSuccessMessage] = useState(false);
 
     const [openErrorAlert, setOpenErrorAlert] = useState(false);
 
     useEffect(() => {
+        const successTimeout = setTimeout(() => {
+            setOpenSuccessMessage(false);
+        }, 5000)
+
+        return (() => {
+            clearTimeout(successTimeout);
+        })
+    }, [openSuccessMessage]);
+
+    useEffect(() => {
         const alertTimeout = setTimeout(() => {
             setOpenErrorAlert(false)
-        }, 3000)
+        }, 5000)
 
         return () => clearTimeout(alertTimeout)
     }, [openErrorAlert]);
@@ -29,6 +41,9 @@ const LoginPage = () => {
         <Container style={{ height: '100vh' }}>
             <Alert color='danger' isOpen={openErrorAlert}>
                 Incorrect username/password, please try again.
+            </Alert>
+            <Alert color='success' isOpen={openSuccessMessage}>
+                Success!
             </Alert>
             <Row className='d-flex justify-content-center align-items-center'>
                 <Col className='col-sm-5'>
@@ -43,18 +58,16 @@ const LoginPage = () => {
                                     password: '',
                                 }}
                                 onSubmit={values => {
-                                    axios.post('http://localhost:3001/login', {
+                                    axios.post('http://localhost:3001/users/login', {
                                         username: values.username,
                                         password: values.password
                                     })
                                         .then(response => {
-                                            if (response.data === 'Incorrect username/password, please try again.') {
-                                                setOpenErrorAlert(!openErrorAlert);
-                                            } else if (response.data === 'Access granted') {
-                                                console.log('Access granted');
+                                            if (response.data.success == 'You are now logged in!') {
+                                                setOpenSuccessMessage(true);
                                                 changeRoute();
                                             } else {
-                                                alert('Error code: 500');
+                                                setOpenErrorAlert(true);
                                             }
                                         })
                                         .catch(error => {

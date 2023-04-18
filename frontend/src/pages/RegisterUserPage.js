@@ -16,7 +16,7 @@ const RegisterUserPage = () => {
     useEffect(() => {
         const errorTimeout = setTimeout(() => {
             setOpenErrorAlert(false);
-        }, 3000)
+        }, 5000)
 
         return () => {
             clearTimeout(errorTimeout);
@@ -26,7 +26,7 @@ const RegisterUserPage = () => {
     useEffect(() => {
         const errorTimeout = setTimeout(() => {
             setOpenSuccessAlert(false);
-        }, 3000)
+        }, 5000)
 
         return () => {
             clearTimeout(errorTimeout);
@@ -42,7 +42,7 @@ const RegisterUserPage = () => {
                         You are successfully registered!
                     </Alert>
                     <Alert style={{ width: '100%' }} isOpen={openErrorAlert} color='danger' >
-                        Username has already been taken.
+                        Username/E-mail has already been registered.
                     </Alert>
                     <Card>
                         <CardHeader>
@@ -66,7 +66,11 @@ const RegisterUserPage = () => {
                                         password: values.password,
                                     })
                                         .then(response => {
-                                            console.log(response);
+                                            if (response.data) {
+                                                setOpenSuccessAlert(true);
+                                            } else if (response.message) {
+                                                console.log(response.message)
+                                            }
                                         })
                                         .catch(error => {
                                             console.log(error);

@@ -28,10 +28,12 @@ function authToken(req, res, next) {
 
 
 
+
 router.get('/', (req, res, next) => {
   User.find()
     .then(users => {
-      res.json(users.filter(user => user.username === req.user))
+      console.log(users)
+      res.json(users)
     })
     .catch(err => next(err));
 });
@@ -43,10 +45,13 @@ router.post('/signup', async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const user = { username: req.body.username, password: hashedPassword, firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email }
     User.create(user)
-    res.status(201).send()
-  } catch {
-    res.status(500).send()
-  }
+      .then(user =>
+        res.status(200).end('Account registered successfully')
+      )
+      .catch(err => {
+        res.status(401).end('Username/email already been used.')
+      });
+  } catch { res.send('ERROR') }
 });
 
 
@@ -60,13 +65,7 @@ router.post('/login', (req, res) => {
           if (await bcrypt.compare(req.body.password, user.password)) {
             const authUser = user.username
             const accessToken = jwt.sign(authUser, process.env.SECRET_KEY)
-            res.json({ accessToken: accessToken })
-
-
-
-
-
-
+            res.json({ accessToken: accessToken, success: 'You are now logged in!' })
           } else {
             res.status(201).send('Not allowed')
           }
