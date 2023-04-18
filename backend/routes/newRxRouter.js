@@ -1,7 +1,6 @@
 const express = require('express');
 const newRxRouter = express.Router();
 const NewRx = require('../models/newRxSchema');
-const authenticate = require('../authenticate');
 
 newRxRouter.route('/')
     .get((req, res, next) => {
@@ -14,7 +13,7 @@ newRxRouter.route('/')
             .catch(err => next(err));
     })
 
-    .post(authenticate.verifyUser, (req, res, next) => {
+    .post((req, res, next) => {
         NewRx.findOne({ lastName: req.body.lastName })
             .then(data => {
                 if (data) {
@@ -35,13 +34,13 @@ newRxRouter.route('/')
             .catch(error => next(error));
     })
 
-    .put(authenticate.verifyUser, (req, res) => {
+    .put((req, res) => {
         res.statusCode = 401;
         res.setHeader('Content-Type', 'text/plain');
         res.end('PUT method not supported yet')
     })
 
-    .delete(authenticate.verifyUser, (req, res, next) => {
+    .delete((req, res, next) => {
         NewRx.deleteMany()
             .then(response => {
                 res.statusCode = 200;
