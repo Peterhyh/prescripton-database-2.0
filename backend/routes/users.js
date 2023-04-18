@@ -2,15 +2,36 @@ const express = require('express');
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const router = express.Router();
+
+
+
+
+// function authToken(req, res, next) {
+//   const authHeader = req.headers['authorization']
+//   const token = authHeader && authHeader.split(' ')[1]
+//   if (token == null) {
+//     return res.sendStatus(401)
+//   }
+
+//   jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
+//     if (err) {
+//       res.sendStatus(403)
+//     }
+//     req.user = user
+//     next()
+//   })
+// }
+
+
+
 
 router.get('/', (req, res, next) => {
   User.find()
     .then(users => {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'application/json');
-      res.json(users);
+      res.json(users.filter(user => user.username === req.user))
     })
     .catch(err => next(err));
 });
@@ -20,7 +41,7 @@ router.post('/signup', async (req, res) => {
   try {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    const user = { username: req.body.username, password: hashedPassword }
+    const user = { username: req.body.username, password: hashedPassword, firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email }
     User.create(user)
     res.status(201).send()
   } catch {
@@ -37,7 +58,15 @@ router.post('/login', (req, res) => {
       } else if (user) {
         try {
           if (await bcrypt.compare(req.body.password, user.password)) {
-            return res.send('Success!')
+            const authUser = user.username
+            const accessToken = jwt.sign(authUser, process.env.SECRET_KEY)
+            res.json({ accessToken: accessToken })
+
+
+
+
+
+
           } else {
             res.status(201).send('Not allowed')
           }
@@ -83,3 +112,6 @@ router.delete('/', (req, res, next) => {
 });
 
 module.exports = router;
+
+
+
