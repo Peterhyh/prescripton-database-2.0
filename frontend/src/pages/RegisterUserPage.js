@@ -34,160 +34,163 @@ const RegisterUserPage = () => {
     }, [openSuccessAlert]);
 
     return (
-        <Container style={{ height: '100vh', padding: '20px' }}>
-            <Button href='/' color='primary' outline>Back</Button>
-            <Row className='d-flex justify-content-center'>
-                <Col className='col-sm-7'>
-                    <Alert style={{ width: '100%' }} isOpen={openSuccessAlert} color='success' >
-                        You are successfully registered!
-                    </Alert>
-                    <Alert style={{ width: '100%' }} isOpen={openErrorAlert} color='danger' >
-                        Username/E-mail has already been registered.
-                    </Alert>
-                    <Card>
-                        <CardHeader>
-                            <h1>Register User</h1>
-                        </CardHeader>
-                        <CardBody>
-                            <Formik
-                                initialValues={{
-                                    firstName: '',
-                                    lastName: '',
-                                    email: '',
-                                    username: '',
-                                    password: '',
-                                }}
-                                onSubmit={values => {
-                                    axios.post('http://localhost:3001/users/signup', {
-                                        firstName: values.firstName.toUpperCase(),
-                                        lastName: values.lastName.toUpperCase(),
-                                        email: values.email.toLowerCase(),
-                                        username: values.username.toLowerCase(),
-                                        password: values.password,
-                                    })
-                                        .then(response => {
-                                            if (response.data) {
-                                                setOpenSuccessAlert(true);
-                                            } else if (response.message) {
-                                                console.log(response.message)
-                                            }
+        <>
+            <button className='register-back-button' href='/' outline>Back</button>
+            <Container className='register-container' style={{ height: '100vh', padding: '20px' }}>
+
+                <Row className='d-flex justify-content-center'>
+                    <Col className='col-sm-7'>
+                        <Alert style={{ width: '100%' }} isOpen={openSuccessAlert} color='success' >
+                            You are successfully registered!
+                        </Alert>
+                        <Alert style={{ width: '100%' }} isOpen={openErrorAlert} color='danger' >
+                            Username/E-mail has already been registered.
+                        </Alert>
+                        <Card>
+                            <CardHeader>
+                                <h1>Register User</h1>
+                            </CardHeader>
+                            <CardBody>
+                                <Formik
+                                    initialValues={{
+                                        firstName: '',
+                                        lastName: '',
+                                        email: '',
+                                        username: '',
+                                        password: '',
+                                    }}
+                                    onSubmit={values => {
+                                        axios.post('http://localhost:3001/users/signup', {
+                                            firstName: values.firstName.toUpperCase(),
+                                            lastName: values.lastName.toUpperCase(),
+                                            email: values.email.toLowerCase(),
+                                            username: values.username.toLowerCase(),
+                                            password: values.password,
                                         })
-                                        .catch(error => {
-                                            console.log(error);
-                                        });
-                                }}
-                                validate={validateRegisterUserSchema}
-                            >
-                                <Form className='d-flex justify-content-center align-items-center flex-column'>
-                                    <FormGroup >
-                                        <Label htmlFor='firstName'>First Name:</Label>
+                                            .then(response => {
+                                                if (response.data) {
+                                                    setOpenSuccessAlert(true);
+                                                } else if (response.message) {
+                                                    console.log(response.message)
+                                                }
+                                            })
+                                            .catch(error => {
+                                                console.log(error);
+                                            });
+                                    }}
+                                    validate={validateRegisterUserSchema}
+                                >
+                                    <Form className='d-flex justify-content-center align-items-center flex-column'>
+                                        <FormGroup >
+                                            <Label htmlFor='firstName'>First Name:</Label>
 
-                                        <Field
-                                            type='text'
-                                            className='form-control'
-                                            name='firstName'
-                                            id='firstName'
-                                        />
+                                            <Field
+                                                type='text'
+                                                className='form-control'
+                                                name='firstName'
+                                                id='firstName'
+                                            />
 
-                                        <ErrorMessage name='firstName'>
-                                            {(msg) => <p className='text-danger'>{msg}</p>}
-                                        </ErrorMessage>
-                                    </FormGroup>
-
-
-                                    <FormGroup>
-                                        <Label htmlFor='lastName'>Last Name:</Label>
-
-                                        <Field
-                                            type='text'
-                                            className='form-control'
-                                            name='lastName'
-                                            id='lastName'
-                                        />
-
-                                        <ErrorMessage name='lastName'>
-                                            {(msg) => <p className='text-danger'>{msg}</p>}
-                                        </ErrorMessage>
-                                    </FormGroup>
-
-                                    <FormGroup>
-                                        <Label htmlFor='email'>E-mail:</Label>
-
-                                        <Field
-                                            type='text'
-                                            className='form-control'
-                                            name='email'
-                                            id='email'
-                                        />
-
-                                        <ErrorMessage name='email'>
-                                            {(msg) => <p className='text-danger'>{msg}</p>}
-                                        </ErrorMessage>
-                                    </FormGroup>
+                                            <ErrorMessage name='firstName'>
+                                                {(msg) => <p className='text-danger'>{msg}</p>}
+                                            </ErrorMessage>
+                                        </FormGroup>
 
 
-                                    <FormGroup >
-                                        <Label htmlFor='username'>Username:</Label>
+                                        <FormGroup>
+                                            <Label htmlFor='lastName'>Last Name:</Label>
 
-                                        <Field
-                                            type='text'
-                                            className='form-control'
-                                            name='username'
-                                            id='username'
-                                        />
+                                            <Field
+                                                type='text'
+                                                className='form-control'
+                                                name='lastName'
+                                                id='lastName'
+                                            />
 
-                                        <ErrorMessage name='username'>
-                                            {(msg) => <p className='text-danger'>{msg}</p>}
-                                        </ErrorMessage>
-                                    </FormGroup>
+                                            <ErrorMessage name='lastName'>
+                                                {(msg) => <p className='text-danger'>{msg}</p>}
+                                            </ErrorMessage>
+                                        </FormGroup>
+
+                                        <FormGroup>
+                                            <Label htmlFor='email'>E-mail:</Label>
+
+                                            <Field
+                                                type='text'
+                                                className='form-control'
+                                                name='email'
+                                                id='email'
+                                            />
+
+                                            <ErrorMessage name='email'>
+                                                {(msg) => <p className='text-danger'>{msg}</p>}
+                                            </ErrorMessage>
+                                        </FormGroup>
 
 
-                                    <FormGroup >
+                                        <FormGroup >
+                                            <Label htmlFor='username'>Username:</Label>
 
-                                        <Label htmlFor='password'>Password:</Label>
+                                            <Field
+                                                type='text'
+                                                className='form-control'
+                                                name='username'
+                                                id='username'
+                                            />
+
+                                            <ErrorMessage name='username'>
+                                                {(msg) => <p className='text-danger'>{msg}</p>}
+                                            </ErrorMessage>
+                                        </FormGroup>
 
 
+                                        <FormGroup >
 
-                                        <Field
-                                            type={revealPassword ? 'text' : 'password'}
-                                            className='form-control'
-                                            name='password'
-                                            id='password'
-                                        />
-
-                                        <img onClick={() => setRevealPassword(!revealPassword)} src={revealPassword ? EyeOpened : EyeClosed} style={{ height: '20px', width: '20px' }} />
+                                            <Label htmlFor='password'>Password:</Label>
 
 
 
-                                        <ErrorMessage name='password'>
-                                            {(msg) => <p className='text-danger'>{msg}</p>}
-                                        </ErrorMessage>
-                                    </FormGroup>
+                                            <Field
+                                                type={revealPassword ? 'text' : 'password'}
+                                                className='form-control'
+                                                name='password'
+                                                id='password'
+                                            />
+
+                                            <img onClick={() => setRevealPassword(!revealPassword)} src={revealPassword ? EyeOpened : EyeClosed} style={{ height: '20px', width: '20px' }} />
 
 
-                                    <FormGroup >
-                                        <Label htmlFor='confirmPassword'>Confirm Password:</Label>
-                                        <Field
-                                            type={revealPassword ? 'text' : 'password'}
-                                            className='form-control'
-                                            name='confirmPassword'
-                                            id='confirmPassword'
-                                        />
 
-                                        <ErrorMessage name='confirmPassword'>
-                                            {(msg) => <p className='text-danger'>{msg}</p>}
-                                        </ErrorMessage>
-                                    </FormGroup>
-                                    <FormGroup >
-                                        <Button type='submit' color='primary'>Submit</Button>
-                                    </FormGroup>
-                                </Form>
-                            </Formik>
-                        </CardBody>
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
+                                            <ErrorMessage name='password'>
+                                                {(msg) => <p className='text-danger'>{msg}</p>}
+                                            </ErrorMessage>
+                                        </FormGroup>
+
+
+                                        <FormGroup >
+                                            <Label htmlFor='confirmPassword'>Confirm Password:</Label>
+                                            <Field
+                                                type={revealPassword ? 'text' : 'password'}
+                                                className='form-control'
+                                                name='confirmPassword'
+                                                id='confirmPassword'
+                                            />
+
+                                            <ErrorMessage name='confirmPassword'>
+                                                {(msg) => <p className='text-danger'>{msg}</p>}
+                                            </ErrorMessage>
+                                        </FormGroup>
+                                        <FormGroup >
+                                            <Button type='submit' color='primary'>Submit</Button>
+                                        </FormGroup>
+                                    </Form>
+                                </Formik>
+                            </CardBody>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
+        </>
     )
 };
 

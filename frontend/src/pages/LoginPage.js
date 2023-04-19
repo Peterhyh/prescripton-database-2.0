@@ -99,9 +99,9 @@ const LoginPage = () => {
                                     </FormGroup>
 
 
-                                    <FormGroup className='d-flex justify-content-center align-items-center'>
-                                        <Button className='mt-3' type='submit' color='primary'>Login</Button>
-                                    </FormGroup>
+                                    <div className='d-flex justify-content-center align-items-center mt-3'>
+                                        <button className='login-button' type='submit' color='primary' outline>Login</button>
+                                    </div>
 
 
                                     <FormGroup>

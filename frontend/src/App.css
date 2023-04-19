@@ -45,12 +45,61 @@
   }
 }
 
+.login-button {
+  color: #0D2018;
+  background-color: #fff;
+  border: 1px solid #0D2018;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.login-button:hover {
+  color: #CFDDD1;
+  background-color: #0D2018;
+  border: 1px solid #CFDDD1;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.register-back-button {
+  color: #0D2018;
+  background-color: #CFDDD1;
+  border: 1px solid #0D2018;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.register-back-button:hover {
+  color: #CFDDD1;
+  background-color: #0D2018;
+  border: 1px solid #CFDDD1;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .nav {
   background-color: #17382b;
 }
 
 .nav-link {
   text-decoration: none;
+  border-radius: 500px;
+  padding: 10px;
+}
+
+.nav-link:hover {
+  background-color: #0e251b;
+  border-radius: 500px;
+  padding: 10px;
 }
 
 /*---------------------------------------------------------------------------------------NewRxPage form*/

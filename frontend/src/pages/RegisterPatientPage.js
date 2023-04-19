@@ -38,14 +38,14 @@ const RegisterPatientPage = () => {
         },
         onSubmit: (values) => {
             axios.post('http://localhost:3001/newPatient', {
-                firstName: values.firstName,
-                lastName: values.lastName,
+                firstName: values.firstName.toUpperCase(),
+                lastName: values.lastName.toUpperCase(),
                 dateOfBirthMonth: values.dateOfBirthMonth,
                 dateOfBirthDay: values.dateOfBirthDay,
                 dateOfBirthYear: values.dateOfBirthYear,
-                street: values.street,
-                city: values.city,
-                state: values.state,
+                street: values.street.toUpperCase(),
+                city: values.city.toUpperCase(),
+                state: values.state.toUpperCase(),
                 zip: values.zip,
             })
                 .then(response => {

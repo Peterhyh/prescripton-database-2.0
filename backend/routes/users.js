@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+
 const router = express.Router();
 
 
@@ -23,13 +24,17 @@ function authToken(req, res, next) {
     req.user = user
     next()
   })
-}
+};
+
+module.exports = authToken;
 
 
 
 
 
-router.get('/', (req, res, next) => {
+
+
+router.get('/', authToken, (req, res, next) => {
   User.find()
     .then(users => {
       console.log(users)

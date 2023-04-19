@@ -2,13 +2,14 @@ const express = require('express');
 const Patient = require('../models/patient');
 const newPatientRouter = express.Router();
 
+
 newPatientRouter.route('/')
     .get((req, res, next) => {
         Patient.find()
             .then(patient => {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
-                res.json(patient.splice(0, 5))
+                res.json(patient)
             })
             .catch(err => {
                 console.log(err);

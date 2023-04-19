@@ -74,15 +74,6 @@ const NewRxPage = () => {
         },
         onSubmit: (values) => {
             axios.post('http://localhost:3001/newRx', {
-                firstName: values.firstName.toUpperCase(),
-                lastName: values.lastName.toUpperCase(),
-                dateOfBirthMonth: values.dateOfBirthMonth,
-                dateOfBirthDay: values.dateOfBirthDay,
-                dateOfBirthYear: values.dateOfBirthYear,
-                street: values.street.toUpperCase(),
-                city: values.city.toUpperCase(),
-                state: values.state.toUpperCase(),
-                zip: values.zip,
                 drug: values.drug.toUpperCase(),
                 quanity: values.quanity,
                 refills: values.refills,
