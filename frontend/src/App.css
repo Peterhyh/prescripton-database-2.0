@@ -4,7 +4,7 @@
 }
 
 .App {
-  background-color: #262529;
+  background-color: #CFDDD1;
 }
 
 .App-logo {
@@ -46,7 +46,11 @@
 }
 
 .nav {
-  background-color: rgba(65, 4, 79, 0.5);
+  background-color: #17382b;
+}
+
+.nav-link {
+  text-decoration: none;
 }
 
 /*---------------------------------------------------------------------------------------NewRxPage form*/
@@ -60,22 +64,18 @@
   width: 100%
 }
 
-.new-rx-page-title {
-  padding: 15px;
-  color: #949BA4;
-  font-weight: bold;
-}
+
 
 .input-body {
 
-  background-color: #262529;
+  background-color: #CFDDD1;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid black;
+
 }
 
 .data-entry-button {
@@ -94,7 +94,7 @@
 }
 
 .prescription-title {
-  color: #949BA4;
+  color: #0D2018;
   padding: 10px;
   font-weight: bold;
 }
@@ -112,15 +112,24 @@
 }
 
 .patient-title {
-  color: #949BA4;
+  color: #0D2018;
   padding: 10px;
   font-weight: bold;
 }
 
 .patient-prescription-submit-button {
-  color: #8D15FF;
-  background-color: #262529;
-  border: 1px solid #8D15FF;
+  color: #0D2018;
+  background-color: #CFDDD1;
+  border: 1px solid #0D2018;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.patient-prescription-submit-button:hover {
+  color: #CFDDD1;
+  background-color: #0D2018;
+  border: 1px solid #CFDDD1;
   padding: 10px;
   margin: 30px;
   border-radius: 10px;
@@ -137,10 +146,10 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #949BA4;
-  background: #262529;
+  background: #CFDDD1;
   border-radius: 5px;
   outline: none;
-  color: #fff;
+  color: #0D2018;
   font-size: 1em;
   margin: 10px;
 }
@@ -173,20 +182,20 @@
 
 .inputBox-name input:valid+span,
 .inputBox-name input:focus+span {
-  color: #8D15FF;
+  color: #0D2018;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #262529;
-  border-left: 1px solid #8D15FF;
-  border-right: 1px solid #8D15FF;
+  background: #CFDDD1;
+  border-left: 1px solid #0D2018;
+  border-right: 1px solid #0D2018;
   letter-spacing: 0.2em;
   opacity: 1;
 }
 
 .inputBox-name input:valid,
 .inputBox-name input:focus {
-  border: 1px solid #8D15FF;
+  border: 1px solid #0D2018;
 }
 
 /*---------------------------------------------------------------------------------------inputBox-dob*/
@@ -199,10 +208,10 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #949BA4;
-  background: #262529;
+  background: #CFDDD1;
   border-radius: 5px;
   outline: none;
-  color: #fff;
+  color: #0D2018;
   font-size: 1em;
   margin: 10px;
 }
@@ -233,19 +242,19 @@
 .inputBox-dob input:valid+span,
 .inputBox-dob input:focus+span {
   opacity: 1;
-  color: #8D15FF;
+  color: #0D2018;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #262529;
-  border-left: 1px solid #8D15FF;
-  border-right: 1px solid #8D15FF;
+  background: #CFDDD1;
+  border-left: 1px solid #0D2018;
+  border-right: 1px solid #0D2018;
   letter-spacing: 0.07em;
 }
 
 .inputBox-dob input:valid,
 .inputBox-dob input:focus {
-  border: 1px solid #8D15FF;
+  border: 1px solid #0D2018;
 }
 
 
@@ -260,10 +269,10 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #949BA4;
-  background: #262529;
+  background: #CFDDD1;
   border-radius: 5px;
   outline: none;
-  color: #fff;
+  color: #0D2018;
   font-size: 1em;
   margin: 10px;
 }
@@ -284,20 +293,20 @@
 .inputBox-street input:valid+span,
 .inputBox-street input:focus+span {
   opacity: 1;
-  color: #8D15FF;
+  color: #0D2018;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #262529;
-  border-left: 1px solid #8D15FF;
-  border-right: 1px solid #8D15FF;
+  background: #CFDDD1;
+  border-left: 1px solid #0D2018;
+  border-right: 1px solid #0D2018;
   letter-spacing: 0.2em;
 
 }
 
 .inputBox-street input:valid,
 .inputBox-street input:focus {
-  border: 1px solid #8D15FF;
+  border: 1px solid #0D2018;
 }
 
 /*---------------------------------------------------------------------------------------inputBox-city-state-zip*/
@@ -311,10 +320,10 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #949BA4;
-  background: #262529;
+  background: #CFDDD1;
   border-radius: 5px;
   outline: none;
-  color: #fff;
+  color: #0D2018;
   font-size: 1em;
   margin: 10px;
 }
@@ -345,19 +354,19 @@
 .inputBox-city-state-zip input:valid+span,
 .inputBox-city-state-zip input:focus+span {
   opacity: 1;
-  color: #8D15FF;
+  color: #0D2018;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #262529;
-  border-left: 1px solid #8D15FF;
-  border-right: 1px solid #8D15FF;
+  background: #CFDDD1;
+  border-left: 1px solid #0D2018;
+  border-right: 1px solid #0D2018;
   letter-spacing: 0.2em;
 }
 
 .inputBox-city-state-zip input:valid,
 .inputBox-city-state-zip input:focus {
-  border: 1px solid #8D15FF;
+  border: 1px solid #0D2018;
 }
 
 /*---------------------------------------------------------------------------------------inputBox-drug*/
@@ -371,10 +380,10 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #949BA4;
-  background: #262529;
+  background: #CFDDD1;
   border-radius: 5px;
   outline: none;
-  color: #fff;
+  color: #0D2018;
   font-size: 1em;
   margin: 10px;
 }
@@ -395,20 +404,20 @@
 .inputBox-drug input:valid+span,
 .inputBox-drug input:focus+span {
   opacity: 1;
-  color: #8D15FF;
+  color: #0D2018;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #262529;
-  border-left: 1px solid #8D15FF;
-  border-right: 1px solid #8D15FF;
+  background: #CFDDD1;
+  border-left: 1px solid #0D2018;
+  border-right: 1px solid #0D2018;
   letter-spacing: 0.2em;
 
 }
 
 .inputBox-drug input:valid,
 .inputBox-drug input:focus {
-  border: 1px solid #8D15FF;
+  border: 1px solid #0D2018;
 }
 
 /*---------------------------------------------------------------------------------------inputBox-sig */
@@ -422,10 +431,10 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #949BA4;
-  background: #262529;
+  background: #CFDDD1;
   border-radius: 5px;
   outline: none;
-  color: #fff;
+  color: #0D2018;
   font-size: 1em;
   margin: 10px;
 }
@@ -446,20 +455,20 @@
 .inputBox-sig input:valid+span,
 .inputBox-sig input:focus+span {
   opacity: 1;
-  color: #8D15FF;
+  color: #0D2018;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #262529;
-  border-left: 1px solid #8D15FF;
-  border-right: 1px solid #8D15FF;
+  background: #CFDDD1;
+  border-left: 1px solid #0D2018;
+  border-right: 1px solid #0D2018;
   letter-spacing: 0.2em;
 
 }
 
 .inputBox-sig input:valid,
 .inputBox-sig input:focus {
-  border: 1px solid #8D15FF;
+  border: 1px solid #0D2018;
 }
 
 .inputBox-quanity-refills {
@@ -471,10 +480,10 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #949BA4;
-  background: #262529;
+  background: #CFDDD1;
   border-radius: 5px;
   outline: none;
-  color: #fff;
+  color: #0D2018;
   font-size: 1em;
   margin: 10px;
 }
@@ -521,20 +530,20 @@
 .inputBox-quanity-refills input:valid+span,
 .inputBox-quanity-refills input:focus+span {
   opacity: 1;
-  color: #8D15FF;
+  color: #0D2018;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
-  background: #262529;
-  border-left: 1px solid #8D15FF;
-  border-right: 1px solid #8D15FF;
+  background: #CFDDD1;
+  border-left: 1px solid #0D2018;
+  border-right: 1px solid #0D2018;
   letter-spacing: 0.2em;
 
 }
 
 .inputBox-quanity-refills input:valid,
 .inputBox-quanity-refills input:focus {
-  border: 1px solid #8D15FF;
+  border: 1px solid #0D2018;
 }
 
 
@@ -542,4 +551,62 @@
 .input.input-error,
 .select.input-error {
   border-color: red;
+}
+
+
+
+.search-container {
+  display: flex;
+  justify-content: space-around;
+  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.search-input {
+  border-radius: 20px;
+}
+
+.select-title {
+  color: #0D2018;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.search-result-table {
+  color: #fff;
+  background-color: black;
+  border: 1px solid;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.search-result-table th {
+
+  text-align: center;
+  background-color: #17382b;
+  color: white;
+}
+
+.search-result-table,
+th,
+td {
+  padding: 30px;
+  border: 1px solid white;
+  justify-content: center;
+}
+
+.search-result-table tr:nth-child(even) {
+  background-color: #1e1e1e;
+}
+
+.search-result-table tr {
+  padding: 50px;
+}
+
+.search-result-table tr:hover {
+  background-color: #949BA4;
 }

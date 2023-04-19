@@ -10,8 +10,11 @@ const Header = () => {
             <NavbarToggler onClick={() => setOpenNav(!openNav)} />
             <Collapse isOpen={openNav} navbar>
                 <Nav className='ms-auto' navbar>
-                    <NavItem>
-                        <NavLink to='/newRx'>New Rx</NavLink>
+                    <NavItem className='m-3'>
+                        <NavLink style={{ color: '#CFDDD1' }} className='nav-link' to='/newRx'>New Rx</NavLink>
+                    </NavItem>
+                    <NavItem className='m-3'>
+                        <NavLink style={{ color: '#CFDDD1' }} className='nav-link' to='/registerPatient'>New Patient</NavLink>
                     </NavItem>
                 </Nav>
             </Collapse>

@@ -9,7 +9,7 @@
 #     "email": "fish@test.com"
 # }
 
-# GET http://localhost:3001/users
+GET http://localhost:3001/newPatient
 
 
 
@@ -25,4 +25,4 @@
 
 
 
-# DELETE http://localhost:3001/users
+# DELETE http://localhost:3001/newPatient

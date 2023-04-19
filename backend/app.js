@@ -9,6 +9,7 @@ const cors = require('cors');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const newRxRouter = require('./routes/newRxRouter');
+const newPatientRouter = require('./routes/newPatientRouter');
 
 const uri = process.env.MONGO_URI;
 const connect = async () => {
@@ -43,6 +44,7 @@ app.use('/users', usersRouter);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/newRx', newRxRouter);
+app.use('/newPatient', newPatientRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
