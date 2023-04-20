@@ -10,8 +10,6 @@
 # }
 
 GET http://localhost:3001/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.cGV0ZXJoeWg.9PTQsCYJoXVfL9DywlVFh4f5wFp2hVY7MDumj1jBVLg
-
 
 
 
@@ -26,4 +24,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.cGV0ZXJoeWg.9PTQsCYJoXVfL9DywlVFh4f5w
 
 
 
-# DELETE http://localhost:3001/newPatient
+# DELETE http://localhost:3001/users

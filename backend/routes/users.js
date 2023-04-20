@@ -3,6 +3,7 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const cors = require('cors');
 
 
 const router = express.Router();
@@ -34,7 +35,7 @@ module.exports = authToken;
 
 
 
-router.get('/', authToken, (req, res, next) => {
+router.get('/', (req, res, next) => {
   User.find()
     .then(users => {
       console.log(users)
@@ -50,11 +51,15 @@ router.post('/signup', async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const user = { username: req.body.username, password: hashedPassword, firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email }
     User.create(user)
-      .then(user =>
-        res.status(200).end('Account registered successfully')
+      .then(user => {
+        console.log(user);
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain');
+        res.end('Account registered successfully');
+      }
       )
       .catch(err => {
-        res.status(401).end('Username/email already been used.')
+        res.status(409).end('Username/email already been used.')
       });
   } catch { res.send('ERROR') }
 });

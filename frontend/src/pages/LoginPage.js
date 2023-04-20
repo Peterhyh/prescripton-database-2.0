@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card, CardHeader, CardBody, Alert, Label, FormGroup, Button } from 'reactstrap';
+import { Container, Row, Col, Card, CardHeader, CardBody, Alert, Label, FormGroup } from 'reactstrap';
 import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -63,7 +63,7 @@ const LoginPage = () => {
                                         password: values.password
                                     })
                                         .then(response => {
-                                            if (response.data.success == 'You are now logged in!') {
+                                            if (response.data.success === 'You are now logged in!') {
                                                 setOpenSuccessMessage(true);
                                                 changeRoute();
                                             } else {
@@ -109,7 +109,7 @@ const LoginPage = () => {
                                             <a href='/'>Forgot password</a>
                                         </Col>
                                         <Col>
-                                            <a href='/registerUser'>Create account</a>
+                                            <a href='/register'>Create account</a>
                                         </Col>
                                     </FormGroup>
                                 </Form>

@@ -63,28 +63,7 @@
   border-radius: 10px;
 }
 
-.register-back-button {
-  color: #0D2018;
-  background-color: #CFDDD1;
-  border: 1px solid #0D2018;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-}
 
-.register-back-button:hover {
-  color: #CFDDD1;
-  background-color: #0D2018;
-  border: 1px solid #CFDDD1;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-}
-
-.register-container {
-  display: flex;
-  flex-direction: column;
-}
 
 .nav {
   background-color: #17382b;
@@ -100,6 +79,139 @@
   background-color: #0e251b;
   border-radius: 500px;
   padding: 10px;
+}
+
+/*---------------------------------------------------------------------------------------RegisterPage*/
+.hide {
+  display: none;
+}
+
+.valid {
+  color: green;
+  background-color: rgba(0, 0, 0, 0.608);
+}
+
+.invalid {
+  color: red;
+  background-color: rgba(0, 0, 0, 0.608);
+}
+
+.instructions {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.608);
+  width: 40%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.register-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register-card {
+  height: 700px;
+  width: 700px;
+  background-color: #17382b76;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.register-form {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.register-form input {
+
+  padding: 10px;
+  border: 1px solid #949BA4;
+  background: #CFDDD1;
+  border-radius: 5px;
+  outline: none;
+  color: #0D2018;
+  font-size: 1em;
+  margin: 10px;
+}
+
+.register-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-button {
+  color: #CFDDD1;
+  background-color: #17382b76;
+  border: 1px solid #CFDDD1;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+  width: 100px;
+}
+
+.register-button:hover {
+  color: #17382b76;
+  background-color: #CFDDD1;
+  border: 1px solid #17382b76;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+  width: 100px;
+}
+
+.register-back-button {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 5px;
+  text-decoration: none;
+  color: #CFDDD1;
+  background-color: #17382b76;
+  border: 1px solid #CFDDD1;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+  width: 4rem;
+}
+
+.register-back-button:hover {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 5px;
+  text-decoration: none;
+  color: #17382b76;
+  background-color: #CFDDD1;
+  border: 1px solid #17382b76;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.register-success-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.register-success-page div {
+  height: 500px;
+  width: 500px;
+  background-color: #17382b76;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /*---------------------------------------------------------------------------------------NewRxPage form*/
