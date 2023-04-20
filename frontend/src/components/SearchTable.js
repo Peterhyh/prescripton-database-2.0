@@ -14,17 +14,13 @@ const SearchTable = ({ value }) => {
                 </tr>
 
                 {value.map((patient) => {
-                    if (patient) {
-                        return (
-                            <tr key={patient._id} >
-                                <td >{`${patient.lastName}, ${patient.firstName}`}</td>
-                                <td>{`${patient.dateOfBirthMonth}/${patient.dateOfBirthDay}/${patient.dateOfBirthYear}`}</td>
-                                <td>{`${patient.street}, ${patient.city} ${patient.state}, ${patient.zip} `}</td>
-                            </tr>
-                        )
-                    } else {
-                        return ('')
-                    }
+                    return (
+                        <tr key={patient._id} >
+                            <td >{`${patient.lastName}, ${patient.firstName}`}</td>
+                            <td>{`${patient.dateOfBirthMonth}/${patient.dateOfBirthDay}/${patient.dateOfBirthYear}`}</td>
+                            <td>{`${patient.street}, ${patient.city} ${patient.state}, ${patient.zip} `}</td>
+                        </tr>
+                    )
                 })}
 
             </tbody>
