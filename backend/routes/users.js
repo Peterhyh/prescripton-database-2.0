@@ -3,33 +3,14 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const cors = require('cors');
-
+// const authorization = require('../authorization');
 
 const router = express.Router();
 
 
-
-
-function authToken(req, res, next) {
-  const authHeader = req.headers['authorization']
-  const token = authHeader && authHeader.split(' ')[1]
-  if (token == null) {
-    return res.sendStatus(401)
-  }
-
-  jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
-    if (err) {
-      res.sendStatus(403)
-    }
-    req.user = user
-    next()
-  })
-};
-
-module.exports = authToken;
-
-
+const generateAccessToken = (user) => {
+  return jwt.sign(user, process.env.SECRET_KEY, { expiresIn: 3600 })
+}
 
 
 
@@ -45,52 +26,107 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.post('/signup', async (req, res) => {
-  try {
-    const salt = await bcrypt.genSalt();
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-    const user = { username: req.body.username, password: hashedPassword, firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email }
-    User.create(user)
-      .then(user => {
-        console.log(user);
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/plain');
-        res.end('Account registered successfully');
-      }
-      )
-      .catch(err => {
-        res.status(409).end('Username/email already been used.')
-      });
-  } catch { res.send('ERROR') }
-});
 
 
-router.post('/login', (req, res) => {
+
+
+router.post('/signup', async (req, res, next) => {
   User.findOne({ username: req.body.username })
-    .then(async user => {
-      if (user == null) {
-        res.status(201).send('No user found')
-      } else if (user) {
-        try {
-          if (await bcrypt.compare(req.body.password, user.password)) {
-            const authUser = user.username
-            const accessToken = jwt.sign(authUser, process.env.SECRET_KEY)
-            res.json({ accessToken: accessToken, success: 'You are now logged in!' })
-          } else {
-            res.status(201).send('Not allowed')
-          }
-        } catch {
-          res.status(500).send()
-        }
+    .then(user => {
+      if (user) {
+        return res.sendStatus(409)
       } else {
-        res.status(500).send()
+        User.findOne({ email: req.body.email })
+          .then(email => {
+            if (email) {
+              return res.sendStatus(410);
+            } else {
+              res.sendStatus(200);
+              return next()
+            }
+          })
+          .catch(err => console.log('---Email Error: ', err))
       }
     })
-    .catch(error => {
-      console.log(error);
+    .catch(err => console.log('---Username Error: ', err))
+
+  const salt = await bcrypt.genSalt();
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+  const user = {
+    username: req.body.username,
+    password: hashedPassword,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email
+  };
+  User.create(user)
+    .then(user => {
+      console.log('---NEW USER:', user);
     })
+    .catch(err => console.log(err));
 });
 
+
+
+
+
+
+
+router.post('/login', (req, res, next) => {
+  User.findOne({ username: req.body.username })
+    .then(async (user) => {
+      if (user == null) {
+        return res.sendStatus(400);
+      }
+      try {
+        if (await bcrypt.compare(req.body.password, user.password)) {
+          const user = { username: req.body.username };
+          const accessToken = generateAccessToken(user);
+          const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_KEY);
+          refreshTokens.push(refreshToken);
+          res.json({ accessToken: accessToken, refreshToken: refreshToken })
+        } else {
+          res.sendStatus(409);
+        }
+      } catch {
+        res.sendStatus(500);
+      }
+    })
+    .catch(err => next(err));
+});
+
+
+
+
+
+
+
+
+
+
+let refreshTokens = [];
+
+router.post('/token', (req, res) => {
+  const refreshToken = req.body.token
+  if (refreshToken === null) return res.sendStatus(401);
+  if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
+  jwt.verify(refreshToken, process.env.REFRESH_TOKEN_KEY, (err, user) => {
+    if (err) return res.sendStatus(403)
+    const accessToken = generateAccessToken({ username: user.username });
+    res.json({ accessToken: accessToken })
+  });
+});
+
+
+
+
+
+
+
+router.delete('/logout', (req, res) => {
+  refreshTokens = refreshTokens.filter(token => token !== req.body.token)
+  res.sendStatus(204);
+});
 
 
 

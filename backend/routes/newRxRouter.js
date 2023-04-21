@@ -1,9 +1,10 @@
 const express = require('express');
 const newRxRouter = express.Router();
 const NewRx = require('../models/newRxSchema');
+const authorization = require('../authorization');
 
 newRxRouter.route('/')
-    .get((req, res, next) => {
+    .get(authorization.verifyToken, (req, res, next) => {
         NewRx.find()
             .then(rxData => {
                 res.statusCode = 200;
@@ -13,7 +14,7 @@ newRxRouter.route('/')
             .catch(err => next(err));
     })
 
-    .post((req, res, next) => {
+    .post(authorization.verifyToken, (req, res, next) => {
         NewRx.findOne({ lastName: req.body.lastName })
             .then(data => {
                 if (data) {
@@ -34,13 +35,13 @@ newRxRouter.route('/')
             .catch(error => next(error));
     })
 
-    .put((req, res) => {
+    .put(authorization.verifyToken, (req, res) => {
         res.statusCode = 401;
         res.setHeader('Content-Type', 'text/plain');
         res.end('PUT method not supported yet')
     })
 
-    .delete((req, res, next) => {
+    .delete(authorization.verifyToken, (req, res, next) => {
         NewRx.deleteMany()
             .then(response => {
                 res.statusCode = 200;

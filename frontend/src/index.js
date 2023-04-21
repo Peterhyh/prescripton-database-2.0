@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthProvider';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,7 +16,11 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <AuthProvider>
+          <Routes>
+            <Route path='/*' element={<App />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

@@ -1,6 +1,7 @@
 const express = require('express');
 const Patient = require('../models/patient');
 const newPatientRouter = express.Router();
+const authorization = require('../authorization');
 
 
 newPatientRouter.route('/')

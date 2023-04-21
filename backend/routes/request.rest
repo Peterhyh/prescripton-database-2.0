@@ -1,24 +1,28 @@
-# POST http://localhost:3001/users/signup
+
+
+# GET http://localhost:3001/users 
+
+
+POST http://localhost:3001/users/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBldGVyaHloIiwiaWF0IjoxNjgyMDQzNzM0fQ.30TPmFSZtpWpVjYBJdoIWrRHIcprDXTIoIXcx0rAJ8w"
+}
+
+# DELETE http://localhost:3001/users/logout
 # Content-Type: application/json
 
 # {
-#     "username": "fish",
-#     "password": "fish",
-#     "firstName": "fish",
-#     "lastName": "fish",
-#     "email": "fish@test.com"
+#     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBldGVyaHloIiwiaWF0IjoxNjgyMDQzNzM0fQ.30TPmFSZtpWpVjYBJdoIWrRHIcprDXTIoIXcx0rAJ8w"
 # }
-
-GET http://localhost:3001/users
-
-
 
 # POST http://localhost:3001/users/login
 # Content-Type: application/json
 
 # {
 #    "username": "peterhyh",
-#    "password": "password"
+#    "password": "Peter123$"
 # }
 
 

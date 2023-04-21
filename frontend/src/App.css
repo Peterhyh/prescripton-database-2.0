@@ -81,9 +81,117 @@
   padding: 10px;
 }
 
-/*---------------------------------------------------------------------------------------RegisterPage*/
 .hide {
   display: none;
+}
+
+/*---------------------------------------------------------------------------------------LoginPage*/
+.login-error-message {
+  position: absolute;
+  top: 5%;
+  background-color: #EDC9C5;
+  border: 1px solid #AB3431;
+  border-radius: 10px;
+  color: #AB3431;
+  padding: 10px;
+
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.login-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #17382b;
+  height: 650px;
+  width: 700px;
+  background-color: #17382b76;
+  border-radius: 10px;
+}
+
+.login-card h1 {
+  position: absolute;
+  top: 20%;
+}
+
+.login-form {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-direction: start;
+  width: 500px;
+}
+
+.login-form input {
+  padding: 10px;
+  border: 1px solid #949BA4;
+  background: #CFDDD1;
+  border-radius: 5px;
+  outline: none;
+  color: #0D2018;
+  font-size: 1em;
+  margin: 10px;
+}
+
+.login-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-button-container button {
+  color: #CFDDD1;
+  background-color: #17382b76;
+  border: 1px solid #CFDDD1;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+  width: 100px;
+  position: absolute;
+  top: 100%;
+}
+
+.login-button-container button:hover {
+  color: #17382b76;
+  background-color: #CFDDD1;
+  border: 1px solid #17382b76;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+  width: 100px;
+  position: absolute;
+
+}
+
+.login-register-section-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 80%;
+}
+
+
+/*---------------------------------------------------------------------------------------RegisterPage*/
+.register-error-message {
+  position: absolute;
+  top: 13%;
+  background-color: #EDC9C5;
+  border: 1px solid #AB3431;
+  border-radius: 10px;
+  color: #AB3431;
+  padding: 10px;
 }
 
 .valid {
@@ -106,29 +214,40 @@
 }
 
 .register-container {
+  position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
 
 .register-card {
-  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
   width: 700px;
   background-color: #17382b76;
-  padding: 20px;
+  padding: 1px;
   border-radius: 10px;
+}
+
+.register-card h1 {
+  position: relative;
+  padding: 50px;
 }
 
 .register-form {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  width: 500px
 }
 
 .register-form input {
-
   padding: 10px;
   border: 1px solid #949BA4;
   background: #CFDDD1;
@@ -169,11 +288,12 @@
   display: flex;
   justify-content: center;
   position: absolute;
+  top: 0;
   left: 5px;
   text-decoration: none;
-  color: #CFDDD1;
-  background-color: #17382b76;
-  border: 1px solid #CFDDD1;
+  color: #17382b76;
+  background-color: #CFDDD1;
+  border: 1px solid #17382b76;
   padding: 10px;
   margin: 30px;
   border-radius: 10px;
@@ -184,11 +304,12 @@
   display: flex;
   justify-content: center;
   position: absolute;
+  top: 0;
   left: 5px;
   text-decoration: none;
-  color: #17382b76;
-  background-color: #CFDDD1;
-  border: 1px solid #17382b76;
+  color: #CFDDD1;
+  background-color: #17382b76;
+  border: 1px solid #CFDDD1;
   padding: 10px;
   margin: 30px;
   border-radius: 10px;

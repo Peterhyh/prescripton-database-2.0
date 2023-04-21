@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../api/axios';
+import axios from 'axios';
 
 
 const USERNAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
 
 const RegisterPage = () => {
 
@@ -66,7 +67,13 @@ const RegisterPage = () => {
         try {
             const response = await axios.post(
                 'http://localhost:3001/users/signup',
-                JSON.stringify({ username: username.toLocaleLowerCase(), password: password, firstName: firstName.toLocaleLowerCase(), lastName: lastName.toLocaleLowerCase(), email: email.toLocaleLowerCase() }),
+                JSON.stringify({
+                    username: username.toLowerCase(),
+                    password: password,
+                    firstName: firstName.toLowerCase(),
+                    lastName: lastName.toLowerCase(),
+                    email: email.toLocaleLowerCase()
+                }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -80,6 +87,8 @@ const RegisterPage = () => {
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 409) {
                 setErrMsg('Username already taken');
+            } else if (err.response?.status === 410) {
+                setErrMsg('Email already registered');
             } else {
                 setErrMsg('Registration Failed')
             }
@@ -90,23 +99,24 @@ const RegisterPage = () => {
 
     return (
         <>
-            <Link className='register-back-button' to='/'>Back</Link>
             {success ? (
                 <section className='register-success-page'>
                     <div>
                         <h1>Successfully Registered!</h1>
-                        <Link to='/'>Return back to login</Link>
+                        <Link to='/login'>Return back to login</Link>
                     </div>
                 </section>
             ) : (
                 <section className='register-container'>
+                    <Link className='register-back-button' to='/login' >Back</Link>
 
-                    <p className={errMsg ? 'errmsg' : 'offscreen'} ref={errRef} aria-live='assertive'>
-                        {errMsg}
-                    </p>
 
-                    <h1>Create Account:</h1>
+
                     <card className='register-card'>
+                        <p className={errMsg ? 'register-error-message' : 'hide'} ref={errRef} aria-live='assertive'>
+                            {errMsg}
+                        </p>
+                        <h1>Create Account:</h1>
                         <form className='register-form' onSubmit={handleSubmit}>
                             <label htmlFor='username'>
                                 Username:

@@ -1,124 +1,113 @@
-import { Container, Row, Col, Card, CardHeader, CardBody, Alert, Label, FormGroup } from 'reactstrap';
-import { Formik, Form, Field } from 'formik';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-
-
+import useAuth from '../hooks/useAuth';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const LoginPage = () => {
 
-    let navigate = useNavigate();
+    const { setAuth } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
-    const changeRoute = () => {
-        navigate('/');
+    const userRef = useRef();
+    const errRef = useRef();
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+
+    useEffect(() => {
+        userRef.current.focus();
+    }, []);
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [username, password]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            await axios.post(
+                'http://localhost:3001/users/login',
+                JSON.stringify({ username: username.toLowerCase(), password: password }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            )
+                .then(response => {
+                    if (response.status === 200) {
+                        const accessToken = response.data.accessToken;
+                        const refreshToken = response.data.refreshToken;
+                        console.log(refreshToken);
+                        setAuth({ username, password, accessToken, refreshToken })
+                        setUsername('');
+                        setPassword('');
+                        navigate(from, { replace: true });
+                    }
+                })
+                .catch(err => {
+                    if (!err?.response) {
+                        setErrMsg('No Server Response');
+                    } else if (err?.response?.status === 400) {
+                        setErrMsg('User does not exist');
+
+                    } else if (err?.response?.status === 409) {
+                        setErrMsg('Incorrect Password');
+                    } else {
+                        setErrMsg('Failed to Login');
+                    }
+                });
+        } catch (err) {
+            console.log(err);
+        }
     }
 
-    const [openSuccessMessage, setOpenSuccessMessage] = useState(false);
-
-    const [openErrorAlert, setOpenErrorAlert] = useState(false);
-
-    useEffect(() => {
-        const successTimeout = setTimeout(() => {
-            setOpenSuccessMessage(false);
-        }, 5000)
-
-        return (() => {
-            clearTimeout(successTimeout);
-        })
-    }, [openSuccessMessage]);
-
-    useEffect(() => {
-        const alertTimeout = setTimeout(() => {
-            setOpenErrorAlert(false)
-        }, 5000)
-
-        return () => clearTimeout(alertTimeout)
-    }, [openErrorAlert]);
 
     return (
-        <Container style={{ height: '100vh' }}>
-            <Alert color='danger' isOpen={openErrorAlert}>
-                Incorrect username/password, please try again.
-            </Alert>
-            <Alert color='success' isOpen={openSuccessMessage}>
-                Success!
-            </Alert>
-            <Row className='d-flex justify-content-center align-items-center'>
-                <Col className='col-sm-5'>
-                    <Card className='p-3 m-3'>
-                        <CardHeader>
-                            <h1>Login</h1>
-                        </CardHeader>
-                        <CardBody>
-                            <Formik
-                                initialValues={{
-                                    username: '',
-                                    password: '',
-                                }}
-                                onSubmit={values => {
-                                    axios.post('http://localhost:3001/users/login', {
-                                        username: values.username,
-                                        password: values.password
-                                    })
-                                        .then(response => {
-                                            if (response.data.success === 'You are now logged in!') {
-                                                setOpenSuccessMessage(true);
-                                                changeRoute();
-                                            } else {
-                                                setOpenErrorAlert(true);
-                                            }
-                                        })
-                                        .catch(error => {
-                                            console.log(error);
-                                        })
-                                }}
+        <section className='login-container'>
+            <card className='login-card'>
+                <p ref={errRef} className={errMsg ? 'login-error-message' : 'hide'}>
+                    {errMsg}
+                </p>
+                <h1>Login</h1>
+                <form className='login-form' onSubmit={handleSubmit}>
+                    <label htmlFor='username'>
+                        Username:
+                    </label>
+                    <input
+                        type='text'
+                        id='username'
+                        value={username}
+                        ref={userRef}
+                        autoComplete='off'
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
 
-                            >
-                                <Form>
-                                    <FormGroup>
-                                        <Label htmlFor='username'>Username</Label>
-                                        <Field
-                                            id='username'
-                                            name='username'
-                                            type='text'
-                                            className='form-control'
-                                        />
-                                    </FormGroup>
+                    <label htmlFor='password'>
+                        Password:
+                    </label>
+                    <input
+                        type='password'
+                        id='password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <div className='login-button-container'>
+                        <button>LOGIN</button>
+                    </div>
 
-
-                                    <FormGroup>
-                                        <Label htmlFor='password'>Password</Label>
-                                        <Field
-                                            id='password'
-                                            name='password'
-                                            type='password'
-                                            className='form-control'
-                                        />
-                                    </FormGroup>
-
-
-                                    <div className='d-flex justify-content-center align-items-center mt-3'>
-                                        <button className='login-button' type='submit' color='primary' outline>Login</button>
-                                    </div>
-
-
-                                    <FormGroup>
-                                        <Col>
-                                            <a href='/'>Forgot password</a>
-                                        </Col>
-                                        <Col>
-                                            <a href='/register'>Create account</a>
-                                        </Col>
-                                    </FormGroup>
-                                </Form>
-                            </Formik>
-                        </CardBody>
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
+                </form>
+                <div className='login-register-section-container'>
+                    <p>Don't have an account?</p>
+                    <Link to='/register'>Create account</Link>
+                </div>
+            </card>
+        </section >
     )
 };
 
