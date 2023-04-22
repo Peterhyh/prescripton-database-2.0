@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 const generateAccessToken = (user) => {
-  return jwt.sign(user, process.env.SECRET_KEY, { expiresIn: 3600 })
+  return jwt.sign(user, process.env.SECRET_KEY)
 }
 
 
@@ -37,33 +37,31 @@ router.post('/signup', async (req, res, next) => {
         return res.sendStatus(409)
       } else {
         User.findOne({ email: req.body.email })
-          .then(email => {
+          .then(async (email) => {
             if (email) {
               return res.sendStatus(410);
             } else {
-              res.sendStatus(200);
-              return next()
+              const salt = await bcrypt.genSalt();
+              const hashedPassword = await bcrypt.hash(req.body.password, salt);
+              const user = {
+                username: req.body.username,
+                password: hashedPassword,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email
+              };
+              User.create(user)
+                .then(user => {
+                  console.log('---NEW USER:', user);
+                  res.sendStatus(200);
+                })
+                .catch(err => console.log(err));
             }
           })
           .catch(err => console.log('---Email Error: ', err))
       }
     })
     .catch(err => console.log('---Username Error: ', err))
-
-  const salt = await bcrypt.genSalt();
-  const hashedPassword = await bcrypt.hash(req.body.password, salt);
-  const user = {
-    username: req.body.username,
-    password: hashedPassword,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email
-  };
-  User.create(user)
-    .then(user => {
-      console.log('---NEW USER:', user);
-    })
-    .catch(err => console.log(err));
 });
 
 
@@ -82,9 +80,9 @@ router.post('/login', (req, res, next) => {
         if (await bcrypt.compare(req.body.password, user.password)) {
           const user = { username: req.body.username };
           const accessToken = generateAccessToken(user);
-          const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_KEY);
-          refreshTokens.push(refreshToken);
-          res.json({ accessToken: accessToken, refreshToken: refreshToken })
+          // const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_KEY);
+          // refreshTokens.push(refreshToken);
+          res.json({ accessToken: accessToken });
         } else {
           res.sendStatus(409);
         }
@@ -104,29 +102,29 @@ router.post('/login', (req, res, next) => {
 
 
 
-let refreshTokens = [];
+// let refreshTokens = [];
 
-router.get('/token', (req, res) => {
-  const refreshToken = req.body.token
-  if (refreshToken === null) return res.sendStatus(401);
-  if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
-  jwt.verify(refreshToken, process.env.REFRESH_TOKEN_KEY, (err, user) => {
-    if (err) return res.sendStatus(403)
-    const accessToken = generateAccessToken({ username: user.username });
-    res.json({ accessToken: accessToken })
-  });
-});
-
-
+// router.get('/token', (req, res) => {
+//   const refreshToken = req.body.token
+//   if (refreshToken === null) return res.sendStatus(401);
+//   if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
+//   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_KEY, (err, user) => {
+//     if (err) return res.sendStatus(403)
+//     const accessToken = generateAccessToken({ username: user.username });
+//     res.json({ accessToken: accessToken })
+//   });
+// });
 
 
 
 
 
-router.delete('/logout', (req, res) => {
-  refreshTokens = refreshTokens.filter(token => token !== req.body.token)
-  res.sendStatus(204);
-});
+
+
+// router.delete('/logout', (req, res) => {
+//   refreshTokens = refreshTokens.filter(token => token !== req.body.token)
+//   res.sendStatus(204);
+// });
 
 
 

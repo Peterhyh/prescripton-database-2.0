@@ -1,13 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
     const { setAuth } = useAuth();
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
 
     const userRef = useRef();
     const errRef = useRef();
@@ -39,12 +37,12 @@ const LoginPage = () => {
                 .then(response => {
                     if (response.status === 200) {
                         const accessToken = response.data.accessToken;
-                        const refreshToken = response.data.refreshToken;
-                        console.log(refreshToken);
-                        setAuth({ username, password, accessToken, refreshToken })
+                        // const refreshToken = response.data.refreshToken;
+                        // console.log(refreshToken);
+                        setAuth({ accessToken })
                         setUsername('');
                         setPassword('');
-                        navigate(from, { replace: true });
+                        navigate('/');
                     }
                 })
                 .catch(err => {

@@ -32,11 +32,10 @@ const NewRxPage = () => {
     useEffect(() => {
         axios.get('http://localhost:3001/newPatient')
             .then(json => {
-                setValue(json.data)
-                console.log(json.data)
+                setValue(json.data);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [query]);
 
 
     useEffect(() => {
@@ -104,13 +103,11 @@ const NewRxPage = () => {
         <>
             <Header />
             <div className='newrx-container'>
-
-                <h1 className='newrx-searchbar-title'>Select Patient:</h1>
-
+                <h3 className='newrx-searchbar-title'>Step 2: Select Patient:</h3>
                 <div className='newrx-searchbar-container'>
                     <div className='newrx-searchbar-row'>
                         <input
-                            placeholder='Search...'
+                            placeholder='Last, First'
                             type='text'
                             onChange={(e) => setQuery(e.target.value)}
                         />

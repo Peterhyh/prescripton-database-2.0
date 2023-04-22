@@ -12,9 +12,7 @@ newPatientRouter.route('/')
                 res.setHeader('Content-Type', 'application/json');
                 res.json(patient)
             })
-            .catch(err => {
-                console.log(err);
-            })
+            .catch(err => next(err));
     })
 
     .post((req, res, next) => {
