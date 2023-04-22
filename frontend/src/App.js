@@ -8,7 +8,7 @@ import RegisterPatientPage from './pages/RegisterPatientPage';
 import RegisterPage from './pages/RegisterPage';
 import NewRxPage from './pages/NewRxPage';
 import RequireAuth from './components/RequireAuth';
-import Users from './components/Users';
+
 
 
 function App() {
@@ -18,16 +18,12 @@ function App() {
         {/* Public Routes */}
         <Route path='login' element={<LoginPage />} />
         <Route path='register' element={<RegisterPage />} />
+      </Route>
 
-
-        {/* Protected Routes */}
-        <Route element={<RequireAuth />}>
-          <Route path='newPatient' element={<RegisterPatientPage />} />
-          <Route path='newRx' element={<NewRxPage />} />
-        </Route>
-
-        {/* Catch Other Routes */}
-        {/* <Route path='*' element={<MissingPage />} /> */}
+      {/* Protected Routes */}
+      <Route element={<RequireAuth />}>
+        <Route path='newPatient' element={<RegisterPatientPage />} />
+        <Route path='newRx' element={<NewRxPage />} />
       </Route>
     </Routes>
   );

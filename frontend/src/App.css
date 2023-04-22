@@ -183,7 +183,7 @@
 }
 
 
-/*---------------------------------------------------------------------------------------RegisterPage*/
+/*---------------------------------------------------------------------------------------SignUpPage*/
 .register-error-message {
   position: absolute;
   top: 13%;
@@ -336,6 +336,75 @@
 }
 
 /*---------------------------------------------------------------------------------------NewRxPage form*/
+.newrx-container {
+  height: 100vh;
+  background-color: #CFDDD1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.newrx-searchbar-title {
+  color: #0D2018;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.newrx-searchbar-container {
+  display: flex;
+  justify-content: space-around;
+  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.newrx-searchbar-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0D2018;
+  width: 100vw;
+  padding: 20px;
+}
+
+.newrx-searchbar-row input {
+  width: 44%;
+  border-radius: 500px;
+  background-color: #353535;
+  color: #fff;
+}
+
+.newrx-search-results-container {
+  background-color: #fff;
+  table-layout: fixed;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.newrx-search-results-noresults-header {
+  color: #000;
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newrx-search-results-header {
+  color: #000;
+  background-color: #fff;
+  border-bottom: 1px solid #000;
+}
+
+.newrx-search-results:hover {
+  background-color: #c3c3c3;
+}
+
+
+
 .success-alert {
   position: absolute;
   width: 100%
@@ -346,10 +415,7 @@
   width: 100%
 }
 
-
-
 .input-body {
-
   background-color: #CFDDD1;
   padding: 20px;
   box-sizing: border-box;
@@ -357,7 +423,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
 
 .data-entry-button {
@@ -391,12 +456,6 @@
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 20px;
-}
-
-.patient-title {
-  color: #0D2018;
-  padding: 10px;
-  font-weight: bold;
 }
 
 .patient-prescription-submit-button {
@@ -835,20 +894,9 @@
   border-color: red;
 }
 
-
-
-.search-container {
-  display: flex;
-  justify-content: space-around;
-  justify-content: center;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 20px;
-}
-
-.search-input {
-  border-radius: 20px;
+.newpatient-container {
+  height: 100vh;
+  background-color: #CFDDD1;
 }
 
 .select-title {
@@ -856,39 +904,4 @@
   display: flex;
   justify-content: center;
   font-weight: bold;
-}
-
-.search-result-table {
-  color: #fff;
-  background-color: black;
-  border: 1px solid;
-  margin-top: 20px;
-  width: 100%;
-}
-
-.search-result-table th {
-
-  text-align: center;
-  background-color: #17382b;
-  color: white;
-}
-
-.search-result-table,
-th,
-td {
-  padding: 30px;
-  border: 1px solid white;
-  justify-content: center;
-}
-
-.search-result-table tr:nth-child(even) {
-  background-color: #1e1e1e;
-}
-
-.search-result-table tr {
-  padding: 50px;
-}
-
-.search-result-table tr:hover {
-  background-color: #949BA4;
 }

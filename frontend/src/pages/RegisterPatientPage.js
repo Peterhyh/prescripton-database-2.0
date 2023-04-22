@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import { Button, Alert } from 'reactstrap';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import Header from '../components/Header';
 
 const RegisterPatientPage = () => {
 
@@ -62,7 +63,8 @@ const RegisterPatientPage = () => {
 
 
     return (
-        <div style={{ height: '100vh' }}>
+        <div className='newpatient-container'>
+            <Header />
             <form onSubmit={formik.handleSubmit}>
                 <div className='container d-flex justify-content-center align-items-center flex-column'>
                     <Alert isOpen={openSuccessAlert} color='success'>

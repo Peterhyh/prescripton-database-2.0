@@ -4,7 +4,6 @@ import useAuth from '../hooks/useAuth';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const LoginPage = () => {
-
     const { setAuth } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();

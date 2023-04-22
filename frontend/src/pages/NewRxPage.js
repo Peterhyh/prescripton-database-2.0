@@ -1,13 +1,14 @@
-import { Col, Row, Alert } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import SearchTable from '../components/SearchTable';
+import Header from '../components/Header';
 
 
 const NewRxPage = () => {
 
-    const [query, setQuery] = useState([]);
+    const [query, setQuery] = useState();
     const [value, setValue] = useState([]);
     const [openSuccess, setOpenSuccess] = useState(false);
     const [openError, setOpenError] = useState(false);
@@ -30,7 +31,10 @@ const NewRxPage = () => {
 
     useEffect(() => {
         axios.get('http://localhost:3001/newPatient')
-            .then(json => setValue(json.data))
+            .then(json => {
+                setValue(json.data)
+                console.log(json.data)
+            })
             .catch(err => console.log(err));
     }, []);
 
@@ -97,96 +101,97 @@ const NewRxPage = () => {
         }
     });
     return (
-        <div style={{ height: '100vh' }}>
+        <>
+            <Header />
+            <div className='newrx-container'>
 
-            <h1 className='select-title'>Select Patient:</h1>
+                <h1 className='newrx-searchbar-title'>Select Patient:</h1>
 
-            <div className='search-container'>
-                <div className='search-input'>
-                    <input
-                        placeholder='Search...'
-                        type='text'
-                        onChange={(e) => setQuery(e.target.value)}
-                    />
-                </div>
-                <div className='search-table'>
-                    <SearchTable value={search(value)} />
-                </div>
-            </div>
-
-
-
-
-            <form className='input-body' onSubmit={formik.handleSubmit}>
-                <h1 class='prescription-title'>PRESCRIPTION:</h1>
-
-                <div className='row inputBox-drug '>
-                    <div class='col-sm-12 '>
+                <div className='newrx-searchbar-container'>
+                    <div className='newrx-searchbar-row'>
                         <input
-                            name='drug'
+                            placeholder='Search...'
                             type='text'
-                            onChange={formik.handleChange}
-                            value={formik.values.drug}
-                            required
+                            onChange={(e) => setQuery(e.target.value)}
                         />
-                        <span class='inputBox-drug-span'>Drug</span>
                     </div>
+                    <SearchTable value={search(value)} query={query} />
                 </div>
 
-                <div className='row inputBox-sig '>
-                    <div class='col-sm-12 '>
-                        <input
-                            name='direction'
-                            type='text'
-                            onChange={formik.handleChange}
-                            value={formik.values.direction}
-                            required
-                        />
-                        <span class='inputBox-sig-span'>Direction</span>
-                    </div>
-                </div>
 
-                <div className='row inputBox-quanity-refills'>
-                    <div class='col-sm-4 '>
-                        <input
-                            name='quanity'
-                            type='text'
-                            onChange={formik.handleChange}
-                            value={formik.values.quanity}
-                            required
-                        />
-                        <span class='inputBox-quanity-span'>Quanity</span>
-                    </div>
-                    <div class='col-sm-4 '>
-                        <input
-                            name='refills'
-                            type='text'
-                            onChange={formik.handleChange}
-                            value={formik.values.refills}
-                            required
-                        />
-                        <span class='inputBox-refills-span'>Refills</span>
-                    </div>
-                    <div class='col-sm-4 '>
-                        <input
-                            name='daySupply'
-                            type='text'
-                            onChange={formik.handleChange}
-                            value={formik.values.daySupply}
-                            required
-                        />
-                        <span class='inputBox-day-supply-span'>Day Supply</span>
-                    </div>
-                </div>
 
-                <Row>
-                    <Col className='data-entry-button'>
-                        <button type='submit' class='patient-prescription-submit-button' outline>Submit</button>
-                    </Col>
-                </Row>
 
-            </form >
-        </div >
+                <form className='input-body' onSubmit={formik.handleSubmit}>
+                    <h1 class='prescription-title'>PRESCRIPTION:</h1>
+
+                    <div className='row inputBox-drug '>
+                        <div class='col-sm-12 '>
+                            <input
+                                name='drug'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.drug}
+                                required
+                            />
+                            <span class='inputBox-drug-span'>Drug</span>
+                        </div>
+                    </div>
+
+                    <div className='row inputBox-sig '>
+                        <div class='col-sm-12 '>
+                            <input
+                                name='direction'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.direction}
+                                required
+                            />
+                            <span class='inputBox-sig-span'>Direction</span>
+                        </div>
+                    </div>
+
+                    <div className='row inputBox-quanity-refills'>
+                        <div class='col-sm-4 '>
+                            <input
+                                name='quanity'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.quanity}
+                                required
+                            />
+                            <span class='inputBox-quanity-span'>Quanity</span>
+                        </div>
+                        <div class='col-sm-4 '>
+                            <input
+                                name='refills'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.refills}
+                                required
+                            />
+                            <span class='inputBox-refills-span'>Refills</span>
+                        </div>
+                        <div class='col-sm-4 '>
+                            <input
+                                name='daySupply'
+                                type='text'
+                                onChange={formik.handleChange}
+                                value={formik.values.daySupply}
+                                required
+                            />
+                            <span class='inputBox-day-supply-span'>Day Supply</span>
+                        </div>
+                    </div>
+
+                    <Row>
+                        <Col className='data-entry-button'>
+                            <button type='submit' class='patient-prescription-submit-button' outline>Submit</button>
+                        </Col>
+                    </Row>
+
+                </form >
+            </div >
+        </>
     )
 };
 

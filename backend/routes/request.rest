@@ -3,12 +3,9 @@
 # GET http://localhost:3001/users 
 
 
-POST http://localhost:3001/users/token
-Content-Type: application/json
+GET http://localhost:3001/users/token
 
-{
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBldGVyaHloIiwiaWF0IjoxNjgyMDQzNzM0fQ.30TPmFSZtpWpVjYBJdoIWrRHIcprDXTIoIXcx0rAJ8w"
-}
+
 
 # DELETE http://localhost:3001/users/logout
 # Content-Type: application/json

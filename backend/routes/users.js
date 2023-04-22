@@ -106,7 +106,7 @@ router.post('/login', (req, res, next) => {
 
 let refreshTokens = [];
 
-router.post('/token', (req, res) => {
+router.get('/token', (req, res) => {
   const refreshToken = req.body.token
   if (refreshToken === null) return res.sendStatus(401);
   if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403)
