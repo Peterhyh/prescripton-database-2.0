@@ -8,6 +8,7 @@ const NewRxButtons = ({ value, query, setQuery }) => {
 
     const [openSelectPatient, setOpenSelectPatient] = useState(false);
     const [openUploadRx, setOpenUploadRx] = useState(false);
+    const [openDataEntry, setOpenDataEntry] = useState(false);
 
     const handleSelectPatient = () => {
         setOpenSelectPatient(!openSelectPatient);
@@ -53,7 +54,7 @@ const NewRxButtons = ({ value, query, setQuery }) => {
             </div>
 
             <div>
-                <button></button>
+                <button onClick={() => handleDataEntry}>Step3: Data Entry</button>
             </div>
         </>
     );
