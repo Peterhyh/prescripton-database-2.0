@@ -2,8 +2,8 @@ import { Col, Row } from 'reactstrap';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import SearchTable from '../components/SearchTable';
 import Header from '../components/Header';
+import NewRxButtons from '../components/NewRxButtons';
 
 
 const NewRxPage = () => {
@@ -24,9 +24,7 @@ const NewRxPage = () => {
     };
 
 
-    const search = (value) => {
-        return value.filter(patient => patient.firstName.toLowerCase().includes(query) || patient.lastName.toLowerCase().includes(query));
-    }
+
 
 
     useEffect(() => {
@@ -103,17 +101,7 @@ const NewRxPage = () => {
         <>
             <Header />
             <div className='newrx-container'>
-                <h3 className='newrx-searchbar-title'>Step 2: Select Patient:</h3>
-                <div className='newrx-searchbar-container'>
-                    <div className='newrx-searchbar-row'>
-                        <input
-                            placeholder='Last, First'
-                            type='text'
-                            onChange={(e) => setQuery(e.target.value)}
-                        />
-                    </div>
-                    <SearchTable value={search(value)} query={query} />
-                </div>
+                <NewRxButtons value={value} query={query} setQuery={setQuery} />
 
 
 
