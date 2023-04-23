@@ -51,6 +51,10 @@ const NewRxButtons = ({ value, query, setQuery }) => {
                 <label htmlFor='rx'>Upload Rx</label>
                 <input type='file' id='rx' />
             </div>
+
+            <div>
+                <button></button>
+            </div>
         </>
     );
 };
