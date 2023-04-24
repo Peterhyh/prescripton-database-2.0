@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import SearchTable from './SearchTable';
+import DataEntry from '../components/newRx/DataEntry';
 
 
 
 
-const NewRxButtons = ({ value, query, setQuery }) => {
+const NewRxButtons = ({ value, query, setQuery, openSuccess, setOpenSuccess, openError, setOpenError }) => {
 
     const [openSelectPatient, setOpenSelectPatient] = useState(false);
     const [openUploadRx, setOpenUploadRx] = useState(false);
@@ -12,10 +13,20 @@ const NewRxButtons = ({ value, query, setQuery }) => {
 
     const handleSelectPatient = () => {
         setOpenSelectPatient(!openSelectPatient);
+        setOpenUploadRx(false);
+        setOpenDataEntry(false);
     };
 
     const handleUploadRx = () => {
         setOpenUploadRx(!openUploadRx);
+        setOpenDataEntry(false);
+        setOpenSelectPatient(false);
+    };
+
+    const handleDataEntry = () => {
+        setOpenDataEntry(!openDataEntry);
+        setOpenSelectPatient(false);
+        setOpenUploadRx(false);
     };
 
     const search = (value) => {
@@ -24,8 +35,18 @@ const NewRxButtons = ({ value, query, setQuery }) => {
 
     return (
         <>
-            <div className='select-patient-button-container'>
-                <button onClick={() => handleSelectPatient()}>Step 1: Select Patient</button>
+            <div className='new-rx-buttons-container'>
+                <div className='new-rx-buttons-row'>
+                    <div className='new-rx-buttons-col'>
+                        <button onClick={() => handleSelectPatient()}>Step 1: Select Patient</button>
+                    </div>
+                    <div className='new-rx-buttons-col'>
+                        <button onClick={() => handleUploadRx()}>Step 2: Upload Rx </button>
+                    </div>
+                    <div className='new-rx-buttons-col'>
+                        <button onClick={() => handleDataEntry()}>Step3: Data Entry</button>
+                    </div>
+                </div>
             </div>
 
             <div className={openSelectPatient ? 'select-patient-container' : 'hide'}>
@@ -43,18 +64,14 @@ const NewRxButtons = ({ value, query, setQuery }) => {
             </div>
 
 
-
-            <div className='upload-rx-button-container'>
-                <button onClick={() => handleUploadRx()}>Step 2: Upload Rx </button>
-            </div>
-
             <div className={openUploadRx ? 'upload-rx-container' : 'hide'}>
-                <label htmlFor='rx'>Upload Rx</label>
+                <h1>Upload Rx</h1>
                 <input type='file' id='rx' />
             </div>
 
-            <div>
-                <button onClick={() => handleDataEntry}>Step3: Data Entry</button>
+
+            <div className={openDataEntry ? 'data-entry-container' : 'hide'}>
+                <DataEntry openSuccess={openSuccess} setOpenSuccess={setOpenSuccess} openError={openError} setOpenError={setOpenError} />
             </div>
         </>
     );
