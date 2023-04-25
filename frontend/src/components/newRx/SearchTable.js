@@ -1,4 +1,4 @@
-const SearchTable = ({ value, query, setSelectedFirstName }) => {
+const SearchTable = ({ value, query, setSelectedId }) => {
 
     const results = value.length
 
@@ -15,7 +15,7 @@ const SearchTable = ({ value, query, setSelectedFirstName }) => {
 
                 {value.map((patient) => {
                     return (
-                        <tr key={patient._id} className='newrx-search-results' onClick={() => setSelectedFirstName(patient.firstName)}>
+                        <tr key={patient._id} className='newrx-search-results' onClick={() => setSelectedId(patient._id)}>
                             <td >{`${patient.lastName}, ${patient.firstName}`}</td>
                             <td>{`${patient.dateOfBirthMonth}/${patient.dateOfBirthDay}/${patient.dateOfBirthYear}`}</td>
                             <td>{`${patient.street}, ${patient.city} ${patient.state}, ${patient.zip} `}</td>

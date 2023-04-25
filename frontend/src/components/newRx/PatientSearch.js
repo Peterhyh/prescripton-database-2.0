@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const PatientSearch = ({ setQuery, query, value }) => {
     const navigate = useNavigate();
 
-    const [selectedFirstName, setSelectedFirstName] = useState();
+    const [selectedId, setSelectedId] = useState();
 
     const search = (value) => {
         return value.filter(patient => patient.firstName.toLowerCase().includes(query) || patient.lastName.toLowerCase().includes(query));
@@ -32,11 +32,11 @@ const PatientSearch = ({ setQuery, query, value }) => {
                     />
                 </div>
 
-                <SearchTable value={search(value)} query={query} setSelectedFirstName={setSelectedFirstName} />
+                <SearchTable value={search(value)} query={query} setSelectedId={setSelectedId} />
 
-                <div className={selectedFirstName ? 'new-rx-selected-patient' : 'hide'}>
-                    <p>Selected: {`${selectedFirstName}`}</p>
-                    <button onClick={() => selectedFirstName('')}>x</button>
+                <div className={selectedId ? 'new-rx-selected-patient' : 'hide'}>
+                    <p>Selected: {`${selectedId}`}</p>
+                    <button onClick={() => setSelectedId('')}>x</button>
                 </div>
 
             </div>
