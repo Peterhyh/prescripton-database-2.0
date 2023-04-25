@@ -2,7 +2,7 @@ import { Col, Row } from 'reactstrap';
 import { useFormik } from 'formik';
 import axios from 'axios';
 
-const DataEntry = ({ openSuccess, setOpenSuccess, openError, setOpenError }) => {
+const DataEntry = () => {
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -29,13 +29,7 @@ const DataEntry = ({ openSuccess, setOpenSuccess, openError, setOpenError }) => 
                 daySupply: values.daySupply,
             })
                 .then(response => {
-                    if (response.data === 'Data was added to the database successfully.') {
-                        setOpenSuccess(!openSuccess);
-                    } else if (response.data === 'Last name has already been added to the database.') {
-                        setOpenError(!openError);
-                    } else {
-                        alert('ERROR CODE: 500')
-                    }
+                    console.log(response.data)
 
                 })
                 .catch(error => {

@@ -1,5 +1,6 @@
 import { useLocation, Navigate, Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import Header from '../components/Header';
 
 
 const ProtectedRoutes = () => {
@@ -8,9 +9,16 @@ const ProtectedRoutes = () => {
 
 
     return (
-        auth.accessToken
-            ? <Outlet />
-            : <Navigate to='/login' state={{ from: location }} replace />
+        <>
+            <Header />
+
+            {
+                auth.accessToken
+                    ? <Outlet />
+                    : <Navigate to='/login' state={{ from: location }} replace />
+            }
+
+        </>
 
     );
 };

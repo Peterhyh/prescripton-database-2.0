@@ -1,10 +1,13 @@
 import { useFormik } from 'formik';
-import { Button, Alert } from 'reactstrap';
+import { Alert } from 'reactstrap';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Header from '../components/Header';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPatientPage = () => {
+
+    const navigate = useNavigate();
 
     const [openSuccessAlert, setOpenSuccessAlert] = useState(false);
     const [openErrorAlert, setOpenErrorAlert] = useState(false);
@@ -52,6 +55,7 @@ const RegisterPatientPage = () => {
                 .then(response => {
                     if (response.data === 'success') {
                         setOpenSuccessAlert(true);
+                        navigate('/newRx')
                     } else {
                         setOpenErrorAlert(true);
                     }
@@ -64,7 +68,7 @@ const RegisterPatientPage = () => {
 
     return (
         <div className='newpatient-container'>
-            <Header />
+            <Link to='/newRx' className='new-patient-back-button'>Back</Link>
             <form onSubmit={formik.handleSubmit}>
                 <div className='container d-flex justify-content-center align-items-center flex-column'>
                     <Alert isOpen={openSuccessAlert} color='success'>

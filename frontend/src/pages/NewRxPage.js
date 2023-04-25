@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Header from '../components/Header';
 import NewRxButtons from '../components/NewRxButtons';
+import DataEntry from '../components/newRx/DataEntry';
+import PatientSearch from '../components/newRx/PatientSearch';
+import UploadRx from '../components/newRx/UploadRx';
 
 
 const NewRxPage = () => {
@@ -11,15 +13,9 @@ const NewRxPage = () => {
     const [openSuccess, setOpenSuccess] = useState(false);
     const [openError, setOpenError] = useState(false);
 
-
-    const handleSuccessDismiss = () => {
-        setOpenSuccess(!openSuccess);
-    };
-
-
-    const handleErrorDismiss = () => {
-        setOpenError(!openError);
-    };
+    const [openDataEntry, setOpenDataEntry] = useState(false);
+    const [openSelectPatient, setOpenSelectPatient] = useState(false);
+    const [openUploadRx, setOpenUploadRx] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost:3001/newPatient')
@@ -49,15 +45,32 @@ const NewRxPage = () => {
         }
     }, [openError]);
 
-
-
     return (
-        <>
-            <Header />
-            <div className='newrx-container'>
-                <NewRxButtons value={value} query={query} setQuery={setQuery} openSuccess={openSuccess} setOpenSuccess={setOpenSuccess} openError={openError} setOpenError={setOpenError} />
-            </div >
-        </>
+        <div className='newrx-container'>
+
+
+            <NewRxButtons
+                setOpenDataEntry={setOpenDataEntry}
+                setOpenSelectPatient={setOpenSelectPatient}
+                setOpenUploadRx={setOpenUploadRx}
+                openSelectPatient={openSelectPatient}
+                openUploadRx={openUploadRx}
+                openDataEntry={openDataEntry}
+            />
+
+            <div className={openUploadRx ? 'upload-rx-container' : 'hide'}>
+                <UploadRx />
+            </div>
+
+            <div className={openSelectPatient ? 'select-patient-container' : 'hide'}>
+                <PatientSearch value={value} setQuery={setQuery} query={query} />
+            </div>
+
+            <div className={openDataEntry ? 'data-entry-container' : 'hide'}>
+                <DataEntry />
+            </div>
+
+        </div >
     )
 };
 

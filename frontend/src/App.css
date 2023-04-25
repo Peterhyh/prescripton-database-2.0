@@ -440,11 +440,130 @@
   width: 11rem;
 }
 
-.newrx-searchbar-container {
+.new-rx-selected-patient {
+  border: 1px solid #000;
+  border-radius: 500px;
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 90%;
+  margin-top: 20px;
+}
+
+.new-rx-selected-patient p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-rx-selected-patient button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  border: 1px solid #000;
+}
+
+.new-rx-searchbar-title {
+  font-weight: bold;
+}
+
+
+
+.new-rx-searchbar-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.new-rx-searchbar-row input {
+  background-color: #CFDDD1;
+  border: 1px solid #17382b76;
+  outline: none;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+
+.new-rx-search-results-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.new-rx-search-results-container,
+td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 300px;
+}
+
+.new-rx-search-results-container td {
+  cursor: pointer;
+}
+
+.newrx-search-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+}
+
+.newrx-search-results:nth-child(even) {
+  background-color: #ffffff51;
+}
+
+.newrx-search-results:hover {
+  background-color: #17382b76;
+}
+
+.new-rx-search-results-header {
+  border-bottom: 1px solid #000;
+  background-color: #18382B;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+
+
+
+.register-patient-section-container button {
+  background-color: #CFDDD1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  border: 1px solid #17382b76;
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  left: 700px;
+  top: 200px;
+}
+
+.register-patient-section-container button:hover {
+  background-color: #17382b26;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  border: 1px solid #17382b76;
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  left: 700px;
+  top: 200px;
 }
 
 .upload-rx-container {
@@ -972,6 +1091,37 @@
 .newpatient-container {
   height: 100vh;
   background-color: #CFDDD1;
+}
+
+.new-patient-back-button {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 10%;
+  left: 5px;
+  text-decoration: none;
+  color: #17382b76;
+  background-color: #CFDDD1;
+  border: 1px solid #17382b76;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+  width: 4rem;
+}
+
+.new-patient-back-button:hover {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 10%;
+  left: 5px;
+  text-decoration: none;
+  color: #CFDDD1;
+  background-color: #17382b76;
+  border: 1px solid #CFDDD1;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
 }
 
 .select-title {

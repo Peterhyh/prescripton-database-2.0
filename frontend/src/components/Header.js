@@ -21,9 +21,6 @@ const Header = () => {
                             <NavLink style={{ color: '#CFDDD1' }} className='nav-link' to='/newRx'>New Rx</NavLink>
                         </NavItem>
                         <NavItem className='m-3'>
-                            <NavLink style={{ color: '#CFDDD1' }} className='nav-link' to='/newPatient'>New Patient</NavLink>
-                        </NavItem>
-                        <NavItem className='m-3'>
                             <NavLink style={{ color: '#CFDDD1' }} className='nav-link' onClick={() => setOpenModal(true)}>Logout</NavLink>
                         </NavItem>
                     </Nav>
