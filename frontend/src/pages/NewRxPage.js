@@ -16,6 +16,10 @@ const NewRxPage = () => {
     const [openDataEntry, setOpenDataEntry] = useState(false);
     const [openSelectPatient, setOpenSelectPatient] = useState(false);
     const [openUploadRx, setOpenUploadRx] = useState(false);
+    const [uploadedRx, setUploadedRx] = useState();
+    const [selectedFirstName, setSelectedFirstName] = useState();
+    const [selectedLastName, setSelectedLastName] = useState();
+
 
     useEffect(() => {
         axios.get('http://localhost:3001/newPatient')
@@ -59,15 +63,25 @@ const NewRxPage = () => {
             />
 
             <div className={openUploadRx ? 'upload-rx-container' : 'hide'}>
-                <UploadRx />
+                <UploadRx setUploadedRx={setUploadedRx} uploadedRx={uploadedRx} />
             </div>
 
             <div className={openSelectPatient ? 'select-patient-container' : 'hide'}>
-                <PatientSearch value={value} setQuery={setQuery} query={query} />
+                <PatientSearch
+                    value={value}
+                    setQuery={setQuery}
+                    query={query}
+                    uploadedRx={uploadedRx}
+                    selectedLastName={selectedLastName}
+                    selectedFirstName={selectedFirstName}
+                    setSelectedLastName={setSelectedLastName}
+                    setSelectedFirstName={setSelectedFirstName}
+                />
+
             </div>
 
             <div className={openDataEntry ? 'data-entry-container' : 'hide'}>
-                <DataEntry />
+                <DataEntry uploadedRx={uploadedRx} />
             </div>
 
         </div >
