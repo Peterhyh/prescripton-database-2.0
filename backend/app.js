@@ -28,7 +28,7 @@ connect()
 
 const app = express();
 app.use(cors({
-  origin: 'http://18.212.66.103:3000',
+  origin: 'http://18.212.66.103',
   credentials: true
 }));
 
