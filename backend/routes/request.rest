@@ -1,6 +1,6 @@
 
 
-GET http://localhost:3001/users 
+GET http://localhost:3001/newRx 
 
 
 # GET http://localhost:3001/users/token
@@ -25,4 +25,4 @@ GET http://localhost:3001/users
 
 
 
-# DELETE http://localhost:3001/users
+# DELETE http://localhost:3001/newRx

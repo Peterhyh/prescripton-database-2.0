@@ -19,6 +19,8 @@ const NewRxPage = () => {
     const [uploadedRx, setUploadedRx] = useState();
     const [selectedFirstName, setSelectedFirstName] = useState();
     const [selectedLastName, setSelectedLastName] = useState();
+    const [selectedId, setSelectedId] = useState();
+
 
 
     useEffect(() => {
@@ -76,12 +78,20 @@ const NewRxPage = () => {
                     selectedFirstName={selectedFirstName}
                     setSelectedLastName={setSelectedLastName}
                     setSelectedFirstName={setSelectedFirstName}
+                    setSelectedId={setSelectedId}
                 />
 
             </div>
 
             <div className={openDataEntry ? 'data-entry-container' : 'hide'}>
-                <DataEntry uploadedRx={uploadedRx} />
+                <DataEntry
+                    selectedId={selectedId}
+                    uploadedRx={uploadedRx}
+                    selectedLastName={selectedLastName}
+                    selectedFirstName={selectedFirstName}
+                    setSelectedLastName={setSelectedLastName}
+                    setSelectedFirstName={setSelectedFirstName}
+                />
             </div>
 
         </div >

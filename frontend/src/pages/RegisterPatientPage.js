@@ -67,6 +67,9 @@ const RegisterPatientPage = () => {
 
 
     return (
+
+
+
         <div className='newpatient-container'>
             <Link to='/newRx' className='new-patient-back-button'>Back</Link>
             <form onSubmit={formik.handleSubmit}>
@@ -189,6 +192,7 @@ const RegisterPatientPage = () => {
                 </div>
             </form>
         </div>
+
     )
 };
 

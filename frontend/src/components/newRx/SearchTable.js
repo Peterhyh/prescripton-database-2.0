@@ -1,5 +1,5 @@
 
-const SearchTable = ({ value, query, setSelectedLastName, setSelectedFirstName }) => {
+const SearchTable = ({ value, query, setSelectedLastName, setSelectedFirstName, setSelectedId }) => {
 
     const results = value.length
 
@@ -22,6 +22,7 @@ const SearchTable = ({ value, query, setSelectedLastName, setSelectedFirstName }
                             onClick={() => {
                                 setSelectedLastName(patient.firstName);
                                 setSelectedFirstName(patient.lastName);
+                                setSelectedId(patient._id);
                             }}
                         >
                             <td >{`${patient.lastName}, ${patient.firstName}`}</td>

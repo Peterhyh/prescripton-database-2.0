@@ -457,7 +457,7 @@
 .register-patient-button {
   background-color: #CFDDD1;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   border: 1px solid #17382b76;
   border-radius: 10px;
   padding: 10px;
@@ -514,15 +514,7 @@
   width: 100%
 }
 
-.input-body {
-  background-color: #CFDDD1;
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+
 
 .data-entry-button {
   padding: 20px;
@@ -542,7 +534,6 @@
 .prescription-title {
   color: #0D2018;
   padding: 10px;
-  font-weight: bold;
 }
 
 .patient-container {
@@ -557,23 +548,7 @@
   margin-bottom: 20px;
 }
 
-.patient-prescription-submit-button {
-  color: #0D2018;
-  background-color: #CFDDD1;
-  border: 1px solid #0D2018;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-}
 
-.patient-prescription-submit-button:hover {
-  color: #CFDDD1;
-  background-color: #0D2018;
-  border: 1px solid #CFDDD1;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-}
 
 /*---------------------------------------------------------------------------------------inputBox-name*/
 .inputBox-name {
@@ -995,6 +970,9 @@
 
 .newpatient-container {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #CFDDD1;
 }
 
@@ -1036,13 +1014,6 @@
   font-weight: bold;
 }
 
-
-
-
-
-
-
-
 .test-section {
   height: 100vh;
   display: flex;
@@ -1052,12 +1023,8 @@
   flex-direction: column;
 }
 
-
-
-
 .patientsearch-container {
   display: flex;
-  justify-content: space-between;
 }
 
 .patientsearch-left {
@@ -1139,4 +1106,85 @@
   border-radius: 10px;
   padding: 10px;
   color: #fff;
+}
+
+
+.dataentry-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dataentry-left {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #000;
+  padding-right: 20px;
+  margin-right: 20px;
+}
+
+.dataentry-right {
+  display: flex;
+}
+
+.selectedpatient-clear-button {
+  margin-left: 20px;
+  border: 1px solid #17382b76;
+  border-radius: 500px;
+  display: flex;
+  color: #17382b76;
+  background-color: #CFDDD1;
+  padding: 7px;
+}
+
+.selectedpatient-clear-button:hover {
+  margin-left: 20px;
+  border: 1px solid #CFDDD1;
+  border-radius: 500px;
+  display: flex;
+  color: #CFDDD1;
+  background-color: #17382b76;
+  padding: 7px;
+}
+
+.patientsearch-register-button {
+  margin-left: 20px;
+  border: 1px solid #17382b76;
+  border-radius: 500px;
+  justify-content: center;
+  display: flex;
+  color: #17382b76;
+  background-color: #CFDDD1;
+  padding: 2px;
+}
+
+.patientsearch-register-button:hover {
+  margin-left: 20px;
+  border: 1px solid #CFDDD1;
+  border-radius: 500px;
+  justify-content: center;
+  display: flex;
+  color: #CFDDD1;
+  background-color: #17382b76;
+  padding: 2px;
+}
+
+
+.patient-prescription-submit-button {
+  color: #17382b76;
+  background-color: #CFDDD1;
+  border: 1px solid #17382b76;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.patient-prescription-submit-button:hover {
+  color: #CFDDD1;
+  background-color: #17382b76;
+  border: 1px solid #CFDDD1;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
 }

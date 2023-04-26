@@ -4,7 +4,7 @@ const NewRx = require('../models/newRxSchema');
 const authorization = require('../authorization');
 
 newRxRouter.route('/')
-    .get(authorization.verifyToken, (req, res, next) => {
+    .get((req, res, next) => {
         NewRx.find()
             .then(rxData => {
                 res.statusCode = 200;
@@ -14,25 +14,13 @@ newRxRouter.route('/')
             .catch(err => next(err));
     })
 
-    .post(authorization.verifyToken, (req, res, next) => {
-        NewRx.findOne({ lastName: req.body.lastName })
-            .then(data => {
-                if (data) {
-                    res.statusCode = 200;
-                    res.setHeader('Content-Type', 'text/plain')
-                    res.end('Last name has already been added to the database.');
-                } else {
-                    NewRx.create(req.body)
-                        .then(data => {
-                            console.log(data);
-                            res.statusCode = 200;
-                            res.setHeader('Content-Type', 'text/plain');
-                            res.json('Data was added to the database successfully.');
-                        })
-                        .catch(error => next(error));
-                }
+    .post((req, res, next) => {
+        NewRx.create(req.body)
+            .then(response => {
+                console.log(response);
+                res.sendStatus(200);
             })
-            .catch(error => next(error));
+            .catch(err => next(err));
     })
 
     .put(authorization.verifyToken, (req, res) => {
@@ -41,7 +29,7 @@ newRxRouter.route('/')
         res.end('PUT method not supported yet')
     })
 
-    .delete(authorization.verifyToken, (req, res, next) => {
+    .delete((req, res, next) => {
         NewRx.deleteMany()
             .then(response => {
                 res.statusCode = 200;

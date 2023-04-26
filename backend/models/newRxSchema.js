@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const newRxSchema = new Schema({
+    patientId: {
+        type: String,
+        require: true
+    },
     drug: {
         type: String,
         require: true
