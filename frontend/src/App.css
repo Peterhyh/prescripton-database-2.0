@@ -126,7 +126,6 @@
   width: 4rem;
 }
 
-/*---------------------------------------------------------------------------------------HomePage*/
 .home-container {
   display: flex;
   justify-content: center;
@@ -139,8 +138,6 @@
   top: 10%;
 }
 
-
-/*---------------------------------------------------------------------------------------LoginPage*/
 .login-error-message {
   position: absolute;
   top: 5%;
@@ -237,8 +234,6 @@
   top: 80%;
 }
 
-
-/*---------------------------------------------------------------------------------------SignUpPage*/
 .register-error-message {
   position: absolute;
   top: 13%;
@@ -390,8 +385,6 @@
   flex-direction: column;
 }
 
-
-/*---------------------------------------------------------------------------------------NewRxButtons*/
 .new-rx-buttons-container {
   display: flex;
   justify-content: center;
@@ -440,20 +433,6 @@
   width: 11rem;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .register-patient-button {
   background-color: #CFDDD1;
   display: flex;
@@ -485,20 +464,6 @@
   flex-direction: column;
 }
 
-
-/* .login-button:hover {
-  display: flex;
-  justify-content: space-evenly;
-  justify-content: space-around;
-  color: #CFDDD1;
-  background-color: #0D2018;
-  border: 1px solid #CFDDD1;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-} */
-
-/*---------------------------------------------------------------------------------------NewRxPage form*/
 .newrx-container {
   height: 100vh;
   background-color: #CFDDD1;
@@ -548,9 +513,6 @@
   margin-bottom: 20px;
 }
 
-
-
-/*---------------------------------------------------------------------------------------inputBox-name*/
 .inputBox-name {
   position: relative;
   width: 500px;
@@ -613,7 +575,6 @@
   border: 1px solid #0D2018;
 }
 
-/*---------------------------------------------------------------------------------------inputBox-dob*/
 .inputBox-dob {
   position: relative;
   width: 500px;
@@ -672,9 +633,6 @@
   border: 1px solid #0D2018;
 }
 
-
-/*---------------------------------------------------------------------------------------inputBox-street*/
-
 .inputBox-street {
   position: relative;
   width: 500px;
@@ -723,8 +681,6 @@
 .inputBox-street input:focus {
   border: 1px solid #0D2018;
 }
-
-/*---------------------------------------------------------------------------------------inputBox-city-state-zip*/
 
 .inputBox-city-state-zip {
   position: relative;
@@ -784,8 +740,6 @@
   border: 1px solid #0D2018;
 }
 
-/*---------------------------------------------------------------------------------------inputBox-drug*/
-
 .inputBox-drug {
   position: relative;
   width: 500px;
@@ -834,8 +788,6 @@
 .inputBox-drug input:focus {
   border: 1px solid #0D2018;
 }
-
-/*---------------------------------------------------------------------------------------inputBox-sig */
 
 .inputBox-sig {
   position: relative;
@@ -961,8 +913,6 @@
   border: 1px solid #0D2018;
 }
 
-
-/*----------------------------------------------------------------------------------------registerUserPage */
 .input.input-error,
 .select.input-error {
   border-color: red;
