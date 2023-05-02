@@ -1,0 +1,37 @@
+.selectedpatient-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.selectedpatient-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #18382B;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.selectedpatient-content h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.selectedpatient-clear-button {
+    color: #CFDDD1;
+    background-color: #17382b76;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+}
+
+.selectedpatient-clear-button:hover {
+    color: #17382b76;
+    background-color: #CFDDD1;
+}

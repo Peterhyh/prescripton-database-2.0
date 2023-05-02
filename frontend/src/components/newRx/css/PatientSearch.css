@@ -1,0 +1,80 @@
+.patientsearch-container {
+    display: flex;
+}
+
+.uploaded-rx-title {
+    display: flex;
+    justify-content: center;
+}
+
+.patientsearch-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #000;
+    padding-right: 20px;
+    margin-right: 20px;
+    width: 50vw;
+}
+
+.patientsearch-left img {
+    display: flex;
+    height: 400px;
+    width: 400px
+}
+
+
+
+
+
+.patientsearch-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50vw;
+}
+
+.searchbar-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.searchbar-container h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.searchbar-row-middle {
+    display: flex;
+}
+
+.searchbar-row-bottom {
+    display: flex;
+}
+
+.searchbar-container input {
+    display: flex;
+    border-radius: 500px;
+    padding: 7px;
+    border: 1px solid #18382B;
+}
+
+.patientsearch-register-button {
+    border: 1px solid #CFDDD1;
+    border-radius: 500px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #CFDDD1;
+    background-color: #17382b76;
+    padding: 7px;
+    margin-left: 7px;
+}
+
+.patientsearch-register-button:hover {
+    border: 1px solid #17382b76;
+    color: #17382b76;
+    background-color: #CFDDD1;
+}

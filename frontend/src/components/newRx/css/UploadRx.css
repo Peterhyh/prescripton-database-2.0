@@ -1,0 +1,43 @@
+.rx-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.rx-container img {
+    height: 400px;
+    width: 400px;
+}
+
+.rx-row {
+    margin: 10px;
+}
+
+.rx-row button {
+    color: #CFDDD1;
+    background-color: #17382b76;
+    border: 1px solid #CFDDD1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.rx-row button:hover {
+    color: #17382b76;
+    background-color: #CFDDD1;
+    border: 1px solid #17382b76;
+}
+
+.popover-header {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #18382B;
+    color: #000;
+}
+
+.popover-body {
+    display: flex;
+    justify-content: center;
+    border: 1px solid #18382B;
+    color: #000;
+}

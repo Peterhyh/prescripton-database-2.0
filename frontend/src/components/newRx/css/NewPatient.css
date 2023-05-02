@@ -1,0 +1,269 @@
+.newpatient-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+}
+
+.inputBox-name {
+    position: relative;
+    width: 500px;
+
+}
+
+.inputBox-name input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.last-name-span {
+    position: absolute;
+    left: 275px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: #949BA4;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 10px;
+    opacity: 1;
+}
+
+.first-name-span {
+    position: absolute;
+    left: 25px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: #949BA4;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 10px;
+    opacity: 1;
+}
+
+.inputBox-name input:valid+span,
+.inputBox-name input:focus+span {
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+    opacity: 1;
+}
+
+.inputBox-name input:valid,
+.inputBox-name input:focus {
+    border: 1px solid #0D2018;
+}
+
+.inputBox-dob {
+    position: relative;
+    width: 500px;
+}
+
+.inputBox-dob input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.inputBox-dob span {
+    color: #949BA4;
+    text-transform: uppercase;
+    font-size: 1em;
+    pointer-events: none;
+    position: absolute;
+    top: 10px;
+    transition: 0.3s;
+    padding: 10px;
+}
+
+.dob-month-span {
+    left: 25px;
+}
+
+.dob-day-span {
+    left: 193px;
+}
+
+.dob-year-span {
+    left: 360px;
+}
+
+.inputBox-dob input:valid+span,
+.inputBox-dob input:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.07em;
+}
+
+.inputBox-dob input:valid,
+.inputBox-dob input:focus {
+    border: 1px solid #0D2018;
+}
+
+.inputBox-street {
+    position: relative;
+    width: 500px;
+}
+
+.inputBox-street input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.inputBox-street-span {
+    position: absolute;
+    left: 25px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 10px;
+    color: #949BA4;
+}
+
+.inputBox-street input:valid+span,
+.inputBox-street input:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+
+}
+
+.inputBox-street input:valid,
+.inputBox-street input:focus {
+    border: 1px solid #0D2018;
+}
+
+.inputBox-city-state-zip {
+    position: relative;
+    width: 500px;
+}
+
+.inputBox-city-state-zip input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.inputBox-city-state-zip span {
+    color: #949BA4;
+    text-transform: uppercase;
+    font-size: 1em;
+    pointer-events: none;
+    position: absolute;
+    top: 10px;
+    transition: 0.3s;
+    padding: 10px;
+}
+
+.inputBox-city-span {
+    left: 25px;
+}
+
+.inputBox-state-span {
+    left: 193px;
+}
+
+.inputBox-zip-span {
+    left: 360px;
+}
+
+.inputBox-city-state-zip input:valid+span,
+.inputBox-city-state-zip input:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+}
+
+.inputBox-city-state-zip input:valid,
+.inputBox-city-state-zip input:focus {
+    border: 1px solid #0D2018;
+}
+
+.new-patient-submit-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.submit-button {
+    color: #CFDDD1;
+    background-color: #17382b76;
+    border: 1px solid #CFDDD1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.submit-button:hover {
+    color: #17382b76;
+    background-color: #CFDDD1;
+    border: 1px solid #17382b76;
+}
+
+.back-button {
+    color: #17382b76;
+    background-color: #CFDDD1;
+    border: 1px solid #17382b76;
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    left: 800px;
+    top: 225px;
+}
+
+.back-button:hover {
+    color: #CFDDD1;
+    background-color: #17382b76;
+    border: 1px solid #CFDDD1;
+}

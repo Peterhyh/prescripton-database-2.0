@@ -21,11 +21,9 @@ newPatientRouter.route('/')
                 console.log(patient);
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'text/plain');
-                res.end('success')
+                res.json(patient);
             })
-            .catch(err => {
-                console.log(err);
-            })
+            .catch(err => next(err));
     })
 
     .put((req, res, next) => {

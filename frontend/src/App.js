@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 // import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
-import RegisterPatientPage from './pages/RegisterPatientPage';
 import RegisterPage from './pages/RegisterPage';
 import NewRxPage from './pages/NewRxPage';
 import ProtectedRoutes from './components/ProtectedRoutes';
@@ -24,7 +23,6 @@ function App() {
       {/* Protected Routes */}
       <Route element={<ProtectedRoutes />}>
         <Route path='/' element={<HomePage />} exact />
-        <Route path='/newPatient' element={<RegisterPatientPage />} />
         <Route path='/newRx' element={<NewRxPage />} />
       </Route>
     </Routes>

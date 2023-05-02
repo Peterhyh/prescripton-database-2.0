@@ -84,8 +84,6 @@
 
 .nav-link:hover {
   background-color: #0e251b;
-  border-radius: 500px;
-  padding: 10px;
 }
 
 .hide {
@@ -97,13 +95,21 @@
   width: 100%;
 }
 
-.logout-modal-header,
 .logout-modal-body {
   background-color: #CFDDD1;
 }
 
-.logout-modal h2 {
-  color: #17382b76;
+.logout-modal-header {
+  background-color: #17382b;
+}
+
+.logout-modal-header h2 {
+  color: #CFDDD1;
+}
+
+.logout-modal-body p {
+  display: flex;
+  justify-content: center;
 }
 
 .logout-selection-container {
@@ -124,6 +130,12 @@
   margin: 30px;
   border-radius: 10px;
   width: 4rem;
+}
+
+.logout-selection-container button:hover {
+  color: #CFDDD1;
+  background-color: #17382b76;
+  border: 1px solid #CFDDD1;
 }
 
 .home-container {
@@ -479,12 +491,6 @@
   width: 100%
 }
 
-
-
-.data-entry-button {
-  padding: 20px;
-}
-
 .prescription-container {
   border: 1px solid #949BA4;
   width: 45%;
@@ -494,11 +500,6 @@
   flex-direction: column;
   padding: 10px;
   border-radius: 10px;
-}
-
-.prescription-title {
-  color: #0D2018;
-  padding: 10px;
 }
 
 .patient-container {
@@ -511,419 +512,6 @@
   padding: 10px;
   border-radius: 10px;
   margin-bottom: 20px;
-}
-
-.inputBox-name {
-  position: relative;
-  width: 500px;
-
-}
-
-.inputBox-name input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #949BA4;
-  background: #CFDDD1;
-  border-radius: 5px;
-  outline: none;
-  color: #0D2018;
-  font-size: 1em;
-  margin: 10px;
-}
-
-.last-name-span {
-  position: absolute;
-  left: 275px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  color: #949BA4;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  opacity: 1;
-}
-
-.first-name-span {
-  position: absolute;
-  left: 25px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  color: #949BA4;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  opacity: 1;
-}
-
-.inputBox-name input:valid+span,
-.inputBox-name input:focus+span {
-  color: #0D2018;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.65em;
-  padding: 0 10px;
-  background: #CFDDD1;
-  border-left: 1px solid #0D2018;
-  border-right: 1px solid #0D2018;
-  letter-spacing: 0.2em;
-  opacity: 1;
-}
-
-.inputBox-name input:valid,
-.inputBox-name input:focus {
-  border: 1px solid #0D2018;
-}
-
-.inputBox-dob {
-  position: relative;
-  width: 500px;
-}
-
-.inputBox-dob input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #949BA4;
-  background: #CFDDD1;
-  border-radius: 5px;
-  outline: none;
-  color: #0D2018;
-  font-size: 1em;
-  margin: 10px;
-}
-
-.inputBox-dob span {
-  color: #949BA4;
-  text-transform: uppercase;
-  font-size: 1em;
-  pointer-events: none;
-  position: absolute;
-  top: 10px;
-  transition: 0.3s;
-  padding: 10px;
-}
-
-.dob-month-span {
-  left: 25px;
-}
-
-.dob-day-span {
-  left: 193px;
-}
-
-.dob-year-span {
-  left: 360px;
-}
-
-.inputBox-dob input:valid+span,
-.inputBox-dob input:focus+span {
-  opacity: 1;
-  color: #0D2018;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.65em;
-  padding: 0 10px;
-  background: #CFDDD1;
-  border-left: 1px solid #0D2018;
-  border-right: 1px solid #0D2018;
-  letter-spacing: 0.07em;
-}
-
-.inputBox-dob input:valid,
-.inputBox-dob input:focus {
-  border: 1px solid #0D2018;
-}
-
-.inputBox-street {
-  position: relative;
-  width: 500px;
-}
-
-.inputBox-street input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #949BA4;
-  background: #CFDDD1;
-  border-radius: 5px;
-  outline: none;
-  color: #0D2018;
-  font-size: 1em;
-  margin: 10px;
-}
-
-.inputBox-street-span {
-  position: absolute;
-  left: 25px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  opacity: 1;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  color: #949BA4;
-}
-
-.inputBox-street input:valid+span,
-.inputBox-street input:focus+span {
-  opacity: 1;
-  color: #0D2018;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.65em;
-  padding: 0 10px;
-  background: #CFDDD1;
-  border-left: 1px solid #0D2018;
-  border-right: 1px solid #0D2018;
-  letter-spacing: 0.2em;
-
-}
-
-.inputBox-street input:valid,
-.inputBox-street input:focus {
-  border: 1px solid #0D2018;
-}
-
-.inputBox-city-state-zip {
-  position: relative;
-  width: 500px;
-}
-
-.inputBox-city-state-zip input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #949BA4;
-  background: #CFDDD1;
-  border-radius: 5px;
-  outline: none;
-  color: #0D2018;
-  font-size: 1em;
-  margin: 10px;
-}
-
-.inputBox-city-state-zip span {
-  color: #949BA4;
-  text-transform: uppercase;
-  font-size: 1em;
-  pointer-events: none;
-  position: absolute;
-  top: 10px;
-  transition: 0.3s;
-  padding: 10px;
-}
-
-.inputBox-city-span {
-  left: 25px;
-}
-
-.inputBox-state-span {
-  left: 193px;
-}
-
-.inputBox-zip-span {
-  left: 360px;
-}
-
-.inputBox-city-state-zip input:valid+span,
-.inputBox-city-state-zip input:focus+span {
-  opacity: 1;
-  color: #0D2018;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.65em;
-  padding: 0 10px;
-  background: #CFDDD1;
-  border-left: 1px solid #0D2018;
-  border-right: 1px solid #0D2018;
-  letter-spacing: 0.2em;
-}
-
-.inputBox-city-state-zip input:valid,
-.inputBox-city-state-zip input:focus {
-  border: 1px solid #0D2018;
-}
-
-.inputBox-drug {
-  position: relative;
-  width: 500px;
-}
-
-.inputBox-drug input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #949BA4;
-  background: #CFDDD1;
-  border-radius: 5px;
-  outline: none;
-  color: #0D2018;
-  font-size: 1em;
-  margin: 10px;
-}
-
-.inputBox-drug-span {
-  position: absolute;
-  left: 25px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  opacity: 1;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  color: #949BA4;
-}
-
-.inputBox-drug input:valid+span,
-.inputBox-drug input:focus+span {
-  opacity: 1;
-  color: #0D2018;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.65em;
-  padding: 0 10px;
-  background: #CFDDD1;
-  border-left: 1px solid #0D2018;
-  border-right: 1px solid #0D2018;
-  letter-spacing: 0.2em;
-
-}
-
-.inputBox-drug input:valid,
-.inputBox-drug input:focus {
-  border: 1px solid #0D2018;
-}
-
-.inputBox-sig {
-  position: relative;
-  width: 500px;
-}
-
-.inputBox-sig input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #949BA4;
-  background: #CFDDD1;
-  border-radius: 5px;
-  outline: none;
-  color: #0D2018;
-  font-size: 1em;
-  margin: 10px;
-}
-
-.inputBox-sig-span {
-  position: absolute;
-  left: 25px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  opacity: 1;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  color: #949BA4;
-}
-
-.inputBox-sig input:valid+span,
-.inputBox-sig input:focus+span {
-  opacity: 1;
-  color: #0D2018;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.65em;
-  padding: 0 10px;
-  background: #CFDDD1;
-  border-left: 1px solid #0D2018;
-  border-right: 1px solid #0D2018;
-  letter-spacing: 0.2em;
-
-}
-
-.inputBox-sig input:valid,
-.inputBox-sig input:focus {
-  border: 1px solid #0D2018;
-}
-
-.inputBox-quanity-refills {
-  position: relative;
-  width: 500px;
-}
-
-.inputBox-quanity-refills input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #949BA4;
-  background: #CFDDD1;
-  border-radius: 5px;
-  outline: none;
-  color: #0D2018;
-  font-size: 1em;
-  margin: 10px;
-}
-
-.inputBox-quanity-span {
-  position: absolute;
-  left: 25px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  opacity: 1;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  color: #949BA4;
-}
-
-.inputBox-refills-span {
-  position: absolute;
-  left: 193px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  opacity: 1;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  color: #949BA4;
-}
-
-.inputBox-day-supply-span {
-  position: absolute;
-  left: 360px;
-  padding: 10px;
-  pointer-events: none;
-  font-size: 1em;
-  opacity: 1;
-  text-transform: uppercase;
-  transition: 0.3s;
-  top: 10px;
-  color: #949BA4;
-}
-
-.inputBox-quanity-refills input:valid+span,
-.inputBox-quanity-refills input:focus+span {
-  opacity: 1;
-  color: #0D2018;
-  transform: translateX(10px) translateY(-7px);
-  font-size: 0.65em;
-  padding: 0 10px;
-  background: #CFDDD1;
-  border-left: 1px solid #0D2018;
-  border-right: 1px solid #0D2018;
-  letter-spacing: 0.2em;
-
-}
-
-.inputBox-quanity-refills input:valid,
-.inputBox-quanity-refills input:focus {
-  border: 1px solid #0D2018;
-}
-
-.input.input-error,
-.select.input-error {
-  border-color: red;
-}
-
-.newpatient-container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #CFDDD1;
 }
 
 .new-patient-back-button {
@@ -962,179 +550,4 @@
   display: flex;
   justify-content: center;
   font-weight: bold;
-}
-
-.test-section {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #000;
-  flex-direction: column;
-}
-
-.patientsearch-container {
-  display: flex;
-}
-
-.patientsearch-left {
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid #000;
-  padding-right: 20px;
-  margin-right: 20px;
-  flex-grow: 1;
-}
-
-.patientsearch-right {
-  display: flex;
-  justify-content: center;
-  justify-content: space-evenly;
-  flex-grow: 1;
-}
-
-.patientsearch-searchbar-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.new-rx-search-results-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-}
-
-.new-rx-search-results-container td {
-  min-width: 200px;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-}
-
-
-.newrx-search-results {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #000;
-}
-
-.newrx-search-results:nth-child(even) {
-  background-color: #ffffff51;
-}
-
-.newrx-search-results:hover {
-  background-color: #17382b76;
-}
-
-.new-rx-search-results-header {
-  border-bottom: 1px solid #000;
-  background-color: #18382B;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.new-rx-selected-patient {
-  display: flex;
-  align-items: center;
-  margin: 20px;
-}
-
-.new-rx-selected-patient button {
-  transform: translateY(25px);
-}
-
-.new-rx-selected-patient h2 {
-  display: flex;
-  justify-content: flex-start;
-  min-width: 300px;
-  background-color: #17382b;
-  border-radius: 10px;
-  padding: 10px;
-  color: #fff;
-}
-
-
-.dataentry-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.dataentry-left {
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid #000;
-  padding-right: 20px;
-  margin-right: 20px;
-}
-
-.dataentry-right {
-  display: flex;
-}
-
-.selectedpatient-clear-button {
-  margin-left: 20px;
-  border: 1px solid #17382b76;
-  border-radius: 500px;
-  display: flex;
-  color: #17382b76;
-  background-color: #CFDDD1;
-  padding: 7px;
-}
-
-.selectedpatient-clear-button:hover {
-  margin-left: 20px;
-  border: 1px solid #CFDDD1;
-  border-radius: 500px;
-  display: flex;
-  color: #CFDDD1;
-  background-color: #17382b76;
-  padding: 7px;
-}
-
-.patientsearch-register-button {
-  margin-left: 20px;
-  border: 1px solid #17382b76;
-  border-radius: 500px;
-  justify-content: center;
-  display: flex;
-  color: #17382b76;
-  background-color: #CFDDD1;
-  padding: 2px;
-}
-
-.patientsearch-register-button:hover {
-  margin-left: 20px;
-  border: 1px solid #CFDDD1;
-  border-radius: 500px;
-  justify-content: center;
-  display: flex;
-  color: #CFDDD1;
-  background-color: #17382b76;
-  padding: 2px;
-}
-
-
-.patient-prescription-submit-button {
-  color: #17382b76;
-  background-color: #CFDDD1;
-  border: 1px solid #17382b76;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-}
-
-.patient-prescription-submit-button:hover {
-  color: #CFDDD1;
-  background-color: #17382b76;
-  border: 1px solid #CFDDD1;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
 }

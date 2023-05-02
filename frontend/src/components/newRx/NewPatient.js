@@ -1,32 +1,13 @@
 import { useFormik } from 'formik';
-import { Alert } from 'reactstrap';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import './css/NewPatient.css';
 
-const RegisterPatientPage = () => {
+const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId }) => {
 
-    const navigate = useNavigate();
-
-    const [openSuccessAlert, setOpenSuccessAlert] = useState(false);
-    const [openErrorAlert, setOpenErrorAlert] = useState(false);
-
-    useEffect(() => {
-        const errorTimeout = setTimeout(() => {
-            setOpenErrorAlert(false);
-
-            return () => clearTimeout(errorTimeout);
-        }, 5000)
-    }, [openErrorAlert]);
-
-    useEffect(() => {
-        const successTimeout = setTimeout(() => {
-            setOpenSuccessAlert(false);
-
-            return () => clearTimeout(successTimeout);
-        }, 5000)
-    }, [openSuccessAlert]);
+    const toggleBack = () => {
+        setSelectPatient(true);
+        setOpenNewPatient(false);
+    };
 
     const formik = useFormik({
         initialValues: {
@@ -41,7 +22,7 @@ const RegisterPatientPage = () => {
             zip: ''
         },
         onSubmit: (values) => {
-            axios.post('http://18.212.66.103:8000/newPatient', {
+            axios.post('http://localhost:3001/newPatient', {
                 firstName: values.firstName.toUpperCase(),
                 lastName: values.lastName.toUpperCase(),
                 dateOfBirthMonth: values.dateOfBirthMonth,
@@ -53,11 +34,15 @@ const RegisterPatientPage = () => {
                 zip: values.zip,
             })
                 .then(response => {
-                    if (response.data === 'success') {
-                        setOpenSuccessAlert(true);
-                        navigate('/newRx')
+                    if (response.data) {
+                        setOpenNewPatient(false);
+                        setSelectPatient(true);
+                        setSelectedLastName(response.data.lastName);
+                        setSelectedFirstName(response.data.firstName);
+                        setSelectedId(response.data._id);
+                        console.log(response.data);
                     } else {
-                        setOpenErrorAlert(true);
+                        console.log('unsuccessful');
                     }
                 })
                 .catch(err => console.log(err));
@@ -67,19 +52,9 @@ const RegisterPatientPage = () => {
 
 
     return (
-
-
-
-        <div className='newpatient-container'>
-            <Link to='/newRx' className='new-patient-back-button'>Back</Link>
+        <div className={openNewPatient ? '' : 'hide'}>
             <form onSubmit={formik.handleSubmit}>
                 <div className='container d-flex justify-content-center align-items-center flex-column'>
-                    <Alert isOpen={openSuccessAlert} color='success'>
-                        Successfully added patient!
-                    </Alert>
-                    <Alert isOpen={openErrorAlert} color='danger'>
-                        An error occurred
-                    </Alert>
                     <h1 class='patient-title'>New Patient:</h1>
                     <div className='row inputBox-name'>
                         <div class='col-sm-6'>
@@ -183,17 +158,20 @@ const RegisterPatientPage = () => {
                             />
                             <span class='inputBox-zip-span'>Zip</span>
                         </div>
-                        <div className='d-flex justify-content-center'>
-                            <button type='submit' class='patient-prescription-submit-button' outline>
+                        <div className='new-patient-submit-button-container'>
+
+                            <button className='submit-button' type='submit' >
                                 Submit
                             </button>
                         </div>
+
                     </div>
                 </div>
             </form>
+            <button className='back-button' onClick={() => toggleBack()}>Back</button>
         </div>
 
     )
 };
 
-export default RegisterPatientPage;
+export default NewPatient;

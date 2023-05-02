@@ -1,4 +1,3 @@
-require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -11,6 +10,7 @@ const usersRouter = require('./routes/users');
 const newRxRouter = require('./routes/newRxRouter');
 const newPatientRouter = require('./routes/newPatientRouter');
 
+require('dotenv').config();
 const uri = process.env.MONGO_URI;
 const connect = async () => {
   try {
@@ -28,7 +28,7 @@ connect()
 
 const app = express();
 app.use(cors({
-  origin: 'http://18.212.66.103',
+  origin: 'http://localhost:3000',
   credentials: true
 }));
 

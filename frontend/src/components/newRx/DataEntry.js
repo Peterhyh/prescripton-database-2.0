@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import SelectedPatient from './SelectedPatient';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import './css/DataEntry.css';
 
 const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, }) => {
 
@@ -28,8 +29,8 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
             daySupply: '',
         },
         onSubmit: (values) => {
-            axios.post('http://18.212.66.103:8000/newRx', {
-                patientId: JSON.stringify(selectedId)``,
+            axios.post('http://localhost:3001/newRx', {
+                patientId: JSON.stringify(selectedId),
                 drug: values.drug.toUpperCase(),
                 quanity: values.quanity,
                 refills: values.refills,
@@ -59,11 +60,12 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
             <div className='dataentry-container'>
 
                 <div className='dataentry-left'>
-                    <div>
+                    <div className='dataentry-left-row-top'>
                         <h1>Uploaded Rx:</h1>
                         <img src={uploadedRx} alt='uploaded rx' />
                     </div>
-                    <div className={selectedLastName && selectedFirstName ? 'new-rx-selected-patient' : 'hide'}>
+
+                    <div className={selectedLastName && selectedFirstName ? '' : 'hide'}>
                         <SelectedPatient
                             selectedLastName={selectedLastName}
                             selectedFirstName={selectedFirstName}
@@ -75,6 +77,7 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
 
                 <div className='dataentry-right'>
                     <form onSubmit={formik.handleSubmit}>
+
                         <h1 class='prescription-title'>PRESCRIPTION:</h1>
 
                         <div className='row inputBox-drug '>
@@ -136,11 +139,9 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
                             </div>
                         </div>
 
-                        <Row>
-                            <Col className='data-entry-button'>
-                                <button type='submit' class='patient-prescription-submit-button' outline>Submit</button>
-                            </Col>
-                        </Row>
+                        <div className='data-entry-button-container'>
+                            <button type='submit' outline>Submit</button>
+                        </div>
 
                     </form >
                 </div>

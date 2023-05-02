@@ -1,0 +1,253 @@
+.dataentry-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.dataentry-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #000;
+    padding-right: 20px;
+    margin-right: 20px;
+    width: 50vw;
+}
+
+.dataentry-left-row-top {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dataentry-left-row-top img {
+    height: 400px;
+    width: 400px;
+}
+
+
+
+
+
+
+
+
+.dataentry-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid #000;
+    padding-right: 20px;
+    margin-right: 20px;
+    width: 50vw;
+}
+
+.prescription-title {
+    display: flex;
+    justify-content: center;
+    color: #0D2018;
+    padding: 10px;
+}
+
+.data-entry-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.data-entry-button-container button {
+    color: #CFDDD1;
+    background-color: #17382b76;
+    border: 1px solid #CFDDD1;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 10px;
+}
+
+.data-entry-button-container button:hover {
+    color: #17382b76;
+    background-color: #CFDDD1;
+    border: 1px solid #17382b76;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 10px;
+}
+
+.inputBox-drug {
+    position: relative;
+    width: 500px;
+}
+
+.inputBox-drug input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.inputBox-drug-span {
+    position: absolute;
+    left: 25px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 10px;
+    color: #949BA4;
+}
+
+.inputBox-drug input:valid+span,
+.inputBox-drug input:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+
+}
+
+.inputBox-drug input:valid,
+.inputBox-drug input:focus {
+    border: 1px solid #0D2018;
+}
+
+.inputBox-sig {
+    position: relative;
+    width: 500px;
+}
+
+.inputBox-sig input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.inputBox-sig-span {
+    position: absolute;
+    left: 25px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 10px;
+    color: #949BA4;
+}
+
+.inputBox-sig input:valid+span,
+.inputBox-sig input:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+
+}
+
+.inputBox-sig input:valid,
+.inputBox-sig input:focus {
+    border: 1px solid #0D2018;
+}
+
+.inputBox-quanity-refills {
+    position: relative;
+    width: 500px;
+}
+
+.inputBox-quanity-refills input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.inputBox-quanity-span {
+    position: absolute;
+    left: 25px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 10px;
+    color: #949BA4;
+}
+
+.inputBox-refills-span {
+    position: absolute;
+    left: 193px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 10px;
+    color: #949BA4;
+}
+
+.inputBox-day-supply-span {
+    position: absolute;
+    left: 360px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 10px;
+    color: #949BA4;
+}
+
+.inputBox-quanity-refills input:valid+span,
+.inputBox-quanity-refills input:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+
+}
+
+.inputBox-quanity-refills input:valid,
+.inputBox-quanity-refills input:focus {
+    border: 1px solid #0D2018;
+}
+
+.input.input-error,
+.select.input-error {
+    border-color: red;
+}

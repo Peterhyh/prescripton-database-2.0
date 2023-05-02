@@ -18,6 +18,9 @@ const Header = () => {
                 <Collapse isOpen={openNav} navbar>
                     <Nav className='ms-auto' navbar>
                         <NavItem className='m-3'>
+                            <NavLink style={{ color: '#CFDDD1' }} className='nav-link' to='/'>Home</NavLink>
+                        </NavItem>
+                        <NavItem className='m-3'>
                             <NavLink style={{ color: '#CFDDD1' }} className='nav-link' to='/newRx'>New Rx</NavLink>
                         </NavItem>
                         <NavItem className='m-3'>
@@ -28,9 +31,10 @@ const Header = () => {
             </Navbar>
             <Modal className='logout-modal' isOpen={openModal}>
                 <ModalHeader className='logout-modal-header'>
-                    <h2>Are you sure you want to logout?</h2>
+                    <h2>Logout</h2>
                 </ModalHeader>
-                <ModalBody className='logout-modal-header'>
+                <ModalBody className='logout-modal-body'>
+                    <p>Are you sure you want to logout?</p>
                     <div className='logout-selection-container'>
                         <button onClick={() => navigate('/login')}>Yes</button>
                         <button onClick={() => setOpenModal(!openModal)}>Cancel</button>
