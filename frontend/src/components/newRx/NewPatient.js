@@ -52,9 +52,9 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
 
 
     return (
-        <div className={openNewPatient ? '' : 'hide'}>
+        <div className={openNewPatient ? 'new-patient-container' : 'hide'}>
             <form onSubmit={formik.handleSubmit}>
-                <div className='container d-flex justify-content-center align-items-center flex-column'>
+                <div className='d-flex justify-content-center align-items-center flex-column'>
                     <h1 class='patient-title'>New Patient:</h1>
                     <div className='row inputBox-name'>
                         <div class='col-sm-6'>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import NewRxButtons from '../components/NewRxButtons';
+import NewRxButtons from '../components/newRx/NewRxButtons';
 import DataEntry from '../components/newRx/DataEntry';
 import PatientSearch from '../components/newRx/PatientSearch';
 import UploadRx from '../components/newRx/UploadRx';

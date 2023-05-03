@@ -112,7 +112,7 @@ const RegisterPage = () => {
 
 
 
-                    <card className='register-card'>
+                    <div className='register-card'>
                         <p className={errMsg ? 'register-error-message' : 'hide'} ref={errRef} aria-live='assertive'>
                             {errMsg}
                         </p>
@@ -220,7 +220,7 @@ const RegisterPage = () => {
                                 </button>
                             </div>
                         </form>
-                    </card>
+                    </div>
                 </section >
             )};
         </>

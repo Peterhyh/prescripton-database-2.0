@@ -252,14 +252,12 @@
 }
 
 .back-button {
+    display: flex;
     color: #17382b76;
     background-color: #CFDDD1;
     border: 1px solid #17382b76;
     padding: 10px;
     border-radius: 10px;
-    position: absolute;
-    left: 800px;
-    top: 225px;
 }
 
 .back-button:hover {

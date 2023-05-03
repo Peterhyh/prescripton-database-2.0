@@ -138,18 +138,6 @@
   border: 1px solid #CFDDD1;
 }
 
-.home-container {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  background-color: #CFDDD1;
-}
-
-.home-container h1 {
-  position: relative;
-  top: 10%;
-}
-
 .login-error-message {
   position: absolute;
   top: 5%;
@@ -180,6 +168,7 @@
   width: 700px;
   background-color: #17382b76;
   border-radius: 10px;
+  box-shadow: 5px 5px 15px -5px;
 }
 
 .login-card h1 {
@@ -295,6 +284,7 @@
   background-color: #17382b76;
   padding: 1px;
   border-radius: 10px;
+  box-shadow: 5px 5px 15px -5px;
 }
 
 .register-card h1 {

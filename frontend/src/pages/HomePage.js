@@ -1,7 +1,9 @@
+import Disclaimer from "../components/home/Disclaimer";
+
 const HomePage = () => {
     return (
         <div className='home-container'>
-            <h1>Home Page</h1>
+            <Disclaimer />
         </div>
     )
 };
