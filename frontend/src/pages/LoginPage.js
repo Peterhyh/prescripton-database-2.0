@@ -36,10 +36,11 @@ const LoginPage = () => {
             )
                 .then(response => {
                     if (response.status === 200) {
-                        const accessToken = response.data.accessToken;
+                        // const accessToken = response.data.accessToken;
                         // const refreshToken = response.data.refreshToken;
                         // console.log(refreshToken);
-                        setAuth({ accessToken })
+                        const username = response.data.username;
+                        setAuth({ username })
                         setUsername('');
                         setPassword('');
                         navigate('/');

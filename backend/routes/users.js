@@ -2,15 +2,15 @@ const express = require('express');
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+// require('dotenv').config();
 // const authorization = require('../authorization');
 
 const router = express.Router();
 
 
-const generateAccessToken = (user) => {
-  return jwt.sign(user, process.env.SECRET_KEY)
-}
+// const generateAccessToken = (user) => {
+//   return jwt.sign(user, process.env.SECRET_KEY)
+// }
 
 
 
@@ -78,11 +78,11 @@ router.post('/login', (req, res, next) => {
       }
       try {
         if (await bcrypt.compare(req.body.password, user.password)) {
-          const user = { username: req.body.username };
-          const accessToken = generateAccessToken(user);
+          const username = { username: req.body.username };
+          // const accessToken = generateAccessToken(user);
           // const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_KEY);
           // refreshTokens.push(refreshToken);
-          res.json({ accessToken: accessToken });
+          res.json({ username: username });
         } else {
           res.sendStatus(409);
         }
