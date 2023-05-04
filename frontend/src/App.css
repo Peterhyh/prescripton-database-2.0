@@ -387,53 +387,7 @@
   flex-direction: column;
 }
 
-.new-rx-buttons-container {
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
 
-.new-rx-buttons-row {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  top: 10px;
-}
-
-.new-rx-buttons-col {
-  display: flex;
-  margin: 10px;
-}
-
-.new-rx-buttons-col button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 5px;
-  text-decoration: none;
-  color: #17382b76;
-  background-color: #CFDDD1;
-  border: 1px solid #17382b76;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-  width: 11rem;
-}
-
-.new-rx-buttons-col button:hover {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  left: 5px;
-  text-decoration: none;
-  color: #CFDDD1;
-  background-color: #17382b76;
-  border: 1px solid #CFDDD1;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-  width: 11rem;
-}
 
 .register-patient-button {
   background-color: #CFDDD1;

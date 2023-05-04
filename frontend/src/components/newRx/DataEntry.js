@@ -29,7 +29,7 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
             daySupply: '',
         },
         onSubmit: (values) => {
-            axios.post('http://18.212.66.103:8000/newRx', {
+            axios.post('http://localhost:3001/newRx', {
                 patientId: JSON.stringify(selectedId),
                 drug: values.drug.toUpperCase(),
                 quanity: values.quanity,

@@ -1,3 +1,5 @@
+import './css/NewRxButtons.css';
+
 const NewRxButtons = ({ setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx, openSelectPatient, openUploadRx, openDataEntry }) => {
 
     const handleSelectPatient = () => {

@@ -13,7 +13,7 @@ const ProtectedRoutes = () => {
             <Header />
 
             {
-                auth.accessToken
+                auth.username
                     ? <Outlet />
                     : <Navigate to='/login' state={{ from: location }} replace />
             }
