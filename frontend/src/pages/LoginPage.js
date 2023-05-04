@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
+import './css/Login.css';
 
 const LoginPage = () => {
     const { setAuth } = useAuth();
@@ -70,12 +71,11 @@ const LoginPage = () => {
                 <p ref={errRef} className={errMsg ? 'login-error-message' : 'hide'}>
                     {errMsg}
                 </p>
-                <h1>Login</h1>
+
                 <form className='login-form' onSubmit={handleSubmit}>
-                    <label htmlFor='username'>
-                        Username:
-                    </label>
+                    <h1>LOGIN</h1>
                     <input
+                        placeholder='Username'
                         type='text'
                         id='username'
                         value={username}
@@ -85,10 +85,8 @@ const LoginPage = () => {
                         required
                     />
 
-                    <label htmlFor='password'>
-                        Password:
-                    </label>
                     <input
+                        placeholder='Password'
                         type='password'
                         id='password'
                         value={password}
@@ -96,14 +94,16 @@ const LoginPage = () => {
                         required
                     />
                     <div className='login-button-container'>
-                        <button>LOGIN</button>
+                        <button>SIGN IN</button>
+                    </div>
+
+                    <div className='login-register-section-container'>
+                        <p>Don't have an account?</p>
+                        <Link className='register-link' to='/register'>Click Here</Link>
                     </div>
 
                 </form>
-                <div className='login-register-section-container'>
-                    <p>Don't have an account?</p>
-                    <Link to='/register'>Create account</Link>
-                </div>
+
             </card>
         </section >
     )
