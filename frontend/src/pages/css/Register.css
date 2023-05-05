@@ -1,0 +1,164 @@
+.register-error-message {
+    position: absolute;
+    top: 13%;
+    background-color: #EDC9C5;
+    border: 1px solid #AB3431;
+    border-radius: 10px;
+    color: #AB3431;
+    padding: 10px;
+}
+
+.register-container {
+    background-image: linear-gradient(to bottom, #01314C, #00BE9F, #42C6A3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.register-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.register-card h1 {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.register-form {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 500px
+}
+
+.register-form input {
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.register-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    color: #CFDDD1;
+    background-color: #2A3746;
+    padding: 10px;
+    border-radius: 500px;
+    border: none;
+    margin-top: 30px;
+    width: 100px;
+}
+
+.register-button:hover {
+    color: #2A3746;
+    background-color: #CFDDD1;
+    border: 1px solid #2A3746;
+}
+
+.register-back-button-row {
+    display: flex;
+    margin-left: 30px;
+    width: 100vw;
+}
+
+.register-back-button {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    color: #CFDDD1;
+    background-color: #2A3746;
+    padding: 10px;
+    border-radius: 500px;
+    border: none;
+    width: 100px;
+}
+
+.register-back-button:hover {
+    color: #2A3746;
+    background-color: #CFDDD1;
+    border: 1px solid #2A3746;
+}
+
+.register-success-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.register-success-page div {
+    height: 500px;
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.register-success-page div h1 {
+    color: #fff;
+}
+
+.register-success-page-return-button {
+    text-decoration: none;
+    font-weight: bold;
+    color: #2A3746;
+}
+
+.register-success-page-return-button:hover {
+    color: #fff;
+}
+
+.register-patient-button {
+    background-color: #CFDDD1;
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid #17382b76;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.register-patient-button:hover {
+    background-color: #17382b26;
+    display: flex;
+    border: 1px solid #17382b76;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.instructions {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 500px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}

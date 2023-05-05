@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './css/Register.css';
 
 
 const USERNAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
@@ -100,34 +101,34 @@ const RegisterPage = () => {
     return (
         <>
             {success ? (
-                <section className='register-success-page'>
+                <div className='register-success-page'>
                     <div>
                         <h1>Successfully Registered!</h1>
-                        <Link to='/login'>Return back to login</Link>
+                        <Link className='register-success-page-return-button' to='/login'>Return back to login</Link>
                     </div>
-                </section>
+                </div>
             ) : (
-                <section className='register-container'>
-                    <Link className='register-back-button' to='/login' >Back</Link>
-
-
+                <div className='register-container'>
+                    <div className='register-back-button-row'>
+                        <Link className='register-back-button' to='/login' >Back</Link>
+                    </div>
 
                     <div className='register-card'>
                         <p className={errMsg ? 'register-error-message' : 'hide'} ref={errRef} aria-live='assertive'>
                             {errMsg}
                         </p>
-                        <h1>Create Account:</h1>
+                        <h1>REGISTER</h1>
                         <form className='register-form' onSubmit={handleSubmit}>
-                            <label htmlFor='username'>
-                                Username:
+                            <div>
                                 <span className={validUsername ? 'valid' : 'hide'}>
                                     Valid
                                 </span>
                                 <span className={validUsername || !username ? 'hide' : 'invalid'}>
                                     Invalid
                                 </span>
-                            </label>
+                            </div>
                             <input
+                                placeholder='Username'
                                 type='text'
                                 id='username'
                                 ref={userRef}
@@ -142,16 +143,16 @@ const RegisterPage = () => {
                                 •Must begin with a letter<br />
                             </p>
 
-                            <label htmlFor='password'>
-                                Password:
+                            <div>
                                 <span className={validPassword ? 'valid' : 'hide'}>
                                     Valid
                                 </span>
                                 <span className={validPassword || !password ? 'hide' : 'invalid'}>
                                     Invalid
                                 </span>
-                            </label>
+                            </div>
                             <input
+                                placeholder='Password'
                                 type='password'
                                 id='password'
                                 onChange={(e) => setPassword(e.target.value)}
@@ -160,23 +161,22 @@ const RegisterPage = () => {
                                 required
                             />
                             <p className={passwordFocus && !validPassword ? 'instructions' : 'hide'} id='passwordnote'>
-                                •Must contain 8 to 24 characters<br /> <br />
-                                •Must contain a uppercase letter, <br />
-                                a lowercase letter, a number, and <br />
+                                •Must contain 8 to 24 characters<br />
+                                •Must contain a uppercase letter, a lowercase letter, a number, and <br />
                                 a special character.<br />
                             </p>
 
 
-                            <label htmlFor='confirmPassword'>
-                                Confirm Password:
+                            <div>
                                 <span className={validMatch && matchPassword ? 'valid' : 'hide'}>
                                     Valid
                                 </span>
                                 <span className={validMatch || !matchPassword ? 'hide' : 'invalid'}>
                                     Invalid
                                 </span>
-                            </label>
+                            </div>
                             <input
+                                placeholder='Confirm Password'
                                 type='password'
                                 id='confirmPassword'
                                 onChange={(e) => setMatchPassword(e.target.value)}
@@ -188,28 +188,22 @@ const RegisterPage = () => {
                                 •Password must match
                             </p>
 
-                            <label htmlFor='firstName'>
-                                First Name:
-                            </label>
                             <input
+                                placeholder='First Name'
                                 type='text'
                                 id='firstName'
                                 onChange={(e) => setFirstName(e.target.value)}
                             />
 
-                            <label htmlFor='lastName'>
-                                Last Name:
-                            </label>
                             <input
+                                placeholder='Last Name'
                                 type='text'
                                 id='lastName'
                                 onChange={(e) => setLastName(e.target.value)}
                             />
 
-                            <label htmlFor='email'>
-                                E-mail:
-                            </label>
                             <input
+                                placeholder='E-mail'
                                 type='text'
                                 id='email'
                                 onChange={(e) => setEmail(e.target.value)}
@@ -221,7 +215,7 @@ const RegisterPage = () => {
                             </div>
                         </form>
                     </div>
-                </section >
+                </div >
             )};
         </>
     )

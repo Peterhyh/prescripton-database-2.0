@@ -4,7 +4,7 @@
 }
 
 .App {
-  background-color: #CFDDD1;
+  background-image: linear-gradient(to bottom, #01314C, #00BE9F, #42C6A3);
 }
 
 .App-logo {
@@ -138,15 +138,7 @@
   border: 1px solid #CFDDD1;
 }
 
-.register-error-message {
-  position: absolute;
-  top: 13%;
-  background-color: #EDC9C5;
-  border: 1px solid #AB3431;
-  border-radius: 10px;
-  color: #AB3431;
-  padding: 10px;
-}
+
 
 .valid {
   color: green;
@@ -158,156 +150,7 @@
   background-color: rgba(0, 0, 0, 0.608);
 }
 
-.instructions {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.608);
-  width: 40%;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 10px;
-}
 
-.register-container {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-y: scroll;
-  overflow-x: scroll;
-}
-
-.register-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: auto;
-  width: 700px;
-  background-color: #17382b76;
-  padding: 1px;
-  border-radius: 10px;
-  box-shadow: 5px 5px 15px -5px;
-}
-
-.register-card h1 {
-  position: relative;
-  padding: 50px;
-}
-
-.register-form {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  width: 500px
-}
-
-.register-form input {
-  padding: 10px;
-  border: 1px solid #949BA4;
-  background: #CFDDD1;
-  border-radius: 5px;
-  outline: none;
-  color: #0D2018;
-  font-size: 1em;
-  margin: 10px;
-}
-
-.register-button-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.register-button {
-  color: #CFDDD1;
-  background-color: #17382b76;
-  border: 1px solid #CFDDD1;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-  width: 100px;
-}
-
-.register-button:hover {
-  color: #17382b76;
-  background-color: #CFDDD1;
-  border: 1px solid #17382b76;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-  width: 100px;
-}
-
-.register-back-button {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 5px;
-  text-decoration: none;
-  color: #17382b76;
-  background-color: #CFDDD1;
-  border: 1px solid #17382b76;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-  width: 4rem;
-}
-
-.register-back-button:hover {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 5px;
-  text-decoration: none;
-  color: #CFDDD1;
-  background-color: #17382b76;
-  border: 1px solid #CFDDD1;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 10px;
-}
-
-.register-success-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.register-success-page div {
-  height: 500px;
-  width: 500px;
-  background-color: #17382b76;
-  padding: 20px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-
-
-.register-patient-button {
-  background-color: #CFDDD1;
-  display: flex;
-  justify-content: flex-end;
-  border: 1px solid #17382b76;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.register-patient-button:hover {
-  background-color: #17382b26;
-  display: flex;
-  border: 1px solid #17382b76;
-  border-radius: 10px;
-  padding: 10px;
-}
 
 .upload-rx-container {
   display: flex;

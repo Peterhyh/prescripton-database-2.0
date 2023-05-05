@@ -51,12 +51,12 @@ const LoginPage = () => {
                     if (!err?.response) {
                         setErrMsg('No Server Response');
                     } else if (err?.response?.status === 400) {
-                        setErrMsg('User does not exist');
+                        setErrMsg('Username/Password mismatched');
 
                     } else if (err?.response?.status === 409) {
-                        setErrMsg('Incorrect Password');
+                        setErrMsg('Username/Password mismatched');
                     } else {
-                        setErrMsg('Failed to Login');
+                        setErrMsg('Login Failed');
                     }
                 });
         } catch (err) {
