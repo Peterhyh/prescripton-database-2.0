@@ -28,7 +28,7 @@ const LoginPage = () => {
 
         try {
             await axios.post(
-                'http://localhost:3001/users/login',
+                'http://18.212.66.103:8000/users/login',
                 JSON.stringify({ username: username.toLowerCase(), password: password }),
                 {
                     headers: { 'Content-Type': 'application/json' },

@@ -22,16 +22,14 @@ const NewRxButtons = ({ setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx,
 
     return (
         <div className='new-rx-buttons-container'>
-            <div className='new-rx-buttons-row'>
-                <div className='new-rx-buttons-col'>
-                    <button onClick={() => handleUploadRx()}>Step 1: Upload Rx </button>
-                </div>
-                <div className='new-rx-buttons-col'>
-                    <button onClick={() => handleSelectPatient()}>Step 2: Select Patient</button>
-                </div>
-                <div className='new-rx-buttons-col'>
-                    <button onClick={() => handleDataEntry()}>Step 3: Data Entry</button>
-                </div>
+            <div className='new-rx-buttons'>
+                <button onClick={() => handleUploadRx()}>Step 1: Upload Rx </button>
+            </div>
+            <div className='new-rx-buttons'>
+                <button onClick={() => handleSelectPatient()}>Step 2: Select Patient</button>
+            </div>
+            <div className='new-rx-buttons'>
+                <button onClick={() => handleDataEntry()}>Step 3: Data Entry</button>
             </div>
         </div>
     );

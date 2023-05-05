@@ -62,19 +62,19 @@
 }
 
 .patientsearch-register-button {
-    border: 1px solid #CFDDD1;
+    border: 1px solid #01314C;
     border-radius: 500px;
     align-items: center;
     justify-content: center;
     display: flex;
     color: #CFDDD1;
-    background-color: #17382b76;
+    background-color: #01314C;
     padding: 7px;
     margin-left: 7px;
 }
 
 .patientsearch-register-button:hover {
-    border: 1px solid #17382b76;
-    color: #17382b76;
-    background-color: #CFDDD1;
+    border: 1px solid #01314C;
+    color: #CFDDD1;
+    background-color: #3385C4;
 }

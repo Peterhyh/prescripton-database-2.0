@@ -1,46 +1,29 @@
 .new-rx-buttons-container {
     display: flex;
     justify-content: center;
-    position: relative;
 }
 
-.new-rx-buttons-row {
+
+.new-rx-buttons {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    top: 10px;
+    justify-content: center;
+    margin: 30px;
 }
 
-.new-rx-buttons-col {
-    display: flex;
-    margin: 10px;
-}
-
-.new-rx-buttons-col button {
-    display: flex;
-    align-items: center;
-    color: #17382b76;
-    background-color: #CFDDD1;
+.new-rx-buttons button {
+    color: #CFDDD1;
+    background-color: #01314C;
     font-weight: bold;
     font-size: 2rem;
     border: 1px solid #17382b76;
-    padding: 10px;
-    margin: 30px;
     border-radius: 10px;
-    width: 11rem;
 }
 
-.new-rx-buttons-col button:hover {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 5px;
-    text-decoration: none;
+.new-rx-buttons button:hover {
     color: #CFDDD1;
-    background-color: #17382b76;
-    border: 1px solid #CFDDD1;
-    padding: 10px;
-    margin: 30px;
+    background-color: #3385C4;
+    font-weight: bold;
+    font-size: 2rem;
+    border: 1px solid #17382b76;
     border-radius: 10px;
-    width: 11rem;
 }

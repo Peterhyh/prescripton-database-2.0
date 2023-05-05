@@ -239,29 +239,29 @@
 
 .submit-button {
     color: #CFDDD1;
-    background-color: #17382b76;
-    border: 1px solid #CFDDD1;
+    background-color: #01314C;
+    border: 1px solid #01314C;
     padding: 10px;
     border-radius: 10px;
 }
 
 .submit-button:hover {
-    color: #17382b76;
-    background-color: #CFDDD1;
-    border: 1px solid #17382b76;
+    color: #CFDDD1;
+    background-color: #3385C4;
+    border: 1px solid #01314C;
 }
 
 .back-button {
     display: flex;
-    color: #17382b76;
+    color: #01314C;
     background-color: #CFDDD1;
-    border: 1px solid #17382b76;
+    border: 1px solid #01314C;
     padding: 10px;
     border-radius: 10px;
 }
 
 .back-button:hover {
     color: #CFDDD1;
-    background-color: #17382b76;
-    border: 1px solid #CFDDD1;
+    background-color: #3385C4;
+    border: 1px solid #01314C;
 }

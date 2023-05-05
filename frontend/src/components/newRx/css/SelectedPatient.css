@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background-color: #18382B;
+    background-color: #01314C;
     border-radius: 10px;
     color: #fff;
 }
@@ -24,7 +24,7 @@
 
 .selectedpatient-clear-button {
     color: #CFDDD1;
-    background-color: #17382b76;
+    background-color: #01314C;
     padding: 10px;
     border-radius: 10px;
     border: none;
@@ -32,6 +32,6 @@
 }
 
 .selectedpatient-clear-button:hover {
-    color: #17382b76;
-    background-color: #CFDDD1;
+    color: #CFDDD1;
+    background-color: #3385C4;
 }
