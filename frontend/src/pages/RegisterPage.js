@@ -113,10 +113,12 @@ const RegisterPage = () => {
                         <Link className='register-back-button' to='/login' >Back</Link>
                     </div>
 
+                    <p className={errMsg ? 'register-error-message' : 'hide'} ref={errRef} aria-live='assertive'>
+                        {errMsg}
+                    </p>
+
                     <div className='register-card'>
-                        <p className={errMsg ? 'register-error-message' : 'hide'} ref={errRef} aria-live='assertive'>
-                            {errMsg}
-                        </p>
+
                         <h1>REGISTER</h1>
                         <form className='register-form' onSubmit={handleSubmit}>
                             <div>

@@ -67,10 +67,11 @@ const LoginPage = () => {
 
     return (
         <section className='login-container'>
-            <card className='login-card'>
-                <p ref={errRef} className={errMsg ? 'login-error-message' : 'hide'}>
-                    {errMsg}
-                </p>
+            <p ref={errRef} className={errMsg ? 'login-error-message' : 'hide'}>
+                {errMsg}
+            </p>
+            <div className='login-card'>
+
 
                 <form className='login-form' onSubmit={handleSubmit}>
                     <h1>LOGIN</h1>
@@ -104,7 +105,7 @@ const LoginPage = () => {
 
                 </form>
 
-            </card>
+            </div>
         </section >
     )
 };
