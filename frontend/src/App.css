@@ -140,7 +140,7 @@
 }
 
 .logout-selection-container button:hover {
-  color: #CFDDD1;
+  color: red;
   background-color: #3385C4;
   border: 1px solid #01314C;
 }
