@@ -1,0 +1,31 @@
+.find-patient-container {
+    display: flex;
+    justify-content: center;
+    background-color: #CFDDD1;
+    height: 100vh;
+}
+
+.find-patient-searchbar {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.find-patient-searchbar input {
+    background-color: #CFDDD1;
+    outline: none;
+    border-radius: 500px;
+    padding: 7px;
+}
+
+
+
+
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #CFDDD1;
+    height: 100vh;
+}

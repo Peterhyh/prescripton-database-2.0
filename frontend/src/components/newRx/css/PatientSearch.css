@@ -50,6 +50,10 @@
     display: flex;
 }
 
+.searchbar-row-middle input {
+    background-color: #CFDDD1;
+}
+
 .searchbar-row-bottom {
     display: flex;
 }
