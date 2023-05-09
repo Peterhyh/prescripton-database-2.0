@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const drugSchema = new Schema({
+
+}, {
+    timestamps: true
+});
+
+
 const newRxSchema = new Schema({
     patientId: {
         type: String,
@@ -8,7 +15,9 @@ const newRxSchema = new Schema({
     },
     drug: {
         type: String,
-        require: true
+    },
+    direction: {
+        type: String,
     },
     quanity: {
         type: Number,
@@ -20,10 +29,6 @@ const newRxSchema = new Schema({
     },
     daySupply: {
         type: Number,
-        require: true
-    },
-    direction: {
-        type: String,
         require: true
     },
 }, {

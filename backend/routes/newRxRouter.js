@@ -16,8 +16,8 @@ newRxRouter.route('/')
 
     .post((req, res, next) => {
         NewRx.create(req.body)
-            .then(response => {
-                console.log(response);
+            .then(patient => {
+                console.log(patient);
                 res.sendStatus(200);
             })
             .catch(err => next(err));
@@ -38,5 +38,14 @@ newRxRouter.route('/')
             })
             .catch(err => next(err));
     });
+
+newRxRouter.route('/data')
+    .post((req, res, next) => {
+        NewRx.find({ patientId: req.body.patientId })
+            .then(data => {
+                console.log(data);
+                res.json(data);
+            })
+    })
 
 module.exports = newRxRouter;

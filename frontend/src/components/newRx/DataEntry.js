@@ -30,7 +30,7 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
         },
         onSubmit: (values) => {
             axios.post('http://localhost:3001/newRx', {
-                patientId: JSON.stringify(selectedId),
+                patientId: selectedId,
                 drug: values.drug.toUpperCase(),
                 quanity: values.quanity,
                 refills: values.refills,

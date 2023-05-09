@@ -21,6 +21,20 @@ const FindPatientPage = () => {
             .catch(err => console.log(err));
     }, [query]);
 
+    const handleSelection = () => {
+        axios.post(
+            'http://localhost:3001/newRx/data',
+            JSON.stringify({ patientId: selectedId }),
+            {
+                headers: { 'Content-Type': 'application/json' },
+            }
+        )
+            .then(response => {
+                console.log(response);
+            })
+            .catch(err => console.log(err));
+    };
+
 
     return (
         <>
@@ -37,13 +51,15 @@ const FindPatientPage = () => {
                         setSelectedId={setSelectedId}
                         setPatientFirstName={setPatientFirstName}
                         setPatientLastName={setPatientLastName}
+                        handleSelection={handleSelection}
                     />
 
                 </div>
             </div>
             <div className={selectedId ? 'profile-container' : 'hide'}>
                 <h1>{`${patientLastName}, ${patientFirstName}`}</h1>
-                <DrugTable />
+                <DrugTable
+                />
             </div>
         </>
     )

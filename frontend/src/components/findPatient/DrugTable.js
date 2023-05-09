@@ -10,8 +10,6 @@ const DrugTable = () => {
                 <td>test</td>
                 <td>test</td>
                 <td>test</td>
-                <td>test</td>
-                <td>test</td>
             </tr>
         </table>
     )
