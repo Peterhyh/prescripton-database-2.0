@@ -1,4 +1,5 @@
 import SearchTable from '../components/findPatient/SearchTable';
+import DrugTable from '../components/findPatient/DrugTable';
 import './css/FindPatient.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -42,7 +43,7 @@ const FindPatientPage = () => {
             </div>
             <div className={selectedId ? 'profile-container' : 'hide'}>
                 <h1>{`${patientLastName}, ${patientFirstName}`}</h1>
-                <h2>Medications</h2>
+                <DrugTable />
             </div>
         </>
     )
