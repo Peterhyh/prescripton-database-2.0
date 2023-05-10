@@ -12,6 +12,8 @@ const FindPatientPage = () => {
     const [patientFirstName, setPatientFirstName] = useState();
     const [patientLastName, setPatientLastName] = useState();
 
+    const [drugArray, setDrugArray] = useState();
+
 
     useEffect(() => {
         axios.get('http://localhost:3001/newPatient')
@@ -31,10 +33,10 @@ const FindPatientPage = () => {
         )
             .then(response => {
                 const responseArray = response.data;
-                const newArray = responseArray.map(data => {
+                const patientDrugList = responseArray.map(data => {
                     return data.drug;
-                })
-                console.log(newArray);
+                });
+                setDrugArray(patientDrugList);
             })
             .catch(err => console.log(err));
     }, [patientFirstName]);
@@ -62,6 +64,7 @@ const FindPatientPage = () => {
             <div className={selectedId ? 'profile-container' : 'hide'}>
                 <h1>{`${patientLastName}, ${patientFirstName}`}</h1>
                 <DrugTable
+                    drugArray={drugArray}
                 />
             </div>
         </>

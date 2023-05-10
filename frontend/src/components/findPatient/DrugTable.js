@@ -1,16 +1,24 @@
 import './css/DrugTable.css';
 
-const DrugTable = () => {
+const DrugTable = ({ drugArray }) => {
+    console.log(drugArray);
     return (
         <table className='drug-table-container'>
-            <tr>
-                <th>Drugs</th>
-            </tr>
-            <tr>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-            </tr>
+            <tbody>
+                <tr className='drug-table-header'>
+                    <th>DRUGS PRESCRIBED</th>
+                </tr>
+
+
+                {drugArray.map((data) => {
+                    return (
+                        <tr className='patient-drug-list'>
+                            <td>{data}</td>
+                        </tr>
+                    )
+                })}
+
+            </tbody>
         </table>
     )
 };
