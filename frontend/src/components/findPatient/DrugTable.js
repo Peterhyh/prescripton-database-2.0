@@ -1,7 +1,13 @@
 import './css/DrugTable.css';
+import { useSelector } from 'react-redux';
 
-const DrugTable = ({ drugArray }) => {
+const DrugTable = () => {
 
+    const drugList = useSelector(state => state.drugList.list);
+
+    const list = drugList.filter(list => {
+        return list.length > 0
+    });
 
     return (
         <table className='drug-table-container'>
@@ -11,9 +17,9 @@ const DrugTable = ({ drugArray }) => {
                 </tr>
 
 
-                {drugArray.map((data) => {
+                {list.map((data, i) => {
                     return (
-                        <tr className='patient-drug-list'>
+                        <tr key={i} className='patient-drug-list'>
                             <td>{data}</td>
                         </tr>
                     )

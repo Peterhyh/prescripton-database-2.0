@@ -4,6 +4,9 @@ import './css/FindPatient.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { useDispatch } from 'react-redux';
+import { addToList } from '../slice/drugListSlice';
+
 const FindPatientPage = () => {
     const [query, setQuery] = useState();
     const [value, setValue] = useState([]);
@@ -12,7 +15,10 @@ const FindPatientPage = () => {
     const [patientFirstName, setPatientFirstName] = useState();
     const [patientLastName, setPatientLastName] = useState();
 
-    const [drugArray, setDrugArray] = useState([]);
+
+
+
+    const dispatch = useDispatch();
 
 
     useEffect(() => {
@@ -22,6 +28,8 @@ const FindPatientPage = () => {
             })
             .catch(err => console.log(err));
     }, [query]);
+
+
 
     useEffect(() => {
         axios.post(
@@ -37,7 +45,7 @@ const FindPatientPage = () => {
                 const drugList = responseArray.map(data => {
                     return data.drug;
                 })
-                setDrugArray(drugList);
+                dispatch(addToList(drugList));
             })
             .catch(err => console.log(err));
     }, [selectedId]);
@@ -64,9 +72,7 @@ const FindPatientPage = () => {
             </div>
             <div className={selectedId ? 'profile-container' : 'hide'}>
                 <h1>{`${patientLastName}, ${patientFirstName}`}</h1>
-                <DrugTable
-                    drugArray={drugArray}
-                />
+                <DrugTable />
             </div>
         </>
     )
