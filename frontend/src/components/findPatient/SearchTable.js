@@ -2,6 +2,8 @@ const SearchTable = ({ value, query, setSelectedId, setPatientLastName, setPatie
 
     const results = value.length
 
+    console.log(value);
+
     return (
         <table className={query ? 'new-rx-search-results-container' : 'hide'}>
             <tbody>

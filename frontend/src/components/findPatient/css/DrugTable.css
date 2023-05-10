@@ -7,6 +7,7 @@
 .drug-table-container tr {
     display: flex;
     justify-content: center;
+    border: 1px solid #000;
 }
 
 .drug-table-header {
@@ -20,6 +21,10 @@
 
 .patient-drug-list:nth-child(even) {
     background-color: #ffffff51;
+}
+
+.patient-drug-list td {
+    padding: 7px;
 }
 
 .patient-drug-list {

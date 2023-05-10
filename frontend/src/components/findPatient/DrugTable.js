@@ -1,12 +1,13 @@
 import './css/DrugTable.css';
 
 const DrugTable = ({ drugArray }) => {
-    console.log(drugArray);
+
+
     return (
         <table className='drug-table-container'>
             <tbody>
                 <tr className='drug-table-header'>
-                    <th>DRUGS PRESCRIBED</th>
+                    <th>DRUG</th>
                 </tr>
 
 

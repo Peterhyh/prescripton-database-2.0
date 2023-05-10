@@ -12,7 +12,7 @@ const FindPatientPage = () => {
     const [patientFirstName, setPatientFirstName] = useState();
     const [patientLastName, setPatientLastName] = useState();
 
-    const [drugArray, setDrugArray] = useState();
+    const [drugArray, setDrugArray] = useState([]);
 
 
     useEffect(() => {
@@ -32,14 +32,15 @@ const FindPatientPage = () => {
             }
         )
             .then(response => {
+
                 const responseArray = response.data;
-                const patientDrugList = responseArray.map(data => {
+                const drugList = responseArray.map(data => {
                     return data.drug;
-                });
-                setDrugArray(patientDrugList);
+                })
+                setDrugArray(drugList);
             })
             .catch(err => console.log(err));
-    }, [patientFirstName]);
+    }, [selectedId]);
 
 
     return (
