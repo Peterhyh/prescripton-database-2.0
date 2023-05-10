@@ -21,7 +21,7 @@ const FindPatientPage = () => {
             .catch(err => console.log(err));
     }, [query]);
 
-    const handleSelection = () => {
+    useEffect(() => {
         axios.post(
             'http://localhost:3001/newRx/data',
             JSON.stringify({ patientId: selectedId }),
@@ -30,10 +30,14 @@ const FindPatientPage = () => {
             }
         )
             .then(response => {
-                console.log(response);
+                const responseArray = response.data;
+                const newArray = responseArray.map(data => {
+                    return data.drug;
+                })
+                console.log(newArray);
             })
             .catch(err => console.log(err));
-    };
+    }, [patientFirstName]);
 
 
     return (
@@ -51,7 +55,6 @@ const FindPatientPage = () => {
                         setSelectedId={setSelectedId}
                         setPatientFirstName={setPatientFirstName}
                         setPatientLastName={setPatientLastName}
-                        handleSelection={handleSelection}
                     />
 
                 </div>

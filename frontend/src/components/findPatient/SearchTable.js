@@ -1,4 +1,4 @@
-const SearchTable = ({ value, query, setSelectedId, setPatientLastName, setPatientFirstName, handleSelection }) => {
+const SearchTable = ({ value, query, setSelectedId, setPatientLastName, setPatientFirstName }) => {
 
     const results = value.length
 
@@ -22,7 +22,6 @@ const SearchTable = ({ value, query, setSelectedId, setPatientLastName, setPatie
                                 setSelectedId(patient._id);
                                 setPatientLastName(patient.firstName);
                                 setPatientFirstName(patient.lastName);
-                                handleSelection();
                             }}
                         >
                             <td>{`${patient.lastName}, ${patient.firstName}`}</td>

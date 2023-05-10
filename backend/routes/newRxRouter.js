@@ -41,9 +41,11 @@ newRxRouter.route('/')
 
 newRxRouter.route('/data')
     .post((req, res, next) => {
-        NewRx.find({ patientId: req.body.patientId })
+        NewRx.find()
             .then(data => {
-                console.log(data);
+                data.filter(data => {
+                    return data.patientId == req.body.patientId;
+                })
                 res.json(data);
             })
     })
