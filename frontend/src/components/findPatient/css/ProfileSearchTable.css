@@ -1,0 +1,40 @@
+.profile-search-results-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 50px 0px;
+    border-spacing: 15px;
+    color: #444;
+}
+
+.profile-search-results-container tr {
+    margin-bottom: 20px;
+}
+
+.profile-search-results-container th {
+    width: 250px;
+    text-align: left;
+    font-size: 20px;
+    background-color: #01314C;
+    color: #CFDDD1;
+    padding: 7px;
+}
+
+.profile-search-results-container td {
+    width: 250px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 7px;
+}
+
+.profile-search-result-row {
+    border: 1px solid #000;
+}
+
+.profile-search-result-row:nth-child(even) {
+    background-color: #ffffff36;
+}
+
+.profile-search-result-row:hover {
+    background-color: #17382b76;
+}

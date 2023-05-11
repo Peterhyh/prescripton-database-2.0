@@ -52,6 +52,7 @@
 
 .searchbar-row-middle input {
     background-color: #CFDDD1;
+    outline: none;
 }
 
 .searchbar-row-bottom {

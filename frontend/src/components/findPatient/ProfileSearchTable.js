@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import './css/ProfileSearchTable.css';
 
 const ProfileSearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirstName, setPatientAddress, setPatientDob, handleTabState }) => {
 
@@ -22,10 +23,10 @@ const ProfileSearchTable = ({ query, setSelectedId, setPatientLastName, setPatie
     };
 
     return (
-        <table className={query ? 'new-rx-search-results-container' : 'hide'}>
+        <table className={query ? 'profile-search-results-container' : 'hide'}>
             <tbody>
                 <p className={patientQueriedList.length === 0 ? '' : 'hide'}>No results</p>
-                <tr className={patientQueriedList.length >= 1 ? 'new-rx-search-results-header' : 'hide'}>
+                <tr className={patientQueriedList.length >= 1 ? '' : 'hide'}>
                     <th>Name</th>
                     <th>Date of Birth</th>
                     <th>Address</th>
@@ -36,7 +37,7 @@ const ProfileSearchTable = ({ query, setSelectedId, setPatientLastName, setPatie
                     return (
                         <tr
                             key={patient._id}
-                            className='newrx-search-results'
+                            className='profile-search-result-row'
                             onClick={() => {
                                 setSelectedId(patient._id);
                                 setPatientLastName(patient.firstName);
@@ -48,7 +49,7 @@ const ProfileSearchTable = ({ query, setSelectedId, setPatientLastName, setPatie
                         >
                             <td>{`${patient.lastName}, ${patient.firstName}`}</td>
                             <td>{`${patient.dateOfBirthMonth}/${patient.dateOfBirthDay}/${patient.dateOfBirthYear}`}</td>
-                            <td className='newrx-search-results-address'>{`${patient.street}, ${patient.city} ${patient.state}, ${patient.zip} `}</td>
+                            <td>{`${patient.street}, ${patient.city} ${patient.state}, ${patient.zip} `}</td>
                         </tr>
                     )
                 })}

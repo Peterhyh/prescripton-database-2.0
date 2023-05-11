@@ -9,7 +9,7 @@ const SearchTable = ({ value, query, setSelectedLastName, setSelectedFirstName, 
         <table className={query ? 'new-rx-search-results-container' : 'hide'}>
             <tbody>
                 <p className={results === 0 ? '' : 'hide'}>No results</p>
-                <tr className={results >= 1 ? 'new-rx-search-results-header' : 'hide'}>
+                <tr className={results >= 1 ? '' : 'hide'}>
                     <th>Name</th>
                     <th>Date of Birth</th>
                     <th>Address</th>
@@ -20,7 +20,7 @@ const SearchTable = ({ value, query, setSelectedLastName, setSelectedFirstName, 
                     return (
                         <tr
                             key={patient._id}
-                            className='newrx-search-results'
+                            className='newRx-search-result-row'
                             onClick={() => {
                                 setSelectedLastName(patient.firstName);
                                 setSelectedFirstName(patient.lastName);
@@ -29,7 +29,7 @@ const SearchTable = ({ value, query, setSelectedLastName, setSelectedFirstName, 
                         >
                             <td>{`${patient.lastName}, ${patient.firstName}`}</td>
                             <td>{`${patient.dateOfBirthMonth}/${patient.dateOfBirthDay}/${patient.dateOfBirthYear}`}</td>
-                            <td className='newrx-search-results-address'>{`${patient.street}, ${patient.city} ${patient.state}, ${patient.zip} `}</td>
+                            <td>{`${patient.street}, ${patient.city} ${patient.state}, ${patient.zip} `}</td>
                         </tr>
                     )
                 })}

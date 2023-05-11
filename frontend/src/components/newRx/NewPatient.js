@@ -22,7 +22,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
             zip: ''
         },
         onSubmit: (values) => {
-            axios.post('http://localhost:3001/newPatient', {
+            axios.post('http://18.212.66.103:8000/newPatient', {
                 firstName: values.firstName.toUpperCase(),
                 lastName: values.lastName.toUpperCase(),
                 dateOfBirthMonth: values.dateOfBirthMonth,
