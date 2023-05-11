@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
 
-const SearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirstName, setPatientAddress, setPatientDob }) => {
+const ProfileSearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirstName, setPatientAddress, setPatientDob, handleTabState }) => {
 
 
     const patientList = useSelector(state => state.patientList.list);
-    const results = patientList.length
 
     const search = (patientList) => {
         return patientList.filter(patient => patient.lastName.toLowerCase().includes(query))
@@ -25,8 +24,8 @@ const SearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirst
     return (
         <table className={query ? 'new-rx-search-results-container' : 'hide'}>
             <tbody>
-                <p className={results === 0 ? '' : 'hide'}>No results</p>
-                <tr className={results >= 1 ? 'new-rx-search-results-header' : 'hide'}>
+                <p className={patientQueriedList.length === 0 ? '' : 'hide'}>No results</p>
+                <tr className={patientQueriedList.length >= 1 ? 'new-rx-search-results-header' : 'hide'}>
                     <th>Name</th>
                     <th>Date of Birth</th>
                     <th>Address</th>
@@ -44,6 +43,7 @@ const SearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirst
                                 setPatientFirstName(patient.lastName);
                                 handleSetAddress(patient);
                                 handleSetDob(patient);
+                                handleTabState();
                             }}
                         >
                             <td>{`${patient.lastName}, ${patient.firstName}`}</td>
@@ -59,4 +59,4 @@ const SearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirst
     )
 };
 
-export default SearchTable;
+export default ProfileSearchTable;

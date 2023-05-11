@@ -16,6 +16,7 @@
 
     background-color: #CFDDD1;
     outline: none;
+    border: 1px solid #01314C;
     border-radius: 500px;
     padding: 7px;
 }
@@ -31,12 +32,6 @@
 }
 
 
-.selected-patient-info h5 {
-    background-color: #015488;
-    color: #CFDDD1;
-    padding: 7px;
-}
-
 
 
 .profile-container {
@@ -44,4 +39,39 @@
     flex-direction: column;
     background-color: #CFDDD1;
     height: 100vh;
+}
+
+.selected-patient-back-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.selected-patient-back-button-container button {
+    border-radius: 500px;
+    border: none;
+    color: #CFDDD1;
+    background-color: #01314C;
+    padding: 10px;
+    border: 1px solid #01314C;
+}
+
+.selected-patient-back-button-container button:hover {
+    color: #01314C;
+    background-color: #CFDDD1;
+    border: 1px solid #01314C;
+}
+
+.selected-patient-info-header {
+    display: flex;
+    align-items: center;
+    background-color: #015488;
+    color: #CFDDD1;
+    padding: 7px;
+    cursor: pointer;
+}
+
+.selected-patient-info-header img {
+    width: 1rem;
+    height: 1rem;
 }

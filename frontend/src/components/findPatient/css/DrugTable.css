@@ -8,11 +8,7 @@
     border: 1px solid #000;
 }
 
-.drug-table-header {
-    display: flex;
-    background-color: #015488;
-    color: #CFDDD1;
-}
+
 
 .drug-table-header th {
     padding: 7px;
@@ -33,4 +29,36 @@
 
 .patient-drug-list:hover {
     background-color: #17382b76;
+}
+
+.drug-table-header-carot {
+    display: flex;
+    align-items: center;
+    padding: 7px;
+    background-color: #015488;
+    color: #CFDDD1;
+    cursor: pointer;
+}
+
+.drug-table-header-carot img {
+    width: 16px;
+    height: 16px;
+}
+
+.drug-table-prescription-container tr {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.drug-table-header {
+    display: flex;
+    background-color: #01314C;
+    color: #CFDDD1;
+}
+
+.drug-list-no-results {
+    display: flex;
+    justify-content: center;
 }

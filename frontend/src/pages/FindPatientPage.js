@@ -1,8 +1,10 @@
-import SearchTable from '../components/findPatient/SearchTable';
+import ProfileSearchTable from '../components/findPatient/ProfileSearchTable';
 import DrugTable from '../components/findPatient/DrugTable';
 import './css/FindPatient.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import DownArrow from '../app/assets/img/downArrow.svg';
+import RightArrow from '../app/assets/img/rightArrow.svg';
 
 import { useDispatch } from 'react-redux';
 import { addToList } from '../slice/drugListSlice';
@@ -16,6 +18,14 @@ const FindPatientPage = () => {
     const [patientLastName, setPatientLastName] = useState();
     const [patientDob, setPatientDob] = useState();
     const [patientAddress, setPatientAddress] = useState();
+
+    const [showInfo, setShowInfo] = useState(false);
+    const [showDrugList, setShowDrugList] = useState(false);
+
+    const handleTabState = () => {
+        setShowInfo(true);
+        setShowDrugList(false);
+    };
 
     const dispatch = useDispatch();
 
@@ -39,7 +49,6 @@ const FindPatientPage = () => {
             }
         )
             .then(response => {
-
                 const responseArray = response.data;
                 const drugList = responseArray.map(data => {
                     return data.drug;
@@ -59,7 +68,8 @@ const FindPatientPage = () => {
                         type='text'
                         onChange={(e) => setQuery(e.target.value)}
                     />
-                    <SearchTable
+                    <ProfileSearchTable
+                        handleTabState={handleTabState}
                         query={query}
                         setSelectedId={setSelectedId}
                         setPatientFirstName={setPatientFirstName}
@@ -71,16 +81,29 @@ const FindPatientPage = () => {
                 </div>
             </div>
             <div className={selectedId ? 'profile-container' : 'hide'}>
+                <div className='selected-patient-back-button-container'>
+                    <button onClick={() => setSelectedId(false)}>Back to Search</button>
+                </div>
                 <div className='selected-patient-header'>
                     <h1>{`${patientLastName}, ${patientFirstName}`}</h1>
                 </div>
+
                 <div className='selected-patient-info'>
-                    <h5>INFO</h5>
-                    <p>DATE OF BIRTH:{'  '}{patientDob}</p>
-                    <p>ADDRESS:{'  '}{patientAddress}</p>
+                    <div className='selected-patient-info-header' onClick={() => setShowInfo(!showInfo)}>
+                        <img className={showInfo ? 'hide' : ''} src={RightArrow} alt='' />
+                        <img className={showInfo ? '' : 'hide'} src={DownArrow} alt='' />
+                        <h5>INFO</h5>
+                    </div>
+                    <div className={showInfo ? '' : 'hide'}>
+                        <p>DATE OF BIRTH:{'  '}{patientDob}</p>
+                        <p>ADDRESS:{'  '}{patientAddress}</p>
+                    </div>
                 </div>
 
-                <DrugTable />
+                <DrugTable
+                    setShowDrugList={setShowDrugList}
+                    showDrugList={showDrugList}
+                />
             </div>
         </>
     )
