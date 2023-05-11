@@ -51,7 +51,13 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
                     </div>
                     <div className='searchbar-row-bottom'>
 
-                        <SearchTable value={search(value)} query={query} setSelectedFirstName={setSelectedFirstName} setSelectedLastName={setSelectedLastName} setSelectedId={setSelectedId} />
+                        <SearchTable
+                            value={search(value)}
+                            query={query}
+                            setSelectedFirstName={setSelectedFirstName}
+                            setSelectedLastName={setSelectedLastName}
+                            setSelectedId={setSelectedId}
+                        />
                     </div>
                 </div>
                 <NewPatient

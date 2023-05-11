@@ -1,8 +1,22 @@
-const SearchTable = ({ value, query, setSelectedId, setPatientLastName, setPatientFirstName }) => {
+import { useSelector } from 'react-redux';
 
-    const results = value.length
+const SearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirstName }) => {
 
+
+    const patientList = useSelector(state => state.patientList.list);
+    const results = patientList.length
+    const patientFirstNames = patientList.map((patient, i) => { return patient.firstName });
+
+    const search = (patientFirstNames) => {
+        return patientFirstNames.filter(patient => patient.toLowerCase().includes(query))
+    }
+
+    const value = search(patientFirstNames)
     console.log(value);
+
+
+
+
 
     return (
         <table className={query ? 'new-rx-search-results-container' : 'hide'}>
@@ -15,7 +29,7 @@ const SearchTable = ({ value, query, setSelectedId, setPatientLastName, setPatie
                 </tr>
 
 
-                {value.map((patient) => {
+                {patientList.map((patient) => {
                     return (
                         <tr
                             key={patient._id}

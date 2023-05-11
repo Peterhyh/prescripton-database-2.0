@@ -6,17 +6,14 @@ import axios from 'axios';
 
 import { useDispatch } from 'react-redux';
 import { addToList } from '../slice/drugListSlice';
+import { addToPatientList } from '../slice/patientSlice';
 
 const FindPatientPage = () => {
     const [query, setQuery] = useState();
-    const [value, setValue] = useState([]);
     const [selectedId, setSelectedId] = useState();
 
     const [patientFirstName, setPatientFirstName] = useState();
     const [patientLastName, setPatientLastName] = useState();
-
-
-
 
     const dispatch = useDispatch();
 
@@ -24,7 +21,7 @@ const FindPatientPage = () => {
     useEffect(() => {
         axios.get('http://localhost:3001/newPatient')
             .then(json => {
-                setValue(json.data);
+                dispatch(addToPatientList(json.data));
             })
             .catch(err => console.log(err));
     }, [query]);
@@ -62,7 +59,6 @@ const FindPatientPage = () => {
                     />
                     <SearchTable
                         query={query}
-                        value={value}
                         setSelectedId={setSelectedId}
                         setPatientFirstName={setPatientFirstName}
                         setPatientLastName={setPatientLastName}
