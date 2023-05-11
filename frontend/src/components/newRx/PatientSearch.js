@@ -11,7 +11,7 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
     const [openSelectPatient, setSelectPatient] = useState(true);
 
     const search = (value) => {
-        return value.filter(patient => patient.firstName.toLowerCase().includes(query) || patient.lastName.toLowerCase().includes(query));
+        return value.filter(patient => patient.lastName.toLowerCase().includes(query));
     }
 
     const toggleNewPatient = () => {

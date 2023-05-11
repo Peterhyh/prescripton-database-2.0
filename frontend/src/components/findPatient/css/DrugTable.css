@@ -1,23 +1,23 @@
 .drug-table-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-.drug-table-container tr {
+.patient-drug-list {
     display: flex;
-    justify-content: center;
     border: 1px solid #000;
 }
 
 .drug-table-header {
-    background-color: #01314C;
+    display: flex;
+    background-color: #015488;
     color: #CFDDD1;
 }
 
 .drug-table-header th {
     padding: 7px;
 }
+
 
 .patient-drug-list:nth-child(even) {
     background-color: #ffffff51;

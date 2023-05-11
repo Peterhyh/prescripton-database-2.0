@@ -13,7 +13,7 @@ const DrugTable = () => {
         <table className='drug-table-container'>
             <tbody>
                 <tr className='drug-table-header'>
-                    <th>DRUG</th>
+                    <th><h5>DRUG</h5></th>
                 </tr>
 
 

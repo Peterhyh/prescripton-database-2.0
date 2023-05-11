@@ -13,13 +13,29 @@
 }
 
 .find-patient-searchbar input {
+
     background-color: #CFDDD1;
     outline: none;
     border-radius: 500px;
     padding: 7px;
 }
 
+.selected-patient-header {
+    background-color: #01314C;
+    color: #CFDDD1;
+    margin-top: 30px;
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
+
+.selected-patient-info h5 {
+    background-color: #015488;
+    color: #CFDDD1;
+    padding: 7px;
+}
 
 
 

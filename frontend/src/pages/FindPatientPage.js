@@ -14,6 +14,8 @@ const FindPatientPage = () => {
 
     const [patientFirstName, setPatientFirstName] = useState();
     const [patientLastName, setPatientLastName] = useState();
+    const [patientDob, setPatientDob] = useState();
+    const [patientAddress, setPatientAddress] = useState();
 
     const dispatch = useDispatch();
 
@@ -62,12 +64,22 @@ const FindPatientPage = () => {
                         setSelectedId={setSelectedId}
                         setPatientFirstName={setPatientFirstName}
                         setPatientLastName={setPatientLastName}
+                        setPatientDob={setPatientDob}
+                        setPatientAddress={setPatientAddress}
                     />
 
                 </div>
             </div>
             <div className={selectedId ? 'profile-container' : 'hide'}>
-                <h1>{`${patientLastName}, ${patientFirstName}`}</h1>
+                <div className='selected-patient-header'>
+                    <h1>{`${patientLastName}, ${patientFirstName}`}</h1>
+                </div>
+                <div className='selected-patient-info'>
+                    <h5>INFO</h5>
+                    <p>DATE OF BIRTH:{'  '}{patientDob}</p>
+                    <p>ADDRESS:{'  '}{patientAddress}</p>
+                </div>
+
                 <DrugTable />
             </div>
         </>

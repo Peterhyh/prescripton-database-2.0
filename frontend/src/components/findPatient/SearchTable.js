@@ -1,22 +1,26 @@
 import { useSelector } from 'react-redux';
 
-const SearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirstName }) => {
+const SearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirstName, setPatientAddress, setPatientDob }) => {
 
 
     const patientList = useSelector(state => state.patientList.list);
     const results = patientList.length
-    const patientFirstNames = patientList.map((patient, i) => { return patient.firstName });
 
-    const search = (patientFirstNames) => {
-        return patientFirstNames.filter(patient => patient.toLowerCase().includes(query))
-    }
+    const search = (patientList) => {
+        return patientList.filter(patient => patient.lastName.toLowerCase().includes(query))
+    };
 
-    const value = search(patientFirstNames)
-    console.log(value);
+    const patientQueriedList = search(patientList);
 
+    const handleSetAddress = (patient) => {
+        const patientAddress = `${patient.street} ${patient.city}, ${patient.state} ${patient.zip}`;
+        setPatientAddress(patientAddress);
+    };
 
-
-
+    const handleSetDob = (patient) => {
+        const patientDob = `${patient.dateOfBirthMonth} / ${patient.dateOfBirthDay} / ${patient.dateOfBirthYear}`;
+        setPatientDob(patientDob);
+    };
 
     return (
         <table className={query ? 'new-rx-search-results-container' : 'hide'}>
@@ -29,7 +33,7 @@ const SearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirst
                 </tr>
 
 
-                {patientList.map((patient) => {
+                {patientQueriedList.map((patient) => {
                     return (
                         <tr
                             key={patient._id}
@@ -38,6 +42,8 @@ const SearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirst
                                 setSelectedId(patient._id);
                                 setPatientLastName(patient.firstName);
                                 setPatientFirstName(patient.lastName);
+                                handleSetAddress(patient);
+                                handleSetDob(patient);
                             }}
                         >
                             <td>{`${patient.lastName}, ${patient.firstName}`}</td>
