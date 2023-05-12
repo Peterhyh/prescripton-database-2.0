@@ -1,4 +1,4 @@
-import { Col, Row, Alert } from 'reactstrap';
+import { Alert } from 'reactstrap';
 import { useFormik } from 'formik';
 import SelectedPatient from './SelectedPatient';
 import axios from 'axios';
@@ -15,7 +15,7 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
 
             return () => clearTimeout(successTimer);
         }, 5000)
-    })
+    }, [openSuccess])
 
 
 
@@ -48,7 +48,6 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
                 .catch(error => {
                     console.log(error);
                 })
-
         }
     });
 
