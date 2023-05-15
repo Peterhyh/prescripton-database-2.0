@@ -7,7 +7,6 @@ import './css/Register.css';
 const USERNAME_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-
 const RegisterPage = () => {
 
     const userRef = useRef();
@@ -21,15 +20,12 @@ const RegisterPage = () => {
 
     const [username, setUsername] = useState('');
     const [validUsername, setValidUsername] = useState(false);
-    const [usernameFocus, setUsernameFocus] = useState(false);
 
     const [password, setPassword] = useState('');
     const [validPassword, setValidPassword] = useState(false);
-    const [passwordFocus, setPasswordFocus] = useState(false);
 
     const [matchPassword, setMatchPassword] = useState('');
     const [validMatch, setValidMatch] = useState(false);
-    const [matchFocus, setMatchFocus] = useState(false);
 
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
@@ -97,7 +93,6 @@ const RegisterPage = () => {
         }
     }
 
-
     return (
         <>
             {success ? (
@@ -108,6 +103,7 @@ const RegisterPage = () => {
                     </div>
                 </div>
             ) : (
+
                 <div className='register-container'>
                     <div className='register-back-button-row'>
                         <Link className='register-back-button' to='/login' >Back</Link>
@@ -120,102 +116,71 @@ const RegisterPage = () => {
                     <div className='register-card'>
 
                         <h1>REGISTER</h1>
-                        <form className='register-form' onSubmit={handleSubmit}>
-                            <div>
-                                <span className={validUsername ? 'valid' : 'hide'}>
-                                    Valid
-                                </span>
-                                <span className={validUsername || !username ? 'hide' : 'invalid'}>
-                                    Invalid
-                                </span>
+                        <div className='register-form-content'>
+                            <form className='register-form' onSubmit={handleSubmit}>
+                                <input
+                                    placeholder='Username'
+                                    type='text'
+                                    id='username'
+                                    ref={userRef}
+                                    autoComplete='off'
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    required
+                                />
+
+                                <input
+                                    placeholder='Password'
+                                    type='password'
+                                    id='password'
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
+
+                                <input
+                                    placeholder='Confirm Password'
+                                    type='password'
+                                    id='confirmPassword'
+                                    onChange={(e) => setMatchPassword(e.target.value)}
+                                    required
+                                />
+
+                                <input
+                                    placeholder='First Name'
+                                    type='text'
+                                    id='firstName'
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                />
+
+                                <input
+                                    placeholder='Last Name'
+                                    type='text'
+                                    id='lastName'
+                                    onChange={(e) => setLastName(e.target.value)}
+                                />
+
+                                <input
+                                    placeholder='E-mail'
+                                    type='text'
+                                    id='email'
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                                <div className='register-button-container'>
+                                    <button className='register-button' disabled={!validUsername || !validPassword || !validMatch ? true : false} onClick={handleSubmit} >
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </form>
+                            <div className='registerRequirementsContainer'>
+                                <p className='instructions' id='uidnote'>
+                                    •Username must contain 4 to 24 characters<br />
+                                    •Username must begin with a letter<br />
+                                    •Password contain 8 to 24 characters<br />
+                                    •Password must contain a uppercase letter, a lowercase letter, a number, and <br />
+                                    a special character.<br />
+                                    •Both passwords must match
+                                </p>
                             </div>
-                            <input
-                                placeholder='Username'
-                                type='text'
-                                id='username'
-                                ref={userRef}
-                                autoComplete='off'
-                                onChange={(e) => setUsername(e.target.value)}
-                                onFocus={() => setUsernameFocus(true)}
-                                onBlur={() => setUsernameFocus(false)}
-                                required
-                            />
-                            <p className={usernameFocus && username && !validUsername ? 'instructions' : 'hide'} id='uidnote'>
-                                •Must contain 4 to 24 characters<br />
-                                •Must begin with a letter<br />
-                            </p>
-
-                            <div>
-                                <span className={validPassword ? 'valid' : 'hide'}>
-                                    Valid
-                                </span>
-                                <span className={validPassword || !password ? 'hide' : 'invalid'}>
-                                    Invalid
-                                </span>
-                            </div>
-                            <input
-                                placeholder='Password'
-                                type='password'
-                                id='password'
-                                onChange={(e) => setPassword(e.target.value)}
-                                onFocus={() => setPasswordFocus(true)}
-                                onBlur={() => setPasswordFocus(false)}
-                                required
-                            />
-                            <p className={passwordFocus && !validPassword ? 'instructions' : 'hide'} id='passwordnote'>
-                                •Must contain 8 to 24 characters<br />
-                                •Must contain a uppercase letter, a lowercase letter, a number, and <br />
-                                a special character.<br />
-                            </p>
-
-
-                            <div>
-                                <span className={validMatch && matchPassword ? 'valid' : 'hide'}>
-                                    Valid
-                                </span>
-                                <span className={validMatch || !matchPassword ? 'hide' : 'invalid'}>
-                                    Invalid
-                                </span>
-                            </div>
-                            <input
-                                placeholder='Confirm Password'
-                                type='password'
-                                id='confirmPassword'
-                                onChange={(e) => setMatchPassword(e.target.value)}
-                                onFocus={() => setMatchFocus(true)}
-                                onBlur={() => setMatchFocus(false)}
-                                required
-                            />
-                            <p className={matchFocus && !validMatch ? 'instructions' : 'hide'} id='confirmnote'>
-                                •Password must match
-                            </p>
-
-                            <input
-                                placeholder='First Name'
-                                type='text'
-                                id='firstName'
-                                onChange={(e) => setFirstName(e.target.value)}
-                            />
-
-                            <input
-                                placeholder='Last Name'
-                                type='text'
-                                id='lastName'
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
-
-                            <input
-                                placeholder='E-mail'
-                                type='text'
-                                id='email'
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <div className='register-button-container'>
-                                <button className='register-button' disabled={!validUsername || !validPassword || !validMatch ? true : false} onClick={handleSubmit} >
-                                    Sign Up
-                                </button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div >
             )};

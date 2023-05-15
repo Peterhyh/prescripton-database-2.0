@@ -100,7 +100,7 @@ const LoginPage = () => {
 
                     <div className='login-register-section-container'>
                         <p>Don't have an account?</p>
-                        <Link className='register-link' to='/register'>Click Here</Link>
+                        <Link className='register-link' to='/register'>Create An Account</Link>
                     </div>
 
                 </form>

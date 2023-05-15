@@ -154,7 +154,13 @@
     padding: 10px;
 }
 
+.register-form-content {
+    display: flex;
+    justify-content: center;
+}
+
 .instructions {
+    height: 70%;
     color: white;
     background-color: rgba(0, 0, 0, 0.2);
     width: 500px;
