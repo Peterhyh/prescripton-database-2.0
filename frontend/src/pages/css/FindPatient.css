@@ -12,6 +12,10 @@
     margin-top: 30px;
 }
 
+.find-patient-searchbar label {
+    font-weight: bold;
+}
+
 .find-patient-searchbar input {
     background-color: #CFDDD1;
     outline: none;

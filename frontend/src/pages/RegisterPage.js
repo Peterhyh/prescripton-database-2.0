@@ -65,7 +65,7 @@ const RegisterPage = () => {
 
         try {
             const response = await axios.post(
-                'http://18.212.66.103:8000/users/signup',
+                'http://localhost:3001/users/signup',
                 JSON.stringify({
                     username: username.toLowerCase(),
                     password: password,

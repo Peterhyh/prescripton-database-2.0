@@ -31,7 +31,7 @@ const FindPatientPage = () => {
 
 
     useEffect(() => {
-        axios.get('http://18.212.66.103:8000/newPatient')
+        axios.get('http://localhost:3001/newPatient')
             .then(json => {
                 dispatch(addToPatientList(json.data));
             })
@@ -42,7 +42,7 @@ const FindPatientPage = () => {
 
     useEffect(() => {
         axios.post(
-            'http://18.212.66.103:8000/newRx/data',
+            'http://localhost:3001/newRx/data',
             JSON.stringify({ patientId: selectedId }),
             {
                 headers: { 'Content-Type': 'application/json' },
@@ -63,8 +63,10 @@ const FindPatientPage = () => {
         <>
             <div className={selectedId ? 'hide' : 'find-patient-container'}>
                 <div className='find-patient-searchbar'>
+                    <label htmlFor='patientName'>{'Patient Name (Last, First):'}</label>
                     <input
-                        placeholder='Last, First'
+                        placeholder='example: "Smoe, Joe"'
+                        id='patientName'
                         type='text'
                         onChange={(e) => setQuery(e.target.value)}
                     />

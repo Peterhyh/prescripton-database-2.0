@@ -48,6 +48,7 @@
 
 .searchbar-row-middle {
     display: flex;
+    align-items: center;
 }
 
 .searchbar-row-middle input {
@@ -64,6 +65,7 @@
     border-radius: 500px;
     padding: 7px;
     border: 1px solid #18382B;
+    width: 250px;
 }
 
 .patientsearch-register-button {
@@ -82,4 +84,15 @@
     border: 1px solid #01314C;
     color: #CFDDD1;
     background-color: #3385C4;
+}
+
+.searchbarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.searchbarContainer label {
+    font-weight: bold;
 }

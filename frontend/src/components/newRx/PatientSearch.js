@@ -42,11 +42,15 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
                         <h1>Select Patient:</h1>
                     </div>
                     <div className='searchbar-row-middle'>
-                        <input
-                            placeholder='Last, First'
-                            type='text'
-                            onChange={(e) => setQuery(e.target.value)}
-                        />
+                        <div className='searchbarContainer'>
+                            <label htmlFor='patientName'>{'Patient Name (Last, First):'}</label>
+                            <input
+                                placeholder='example: "Smoe, Joe"'
+                                id='patientName'
+                                type='text'
+                                onChange={(e) => setQuery(e.target.value)}
+                            />
+                        </div>
                         <button className='patientsearch-register-button' onClick={() => toggleNewPatient()}>Register Patient</button>
                     </div>
                     <div className='searchbar-row-bottom'>
