@@ -13,7 +13,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     overflow: hidden;
     height: 100vh;
 }
@@ -70,6 +69,7 @@
     border: none;
     margin-top: 30px;
     width: 100px;
+    border: 1px solid #2A3746;
 }
 
 .register-button:hover {
@@ -79,9 +79,9 @@
 }
 
 .register-back-button-row {
-    display: flex;
-    margin-left: 30px;
-    width: 100vw;
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .register-back-button {
@@ -159,12 +159,48 @@
     justify-content: center;
 }
 
-.instructions {
+.register-form-content label {
+    color: #fff;
+    font-weight: bold;
+}
+
+.requirementsContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     height: 70%;
     color: white;
     background-color: rgba(0, 0, 0, 0.2);
     width: 500px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-top: 10px;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    padding: 30px;
+}
+
+.greenCheck {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 3px;
+}
+
+.redX {
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 3px;
+}
+
+.registerRequirements {
+    margin-top: 30px;
+}
+
+.registerRequirementsContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
 }

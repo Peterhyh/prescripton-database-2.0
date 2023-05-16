@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import GreenCheck from '../app/assets/img/greenCheck.svg';
+import RedX from '../app/assets/img/redX.svg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './css/Register.css';
@@ -105,19 +107,21 @@ const RegisterPage = () => {
             ) : (
 
                 <div className='register-container'>
+
                     <div className='register-back-button-row'>
                         <Link className='register-back-button' to='/login' >Back</Link>
                     </div>
-
                     <p className={errMsg ? 'register-error-message' : 'hide'} ref={errRef} aria-live='assertive'>
                         {errMsg}
                     </p>
+
 
                     <div className='register-card'>
 
                         <h1>REGISTER</h1>
                         <div className='register-form-content'>
                             <form className='register-form' onSubmit={handleSubmit}>
+                                <label htmlFor='username'>Username:</label>
                                 <input
                                     placeholder='Username'
                                     type='text'
@@ -127,7 +131,7 @@ const RegisterPage = () => {
                                     onChange={(e) => setUsername(e.target.value)}
                                     required
                                 />
-
+                                <label htmlFor='password'>Password:</label>
                                 <input
                                     placeholder='Password'
                                     type='password'
@@ -135,7 +139,7 @@ const RegisterPage = () => {
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
                                 />
-
+                                <label htmlFor='confirmPassword'>Confirm Password:</label>
                                 <input
                                     placeholder='Confirm Password'
                                     type='password'
@@ -143,21 +147,21 @@ const RegisterPage = () => {
                                     onChange={(e) => setMatchPassword(e.target.value)}
                                     required
                                 />
-
+                                <label htmlFor='firstName'>First Name:</label>
                                 <input
                                     placeholder='First Name'
                                     type='text'
                                     id='firstName'
                                     onChange={(e) => setFirstName(e.target.value)}
                                 />
-
+                                <label htmlFor='lastName'>Last Name:</label>
                                 <input
                                     placeholder='Last Name'
                                     type='text'
                                     id='lastName'
                                     onChange={(e) => setLastName(e.target.value)}
                                 />
-
+                                <label htmlFor='email'>E-mail:</label>
                                 <input
                                     placeholder='E-mail'
                                     type='text'
@@ -170,16 +174,28 @@ const RegisterPage = () => {
                                     </button>
                                 </div>
                             </form>
-                            <div className='registerRequirementsContainer'>
-                                <p className='instructions' id='uidnote'>
-                                    •Username must contain 4 to 24 characters<br />
-                                    •Username must begin with a letter<br />
-                                    •Password contain 8 to 24 characters<br />
-                                    •Password must contain a uppercase letter, a lowercase letter, a number, and <br />
-                                    a special character.<br />
-                                    •Both passwords must match
-                                </p>
+                        </div>
+                    </div>
+                    <div className='registerRequirementsContainer'>
+
+                        <div className='requirementsContainer'>
+
+                            <h3>Requirements:</h3>
+                            <div className='registerRequirements'>
+                                {validUsername
+                                    ? <img className='greenCheck' src={GreenCheck} alt='' />
+                                    : <img className='redX' src={RedX} alt='' />}
+                                Username must begin with a letter and contain 4 to 24 characters<br /><br />
+                                {validPassword
+                                    ? <img className='greenCheck' src={GreenCheck} alt='' />
+                                    : <img className='redX' src={RedX} alt='' />}
+                                Password contain 8 to 24 characters, a uppercase letter, a lowercase letter, a number, and a special character.<br /><br />
+                                {validMatch && matchPassword.length > 0
+                                    ? <img className='greenCheck' src={GreenCheck} alt='' />
+                                    : <img className='redX' src={RedX} alt='' />}
+                                Both passwords must match
                             </div>
+
                         </div>
                     </div>
                 </div >

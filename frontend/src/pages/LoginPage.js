@@ -75,6 +75,7 @@ const LoginPage = () => {
 
                 <form className='login-form' onSubmit={handleSubmit}>
                     <h1>LOGIN</h1>
+                    <label htmlFor='username'>Username:</label>
                     <input
                         placeholder='Username'
                         type='text'
@@ -85,7 +86,7 @@ const LoginPage = () => {
                         onChange={(e) => setUsername(e.target.value)}
                         required
                     />
-
+                    <label htmlFor='password'>Password:</label>
                     <input
                         placeholder='Password'
                         type='password'
@@ -100,7 +101,7 @@ const LoginPage = () => {
 
                     <div className='login-register-section-container'>
                         <p>Don't have an account?</p>
-                        <Link className='register-link' to='/register'>Create An Account</Link>
+                        <Link className='register-link' to='/register'>Create an Account</Link>
                     </div>
 
                 </form>

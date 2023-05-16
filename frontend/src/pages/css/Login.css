@@ -50,12 +50,8 @@
 }
 
 .login-form label {
-    display: flex;
+    font-weight: bold;
     color: #fff;
-    width: 100px;
-    padding: 10px;
-    border-radius: 500px;
-    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .login-form input {
@@ -85,6 +81,7 @@
     border-radius: 500px;
     border: none;
     width: 100px;
+    border: 1px solid #2A3746;
 }
 
 .login-button-container button:hover {
