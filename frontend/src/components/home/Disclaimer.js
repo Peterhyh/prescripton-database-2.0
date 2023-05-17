@@ -6,15 +6,25 @@ const Disclaimer = () => {
             <div className='row'>
                 <div className='title-col'>
                     <div className='title-container'>
-                        <h1>Thank you for visiting Peter Huynh's Herb-A-Pharmacy Prescription Database demo!</h1>
+                        <h1>Herb-A-Pharmacy Prescription Database Demo</h1>
                     </div>
                 </div>
             </div>
-            <div className='description-row'>
-                <div className='description-col'>
-                    <div className='description-container'>
-                        <h2>Disclaimer:</h2>
-                        <p>{"All of the patients in this demo should be fictional. Please do not use real patient names/information when testing this demo. Any information entered in this demo can be viewed by anyone."}</p>
+            <div className='demoInstructionsContainer'>
+                <div className='demoInstructions'>
+                    <h1>Instructions:</h1>
+                    <ul>
+                        <li>The goal of this application is to input and save prescription data to the corresponding patient's profile for future reference.</li>
+                        <li>When you are ready, click "New Rx" on the navigation bar above.</li>
+                    </ul>
+                </div>
+                <div className='description-container'>
+                    <div className='demoDisclaimer'>
+                        <h1>Disclaimer:</h1>
+                        <ul>
+                            <li>All of the patients in this demo should be fictional. Please do not use real patient names/information when testing this demo.<br />
+                                Any information entered in this demo can be viewed by anyone.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
