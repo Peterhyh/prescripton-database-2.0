@@ -12,9 +12,14 @@
 }
 
 .newrx-container {
-    height: 100vh;
+    height: 100%;
     background-color: #CFDDD1;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.newRxInstructionContainer {
+    margin-bottom: 200px;
+    margin-top: 200px;
 }

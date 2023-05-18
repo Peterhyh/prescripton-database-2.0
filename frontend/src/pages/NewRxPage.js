@@ -95,17 +95,16 @@ const NewRxPage = () => {
                 />
             </div>
 
-            <div >
+            <div className={openUploadRx || openSelectPatient || openDataEntry ? 'hide' : 'newRxInstructionContainer'}>
                 <div className='instructionContainer'>
                     <div>
-                        <h1>The Job:</h1>
+                        <h1>About the Job:</h1>
                         <p>
                             As a pharmacy technician, one of the many things we are responsible for is to receive and<br />
                             transcribe prescriptions. Prescriptions comes to us in many different forms depending on <br />
-                            state regulations and howthe prescriber chooses to prescribe drugs for their patients.<br />
-                            Prescriptions can be a physical paper hardcopy given to the patient, faxed, or sent <br />
-                            electronically known as "eScript". To begin transcribing a prescription, proceed to<br />
-                            "Step 1: Upload Rx" by clicking on it.
+                            state regulations and the prescriber's method of prescribing drugs to their patients.<br />
+                            Prescriptions can be a paper hardcopy, faxed, or sent electronically known as "eScript".<br />
+                            To begin transcribing a mock prescription, proceed to "Upload Rx" by clicking on it.<br />
                         </p>
                     </div>
                 </div>

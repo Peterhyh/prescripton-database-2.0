@@ -10,7 +10,6 @@
 .patientsearch-left {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     border-right: 1px solid #000;
     padding-right: 20px;
@@ -95,4 +94,18 @@
 
 .searchbarContainer label {
     font-weight: bold;
+}
+
+.selectPatientInstruction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 5px solid #01304cc0;
+    border-radius: 20px;
+    background-color: #01304cc0;
+    color: #CFDDD1;
+    padding: 30px;
+    height: 100%;
+    margin: 100px;
 }

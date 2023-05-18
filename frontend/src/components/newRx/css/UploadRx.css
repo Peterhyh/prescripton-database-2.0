@@ -41,3 +41,17 @@
     border: 1px solid #18382B;
     color: #000;
 }
+
+.uploadInstruction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 5px solid #01304cc0;
+    border-radius: 20px;
+    background-color: #01304cc0;
+    color: #CFDDD1;
+    padding: 30px;
+    height: 100%;
+    margin: 30px;
+}

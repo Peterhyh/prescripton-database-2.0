@@ -72,7 +72,37 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
                     setSelectedFirstName={setSelectedFirstName}
                     setSelectedId={setSelectedId}
                 />
+                <div className='selectPatientInstruction'>
+                    <div>
+                        <h1>Step 2:</h1>
+                        <ul>
+                            <li>
+                                Check to see if the patient is already registered in database using the search bar above.<br /><br />
+                            </li>
+                            <li>
+                                Verify the patient's full name, date of birth, and address in search result to see if <br />
+                                it matches the patient's information on the prescription before clicking it. NOTE: Some <br />
+                                patients may have similar names, so the rule of thumb is to always verify the full name<br />
+                                and date of birth first and then verify either the full address or phone number to ensure you<br />
+                                have the correct patient.<br /><br />
+                            </li>
+                            <li>
+                                Once you have found the patient's profile, click on it, and then you will see the selected name<br />
+                                on the bottom left of the screen.
+                            </li>
+                            <li>
+                                Once the patient is selected, you are ready to move onto the final step, data entry. Click "Data<br />
+                                Entry" to proceed.<br /><br />
+                            </li>
+                            <li>
+                                (Optional) If you are unable to find the patient's profile using the search bar above, click the<br />
+                                "Register Patient" button, and register the patient before proceeding to the final step.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </div>
     )
 };
