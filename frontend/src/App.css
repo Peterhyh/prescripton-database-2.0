@@ -173,10 +173,7 @@
   flex-direction: column;
 }
 
-.newrx-container {
-  height: 100vh;
-  background-color: #CFDDD1;
-}
+
 
 .success-alert {
   position: absolute;

@@ -4,6 +4,7 @@ import NewRxButtons from '../components/newRx/NewRxButtons';
 import DataEntry from '../components/newRx/DataEntry';
 import PatientSearch from '../components/newRx/PatientSearch';
 import UploadRx from '../components/newRx/UploadRx';
+import './css/NewRx.css';
 
 
 const NewRxPage = () => {
@@ -92,6 +93,22 @@ const NewRxPage = () => {
                     setSelectedLastName={setSelectedLastName}
                     setSelectedFirstName={setSelectedFirstName}
                 />
+            </div>
+
+            <div >
+                <div className='instructionContainer'>
+                    <div>
+                        <h1>The Job:</h1>
+                        <p>
+                            As a pharmacy technician, one of the many things we are responsible for is to receive and<br />
+                            transcribe prescriptions. Prescriptions comes to us in many different forms depending on <br />
+                            state regulations and howthe prescriber chooses to prescribe drugs for their patients.<br />
+                            Prescriptions can be a physical paper hardcopy given to the patient, faxed, or sent <br />
+                            electronically known as "eScript". To begin transcribing a prescription, proceed to<br />
+                            "Step 1: Upload Rx" by clicking on it.
+                        </p>
+                    </div>
+                </div>
             </div>
 
         </div >
