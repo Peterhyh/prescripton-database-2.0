@@ -1,4 +1,5 @@
 import Disclaimer from "../components/home/Disclaimer";
+import './css/Home.css';
 
 const HomePage = () => {
     return (

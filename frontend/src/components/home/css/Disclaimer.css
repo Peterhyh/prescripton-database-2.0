@@ -4,7 +4,6 @@
     flex-direction: column;
     background-image: linear-gradient(to bottom, #01314C, #00BE9F, #42C6A3);
     height: 650px;
-    margin: 70px;
     border-image: linear-gradient(#01314C, #00BE9F, #42C6A3) 20px;
     border-width: 5px;
     border-style: solid;

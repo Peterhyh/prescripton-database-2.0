@@ -64,7 +64,7 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
                         <img src={uploadedRx} alt='uploaded rx' />
                     </div>
 
-                    <div className={selectedLastName && selectedFirstName ? '' : 'hide'}>
+                    <div className={selectedLastName && selectedFirstName ? 'selectedPatientContainer' : 'hide'}>
                         <SelectedPatient
                             selectedLastName={selectedLastName}
                             selectedFirstName={selectedFirstName}
@@ -143,6 +143,31 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
                         </div>
 
                     </form >
+
+                    <div className='dataEntryInstruction'>
+                        <div>
+                            <h1>Step 3:</h1>
+                            <ul>
+                                <li>
+                                    Here we will enter the prescription drug information and saving it to the patient's profile.<br /><br />
+                                </li>
+                                <li>
+                                    Enter in the Drug name (Amoxicillin 250mg), direction (Take 2 tablets by mouth three times
+                                    daily for 7 days), quanity (#42), refills (0 by default if not specified), and the days supply (7)<br /><br />
+                                </li>
+                                <li>
+                                    Once you have filled out the form completely, you are done with this prescription and ready to
+                                    move on. Let check to see if the medication you submitted is now in the patient's profile. Click
+                                    "Patient" on the navigation bar above to continue.
+                                </li>
+                                <li>
+                                    In a professional setting, sometimes you will see the direction written in sig codes like the
+                                    example prescription here. Our job is to translate the codes into english or any language the
+                                    patient chooses. In this demo, we will use english.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

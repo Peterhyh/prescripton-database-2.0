@@ -88,10 +88,10 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
                             </li>
                             <li>
                                 Once you have found the patient's profile, click on it, and then you will see the selected name<br />
-                                on the bottom left of the screen.
+                                on the bottom left of the screen.<br /><br />
                             </li>
                             <li>
-                                Once the patient is selected, you are ready to move onto the final step, data entry. Click "Data<br />
+                                Once the patient is selected, you are ready to move onto the next step, data entry. Click "Data<br />
                                 Entry" to proceed.<br /><br />
                             </li>
                             <li>
