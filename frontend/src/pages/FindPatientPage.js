@@ -79,6 +79,16 @@ const FindPatientPage = () => {
                         setPatientDob={setPatientDob}
                         setPatientAddress={setPatientAddress}
                     />
+                    <div className='dataEntryInstruction'>
+                        <div>
+                            <h1>Step 4:</h1>
+                            <ul>
+                                <li>
+                                    Here we will enter the prescription drug information and saving it to the patient's profile.<br /><br />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -106,6 +116,7 @@ const FindPatientPage = () => {
                     setShowDrugList={setShowDrugList}
                     showDrugList={showDrugList}
                 />
+
             </div>
         </>
     )
