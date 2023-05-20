@@ -84,7 +84,7 @@ const FindPatientPage = () => {
                             <h1>Step 4:</h1>
                             <ul>
                                 <li>
-                                    Here we will enter the prescription drug information and saving it to the patient's profile.<br /><br />
+                                    Please enter the patient name that you are looking for and click on their profile<br /><br />
                                 </li>
                             </ul>
                         </div>
