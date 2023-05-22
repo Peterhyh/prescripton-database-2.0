@@ -87,7 +87,7 @@ const FindPatientPage = () => {
                                     Please enter the patient name that you are looking for and click on their profile<br /><br />
                                 </li>
                                 <li>
-                                    If you have entered the patient's medication previously, you should be able to find the medication's name under the prescription tab.
+                                    If you have entered the patient's medication previously on the data entry section in "New Rx", you should be able to find that medication under the patient's prescription tab.
                                 </li>
                             </ul>
                         </div>
