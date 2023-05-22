@@ -25,7 +25,7 @@ const NewRxPage = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:3001/newPatient')
+        axios.get('http://18.212.66.103:8000/newPatient')
             .then(json => {
                 setValue(json.data);
             })
@@ -54,6 +54,7 @@ const NewRxPage = () => {
 
     return (
         <div className='newrx-container'>
+            <h1>New Rx</h1>
 
 
             <NewRxButtons
@@ -104,7 +105,7 @@ const NewRxPage = () => {
                             transcribe prescriptions. Prescriptions comes to us in many different forms depending on <br />
                             state regulations and the prescriber's method of prescribing drugs to their patients.<br />
                             Prescriptions can be a paper hardcopy, faxed, or sent electronically known as "eScript".<br />
-                            To begin transcribing a mock prescription, proceed to "Upload Rx" by clicking on it.<br />
+                            To begin transcribing a mock prescription, proceed to "Upload Rx" above by clicking it.<br />
                         </p>
                     </div>
                 </div>

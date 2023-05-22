@@ -29,7 +29,7 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
             daySupply: '',
         },
         onSubmit: (values) => {
-            axios.post('http://localhost:3001/newRx', {
+            axios.post('http://18.212.66.103:8000/newRx', {
                 patientId: selectedId,
                 drug: values.drug.toUpperCase(),
                 quanity: values.quanity,
@@ -149,21 +149,21 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
                             <h1>Step 3:</h1>
                             <ul>
                                 <li>
-                                    Here we will enter the prescription drug information and saving it to the patient's profile.<br /><br />
+                                    Here we will enter the prescription drug information and save it to the patient's profile.<br /><br />
                                 </li>
                                 <li>
                                     Enter in the Drug name (Amoxicillin 250mg), direction (Take 2 tablets by mouth three times
-                                    daily for 7 days), quanity (#42), refills (0 by default if not specified), and the days supply (7)<br /><br />
+                                    daily for 7 days), quantity (#42), refills (0 by default if not specified), and the day's supply (7).<br /><br />
                                 </li>
                                 <li>
                                     Once you have filled out the form completely, you are done with this prescription and ready to
-                                    move on. Let check to see if the medication you submitted is now in the patient's profile. Click
-                                    "Patient" on the navigation bar above to continue.
+                                    move on. Let's check to see if the medication you submitted is now in the patient's profile. Click
+                                    "Patient Search" on the navigation bar above to continue.<br /><br />
                                 </li>
                                 <li>
                                     In a professional setting, sometimes you will see the direction written in sig codes like the
                                     example prescription here. Our job is to translate the codes into english or any language the
-                                    patient chooses. In this demo, we will use english.
+                                    patient chooses. In this demo, we will use english.<br /><br />
                                 </li>
                             </ul>
                         </div>

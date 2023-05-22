@@ -15,7 +15,7 @@ const Disclaimer = () => {
                     <h1>Objective:</h1>
                     <ul>
                         <li>The goal of this application is to input and save prescription data to the corresponding patient's profile for future references.</li>
-                        <li>Click "New Rx" button on the navigation bar above to start this demo.</li>
+                        <li>Click the "New Rx" button on the navigation bar above to start this demo.</li>
                     </ul>
                 </div>
                 <div className='description-container'>

@@ -31,7 +31,7 @@ const FindPatientPage = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:3001/newPatient')
+        axios.get('http://18.212.66.103:8000/newPatient')
             .then(json => {
                 dispatch(addToPatientList(json.data));
             })
@@ -42,7 +42,7 @@ const FindPatientPage = () => {
 
     useEffect(() => {
         axios.post(
-            'http://localhost:3001/newRx/data',
+            'http://18.212.66.103:8000/newRx/data',
             JSON.stringify({ patientId: selectedId }),
             {
                 headers: { 'Content-Type': 'application/json' },
@@ -62,6 +62,7 @@ const FindPatientPage = () => {
     return (
         <>
             <div className={selectedId ? 'hide' : 'find-patient-container'}>
+                <h1>Patient Search</h1>
                 <div className='find-patient-searchbar'>
                     <label htmlFor='patientName'>{'Patient Name (Last, First):'}</label>
                     <input
@@ -79,15 +80,16 @@ const FindPatientPage = () => {
                         setPatientDob={setPatientDob}
                         setPatientAddress={setPatientAddress}
                     />
-                    <div className='dataEntryInstruction'>
+                    <div className='findPatientInstruction'>
                         <div>
                             <h1>Step 4:</h1>
                             <ul>
                                 <li>
-                                    Please enter the patient name that you are looking for and click on their profile<br /><br />
+                                    Please type the patient's name above, a table will appear if the patient exists in the database, and click on the correct profile.<br /><br />
                                 </li>
                                 <li>
-                                    If you have entered the patient's medication previously on the data entry section in "New Rx", you should be able to find that medication under the patient's prescription tab.
+                                    If you have entered the patient's medication previously, you should be able to find it
+                                    under the patient's prescription tab.<br /><br />
                                 </li>
                             </ul>
                         </div>

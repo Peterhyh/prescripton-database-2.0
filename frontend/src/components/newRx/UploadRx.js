@@ -37,11 +37,11 @@ const UploadRx = ({ uploadedRx, setUploadedRx }) => {
                         <li>
                             For this demo, you will not be uploading any prescriptions. Instead, a mock<br />
                             prescription is provided for you above. However, in a professional setting,<br />
-                            we would want to scan in the hardcopy to display the image on your work station<br />
+                            we would want to scan in the hardcopy to display the image on your workstation<br />
                             screen to process it.<br /><br />
                         </li>
                         <li>
-                            Click "Select Patient" button above to begin the next step of matching the patient.
+                            Click the "Select Patient" button above to begin matching the patient.
                         </li>
                     </ul>
                 </div>
