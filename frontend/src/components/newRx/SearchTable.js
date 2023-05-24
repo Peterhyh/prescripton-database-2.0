@@ -22,8 +22,8 @@ const SearchTable = ({ value, query, setSelectedLastName, setSelectedFirstName, 
                             key={patient._id}
                             className='newRx-search-result-row'
                             onClick={() => {
-                                setSelectedLastName(patient.firstName);
-                                setSelectedFirstName(patient.lastName);
+                                setSelectedLastName(patient.lastName);
+                                setSelectedFirstName(patient.firstName);
                                 setSelectedId(patient._id);
                             }}
                         >
