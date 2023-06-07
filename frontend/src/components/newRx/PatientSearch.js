@@ -10,8 +10,9 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
     const [openNewPatient, setOpenNewPatient] = useState(false);
     const [openSelectPatient, setSelectPatient] = useState(true);
 
+
     const search = (value) => {
-        return value.filter(patient => patient.lastName.toLowerCase().includes(query) || patient.firstName.toLowerCase().includes(query));
+        return value.filter(patient => patient.lastName.toLowerCase().includes(query) || patient.firstName.toLowerCase().includes(query) || patient.lastName.toUpperCase().includes(query) || patient.firstName.toUpperCase().includes(query));
     }
 
     const toggleNewPatient = () => {
@@ -54,10 +55,10 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
                         <button className='patientsearch-register-button' onClick={() => toggleNewPatient()}>Register Patient</button>
                     </div>
                     <div className='searchbar-row-bottom'>
-
                         <SearchTable
                             value={search(value)}
                             query={query}
+                            setQuery={setQuery}
                             setSelectedFirstName={setSelectedFirstName}
                             setSelectedLastName={setSelectedLastName}
                             setSelectedId={setSelectedId}

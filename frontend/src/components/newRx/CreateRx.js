@@ -3,11 +3,16 @@ import { useFormik } from 'formik';
 import SelectedPatient from './SelectedPatient';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import './css/DataEntry.css';
+import './css/CreateRx.css';
 
-const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, }) => {
+const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, }) => {
 
     const [openSuccess, setOpenSuccess] = useState(false);
+
+    const handleClear = () => {
+        setSelectedLastName('');
+        setSelectedFirstName('');
+    };
 
     useEffect(() => {
         const successTimer = setTimeout(() => {
@@ -28,7 +33,7 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
             direction: '',
             daySupply: '',
         },
-        onSubmit: (values) => {
+        onSubmit: (values, { resetForm }) => {
             axios.post('http://localhost:3001/newRx', {
                 patientId: selectedId,
                 drug: values.drug.toUpperCase(),
@@ -41,6 +46,7 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
                     if (response.status === 200) {
                         console.log('success');
                         setOpenSuccess(true);
+                        handleClear();
                     } else {
                         console.log('error');
                     }
@@ -48,6 +54,7 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
                 .catch(error => {
                     console.log(error);
                 })
+            resetForm({ values: '' });
         }
     });
 
@@ -174,4 +181,4 @@ const DataEntry = ({ uploadedRx, selectedLastName, selectedFirstName, setSelecte
     )
 };
 
-export default DataEntry;
+export default CreateRx;

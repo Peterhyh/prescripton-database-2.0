@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import NewRxButtons from '../components/newRx/NewRxButtons';
-import DataEntry from '../components/newRx/DataEntry';
+import CreateRx from '../components/newRx/CreateRx';
 import PatientSearch from '../components/newRx/PatientSearch';
 import UploadRx from '../components/newRx/UploadRx';
 import './css/NewRx.css';
@@ -53,60 +53,65 @@ const NewRxPage = () => {
     }, [openError]);
 
     return (
-        <div className='newrx-container'>
-            <h1>New Rx</h1>
-
-
-            <NewRxButtons
-                setOpenDataEntry={setOpenDataEntry}
-                setOpenSelectPatient={setOpenSelectPatient}
-                setOpenUploadRx={setOpenUploadRx}
-                openSelectPatient={openSelectPatient}
-                openUploadRx={openUploadRx}
-                openDataEntry={openDataEntry}
-            />
-
-            <div className={openUploadRx ? 'upload-rx-container' : 'hide'}>
-                <UploadRx setUploadedRx={setUploadedRx} uploadedRx={uploadedRx} />
+        <div className='newRxPageContainer'>
+            <div className='newRxPageTitle'>
+                <h1>New Rx</h1>
             </div>
 
-            <div className={openSelectPatient ? 'select-patient-container' : 'hide'}>
-                <PatientSearch
-                    value={value}
-                    setQuery={setQuery}
-                    query={query}
-                    uploadedRx={uploadedRx}
-                    selectedLastName={selectedLastName}
+            <div className='newRxPageContent'>
+                <NewRxButtons
+                    setOpenDataEntry={setOpenDataEntry}
+                    setOpenSelectPatient={setOpenSelectPatient}
+                    setOpenUploadRx={setOpenUploadRx}
+                    openSelectPatient={openSelectPatient}
+                    openUploadRx={openUploadRx}
+                    openDataEntry={openDataEntry}
                     selectedFirstName={selectedFirstName}
-                    setSelectedLastName={setSelectedLastName}
-                    setSelectedFirstName={setSelectedFirstName}
-                    setSelectedId={setSelectedId}
+                    selectedLastName={selectedLastName}
                 />
 
-            </div>
+                <div className={openUploadRx ? 'newRxPageUploadRxContainer' : 'hide'}>
+                    <UploadRx setUploadedRx={setUploadedRx} uploadedRx={uploadedRx} />
+                </div>
 
-            <div className={openDataEntry ? 'data-entry-container' : 'hide'}>
-                <DataEntry
-                    selectedId={selectedId}
-                    uploadedRx={uploadedRx}
-                    selectedLastName={selectedLastName}
-                    selectedFirstName={selectedFirstName}
-                    setSelectedLastName={setSelectedLastName}
-                    setSelectedFirstName={setSelectedFirstName}
-                />
-            </div>
+                <div className={openSelectPatient ? 'newRxPageSelectPatientContainer' : 'hide'}>
+                    <PatientSearch
+                        value={value}
+                        setQuery={setQuery}
+                        query={query}
+                        uploadedRx={uploadedRx}
+                        selectedLastName={selectedLastName}
+                        selectedFirstName={selectedFirstName}
+                        setSelectedLastName={setSelectedLastName}
+                        setSelectedFirstName={setSelectedFirstName}
+                        setSelectedId={setSelectedId}
+                    />
 
-            <div className={openUploadRx || openSelectPatient || openDataEntry ? 'hide' : 'newRxInstructionContainer'}>
-                <div className='instructionContainer'>
-                    <div>
-                        <h1>About the Job:</h1>
-                        <p>
-                            As a pharmacy technician, one of the many things we are responsible for is to receive and<br />
-                            transcribe prescriptions. Prescriptions comes to us in many different forms depending on <br />
-                            state regulations and the prescriber's method of prescribing drugs to their patients.<br />
-                            Prescriptions can be a paper hardcopy, faxed, or sent electronically known as "eScript".<br />
-                            To begin transcribing a mock prescription, proceed to "Upload Rx" above by clicking it.<br />
-                        </p>
+                </div>
+
+                <div className={openDataEntry ? 'data-entry-container' : 'hide'}>
+                    <CreateRx
+                        selectedId={selectedId}
+                        uploadedRx={uploadedRx}
+                        selectedLastName={selectedLastName}
+                        selectedFirstName={selectedFirstName}
+                        setSelectedLastName={setSelectedLastName}
+                        setSelectedFirstName={setSelectedFirstName}
+                    />
+                </div>
+
+                <div className={openUploadRx || openSelectPatient || openDataEntry ? 'hide' : 'newRxInstructionContainer'}>
+                    <div className='instructionContainer'>
+                        <div>
+                            <h1>About the Job:</h1>
+                            <p>
+                                As a pharmacy technician, one of the many things we are responsible for is to receive and<br />
+                                transcribe prescriptions. Prescriptions comes to us in many different forms depending on <br />
+                                state regulations and the prescriber's method of prescribing drugs to their patients.<br />
+                                Prescriptions can be a paper hardcopy, faxed, or sent electronically known as "eScript".<br />
+                                To begin transcribing a mock prescription, proceed to "Upload Rx" above by clicking it.<br />
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

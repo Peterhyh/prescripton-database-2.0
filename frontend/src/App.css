@@ -158,19 +158,9 @@
 
 
 
-.upload-rx-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 
-.select-patient-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+
+
 
 
 

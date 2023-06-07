@@ -7,7 +7,7 @@ const ProfileSearchTable = ({ query, setSelectedId, setPatientLastName, setPatie
     const patientList = useSelector(state => state.patientList.list);
 
     const search = (patientList) => {
-        return patientList.filter(patient => patient.lastName.toLowerCase().includes(query) || patient.firstName.toLowerCase().includes(query));
+        return patientList.filter(patient => patient.lastName.toLowerCase().includes(query) || patient.firstName.toLowerCase().includes(query) || patient.lastName.toUpperCase().includes(query) || patient.firstName.toUpperCase().includes(query));
     };
 
     const patientQueriedList = search(patientList);
