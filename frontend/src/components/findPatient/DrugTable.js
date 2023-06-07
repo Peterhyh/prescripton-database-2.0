@@ -16,11 +16,11 @@ const DrugTable = ({ setShowDrugList, showDrugList }) => {
     return (
         <table className='drug-table-container'>
             <div className='drug-table-header-carot' onClick={() => setShowDrugList(!showDrugList)}>
-                <img className={showDrugList ? 'hide' : ''} src={RightArrow} alt='' />
-                <img className={showDrugList ? '' : 'hide'} src={DownArrow} alt='' />
+                <img className={showDrugList ? '' : 'hide'} src={RightArrow} alt='' />
+                <img className={showDrugList ? 'hide' : ''} src={DownArrow} alt='' />
                 <h5>PRESCRIPTION</h5>
             </div>
-            <tbody className={showDrugList ? 'drug-table-prescription-container' : 'hide'}>
+            <tbody className={!showDrugList ? 'drug-table-prescription-container' : 'hide'}>
                 <tr className='drug-table-header'>
                     <div>
                         <th>Date Entered</th>

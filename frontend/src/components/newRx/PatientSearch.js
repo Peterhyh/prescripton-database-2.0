@@ -91,7 +91,7 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
                                 on the bottom left of the screen.<br /><br />
                             </li>
                             <li>
-                                Once the patient is selected, you are ready to move onto the next step, data entry. Click "Data Entry" above to proceed.<br /><br />
+                                Once the patient is selected, you are ready to move onto the next step, data entry. Click "Create Rx" above to proceed.<br /><br />
 
                             </li>
                             <li>

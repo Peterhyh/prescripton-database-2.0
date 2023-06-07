@@ -29,7 +29,7 @@ const NewRxButtons = ({ setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx,
                 <button onClick={() => handleSelectPatient()}>Select Patient</button>
             </div>
             <div className='new-rx-buttons'>
-                <button onClick={() => handleDataEntry()}>Data Entry</button>
+                <button onClick={() => handleDataEntry()}>Create Rx</button>
             </div>
         </div>
     );
