@@ -159,7 +159,6 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                             <span class='inputBox-zip-span'>Zip</span>
                         </div>
                         <div className='new-patient-submit-button-container'>
-
                             <button className='submit-button' type='submit' >
                                 Submit
                             </button>

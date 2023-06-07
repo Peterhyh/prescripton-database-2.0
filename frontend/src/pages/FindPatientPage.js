@@ -7,7 +7,7 @@ import DownArrow from '../app/assets/img/downArrow.svg';
 import RightArrow from '../app/assets/img/rightArrow.svg';
 
 import { useDispatch } from 'react-redux';
-import { addToList } from '../slice/drugListSlice';
+import { addToList } from '../slice/prescriptionListSlice';
 import { addToPatientList } from '../slice/patientSlice';
 
 const FindPatientPage = () => {
@@ -50,10 +50,10 @@ const FindPatientPage = () => {
         )
             .then(response => {
                 const responseArray = response.data;
-                const drugList = responseArray.map(data => {
-                    return data.drug;
+                const prescriptionList = responseArray.map(data => {
+                    return data;
                 })
-                dispatch(addToList(drugList));
+                dispatch(addToList(prescriptionList));
             })
             .catch(err => console.log(err));
     }, [selectedId]);

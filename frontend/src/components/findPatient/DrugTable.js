@@ -5,12 +5,13 @@ import RightArrow from '../../app/assets/img/rightArrow.svg';
 
 const DrugTable = ({ setShowDrugList, showDrugList }) => {
 
-    const drugList = useSelector(state => state.drugList.list);
+    const prescriptionList = useSelector(state => state.prescriptionList.list);
 
-    const list = drugList.filter(list => {
-        return list.length > 0
+    const formatter = new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
     });
-
 
     return (
         <table className='drug-table-container'>
@@ -21,20 +22,34 @@ const DrugTable = ({ setShowDrugList, showDrugList }) => {
             </div>
             <tbody className={showDrugList ? 'drug-table-prescription-container' : 'hide'}>
                 <tr className='drug-table-header'>
-                    <h5>Medication</h5>
+                    <div>
+                        <th>Date Entered</th>
+                        <th>Medication</th>
+                        <th>Direction</th>
+                        <th>Quanity</th>
+                        <th>Refills</th>
+                        <th>Day Supply</th>
+                    </div>
                 </tr>
 
 
-                {list.length == 0
+                {prescriptionList.length === 0
                     ?
                     <div className='drug-list-no-results'>
                         <p>No Results</p>
                     </div>
                     :
-                    list.map((data, i) => {
+                    prescriptionList.map((data, i) => {
                         return (
                             <tr key={i} className='patient-drug-list'>
-                                <td>{data}</td>
+                                <div>
+                                    <td>{formatter.format(Date.parse(data.createdAt))}</td>
+                                    <td>{data.drug}</td>
+                                    <td>{data.direction}</td>
+                                    <td>{data.quanity}</td>
+                                    <td>{data.refills}</td>
+                                    <td>{data.daySupply}</td>
+                                </div>
                             </tr>
                         )
                     })}

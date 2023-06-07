@@ -3,27 +3,39 @@
     flex-direction: column;
 }
 
-.patient-drug-list {
-    display: flex;
-    border: 1px solid #000;
-}
-
 
 
 .drug-table-header th {
+    width: 100%;
     padding: 7px;
+    display: flex;
+    justify-content: center;
 }
 
+.drug-table-header div {
+    display: flex;
+    width: 100%
+}
 
 .patient-drug-list:nth-child(even) {
     background-color: #ffffff51;
 }
 
+.patient-drug-list div {
+    display: flex;
+    width: 100%
+}
+
 .patient-drug-list td {
+    display: flex;
+    justify-content: center;
+    width: 100%;
     padding: 7px;
 }
 
 .patient-drug-list {
+    display: flex;
+    border: 1px solid #000;
     cursor: pointer;
 }
 

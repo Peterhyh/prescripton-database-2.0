@@ -4,8 +4,8 @@ const initialState = {
     list: [],
 };
 
-export const drugListSlice = createSlice({
-    name: 'drugList',
+export const prescriptionListSlice = createSlice({
+    name: 'prescriptionList',
     initialState,
     reducers: {
         addToList: (state, action) => {
@@ -14,7 +14,7 @@ export const drugListSlice = createSlice({
     }
 });
 
-export const { addToList } = drugListSlice.actions;
+export const { addToList } = prescriptionListSlice.actions;
 
-export default drugListSlice.reducer;
+export default prescriptionListSlice.reducer;
 
