@@ -30,7 +30,6 @@
     background-color: #01314C;
     color: #CFDDD1;
     margin-top: 30px;
-    padding-left: 30px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -53,8 +52,9 @@
 
 .selected-patient-back-button-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 30px;
+    margin-left: 30px;
 }
 
 .selected-patient-back-button-container button {

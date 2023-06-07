@@ -98,6 +98,7 @@ const FindPatientPage = () => {
                 </div>
             </div>
             <div className={selectedId ? 'profile-container' : 'hide'}>
+                <h1>Selected Profile</h1>
                 <div className='selected-patient-back-button-container'>
                     <button onClick={() => setSelectedId(false)}>Back to Search</button>
                 </div>
