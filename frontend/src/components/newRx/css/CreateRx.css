@@ -80,18 +80,6 @@
     margin: 10px;
 }
 
-.inputDrugBoxError input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ff0000;
-    background: #CFDDD1;
-    border-radius: 5px;
-    outline: none;
-    color: #0D2018;
-    font-size: 1em;
-    margin: 10px;
-}
-
 .inputBox-drug-span {
     position: absolute;
     left: 25px;
@@ -116,7 +104,6 @@
     border-left: 1px solid #0D2018;
     border-right: 1px solid #0D2018;
     letter-spacing: 0.2em;
-
 }
 
 .inputBox-drug input:valid,
@@ -173,12 +160,53 @@
     border: 1px solid #0D2018;
 }
 
+/* -------------------------------------------------------------------------------------------- */
 .inputBox-quanity-refills {
     position: relative;
+    display: flex;
+    margin: 1px;
+    position: relative;
     width: 500px;
+    border: 1px solid firebrick;
 }
 
-.inputBox-quanity-refills input {
+.createRxQtyContainer input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.createRxRefillContainerQty input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.createRxRefillContainer input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+    margin: 10px;
+}
+
+.createRxDaySupplyContainer input {
     width: 100%;
     padding: 10px;
     border: 1px solid #949BA4;

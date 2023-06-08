@@ -5,15 +5,20 @@ import { useState, useEffect } from 'react';
 import './css/CreateRx.css';
 
 
-const DRUG_REGEX = /^[a-zA-Z0-9 ]{1,}(mg|MG)$/;
+const VERIFY_NUMBER = /^[0-9]{1,}$/
 
 const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, }) => {
 
     const [openSuccess, setOpenSuccess] = useState(false);
-    const [errMsg, setErrMsg] = useState('');
 
     const [drugName, setDrugName] = useState('');
-    const [validDrugName, setValidDrugName] = useState('');
+    const [direction, setDirection] = useState('');
+
+    const [qty, setQty] = useState('');
+    const [verifyQty, setVerifyQty] = useState('');
+
+    const [refill, setRefill] = useState('');
+    const [daySupply, setDaySupply] = useState('');
 
     const handleClear = () => {
         setSelectedLastName('');
@@ -29,13 +34,10 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
     }, [openSuccess])
 
     useEffect(() => {
-        const verifyDrugName = DRUG_REGEX.test(drugName);
-        setValidDrugName(verifyDrugName);
-        if (!verifyDrugName) {
-            setErrMsg('Invalid Drug Name');
-            return;
-        };
-    }, [drugName])
+        const verifyQty = VERIFY_NUMBER.test(qty);
+        setVerifyQty(verifyQty);
+    }, [qty])
+
 
 
     return (
@@ -63,10 +65,8 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
 
                 <div className='dataentry-right'>
                     <form >
-
                         <h1 class='prescription-title'>PRESCRIPTION:</h1>
-
-                        <div className={!validDrugName && drugName.length > 0 ? 'inputDrugBoxError' : 'inputBox-drug'}>
+                        <div className='row inputBox-drug'>
                             <div class='col-sm-12 '>
                                 <input
                                     name='drug'
@@ -78,47 +78,47 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                             </div>
                         </div>
 
-                        {/* <div className='row inputBox-sig '>
+                        <div className='row inputBox-sig '>
                             <div class='col-sm-12 '>
                                 <input
                                     name='direction'
                                     type='text'
-                                    onChange={formik.handleChange}
+                                    onChange={(e) => setDirection(e.target.value)}
                                     required
                                 />
                                 <span class='inputBox-sig-span'>Direction</span>
                             </div>
                         </div>
 
-                        <div className='row inputBox-quanity-refills'>
-                            <div class='col-sm-4 '>
+                        <div className='inputBox-quanity-refills'>
+                            <div class='createRxQtyContainer'>
                                 <input
                                     name='quanity'
                                     type='text'
-                                    onChange={formik.handleChange}
+                                    onChange={(e) => setQty(e.target.value)}
                                     required
                                 />
                                 <span class='inputBox-quanity-span'>Quantity</span>
                             </div>
-                            <div class='col-sm-4 '>
+                            <div class='createRxRefillContainer'>
                                 <input
                                     name='refills'
                                     type='text'
-                                    onChange={formik.handleChange}
+                                    onChange={(e) => setRefill(e.target.value)}
                                     required
                                 />
                                 <span class='inputBox-refills-span'>Refills</span>
                             </div>
-                            <div class='col-sm-4 '>
+                            <div class='createRxDaySupplyContainer'>
                                 <input
                                     name='daySupply'
                                     type='text'
-                                    onChange={formik.handleChange}
+                                    onChange={(e) => setDaySupply(e.target.value)}
                                     required
                                 />
                                 <span class='inputBox-day-supply-span'>Day Supply</span>
                             </div>
-                        </div> */}
+                        </div>
 
                         <div className='data-entry-button-container'>
                             <button type='submit' outline>Submit</button>
