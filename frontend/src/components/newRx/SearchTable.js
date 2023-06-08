@@ -1,7 +1,7 @@
 import './css/SearchTable.css';
 
 
-const SearchTable = ({ value, query, setQuery, setSelectedLastName, setSelectedFirstName, setSelectedId }) => {
+const SearchTable = ({ value, query, setQuery, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx }) => {
 
     const results = value.length
 
@@ -26,6 +26,7 @@ const SearchTable = ({ value, query, setQuery, setSelectedLastName, setSelectedF
                                 setSelectedFirstName(patient.firstName);
                                 setSelectedId(patient._id);
                                 setQuery('');
+                                handleCreateRx();
                             }}
                         >
                             <td>{`${patient.lastName}, ${patient.firstName}`}</td>

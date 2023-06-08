@@ -6,9 +6,15 @@ import { useState } from 'react';
 
 
 
-const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, setSelectedId }) => {
+const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, setSelectedId, setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx, openDataEntry }) => {
     const [openNewPatient, setOpenNewPatient] = useState(false);
     const [openSelectPatient, setSelectPatient] = useState(true);
+
+    const handleCreateRx = () => {
+        setOpenDataEntry(!openDataEntry);
+        setOpenSelectPatient(false);
+        setOpenUploadRx(false);
+    };
 
 
     const search = (value) => {
@@ -62,6 +68,7 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
                             setSelectedFirstName={setSelectedFirstName}
                             setSelectedLastName={setSelectedLastName}
                             setSelectedId={setSelectedId}
+                            handleCreateRx={handleCreateRx}
                         />
                     </div>
                 </div>

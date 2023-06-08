@@ -16,7 +16,7 @@ const NewRxButtons = ({ setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx,
         setOpenSelectPatient(false);
     };
 
-    const handleDataEntry = () => {
+    const handleCreateRx = () => {
         setOpenDataEntry(!openDataEntry);
         setOpenSelectPatient(false);
         setOpenUploadRx(false);
@@ -35,21 +35,21 @@ const NewRxButtons = ({ setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx,
                 <img src={RightArrow} alt='' />
             </div>
 
-            <div className={selectedFirstName && selectedFirstName ? 'newRxSelectPatientButton' : 'new-rx-buttons'}>
+            <div className={selectedFirstName && selectedLastName ? 'newRxSelectPatientButton' : 'new-rx-buttons'}>
                 <button onClick={() => handleSelectPatient()}>
                     Select Patient
-                    <img className={selectedFirstName && selectedFirstName ? 'newRxCompletedCheckmark' : 'hide'} src={CircleWithCheckmark} alt='' />
+                    <img className={selectedFirstName && selectedLastName ? 'newRxCompletedCheckmark' : 'hide'} src={CircleWithCheckmark} alt='' />
                 </button>
 
             </div>
 
-            <div className={selectedFirstName && selectedFirstName ? 'newRxButtonsNextArrow' : 'hide'}>
+            <div className={selectedFirstName && selectedLastName ? 'newRxButtonsNextArrow' : 'hide'}>
                 <img src={RightArrow} alt='' />
             </div>
 
 
             <div className='new-rx-buttons newRxCreateRxButton'>
-                <button onClick={() => handleDataEntry()}>Create Rx</button>
+                <button onClick={() => handleCreateRx()}>Create Rx</button>
             </div>
         </div>
     );

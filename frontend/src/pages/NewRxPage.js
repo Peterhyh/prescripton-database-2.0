@@ -76,6 +76,10 @@ const NewRxPage = () => {
 
                 <div className={openSelectPatient ? 'newRxPageSelectPatientContainer' : 'hide'}>
                     <PatientSearch
+                        openDataEntry={openDataEntry}
+                        setOpenDataEntry={setOpenDataEntry}
+                        setOpenSelectPatient={setOpenSelectPatient}
+                        setOpenUploadRx={setOpenUploadRx}
                         value={value}
                         setQuery={setQuery}
                         query={query}

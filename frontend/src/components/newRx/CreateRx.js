@@ -1,13 +1,19 @@
 import { Alert } from 'reactstrap';
-import { useFormik } from 'formik';
 import SelectedPatient from './SelectedPatient';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import './css/CreateRx.css';
 
+
+const DRUG_REGEX = /^[a-zA-Z0-9 ]{1,}(mg|MG)$/;
+
 const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, }) => {
 
     const [openSuccess, setOpenSuccess] = useState(false);
+    const [errMsg, setErrMsg] = useState('');
+
+    const [drugName, setDrugName] = useState('');
+    const [validDrugName, setValidDrugName] = useState('');
 
     const handleClear = () => {
         setSelectedLastName('');
@@ -22,41 +28,15 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
         }, 5000)
     }, [openSuccess])
 
+    useEffect(() => {
+        const verifyDrugName = DRUG_REGEX.test(drugName);
+        setValidDrugName(verifyDrugName);
+        if (!verifyDrugName) {
+            setErrMsg('Invalid Drug Name');
+            return;
+        };
+    }, [drugName])
 
-
-    const formik = useFormik({
-        initialValues: {
-            patientId: '',
-            drug: '',
-            quanity: '',
-            refills: '',
-            direction: '',
-            daySupply: '',
-        },
-        onSubmit: (values, { resetForm }) => {
-            axios.post('http://localhost:3001/newRx', {
-                patientId: selectedId,
-                drug: values.drug.toUpperCase(),
-                quanity: values.quanity,
-                refills: values.refills,
-                direction: values.direction,
-                daySupply: values.daySupply,
-            })
-                .then(response => {
-                    if (response.status === 200) {
-                        console.log('success');
-                        setOpenSuccess(true);
-                        handleClear();
-                    } else {
-                        console.log('error');
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-            resetForm({ values: '' });
-        }
-    });
 
     return (
         <>
@@ -82,30 +62,28 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
 
 
                 <div className='dataentry-right'>
-                    <form onSubmit={formik.handleSubmit}>
+                    <form >
 
                         <h1 class='prescription-title'>PRESCRIPTION:</h1>
 
-                        <div className='row inputBox-drug '>
+                        <div className={!validDrugName && drugName.length > 0 ? 'inputDrugBoxError' : 'inputBox-drug'}>
                             <div class='col-sm-12 '>
                                 <input
                                     name='drug'
                                     type='text'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.drug}
+                                    onChange={(e) => setDrugName(e.target.value)}
                                     required
                                 />
                                 <span class='inputBox-drug-span'>Drug</span>
                             </div>
                         </div>
 
-                        <div className='row inputBox-sig '>
+                        {/* <div className='row inputBox-sig '>
                             <div class='col-sm-12 '>
                                 <input
                                     name='direction'
                                     type='text'
                                     onChange={formik.handleChange}
-                                    value={formik.values.direction}
                                     required
                                 />
                                 <span class='inputBox-sig-span'>Direction</span>
@@ -118,7 +96,6 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                                     name='quanity'
                                     type='text'
                                     onChange={formik.handleChange}
-                                    value={formik.values.quanity}
                                     required
                                 />
                                 <span class='inputBox-quanity-span'>Quantity</span>
@@ -128,7 +105,6 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                                     name='refills'
                                     type='text'
                                     onChange={formik.handleChange}
-                                    value={formik.values.refills}
                                     required
                                 />
                                 <span class='inputBox-refills-span'>Refills</span>
@@ -138,12 +114,11 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                                     name='daySupply'
                                     type='text'
                                     onChange={formik.handleChange}
-                                    value={formik.values.daySupply}
                                     required
                                 />
                                 <span class='inputBox-day-supply-span'>Day Supply</span>
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className='data-entry-button-container'>
                             <button type='submit' outline>Submit</button>
