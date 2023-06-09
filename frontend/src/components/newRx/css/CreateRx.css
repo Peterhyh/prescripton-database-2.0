@@ -52,18 +52,23 @@
 }
 
 /* CREATE RX ERROR MESSAGE */
-.createRxErrMsgContainer {
+.errMsgContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.errMsgContent {
     display: flex;
     align-items: center;
 }
 
-.createRxErrMsgContainer img {
+.errMsgContent img {
     margin-right: 10px;
     height: 30px;
     width: 30px;
 }
 
-.createRxErrMsgContainer h4 {
+.errMsgContent h4 {
     color: red;
 }
 
@@ -245,7 +250,6 @@
     border-left: 1px solid red;
     border-right: 1px solid red;
     letter-spacing: 0.2em;
-
 }
 
 .qtyInputErrorContainer input:valid,
@@ -265,6 +269,8 @@
     left: 2px;
     color: red;
 }
+
+
 
 /* REFILL */
 .refillInputContainer input {
@@ -303,6 +309,49 @@
     color: #949BA4;
 }
 
+.refillInputErrorContainer input {
+    width: 160px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+}
+
+.refillInputErrorContainer input:valid+span,
+.refillInputErrorContainer input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+}
+
+.refillInputErrorContainer input:valid,
+.refillInputErrorContainer input:focus {
+    border: 1px solid red;
+}
+
+.refillErrorLabel {
+    position: absolute;
+    left: 193px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    left: 172px;
+    top: 0px;
+    color: red;
+}
+
 /* DAY SUPPLY */
 
 .daySupplyInputContainer input {
@@ -327,6 +376,49 @@
     transition: 0.3s;
     top: 0px;
     color: #949BA4;
+}
+
+.daySupplyInputErrorContainer input {
+    width: 160px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+}
+
+.daySupplyInputErrorContainer input:valid+span,
+.daySupplyInputErrorContainer input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+}
+
+.daySupplyInputErrorContainer input:valid,
+.daySupplyInputErrorContainer input:focus {
+    border: 1px solid red;
+}
+
+.daySupplyErrorLabel {
+    position: absolute;
+    left: 193px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    left: 342px;
+    top: 0px;
+    color: red;
 }
 
 /* CREATE RX FORM SUBMIT BUTTON */

@@ -2,6 +2,8 @@ import { Alert } from 'reactstrap';
 import SelectedPatient from './SelectedPatient';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { toggleOn, toggleOff } from '../../slice/toggleActiveCreateRxSlice';
+import { useDispatch } from 'react-redux';
 import RedAlert from '../../app/assets/img/redAlert.svg';
 import './css/CreateRx.css';
 
@@ -10,6 +12,9 @@ const VERIFY_NUMBER = /^\d{1,}$/
 
 const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, }) => {
 
+    const dispatch = useDispatch();
+
+    //STATES
     const [openSuccess, setOpenSuccess] = useState(false);
 
     const [drugName, setDrugName] = useState('');
@@ -17,27 +22,46 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
 
     const [qty, setQty] = useState('');
     const [verifyQty, setVerifyQty] = useState();
-    const [triggerQtyError, setTriggerQtyError] = useState();
+    const [triggerQtyError, setTriggerQtyError] = useState(false);
 
     const [refill, setRefill] = useState('');
     const [verifyRefill, setVerifyRefill] = useState();
-    const [triggerRefillError, setTriggerError] = useState();
+    const [triggerRefillError, setTriggerRefillError] = useState(false);
 
     const [daySupply, setDaySupply] = useState('');
+    const [verifyDaySupply, setVerifyDaySupply] = useState();
+    const [triggerDaySupplyError, setTriggerDaySupplyError] = useState(false);
 
+    //CLEAR SELECTED PATIENT
     const handleClear = () => {
         setSelectedLastName('');
         setSelectedFirstName('');
     };
 
+    //CHECK STATE
     const checkQtyState = (e) => {
         if (e) {
             setTriggerQtyError(false);
-        } else if (!e) {
+        } else if (!e && qty.length > 0) {
             setTriggerQtyError(true);
         };
     };
+    const checkRefillState = (e) => {
+        if (e) {
+            setTriggerRefillError(false);
+        } else if (!e && refill.length > 0) {
+            setTriggerRefillError(true);
+        };
+    };
+    const checkDaySupplyState = (e) => {
+        if (e) {
+            setTriggerDaySupplyError(false);
+        } else if (!e && daySupply.length > 0) {
+            setTriggerDaySupplyError(true);
+        };
+    };
 
+    //SUBMISSION SUCCESS ALERT
     useEffect(() => {
         const successTimer = setTimeout(() => {
             setOpenSuccess(false);
@@ -46,8 +70,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
         }, 5000)
     }, [openSuccess])
 
-
-
+    //QTY, REFILL, AND DAY SUPPLY REGEX CHECK
     useEffect(() => {
         const verifyQty = VERIFY_NUMBER.test(qty);
         setVerifyQty(verifyQty);
@@ -58,6 +81,36 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
         setVerifyRefill(verifyRefill);
     }, [refill])
 
+    useEffect(() => {
+        const verifyDaySupply = VERIFY_NUMBER.test(daySupply);
+        setVerifyDaySupply(verifyDaySupply);
+    }, [daySupply])
+
+    //TOGGLE CREATE RX BUTTON GREEN
+    useEffect(() => {
+        if (
+            drugName
+            && direction
+            && !triggerQtyError
+            && qty.length > 0
+            && !triggerRefillError
+            && refill.length > 0
+            && !triggerDaySupplyError
+            && daySupply.length > 0
+        ) {
+            dispatch(toggleOn());
+            console.log('toggle: ON');
+        } else {
+            dispatch(toggleOff());
+            console.log('toggle: OFF');
+        }
+    }, [
+        drugName,
+        direction,
+        triggerQtyError,
+        triggerRefillError,
+        triggerDaySupplyError
+    ]);
 
 
 
@@ -85,17 +138,33 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                 </div>
 
 
-
-
                 <div className='createRxRightSideContainer'>
-                    {triggerQtyError
-                        ? (
-                            <div className='createRxErrMsgContainer'>
-                                <img src={RedAlert} alt='Alert symbol' />
-                                <h4>Quantity must be a number.</h4>
-                            </div>
-                        ) : ('')
-                    }
+                    <div className='errMsgContainer'>
+                        {triggerQtyError
+                            ? (
+                                <div className='errMsgContent'>
+                                    <img src={RedAlert} alt='Alert symbol' />
+                                    <h4>Quantity must be a number.</h4>
+                                </div>
+                            ) : ('')
+                        }
+                        {triggerRefillError
+                            ? (
+                                <div className='errMsgContent'>
+                                    <img src={RedAlert} alt='Alert symbol' />
+                                    <h4>Refill must be a number.</h4>
+                                </div>
+                            ) : ('')
+                        }
+                        {triggerDaySupplyError
+                            ? (
+                                <div className='errMsgContent'>
+                                    <img src={RedAlert} alt='Alert symbol' />
+                                    <h4>Day Supply must be a number.</h4>
+                                </div>
+                            ) : ('')
+                        }
+                    </div>
                     <h1>Create Rx:</h1>
                     <form className='createRxForm'>
                         <div className='drugInputBoxContainer'>
@@ -129,23 +198,25 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                                 />
                                 <span class={!triggerQtyError ? 'qtyLabel' : 'qtyErrorLabel'}>Quantity</span>
                             </div>
-                            <div className='refillInputContainer'>
+                            <div className={!triggerRefillError ? 'refillInputContainer' : 'refillInputErrorContainer'}>
                                 <input
                                     name='refills'
                                     type='text'
                                     onChange={(e) => setRefill(e.target.value)}
+                                    onBlur={() => checkRefillState(verifyRefill)}
                                     required
                                 />
-                                <span class='refillLabel'>Refills</span>
+                                <span className={!triggerRefillError ? 'refillLabel' : 'refillErrorLabel'}>Refills</span>
                             </div>
-                            <div className='daySupplyInputContainer'>
+                            <div className={!triggerDaySupplyError ? 'daySupplyInputContainer' : 'daySupplyInputErrorContainer'}>
                                 <input
                                     name='daySupply'
                                     type='text'
                                     onChange={(e) => setDaySupply(e.target.value)}
+                                    onBlur={() => checkDaySupplyState(verifyDaySupply)}
                                     required
                                 />
-                                <span class='daySupplyLabel'>Day Supply</span>
+                                <span className={!triggerDaySupplyError ? 'daySupplyLabel' : 'daySupplyErrorLabel'}>Day Supply</span>
                             </div>
                         </div>
                         <button className='createRxSubmitButton' type='submit' outline>Submit</button>
@@ -174,8 +245,8 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                         </ul>
                     </div>
 
-                </div>
-            </div>
+                </div >
+            </div >
         </>
     )
 };

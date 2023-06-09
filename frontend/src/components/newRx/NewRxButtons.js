@@ -1,8 +1,20 @@
 import './css/NewRxButtons.css';
 import RightArrow from '../../app/assets/img/buttonRightArrow.svg';
 import CircleWithCheckmark from '../../app/assets/img/checkCircle.svg';
+import { useSelector } from 'react-redux';
 
-const NewRxButtons = ({ setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx, openSelectPatient, openUploadRx, openDataEntry, selectedFirstName, selectedLastName }) => {
+const NewRxButtons = ({
+    setOpenDataEntry,
+    setOpenSelectPatient,
+    setOpenUploadRx,
+    openSelectPatient,
+    openUploadRx,
+    openDataEntry,
+    selectedFirstName,
+    selectedLastName
+}) => {
+
+    const toggleCreateRx = useSelector((state) => state.toggleActiveCreateRx.toggle);
 
     const handleSelectPatient = () => {
         setOpenSelectPatient(!openSelectPatient);
@@ -40,7 +52,6 @@ const NewRxButtons = ({ setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx,
                     Select Patient
                     <img className={selectedFirstName && selectedLastName ? 'newRxCompletedCheckmark' : 'hide'} src={CircleWithCheckmark} alt='' />
                 </button>
-
             </div>
 
             <div className={selectedFirstName && selectedLastName ? 'newRxButtonsNextArrow' : 'hide'}>
@@ -48,8 +59,11 @@ const NewRxButtons = ({ setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx,
             </div>
 
 
-            <div className='new-rx-buttons newRxCreateRxButton'>
-                <button onClick={() => handleCreateRx()}>Create Rx</button>
+            <div className={toggleCreateRx ? 'newRxCreateRxButton' : 'new-rx-buttons'}>
+                <button onClick={() => handleCreateRx()}>
+                    Create Rx
+                    <img className={toggleCreateRx ? 'newRxCompletedCheckmark' : 'hide'} src={CircleWithCheckmark} alt='' />
+                </button>
             </div>
         </div>
     );
