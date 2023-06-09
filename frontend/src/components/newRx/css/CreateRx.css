@@ -51,6 +51,22 @@
     align-items: center;
 }
 
+/* CREATE RX ERROR MESSAGE */
+.createRxErrMsgContainer {
+    display: flex;
+    align-items: center;
+}
+
+.createRxErrMsgContainer img {
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+.createRxErrMsgContainer h4 {
+    color: red;
+}
+
 /* Drug Row */
 .drugInputBoxContainer {
     position: relative;
@@ -205,6 +221,49 @@
     top: 0;
     left: 2px;
     color: #949BA4;
+}
+
+.qtyInputErrorContainer input {
+    width: 160px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+}
+
+.qtyInputErrorContainer input:valid+span,
+.qtyInputErrorContainer input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+
+}
+
+.qtyInputErrorContainer input:valid,
+.qtyInputErrorContainer input:focus {
+    border: 1px solid red;
+}
+
+.qtyErrorLabel {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 0;
+    left: 2px;
+    color: red;
 }
 
 /* REFILL */

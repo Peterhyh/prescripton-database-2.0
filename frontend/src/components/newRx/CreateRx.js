@@ -2,10 +2,11 @@ import { Alert } from 'reactstrap';
 import SelectedPatient from './SelectedPatient';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import RedAlert from '../../app/assets/img/redAlert.svg';
 import './css/CreateRx.css';
 
 
-const VERIFY_NUMBER = /^[0-9]{1,}$/
+const VERIFY_NUMBER = /^\d{1,}$/
 
 const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, }) => {
 
@@ -15,14 +16,26 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
     const [direction, setDirection] = useState('');
 
     const [qty, setQty] = useState('');
-    const [verifyQty, setVerifyQty] = useState('');
+    const [verifyQty, setVerifyQty] = useState();
+    const [triggerQtyError, setTriggerQtyError] = useState();
 
     const [refill, setRefill] = useState('');
+    const [verifyRefill, setVerifyRefill] = useState();
+    const [triggerRefillError, setTriggerError] = useState();
+
     const [daySupply, setDaySupply] = useState('');
 
     const handleClear = () => {
         setSelectedLastName('');
         setSelectedFirstName('');
+    };
+
+    const checkQtyState = (e) => {
+        if (e) {
+            setTriggerQtyError(false);
+        } else if (!e) {
+            setTriggerQtyError(true);
+        };
     };
 
     useEffect(() => {
@@ -33,10 +46,19 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
         }, 5000)
     }, [openSuccess])
 
+
+
     useEffect(() => {
         const verifyQty = VERIFY_NUMBER.test(qty);
         setVerifyQty(verifyQty);
     }, [qty])
+
+    useEffect(() => {
+        const verifyRefill = VERIFY_NUMBER.test(refill);
+        setVerifyRefill(verifyRefill);
+    }, [refill])
+
+
 
 
 
@@ -62,7 +84,18 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                     </div>
                 </div>
 
+
+
+
                 <div className='createRxRightSideContainer'>
+                    {triggerQtyError
+                        ? (
+                            <div className='createRxErrMsgContainer'>
+                                <img src={RedAlert} alt='Alert symbol' />
+                                <h4>Quantity must be a number.</h4>
+                            </div>
+                        ) : ('')
+                    }
                     <h1>Create Rx:</h1>
                     <form className='createRxForm'>
                         <div className='drugInputBoxContainer'>
@@ -86,16 +119,17 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                         </div>
 
                         <div className='qtyRefillDaySupplyContainer'>
-                            <div class='qtyInputContainer'>
+                            <div className={!triggerQtyError ? 'qtyInputContainer' : 'qtyInputErrorContainer'}>
                                 <input
                                     name='quanity'
                                     type='text'
                                     onChange={(e) => setQty(e.target.value)}
+                                    onBlur={() => checkQtyState(verifyQty)}
                                     required
                                 />
-                                <span class='qtyLabel'>Quantity</span>
+                                <span class={!triggerQtyError ? 'qtyLabel' : 'qtyErrorLabel'}>Quantity</span>
                             </div>
-                            <div class='refillInputContainer'>
+                            <div className='refillInputContainer'>
                                 <input
                                     name='refills'
                                     type='text'
@@ -104,7 +138,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                                 />
                                 <span class='refillLabel'>Refills</span>
                             </div>
-                            <div class='daySupplyInputContainer'>
+                            <div className='daySupplyInputContainer'>
                                 <input
                                     name='daySupply'
                                     type='text'
