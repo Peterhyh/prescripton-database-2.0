@@ -1,11 +1,13 @@
-.dataentry-container {
+/* CREATE RX CONTAINER */
+.createRxContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
     overflow: hidden;
 }
 
-.dataentry-left {
+/* LEFT SIDE OF CREATE RX */
+.createRxLeftSideContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,60 +17,47 @@
     width: 50vw;
 }
 
-.dataentry-left-row-top {
+/* UPLOADED RX ROW */
+.uploadedRxContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.dataentry-left-row-top img {
+.uploadedRxContainer img {
     height: 400px;
     width: 400px;
 }
 
-.dataentry-right {
+/* SELECTED PATIENT ROW */
+.selectedPatientContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+/* RIGHT SIDE OF CREATE RX */
+.createRxRightSideContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50vw;
 }
 
-.prescription-title {
+.createRxForm {
     display: flex;
-    justify-content: center;
-    color: #0D2018;
-    padding: 10px;
+    flex-direction: column;
+    align-items: center;
 }
 
-.data-entry-button-container {
-    display: flex;
-    justify-content: center;
-}
-
-.data-entry-button-container button {
-    color: #CFDDD1;
-    background-color: #01314C;
-    border: 1px solid #CFDDD1;
-    padding: 10px;
-    margin: 30px;
-    border-radius: 10px;
-}
-
-.data-entry-button-container button:hover {
-    color: #CFDDD1;
-    background-color: #3385C4;
-    border: 1px solid #01314C;
-    padding: 10px;
-    margin: 30px;
-    border-radius: 10px;
-}
-
-.inputBox-drug {
+/* Drug Row */
+.drugInputBoxContainer {
     position: relative;
     width: 500px;
 }
 
-.inputBox-drug input {
+.drugInputBoxContainer input {
     width: 100%;
     padding: 10px;
     border: 1px solid #949BA4;
@@ -77,24 +66,24 @@
     outline: none;
     color: #0D2018;
     font-size: 1em;
-    margin: 10px;
+    margin-bottom: 20px;
 }
 
-.inputBox-drug-span {
+.drugLabel {
     position: absolute;
-    left: 25px;
     padding: 10px;
     pointer-events: none;
     font-size: 1em;
     opacity: 1;
     text-transform: uppercase;
     transition: 0.3s;
-    top: 10px;
+    top: 0;
+    left: 2px;
     color: #949BA4;
 }
 
-.inputBox-drug input:valid+span,
-.inputBox-drug input:focus+span {
+.drugInputBoxContainer input:valid+span,
+.drugInputBoxContainer input:focus+span {
     opacity: 1;
     color: #0D2018;
     transform: translateX(10px) translateY(-7px);
@@ -106,17 +95,21 @@
     letter-spacing: 0.2em;
 }
 
-.inputBox-drug input:valid,
-.inputBox-drug input:focus {
+.drugInputBoxContainer input:valid,
+.drugInputBoxContainer input:focus {
     border: 1px solid #0D2018;
 }
 
-.inputBox-sig {
+/* Direction Row */
+
+.directionInputBoxContainer {
+    display: flex;
+    justify-content: space-evenly;
     position: relative;
     width: 500px;
 }
 
-.inputBox-sig input {
+.directionInputBoxContainer input {
     width: 100%;
     padding: 10px;
     border: 1px solid #949BA4;
@@ -125,24 +118,24 @@
     outline: none;
     color: #0D2018;
     font-size: 1em;
-    margin: 10px;
+    margin-bottom: 20px;
 }
 
-.inputBox-sig-span {
+.directionInputLabel {
     position: absolute;
-    left: 25px;
     padding: 10px;
     pointer-events: none;
     font-size: 1em;
     opacity: 1;
     text-transform: uppercase;
     transition: 0.3s;
-    top: 10px;
+    top: 0;
+    left: 2px;
     color: #949BA4;
 }
 
-.inputBox-sig input:valid+span,
-.inputBox-sig input:focus+span {
+.directionInputBoxContainer input:valid+span,
+.directionInputBoxContainer input:focus+span {
     opacity: 1;
     color: #0D2018;
     transform: translateX(10px) translateY(-7px);
@@ -155,23 +148,43 @@
 
 }
 
-.inputBox-sig input:valid,
-.inputBox-sig input:focus {
+.directionInputBoxContainer input:valid,
+.directionInputBoxContainer input:focus {
     border: 1px solid #0D2018;
 }
 
-/* -------------------------------------------------------------------------------------------- */
-.inputBox-quanity-refills {
-    position: relative;
+/* Quanity, Refills, and Day Supply Row */
+
+.qtyRefillDaySupplyContainer {
     display: flex;
-    margin: 1px;
+    justify-content: space-between;
     position: relative;
     width: 500px;
-    border: 1px solid firebrick;
 }
 
-.createRxQtyContainer input {
-    width: 100%;
+.qtyRefillDaySupplyContainer input:valid+span,
+.qtyRefillDaySupplyContainer input:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+
+}
+
+.qtyRefillDaySupplyContainer input:valid,
+.qtyRefillDaySupplyContainer input:focus {
+    border: 1px solid #0D2018;
+}
+
+/* QTY */
+
+.qtyInputContainer input {
+    width: 160px;
     padding: 10px;
     border: 1px solid #949BA4;
     background: #CFDDD1;
@@ -179,59 +192,45 @@
     outline: none;
     color: #0D2018;
     font-size: 1em;
-    margin: 10px;
 }
 
-.createRxRefillContainerQty input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #949BA4;
-    background: #CFDDD1;
-    border-radius: 5px;
-    outline: none;
-    color: #0D2018;
-    font-size: 1em;
-    margin: 10px;
-}
-
-.createRxRefillContainer input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #949BA4;
-    background: #CFDDD1;
-    border-radius: 5px;
-    outline: none;
-    color: #0D2018;
-    font-size: 1em;
-    margin: 10px;
-}
-
-.createRxDaySupplyContainer input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #949BA4;
-    background: #CFDDD1;
-    border-radius: 5px;
-    outline: none;
-    color: #0D2018;
-    font-size: 1em;
-    margin: 10px;
-}
-
-.inputBox-quanity-span {
+.qtyLabel {
     position: absolute;
-    left: 25px;
     padding: 10px;
     pointer-events: none;
     font-size: 1em;
     opacity: 1;
     text-transform: uppercase;
     transition: 0.3s;
-    top: 10px;
+    top: 0;
+    left: 2px;
     color: #949BA4;
 }
 
-.inputBox-refills-span {
+/* REFILL */
+.refillInputContainer input {
+    width: 160px;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+}
+
+.refillInputContainer input {
+    width: 160px;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+}
+
+.refillLabel {
     position: absolute;
     left: 193px;
     padding: 10px;
@@ -240,48 +239,59 @@
     opacity: 1;
     text-transform: uppercase;
     transition: 0.3s;
-    top: 10px;
+    left: 172px;
+    top: 0px;
     color: #949BA4;
 }
 
-.inputBox-day-supply-span {
+/* DAY SUPPLY */
+
+.daySupplyInputContainer input {
+    width: 160px;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+}
+
+.daySupplyLabel {
     position: absolute;
-    left: 360px;
+    left: 342px;
     padding: 10px;
     pointer-events: none;
     font-size: 1em;
     opacity: 1;
     text-transform: uppercase;
     transition: 0.3s;
-    top: 10px;
+    top: 0px;
     color: #949BA4;
 }
 
-.inputBox-quanity-refills input:valid+span,
-.inputBox-quanity-refills input:focus+span {
-    opacity: 1;
-    color: #0D2018;
-    transform: translateX(10px) translateY(-7px);
-    font-size: 0.65em;
-    padding: 0 10px;
-    background: #CFDDD1;
-    border-left: 1px solid #0D2018;
-    border-right: 1px solid #0D2018;
-    letter-spacing: 0.2em;
+/* CREATE RX FORM SUBMIT BUTTON */
 
+.createRxSubmitButton {
+    color: #CFDDD1;
+    background-color: #01314C;
+    border: 1px solid #CFDDD1;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 10px;
 }
 
-.inputBox-quanity-refills input:valid,
-.inputBox-quanity-refills input:focus {
-    border: 1px solid #0D2018;
+.createRxSubmitButton:hover {
+    color: #CFDDD1;
+    background-color: #3385C4;
+    border: 1px solid #01314C;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 10px;
 }
 
-.input.input-error,
-.select.input-error {
-    border-color: red;
-}
-
-.dataEntryInstruction {
+/* CREATE RX INSTRUCTION */
+.createRxInstruction {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,11 +303,4 @@
     padding: 30px;
     height: 100%;
     margin: 100px;
-}
-
-.selectedPatientContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    overflow: hidden;
 }
