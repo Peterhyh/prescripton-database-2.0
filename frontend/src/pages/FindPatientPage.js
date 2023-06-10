@@ -31,7 +31,7 @@ const FindPatientPage = () => {
 
 
     useEffect(() => {
-        axios.get('http://18.212.66.103:8000/newPatient')
+        axios.get('http://localhost:3001/newPatient')
             .then(json => {
                 dispatch(addToPatientList(json.data));
             })
@@ -42,7 +42,7 @@ const FindPatientPage = () => {
 
     useEffect(() => {
         axios.post(
-            'http://18.212.66.103:8000/newRx/data',
+            'http://localhost:3001/newRx/data',
             JSON.stringify({ patientId: selectedId }),
             {
                 headers: { 'Content-Type': 'application/json' },
@@ -81,18 +81,16 @@ const FindPatientPage = () => {
                         setPatientAddress={setPatientAddress}
                     />
                     <div className='findPatientInstruction'>
-                        <div>
-                            <h1>Step 4:</h1>
-                            <ul>
-                                <li>
-                                    Please type the patient's name above, a table will appear if the patient exists in the database, and click on the correct profile.<br /><br />
-                                </li>
-                                <li>
-                                    If you have entered the patient's medication previously, you should be able to find it
-                                    under the patient's prescription tab.<br /><br />
-                                </li>
-                            </ul>
-                        </div>
+                        <h1>Step 4:</h1>
+                        <ul>
+                            <li>
+                                Please type the patient's name above, a table will appear if the patient exists in the database, and click on the correct profile.<br /><br />
+                            </li>
+                            <li>
+                                If you have entered the patient's medication previously, you should be able to find it
+                                under the patient's prescription tab.<br /><br />
+                            </li>
+                        </ul>
                     </div>
 
                 </div>
@@ -116,13 +114,17 @@ const FindPatientPage = () => {
                         <p>DATE OF BIRTH:{'  '}{patientDob}</p>
                         <p>ADDRESS:{'  '}{patientAddress}</p>
                     </div>
+
+                    <div className='drug-table-header-carot' onClick={() => setShowDrugList(!showDrugList)}>
+                        <img className={showDrugList ? '' : 'hide'} src={RightArrow} alt='' />
+                        <img className={showDrugList ? 'hide' : ''} src={DownArrow} alt='' />
+                        <h5>PRESCRIPTION</h5>
+                    </div>
+                    <DrugTable
+                        setShowDrugList={setShowDrugList}
+                        showDrugList={showDrugList}
+                    />
                 </div>
-
-                <DrugTable
-                    setShowDrugList={setShowDrugList}
-                    showDrugList={showDrugList}
-                />
-
             </div>
         </>
     )

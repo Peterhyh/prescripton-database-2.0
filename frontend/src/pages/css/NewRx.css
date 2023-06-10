@@ -24,6 +24,7 @@
     background-color: #CFDDD1;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .newRxInstructionContainer {

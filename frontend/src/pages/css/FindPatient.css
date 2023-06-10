@@ -4,6 +4,7 @@
     flex-direction: column;
     background-color: #CFDDD1;
     height: 100vh;
+    overflow: scroll;
 }
 
 .find-patient-searchbar {
@@ -42,7 +43,8 @@
     display: flex;
     flex-direction: column;
     background-color: #CFDDD1;
-    height: 100%;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 .profile-container h1 {
@@ -88,7 +90,7 @@
 .findPatientInstruction {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     border: 5px solid #01304cc0;
     border-radius: 20px;
@@ -96,5 +98,5 @@
     color: #CFDDD1;
     padding: 30px;
     height: 200px;
-    margin-top: 30px;
+    margin: 100px;
 }

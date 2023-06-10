@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import DownArrow from '../../app/assets/img/downArrow.svg'
 import RightArrow from '../../app/assets/img/rightArrow.svg';
 
-const DrugTable = ({ setShowDrugList, showDrugList }) => {
+const DrugTable = ({ showDrugList }) => {
 
     const prescriptionList = useSelector(state => state.prescriptionList.list);
 
@@ -15,11 +15,7 @@ const DrugTable = ({ setShowDrugList, showDrugList }) => {
 
     return (
         <table className='drug-table-container'>
-            <div className='drug-table-header-carot' onClick={() => setShowDrugList(!showDrugList)}>
-                <img className={showDrugList ? '' : 'hide'} src={RightArrow} alt='' />
-                <img className={showDrugList ? 'hide' : ''} src={DownArrow} alt='' />
-                <h5>PRESCRIPTION</h5>
-            </div>
+
             <tbody className={!showDrugList ? 'drug-table-prescription-container' : 'hide'}>
                 <tr className='drug-table-header'>
                     <div>
