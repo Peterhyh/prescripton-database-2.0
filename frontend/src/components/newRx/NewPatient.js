@@ -3,7 +3,10 @@ import './css/NewPatient.css';
 import { useState, useEffect } from 'react';
 import RedAlert from '../../app/assets/img/redAlert.svg';
 
-const VERIFY_NUMBER = /^\d+$/
+const TWO_DIGITS = /^\d{2,2}$/
+const FOUR_DIGITS = /^\d{4,4}$/
+const FIVE_DIGITS = /^\d{5,5}$/
+const LETTERS_ONLY = /^[a-zA-Z]{1,}$/
 
 const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx }) => {
 
@@ -11,15 +14,18 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
 
     const [firstName, setFirstName] = useState('');
     const [firstNameMouseOff, setFirstNameMouseOff] = useState(false);
+    const [verifiedFirstName, setVerifiedFirstName] = useState(false);
 
     const [lastName, setLastName] = useState('');
     const [lastNameMouseOff, setLastNameMouseOff] = useState(false);
+    const [verifiedLastName, setVerifiedLastName] = useState(false);
 
     const [street, setStreet] = useState('');
     const [streetMouseOff, setStreetMouseOff] = useState(false);
 
     const [city, setCity] = useState('');
     const [cityMouseOff, setCityMouseOff] = useState(false);
+    const [verifiedCity, setVerifiedCity] = useState(false);
 
     const [state, setState] = useState('');
     const [stateMouseOff, setStateMouseOff] = useState(false);
@@ -54,9 +60,9 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                 JSON.stringify({
                     firstName: firstName,
                     lastName: lastName,
-                    birthMonth: birthMonth,
-                    birthDay: birthMonth,
-                    birthYear: birthYear,
+                    dateOfBirthMonth: birthMonth,
+                    dateOfBirthDay: birthDay,
+                    dateOfBirthYear: birthYear,
                     street: street,
                     city: city,
                     state: state,
@@ -69,7 +75,10 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
             )
                 .then((response) => {
                     if (response.status === 200) {
-                        console.log(response.status);
+                        setSelectedLastName(response.data.lastName);
+                        setSelectedFirstName(response.data.firstName);
+                        setSelectedId(response.data._id);
+                        handleCreateRx();
                     }
                 })
                 .catch(err => console.log(err));
@@ -79,15 +88,30 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
     };
 
     useEffect(() => {
-        const verifyBirthMonth = VERIFY_NUMBER.test(birthMonth);
-        const verifyBirthDay = VERIFY_NUMBER.test(birthDay);
-        const verifyBirthYear = VERIFY_NUMBER.test(birthYear);
-        const verifyZip = VERIFY_NUMBER.test(zip);
+        const verifyBirthMonth = TWO_DIGITS.test(birthMonth);
+        const verifyBirthDay = TWO_DIGITS.test(birthDay);
         setVerifiedBirthMonth(verifyBirthMonth);
         setVerifiedBirthDay(verifyBirthDay);
+    }, [birthMonth, birthDay]);
+
+    useEffect(() => {
+        const verifyBirthYear = FOUR_DIGITS.test(birthYear);
         setVerifiedBirthYear(verifyBirthYear);
-        setVerifiedZip(verifyZip)
-    }, [birthMonth, birthDay, birthYear, zip]);
+    }, [birthYear]);
+
+    useEffect(() => {
+        const verifyZip = FIVE_DIGITS.test(zip);
+        setVerifiedZip(verifyZip);
+    }, [zip]);
+
+    useEffect(() => {
+        const verifyFirstName = LETTERS_ONLY.test(firstName);
+        const verifyLastName = LETTERS_ONLY.test(lastName);
+        const verifyCity = LETTERS_ONLY.test(city);
+        setVerifiedFirstName(verifyFirstName);
+        setVerifiedLastName(verifyLastName);
+        setVerifiedCity(verifyCity);
+    }, [firstName, lastName, city]);
 
     //TOGGLE REGISTER PATIENT BUTTON
     useEffect(() => {
@@ -124,27 +148,43 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
         <div className={openNewPatient ? 'registerPatientContainer' : 'hide'}>
 
             <div className='errMsgContainer'>
-                {!firstName.length > 0 && firstNameMouseOff
+                {!verifiedFirstName && firstNameMouseOff
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>First name cannot be empty.</h4>
+                            <h4>First name cannot be blank and must contain only letters.</h4>
                         </div>
                     ) : ('')
                 }
-                {!lastName.length > 0 && lastNameMouseOff
+                {!verifiedLastName && lastNameMouseOff
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>Last name cannot be empty.</h4>
+                            <h4>Last name cannot be blank and must contain only letters.</h4>
                         </div>
                     ) : ('')
                 }
-                {!verifiedBirthMonth && birthMonthMouseOff || !verifiedBirthDay && birthDayMouseOff || !verifiedBirthYear && birthYearMouseOff
+                {!verifiedBirthMonth && birthMonthMouseOff
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>Date of birth fields must be a number.</h4>
+                            <h4>Birth month must be a number with 2 digits.</h4>
+                        </div>
+                    ) : ('')
+                }
+                {!verifiedBirthDay && birthDayMouseOff
+                    ? (
+                        <div className='errMsgContent'>
+                            <img src={RedAlert} alt='Alert symbol' />
+                            <h4>Birth day must be a number with 2 digits.</h4>
+                        </div>
+                    ) : ('')
+                }
+                {!verifiedBirthYear && birthYearMouseOff
+                    ? (
+                        <div className='errMsgContent'>
+                            <img src={RedAlert} alt='Alert symbol' />
+                            <h4>Birth year must be a number with 4 digits.</h4>
                         </div>
                     ) : ('')
                 }
@@ -156,19 +196,19 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                         </div>
                     ) : ('')
                 }
-                {!city.length > 0 && cityMouseOff
+                {!verifiedCity && cityMouseOff
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>City cannot be blank.</h4>
+                            <h4>City cannot be blank and must contain only letters.</h4>
                         </div>
                     ) : ('')
                 }
-                {!state.length > 0 && stateMouseOff
+                {state.length === 0 && stateMouseOff
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>State cannot be blank.</h4>
+                            <h4>Please select a state.</h4>
                         </div>
                     ) : ('')
                 }
@@ -176,7 +216,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>Zip must be a number.</h4>
+                            <h4>Zip must be a number with 5 digits.</h4>
                         </div>
                     ) : ('')}
             </div>
@@ -186,7 +226,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                 <h1 class='patient-title'>New Patient:</h1>
 
                 <div className='nameContainer'>
-                    <div className={firstName.length === 0 && firstNameMouseOff ? 'firstNameContainerError' : 'firstNameContainer'}>
+                    <div className={!verifiedFirstName && firstNameMouseOff ? 'firstNameContainerError' : 'firstNameContainer'}>
                         <input
                             name='firstName'
                             value={firstName}
@@ -197,7 +237,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                         />
                         <span>First Name</span>
                     </div>
-                    <div className={lastName.length === 0 && lastNameMouseOff ? 'lastNameContainerError' : 'lastNameContainer'}>
+                    <div className={!verifiedLastName && lastNameMouseOff ? 'lastNameContainerError' : 'lastNameContainer'}>
                         <input
                             name='lastName'
                             value={lastName}
@@ -276,7 +316,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
 
 
                 <div className='cityStateZipContainer'>
-                    <div className={city.length === 0 && cityMouseOff ? 'cityContainerError' : 'cityContainer'}>
+                    <div className={!verifiedCity && cityMouseOff ? 'cityContainerError' : 'cityContainer'}>
                         <input
                             name='city'
                             value={city}
@@ -289,14 +329,67 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     </div>
 
                     <div className={state.length === 0 && stateMouseOff ? 'stateContainerError' : 'stateContainer'}>
-                        <input
+                        <select
                             id='state'
                             name='state'
                             value={state}
                             onChange={(e) => setState(e.target.value)}
                             onBlur={() => setStateMouseOff(true)}
                             required
-                        />
+                        >
+                            <option value=''></option>
+                            <option value="AL">AL</option>
+                            <option value="AK">AK</option>
+                            <option value="AZ">AZ</option>
+                            <option value="AR">AR</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DE">DE</option>
+                            <option value="DC">DC</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="HI">HI</option>
+                            <option value="ID">ID</option>
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="IA">IA</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="ME">ME</option>
+                            <option value="MD">MD</option>
+                            <option value="MA">MA</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MS">MS</option>
+                            <option value="MO">MO</option>
+                            <option value="MT">MT</option>
+                            <option value="NE">NE</option>
+                            <option value="NV">NV</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NY">NY</option>
+                            <option value="NC">NC</option>
+                            <option value="ND">ND</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VT">VT</option>
+                            <option value="VA">VA</option>
+                            <option value="WA">WA</option>
+                            <option value="WV">WV</option>
+                            <option value="WI">WI</option>
+                            <option value="WY">WY</option>
+                        </select>
                         <span>State</span>
                     </div>
 

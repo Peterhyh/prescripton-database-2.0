@@ -69,6 +69,35 @@
     letter-spacing: 0.2em;
 }
 
+.cityStateZipContainer select:valid+span,
+.cityStateZipContainer select:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+}
+
+.cityStateZipContainer select:valid,
+.cityStateZipContainer select:focus {
+    border: 1px solid #0D2018;
+}
+
+.cityStateZipContainer select {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+}
+
 .cityStateZipContainer input:valid,
 .cityStateZipContainer input:focus {
     border: 1px solid #0D2018;
@@ -454,8 +483,8 @@
 
 /*STATE ERROR*/
 
-.stateContainerError input:valid+span,
-.stateContainerError input:focus+span {
+.stateContainerError select:valid+span,
+.stateContainerError select:focus+span {
     opacity: 1;
     color: red;
     transform: translateX(10px) translateY(-7px);
@@ -467,12 +496,12 @@
     letter-spacing: 0.2em;
 }
 
-.stateContainerError input:valid,
-.stateContainerError input:focus {
+.stateContainerError select:valid,
+.stateContainerError select:focus {
     border: 1px solid red;
 }
 
-.stateContainerError input {
+.stateContainerError select {
     width: 153px;
     padding: 10px;
     border: 1px solid red;
