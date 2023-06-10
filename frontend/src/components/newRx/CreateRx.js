@@ -8,56 +8,73 @@ import RedAlert from '../../app/assets/img/redAlert.svg';
 import './css/CreateRx.css';
 
 
-const VERIFY_NUMBER = /^\d{1,}$/
+const VERIFY_NUMBER = /^\d+$/
 
 const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, }) => {
 
     const dispatch = useDispatch();
 
+
+
     //STATES
     const [openSuccess, setOpenSuccess] = useState(false);
+    const [toggleFormButton, setToggleFormButton] = useState(false);
 
     const [drugName, setDrugName] = useState('');
+    const [drugNameMouseOff, setDrugNameMouseOff] = useState(false);
+
     const [direction, setDirection] = useState('');
+    const [directionMouseOff, setDirectionMouseOff] = useState(false);
 
     const [qty, setQty] = useState('');
-    const [verifyQty, setVerifyQty] = useState();
-    const [triggerQtyError, setTriggerQtyError] = useState(false);
+    const [verifiedQty, setVerifiedQty] = useState();
+    const [qtyMouseOff, setQtyMouseOff] = useState(false);
 
     const [refill, setRefill] = useState('');
-    const [verifyRefill, setVerifyRefill] = useState();
-    const [triggerRefillError, setTriggerRefillError] = useState(false);
+    const [verifiedRefill, setVerifiedRefill] = useState();
+    const [refillMouseOff, setRefillMouseOff] = useState(false);
 
     const [daySupply, setDaySupply] = useState('');
-    const [verifyDaySupply, setVerifyDaySupply] = useState();
-    const [triggerDaySupplyError, setTriggerDaySupplyError] = useState(false);
+    const [verifiedDaySupply, setVerifiedDaySupply] = useState();
+    const [daySupplyMouseOff, setDaySupplyMouseOff] = useState(false);
 
-    //CLEAR SELECTED PATIENT
+
+    //FUNCTIONS
     const handleClear = () => {
         setSelectedLastName('');
         setSelectedFirstName('');
+        setDrugName('');
+        setDirection('');
+        setQty('');
+        setRefill('');
+        setDaySupply('');
     };
 
-    //CHECK STATE
-    const checkQtyState = (e) => {
-        if (e) {
-            setTriggerQtyError(false);
-        } else if (!e && qty.length > 0) {
-            setTriggerQtyError(true);
-        };
-    };
-    const checkRefillState = (e) => {
-        if (e) {
-            setTriggerRefillError(false);
-        } else if (!e && refill.length > 0) {
-            setTriggerRefillError(true);
-        };
-    };
-    const checkDaySupplyState = (e) => {
-        if (e) {
-            setTriggerDaySupplyError(false);
-        } else if (!e && daySupply.length > 0) {
-            setTriggerDaySupplyError(true);
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            await axios.post(
+                'http://localhost:3001/newRx',
+                JSON.stringify({
+                    patientId: selectedId,
+                    drug: drugName,
+                    direction: direction,
+                    quanity: qty,
+                    refills: refill,
+                    daySupply: daySupply,
+                }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            )
+                .then((response) => {
+                    console.log(response.status);
+                    handleClear();
+                })
+                .catch(err => console.log(err));
+        } catch (err) {
+            console.log(err);
         };
     };
 
@@ -72,44 +89,41 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
 
     //QTY, REFILL, AND DAY SUPPLY REGEX CHECK
     useEffect(() => {
-        const verifyQty = VERIFY_NUMBER.test(qty);
-        setVerifyQty(verifyQty);
-    }, [qty])
+        const verify = VERIFY_NUMBER.test(qty);
+        setVerifiedQty(verify);
+    }, [qty]);
 
     useEffect(() => {
-        const verifyRefill = VERIFY_NUMBER.test(refill);
-        setVerifyRefill(verifyRefill);
+        const verify = VERIFY_NUMBER.test(refill);
+        setVerifiedRefill(verify);
     }, [refill])
 
     useEffect(() => {
-        const verifyDaySupply = VERIFY_NUMBER.test(daySupply);
-        setVerifyDaySupply(verifyDaySupply);
+        const verify = VERIFY_NUMBER.test(daySupply);
+        setVerifiedDaySupply(verify);
     }, [daySupply])
 
     //TOGGLE CREATE RX BUTTON GREEN
     useEffect(() => {
         if (
-            drugName
-            && direction
-            && !triggerQtyError
-            && qty.length > 0
-            && !triggerRefillError
-            && refill.length > 0
-            && !triggerDaySupplyError
-            && daySupply.length > 0
+            drugName.length > 0
+            && direction.length > 0
+            && verifiedQty
+            && verifiedRefill
+            && verifiedDaySupply
         ) {
             dispatch(toggleOn());
-            console.log('toggle: ON');
+            console.log('on');
         } else {
             dispatch(toggleOff());
-            console.log('toggle: OFF');
+            console.log('off');
         }
     }, [
         drugName,
         direction,
-        triggerQtyError,
-        triggerRefillError,
-        triggerDaySupplyError
+        qty,
+        refill,
+        daySupply,
     ]);
 
 
@@ -140,86 +154,112 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
 
                 <div className='createRxRightSideContainer'>
                     <div className='errMsgContainer'>
-                        {triggerQtyError
+                        {drugName.length == 0 && drugNameMouseOff
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
-                                    <h4>Quantity must be a number.</h4>
+                                    <h4>'Drug' cannot be blank.</h4>
                                 </div>
                             ) : ('')
                         }
-                        {triggerRefillError
+                        {direction.length == 0 && directionMouseOff
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
-                                    <h4>Refill must be a number.</h4>
+                                    <h4>'Direction' cannot be blank.</h4>
                                 </div>
                             ) : ('')
                         }
-                        {triggerDaySupplyError
+                        {!verifiedQty && qtyMouseOff
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
-                                    <h4>Day Supply must be a number.</h4>
+                                    <h4>'Quantity' must be a number.</h4>
+                                </div>
+                            ) : ('')
+                        }
+                        {!verifiedRefill && refillMouseOff
+                            ? (
+                                <div className='errMsgContent'>
+                                    <img src={RedAlert} alt='Alert symbol' />
+                                    <h4>'Refill' must be a number.</h4>
+                                </div>
+                            ) : ('')
+                        }
+                        {!verifiedDaySupply && daySupplyMouseOff
+                            ? (
+                                <div className='errMsgContent'>
+                                    <img src={RedAlert} alt='Alert symbol' />
+                                    <h4>'Day Supply' must be a number.</h4>
                                 </div>
                             ) : ('')
                         }
                     </div>
                     <h1>Create Rx:</h1>
-                    <form className='createRxForm'>
-                        <div className='drugInputBoxContainer'>
+                    <form className='createRxForm' onSubmit={handleSubmit}>
+                        <div className={drugName.length == 0 && drugNameMouseOff ? 'drugInputBoxErrorContainer' : 'drugInputBoxContainer'}>
                             <input
                                 name='drug'
                                 type='text'
                                 onChange={(e) => setDrugName(e.target.value)}
+                                onBlur={() => setDrugNameMouseOff(true)}
                                 required
                             />
-                            <span class='drugLabel'>Drug</span>
+                            <span className={drugName.length == 0 && drugNameMouseOff ? 'drugErrorLabel' : 'drugLabel'}>Drug</span>
                         </div>
 
-                        <div className='directionInputBoxContainer'>
+                        <div className={direction.length == 0 && directionMouseOff ? 'directionInputBoxErrorContainer' : 'directionInputBoxContainer'}>
                             <input
                                 name='direction'
                                 type='text'
                                 onChange={(e) => setDirection(e.target.value)}
+                                onBlur={() => setDirectionMouseOff(true)}
                                 required
                             />
-                            <span class='directionInputLabel'>Direction</span>
+                            <span className={direction.length == 0 && directionMouseOff ? 'directionErrorLabel' : 'directionLabel'}>Direction</span>
                         </div>
 
                         <div className='qtyRefillDaySupplyContainer'>
-                            <div className={!triggerQtyError ? 'qtyInputContainer' : 'qtyInputErrorContainer'}>
+                            <div className={!verifiedQty && qtyMouseOff ? 'qtyInputErrorContainer' : 'qtyInputContainer'}>
                                 <input
                                     name='quanity'
                                     type='text'
                                     onChange={(e) => setQty(e.target.value)}
-                                    onBlur={() => checkQtyState(verifyQty)}
+                                    onBlur={() => setQtyMouseOff(true)}
                                     required
                                 />
-                                <span class={!triggerQtyError ? 'qtyLabel' : 'qtyErrorLabel'}>Quantity</span>
+                                <span className={!verifiedQty && qtyMouseOff ? 'qtyErrorLabel' : 'qtyLabel'}>Quantity</span>
                             </div>
-                            <div className={!triggerRefillError ? 'refillInputContainer' : 'refillInputErrorContainer'}>
+                            <div className={!verifiedRefill && refillMouseOff ? 'refillInputErrorContainer' : 'refillInputContainer'}>
                                 <input
                                     name='refills'
                                     type='text'
                                     onChange={(e) => setRefill(e.target.value)}
-                                    onBlur={() => checkRefillState(verifyRefill)}
+                                    onBlur={() => setRefillMouseOff(true)}
                                     required
                                 />
-                                <span className={!triggerRefillError ? 'refillLabel' : 'refillErrorLabel'}>Refills</span>
+                                <span className={!verifiedRefill && refillMouseOff ? 'refillErrorLabel' : 'refillLabel'}>Refills</span>
                             </div>
-                            <div className={!triggerDaySupplyError ? 'daySupplyInputContainer' : 'daySupplyInputErrorContainer'}>
+                            <div className={!verifiedDaySupply && daySupplyMouseOff ? 'daySupplyInputErrorContainer' : 'daySupplyInputContainer'}>
                                 <input
                                     name='daySupply'
                                     type='text'
                                     onChange={(e) => setDaySupply(e.target.value)}
-                                    onBlur={() => checkDaySupplyState(verifyDaySupply)}
+                                    onBlur={() => setDaySupplyMouseOff(true)}
                                     required
                                 />
-                                <span className={!triggerDaySupplyError ? 'daySupplyLabel' : 'daySupplyErrorLabel'}>Day Supply</span>
+                                <span className={!verifiedDaySupply && daySupplyMouseOff ? 'daySupplyErrorLabel' : 'daySupplyLabel'}>Day Supply</span>
                             </div>
                         </div>
-                        <button className='createRxSubmitButton' type='submit' outline>Submit</button>
+                        {
+                            toggleFormButton && selectedLastName && selectedFirstName
+                                ? (
+                                    <button className='createRxSubmitButtonActive' type='submit' outline>Submit</button>
+                                ) : (
+                                    <button className='createRxSubmitButtonInactive' type='button' outline>Submit</button>
+                                )
+                        }
+
                     </form >
 
                     <div className='createRxInstruction'>

@@ -121,6 +121,54 @@
     border: 1px solid #0D2018;
 }
 
+.drugInputBoxErrorContainer {
+    position: relative;
+    width: 500px;
+}
+
+.drugInputBoxErrorContainer input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.drugErrorLabel {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 0;
+    left: 2px;
+    color: red;
+}
+
+.drugInputBoxErrorContainer input:valid+span,
+.drugInputBoxErrorContainer input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+}
+
+.drugInputBoxErrorContainer input:valid,
+.drugInputBoxErrorContainer input:focus {
+    border: 1px solid red;
+}
+
 /* Direction Row */
 
 .directionInputBoxContainer {
@@ -142,7 +190,7 @@
     margin-bottom: 20px;
 }
 
-.directionInputLabel {
+.directionLabel {
     position: absolute;
     padding: 10px;
     pointer-events: none;
@@ -172,6 +220,54 @@
 .directionInputBoxContainer input:valid,
 .directionInputBoxContainer input:focus {
     border: 1px solid #0D2018;
+}
+
+.directionInputBoxErrorContainer {
+    position: relative;
+    width: 500px;
+}
+
+.directionInputBoxErrorContainer input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.directionErrorLabel {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    top: 0;
+    left: 2px;
+    color: red;
+}
+
+.directionInputBoxErrorContainer input:valid+span,
+.directionInputBoxErrorContainer input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+}
+
+.directionInputBoxErrorContainer input:valid,
+.directionInputBoxErrorContainer input:focus {
+    border: 1px solid red;
 }
 
 /* Quanity, Refills, and Day Supply Row */
@@ -423,19 +519,29 @@
 
 /* CREATE RX FORM SUBMIT BUTTON */
 
-.createRxSubmitButton {
+.createRxSubmitButtonActive {
     color: #CFDDD1;
-    background-color: #01314C;
-    border: 1px solid #CFDDD1;
+    background-color: green;
+    border: 1px solid #145F1D;
     padding: 10px;
     margin: 30px;
     border-radius: 10px;
 }
 
-.createRxSubmitButton:hover {
+.createRxSubmitButtonActive:hover {
     color: #CFDDD1;
     background-color: #3385C4;
     border: 1px solid #01314C;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 10px;
+    transform: scale(1.1);
+}
+
+.createRxSubmitButtonInactive {
+    color: #949BA4;
+    background-color: #CFDDD1;
+    border: 1px solid #949BA4;
     padding: 10px;
     margin: 30px;
     border-radius: 10px;
