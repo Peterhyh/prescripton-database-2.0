@@ -22,6 +22,8 @@ const FindPatientPage = () => {
     const [showInfo, setShowInfo] = useState(false);
     const [showDrugList, setShowDrugList] = useState(false);
 
+    const [searchedName, setSearchedName] = useState('');
+
     const handleTabState = () => {
         setShowInfo(true);
         setShowDrugList(false);
@@ -68,8 +70,12 @@ const FindPatientPage = () => {
                     <input
                         placeholder='example: "Smoe, Joe"'
                         id='patientName'
+                        value={searchedName}
                         type='text'
-                        onChange={(e) => setQuery(e.target.value)}
+                        onChange={(e) => {
+                            setQuery(e.target.value);
+                            setSearchedName(e.target.value);
+                        }}
                     />
                     <ProfileSearchTable
                         handleTabState={handleTabState}
@@ -79,6 +85,8 @@ const FindPatientPage = () => {
                         setPatientLastName={setPatientLastName}
                         setPatientDob={setPatientDob}
                         setPatientAddress={setPatientAddress}
+                        setSearchedName={setSearchedName}
+                        setQuery={setQuery}
                     />
                     <div className='findPatientInstruction'>
                         <h1>Step 4:</h1>

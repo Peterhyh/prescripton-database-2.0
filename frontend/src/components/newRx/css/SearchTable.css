@@ -12,6 +12,7 @@
 
 .new-rx-search-results-container td {
     width: 200px;
+    height: 70px;
     color: #000;
     padding: 7px;
 }

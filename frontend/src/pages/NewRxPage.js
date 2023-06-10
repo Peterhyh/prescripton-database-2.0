@@ -26,6 +26,7 @@ const NewRxPage = () => {
     const [selectedFirstName, setSelectedFirstName] = useState();
     const [selectedLastName, setSelectedLastName] = useState();
     const [selectedId, setSelectedId] = useState();
+    const [patientName, setPatientName] = useState('');
 
     useEffect(() => {
         const successTimer = setTimeout(() => {
@@ -102,6 +103,8 @@ const NewRxPage = () => {
                         setSelectedLastName={setSelectedLastName}
                         setSelectedFirstName={setSelectedFirstName}
                         setSelectedId={setSelectedId}
+                        patientName={patientName}
+                        setPatientName={setPatientName}
                     />
 
                 </div>
@@ -118,6 +121,7 @@ const NewRxPage = () => {
                         setOpenSelectPatient={setOpenSelectPatient}
                         setOpenUploadRx={setOpenUploadRx}
                         openUploadRx={openUploadRx}
+                        setPatientName={setPatientName}
                     />
                 </div>
 

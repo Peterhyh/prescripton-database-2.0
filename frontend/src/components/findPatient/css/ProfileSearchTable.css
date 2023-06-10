@@ -23,6 +23,7 @@
 
 .profile-search-results-container td {
     width: 250px;
+    height: 70px;
     font-size: 20px;
     cursor: pointer;
     padding: 7px;

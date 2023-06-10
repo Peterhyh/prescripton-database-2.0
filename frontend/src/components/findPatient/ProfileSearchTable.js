@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux';
 import './css/ProfileSearchTable.css';
 
-const ProfileSearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirstName, setPatientAddress, setPatientDob, handleTabState }) => {
-
+const ProfileSearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirstName, setPatientAddress, setPatientDob, handleTabState, setSearchedName, setQuery }) => {
 
     const patientList = useSelector(state => state.patientList.list);
 
@@ -44,6 +43,8 @@ const ProfileSearchTable = ({ query, setSelectedId, setPatientLastName, setPatie
                                 setPatientFirstName(patient.lastName);
                                 handleSetAddress(patient);
                                 handleSetDob(patient);
+                                setSearchedName('');
+                                setQuery('');
                                 handleTabState();
                             }}
                         >

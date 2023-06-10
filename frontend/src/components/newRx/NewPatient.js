@@ -8,7 +8,7 @@ const FOUR_DIGITS = /^\d{4,4}$/
 const FIVE_DIGITS = /^\d{5,5}$/
 const LETTERS_ONLY = /^[a-zA-Z]{1,}$/
 
-const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx }) => {
+const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx, setPatientName }) => {
 
     const [toggleFormButton, setToggleFormButton] = useState(false);
 
@@ -46,6 +46,19 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
     const [verifiedZip, setVerifiedZip] = useState(false);
     const [zipMouseOff, setZipMouseOff] = useState(false);
 
+    const handleClearForm = () => {
+        setFirstName('');
+        setLastName('');
+        setStreet('');
+        setCity('');
+        setState('');
+        setBirthMonth('');
+        setBirthDay('');
+        setBirthYear('');
+        setZip('');
+        setPatientName('');
+    };
+
 
     const toggleBack = () => {
         setSelectPatient(true);
@@ -58,14 +71,14 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
             await axios.post(
                 'http://localhost:3001/newPatient',
                 JSON.stringify({
-                    firstName: firstName,
-                    lastName: lastName,
+                    firstName: firstName.toUpperCase(),
+                    lastName: lastName.toUpperCase(),
                     dateOfBirthMonth: birthMonth,
                     dateOfBirthDay: birthDay,
                     dateOfBirthYear: birthYear,
-                    street: street,
-                    city: city,
-                    state: state,
+                    street: street.toUpperCase(),
+                    city: city.toUpperCase(),
+                    state: state.toUpperCase(),
                     zip: zip,
                 }),
                 {
@@ -78,6 +91,9 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                         setSelectedLastName(response.data.lastName);
                         setSelectedFirstName(response.data.firstName);
                         setSelectedId(response.data._id);
+                        setOpenNewPatient(false);
+                        setSelectPatient(true);
+                        handleClearForm();
                         handleCreateRx();
                     }
                 })
@@ -152,7 +168,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>First name cannot be blank and must contain only letters.</h4>
+                            <h4>"First Name" cannot be blank and must contain only letters</h4>
                         </div>
                     ) : ('')
                 }
@@ -160,7 +176,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>Last name cannot be blank and must contain only letters.</h4>
+                            <h4>"Last Name" cannot be blank and must contain only letters</h4>
                         </div>
                     ) : ('')
                 }
@@ -168,7 +184,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>Birth month must be a number with 2 digits.</h4>
+                            <h4>"Birth Month" must be a number with 2 digits</h4>
                         </div>
                     ) : ('')
                 }
@@ -176,7 +192,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>Birth day must be a number with 2 digits.</h4>
+                            <h4>"Birth Day" must be a number with 2 digits</h4>
                         </div>
                     ) : ('')
                 }
@@ -184,7 +200,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>Birth year must be a number with 4 digits.</h4>
+                            <h4>"Birth Year" must be a number with 4 digits</h4>
                         </div>
                     ) : ('')
                 }
@@ -192,7 +208,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>Street address cannot be blank.</h4>
+                            <h4>"Street" cannot be blank</h4>
                         </div>
                     ) : ('')
                 }
@@ -200,7 +216,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>City cannot be blank and must contain only letters.</h4>
+                            <h4>"City" cannot be blank and must contain only letters</h4>
                         </div>
                     ) : ('')
                 }
@@ -208,7 +224,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>Please select a state.</h4>
+                            <h4>Please select a state</h4>
                         </div>
                     ) : ('')
                 }
@@ -216,7 +232,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>Zip must be a number with 5 digits.</h4>
+                            <h4>"Zip" must be a number with 5 digits</h4>
                         </div>
                     ) : ('')}
             </div>

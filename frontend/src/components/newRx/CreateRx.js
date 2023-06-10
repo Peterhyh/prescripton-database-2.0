@@ -10,7 +10,7 @@ import './css/CreateRx.css';
 
 const VERIFY_NUMBER = /^\d+$/
 
-const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx, openUploadRx }) => {
+const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx, openUploadRx, setPatientName }) => {
 
     const dispatch = useDispatch();
 
@@ -54,6 +54,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
         setOpenUploadRx(!openUploadRx);
         setOpenDataEntry(false);
         setOpenSelectPatient(false);
+        setPatientName('');
     };
 
     const handleSubmit = async (e) => {
@@ -63,8 +64,8 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                 'http://localhost:3001/newRx',
                 JSON.stringify({
                     patientId: selectedId,
-                    drug: drugName,
-                    direction: direction,
+                    drug: drugName.toUpperCase(),
+                    direction: direction.toUpperCase(),
                     quanity: qty,
                     refills: refill,
                     daySupply: daySupply,
@@ -154,7 +155,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
-                                    <h4>Must select a patient.</h4>
+                                    <h4>Must select a patient</h4>
                                 </div>
                             ) : ('')
                         }
@@ -162,7 +163,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
-                                    <h4>'Drug' cannot be blank.</h4>
+                                    <h4>"Drug" cannot be blank</h4>
                                 </div>
                             ) : ('')
                         }
@@ -170,7 +171,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
-                                    <h4>'Direction' cannot be blank.</h4>
+                                    <h4>"Direction" cannot be blank</h4>
                                 </div>
                             ) : ('')
                         }
@@ -178,7 +179,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
-                                    <h4>'Quantity' must be a number.</h4>
+                                    <h4>"Quantity" must be a number</h4>
                                 </div>
                             ) : ('')
                         }
@@ -186,7 +187,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
-                                    <h4>'Refill' must be a number.</h4>
+                                    <h4>"Refill" must be a number</h4>
                                 </div>
                             ) : ('')
                         }
@@ -194,7 +195,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
-                                    <h4>'Day Supply' must be a number.</h4>
+                                    <h4>"Day Supply" must be a number</h4>
                                 </div>
                             ) : ('')
                         }

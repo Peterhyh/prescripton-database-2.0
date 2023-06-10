@@ -6,7 +6,24 @@ import { useState } from 'react';
 
 
 
-const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, setSelectedId, setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx, openDataEntry }) => {
+const PatientSearch = ({
+    setQuery,
+    query,
+    value,
+    uploadedRx,
+    selectedLastName,
+    selectedFirstName,
+    setSelectedLastName,
+    setSelectedFirstName,
+    setSelectedId,
+    setOpenDataEntry,
+    setOpenSelectPatient,
+    setOpenUploadRx,
+    openDataEntry,
+    patientName,
+    setPatientName,
+}) => {
+
     const [openNewPatient, setOpenNewPatient] = useState(false);
     const [openSelectPatient, setSelectPatient] = useState(true);
 
@@ -53,9 +70,13 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
                             <label htmlFor='patientName'>{'Patient Name (Last, First):'}</label>
                             <input
                                 placeholder='example: "Smoe, Joe"'
+                                value={patientName}
                                 id='patientName'
                                 type='text'
-                                onChange={(e) => setQuery(e.target.value)}
+                                onChange={(e) => {
+                                    setQuery(e.target.value);
+                                    setPatientName(e.target.value);
+                                }}
                             />
                         </div>
                         <button className='patientsearch-register-button' onClick={() => toggleNewPatient()}>Register Patient</button>
@@ -69,6 +90,7 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
                             setSelectedLastName={setSelectedLastName}
                             setSelectedId={setSelectedId}
                             handleCreateRx={handleCreateRx}
+                            setPatientName={setPatientName}
                         />
                     </div>
                 </div>
@@ -80,6 +102,7 @@ const PatientSearch = ({ setQuery, query, value, uploadedRx, selectedLastName, s
                     setSelectedFirstName={setSelectedFirstName}
                     setSelectedId={setSelectedId}
                     handleCreateRx={handleCreateRx}
+                    setPatientName={setPatientName}
                 />
                 <div className='selectPatientInstruction'>
                     <div>
