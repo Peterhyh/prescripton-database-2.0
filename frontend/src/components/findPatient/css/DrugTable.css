@@ -3,8 +3,6 @@
     flex-direction: column;
 }
 
-
-
 .drug-table-header th {
     width: 100%;
     padding: 7px;
@@ -36,7 +34,7 @@
 .patient-drug-list {
     display: flex;
     border: 1px solid #000;
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
 .patient-drug-list:hover {

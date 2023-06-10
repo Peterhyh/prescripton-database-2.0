@@ -1,3 +1,8 @@
+.newRxCompletedCheckmark {
+    height: 20px;
+    width: 20px;
+}
+
 .new-rx-buttons-container {
     display: flex;
 }
@@ -39,10 +44,17 @@
     width: 50px;
 }
 
+/*UPLOAD RX BUTTON*/
 .newRxUploadButton button {
     background-color: green;
 }
 
+.newRxUploadButton button:hover {
+    background-color: rgb(1, 83, 1);
+    border: 1px solid rgb(1, 83, 1);
+}
+
+/*SELECT PATIENT BUTTON*/
 .newRxSelectPatientButton button {
     background-color: green;
     color: #CFDDD1;
@@ -58,18 +70,14 @@
 
 .newRxSelectPatientButton button:hover {
     color: #CFDDD1;
-    background-color: #3385C4;
+    background-color: rgb(1, 83, 1);
     font-weight: bold;
     font-size: 2rem;
-    border: 1px solid #17382b76;
+    border: 1px solid rgb(1, 83, 1);
     border-radius: 10px;
 }
 
-.newRxCompletedCheckmark {
-    height: 20px;
-    width: 20px;
-}
-
+/*CREATE RX BUTTON*/
 .newRxCreateRxButton button {
     background-color: green;
     color: #CFDDD1;
@@ -85,9 +93,9 @@
 
 .newRxCreateRxButton button:hover {
     color: #CFDDD1;
-    background-color: #3385C4;
+    background-color: rgb(1, 83, 1);
     font-weight: bold;
     font-size: 2rem;
-    border: 1px solid #17382b76;
+    border: 1px solid rgb(1, 83, 1);
     border-radius: 10px;
 }

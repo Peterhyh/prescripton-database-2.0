@@ -530,8 +530,8 @@
 
 .createRxSubmitButtonActive:hover {
     color: #CFDDD1;
-    background-color: #3385C4;
-    border: 1px solid #01314C;
+    background-color: green;
+    border: 1px solid green;
     padding: 10px;
     margin: 30px;
     border-radius: 10px;
@@ -545,6 +545,7 @@
     padding: 10px;
     margin: 30px;
     border-radius: 10px;
+    cursor: not-allowed;
 }
 
 /* CREATE RX INSTRUCTION */

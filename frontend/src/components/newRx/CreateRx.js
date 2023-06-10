@@ -1,8 +1,8 @@
-import { Alert } from 'reactstrap';
 import SelectedPatient from './SelectedPatient';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { toggleOn, toggleOff } from '../../slice/toggleActiveCreateRxSlice';
+import { toggleAlertOn, toggleAlertOff } from '../../slice/toggleAlertSlice';
 import { useDispatch } from 'react-redux';
 import RedAlert from '../../app/assets/img/redAlert.svg';
 import './css/CreateRx.css';
@@ -10,14 +10,11 @@ import './css/CreateRx.css';
 
 const VERIFY_NUMBER = /^\d+$/
 
-const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, }) => {
+const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName, selectedId, setOpenDataEntry, setOpenSelectPatient, setOpenUploadRx, openUploadRx }) => {
 
     const dispatch = useDispatch();
 
-
-
     //STATES
-    const [openSuccess, setOpenSuccess] = useState(false);
     const [toggleFormButton, setToggleFormButton] = useState(false);
 
     const [drugName, setDrugName] = useState('');
@@ -48,13 +45,22 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
         setQty('');
         setRefill('');
         setDaySupply('');
+        setDrugNameMouseOff(false);
+        setDirectionMouseOff(false);
+        setQtyMouseOff(false);
+        setRefillMouseOff(false);
+        setDaySupplyMouseOff(false);
+        setToggleFormButton(false);
+        setOpenUploadRx(!openUploadRx);
+        setOpenDataEntry(false);
+        setOpenSelectPatient(false);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             await axios.post(
-                'http://localhost:3001/newRx',
+                'http://18.212.66.103:8000/newRx',
                 JSON.stringify({
                     patientId: selectedId,
                     drug: drugName,
@@ -69,23 +75,16 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                 }
             )
                 .then((response) => {
-                    console.log(response.status);
-                    handleClear();
+                    if (response.status === 200) {
+                        handleClear();
+                        dispatch(toggleAlertOn());
+                    }
                 })
                 .catch(err => console.log(err));
         } catch (err) {
             console.log(err);
         };
     };
-
-    //SUBMISSION SUCCESS ALERT
-    useEffect(() => {
-        const successTimer = setTimeout(() => {
-            setOpenSuccess(false);
-
-            return () => clearTimeout(successTimer);
-        }, 5000)
-    }, [openSuccess])
 
     //QTY, REFILL, AND DAY SUPPLY REGEX CHECK
     useEffect(() => {
@@ -113,17 +112,17 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
             && verifiedDaySupply
         ) {
             dispatch(toggleOn());
-            console.log('on');
+            setToggleFormButton(true);
         } else {
             dispatch(toggleOff());
-            console.log('off');
+            setToggleFormButton(false);
         }
     }, [
         drugName,
         direction,
-        qty,
-        refill,
-        daySupply,
+        verifiedQty,
+        verifiedRefill,
+        verifiedDaySupply,
     ]);
 
 
@@ -131,9 +130,6 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
 
     return (
         <>
-            <Alert className='d-flex justify-content-center' color='success' isOpen={openSuccess}>
-                Prescription saved successfully!
-            </Alert>
             <div className='createRxContainer'>
 
                 <div className='createRxLeftSideContainer'>
@@ -154,6 +150,14 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
 
                 <div className='createRxRightSideContainer'>
                     <div className='errMsgContainer'>
+                        {!selectedLastName && !selectedFirstName
+                            ? (
+                                <div className='errMsgContent'>
+                                    <img src={RedAlert} alt='Alert symbol' />
+                                    <h4>Must select a patient.</h4>
+                                </div>
+                            ) : ('')
+                        }
                         {drugName.length == 0 && drugNameMouseOff
                             ? (
                                 <div className='errMsgContent'>
@@ -200,6 +204,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                         <div className={drugName.length == 0 && drugNameMouseOff ? 'drugInputBoxErrorContainer' : 'drugInputBoxContainer'}>
                             <input
                                 name='drug'
+                                value={drugName}
                                 type='text'
                                 onChange={(e) => setDrugName(e.target.value)}
                                 onBlur={() => setDrugNameMouseOff(true)}
@@ -211,6 +216,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                         <div className={direction.length == 0 && directionMouseOff ? 'directionInputBoxErrorContainer' : 'directionInputBoxContainer'}>
                             <input
                                 name='direction'
+                                value={direction}
                                 type='text'
                                 onChange={(e) => setDirection(e.target.value)}
                                 onBlur={() => setDirectionMouseOff(true)}
@@ -223,6 +229,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                             <div className={!verifiedQty && qtyMouseOff ? 'qtyInputErrorContainer' : 'qtyInputContainer'}>
                                 <input
                                     name='quanity'
+                                    value={qty}
                                     type='text'
                                     onChange={(e) => setQty(e.target.value)}
                                     onBlur={() => setQtyMouseOff(true)}
@@ -233,6 +240,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                             <div className={!verifiedRefill && refillMouseOff ? 'refillInputErrorContainer' : 'refillInputContainer'}>
                                 <input
                                     name='refills'
+                                    value={refill}
                                     type='text'
                                     onChange={(e) => setRefill(e.target.value)}
                                     onBlur={() => setRefillMouseOff(true)}
@@ -243,6 +251,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                             <div className={!verifiedDaySupply && daySupplyMouseOff ? 'daySupplyInputErrorContainer' : 'daySupplyInputContainer'}>
                                 <input
                                     name='daySupply'
+                                    value={daySupply}
                                     type='text'
                                     onChange={(e) => setDaySupply(e.target.value)}
                                     onBlur={() => setDaySupplyMouseOff(true)}
@@ -256,7 +265,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                                 ? (
                                     <button className='createRxSubmitButtonActive' type='submit' outline>Submit</button>
                                 ) : (
-                                    <button className='createRxSubmitButtonInactive' type='button' outline>Submit</button>
+                                    <i className='createRxSubmitButtonInactive' outline>Submit</i>
                                 )
                         }
 
@@ -266,15 +275,22 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                         <h1>Step 3:</h1>
                         <ul>
                             <li>
-                                Here we will enter the prescription drug information and save it to the patient's profile.<br /><br />
+                                Here we will enter the prescription drug information and save it to the patient's profile.
+                                Notice the "Select Patient" button above is now green, indicating that you have completed
+                                that step. Also, at the bottom left of the screen, you will see the name you have
+                                selected.<br /><br />
                             </li>
                             <li>
-                                Enter in the Drug name (Amoxicillin 250mg), direction (Take 2 tablets by mouth three times
-                                daily for 7 days), quantity (#42), refills (0 by default if not specified), and the day's supply (7).<br /><br />
+                                Enter in the drug name (Amoxicillin 250mg), direction (Take 2 tablets by mouth three times
+                                daily for 7 days), quantity (42), refills (0), and the day supply (7).<br /><br />
                             </li>
                             <li>
-                                Once you have filled out the form completely, you are done with this prescription and ready to
-                                move on. Let's check to see if the medication you submitted is now in the patient's profile. Click
+                                Once you have filled out the form completely, submit it, and then you will be redirected
+                                to the "Upload Rx" step. If your submission was successful, a green success message will
+                                appear above for 5 seconds.<br /><br />
+                            </li>
+                            <li>
+                                Let's check to see if the medication you submitted was saved in the patient's profile. Click
                                 "Patient Search" on the navigation bar above to continue.<br /><br />
                             </li>
                             <li>

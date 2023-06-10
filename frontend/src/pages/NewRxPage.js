@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Alert } from 'reactstrap';
+import { toggleAlertOff } from '../slice/toggleAlertSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import NewRxButtons from '../components/newRx/NewRxButtons';
 import CreateRx from '../components/newRx/CreateRx';
 import PatientSearch from '../components/newRx/PatientSearch';
@@ -8,6 +11,8 @@ import './css/NewRx.css';
 
 
 const NewRxPage = () => {
+    const dispatch = useDispatch();
+    const alert = useSelector((state) => state.toggleAlert.alert);
 
     const [query, setQuery] = useState();
     const [value, setValue] = useState([]);
@@ -22,10 +27,16 @@ const NewRxPage = () => {
     const [selectedLastName, setSelectedLastName] = useState();
     const [selectedId, setSelectedId] = useState();
 
+    useEffect(() => {
+        const successTimer = setTimeout(() => {
+            dispatch(toggleAlertOff());
 
+            return () => clearTimeout(successTimer);
+        }, 5000)
+    }, [alert]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/newPatient')
+        axios.get('http://18.212.66.103:8000/newPatient')
             .then(json => {
                 setValue(json.data);
             })
@@ -57,7 +68,9 @@ const NewRxPage = () => {
             <div className='newRxPageTitle'>
                 <h1>New Rx</h1>
             </div>
-
+            <Alert className='d-flex justify-content-center' color='success' isOpen={alert}>
+                Prescription saved successfully!
+            </Alert>
             <div className='newRxPageContent'>
                 <NewRxButtons
                     setOpenDataEntry={setOpenDataEntry}
@@ -101,6 +114,10 @@ const NewRxPage = () => {
                         selectedFirstName={selectedFirstName}
                         setSelectedLastName={setSelectedLastName}
                         setSelectedFirstName={setSelectedFirstName}
+                        setOpenDataEntry={setOpenDataEntry}
+                        setOpenSelectPatient={setOpenSelectPatient}
+                        setOpenUploadRx={setOpenUploadRx}
+                        openUploadRx={openUploadRx}
                     />
                 </div>
 

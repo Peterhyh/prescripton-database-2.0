@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import './css/NewPatient.css';
 
-const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId }) => {
+const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx }) => {
 
     const toggleBack = () => {
         setSelectPatient(true);
@@ -22,7 +22,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
             zip: ''
         },
         onSubmit: (values) => {
-            axios.post('http://localhost:3001/newPatient', {
+            axios.post('http://18.212.66.103:8000/newPatient', {
                 firstName: values.firstName.toUpperCase(),
                 lastName: values.lastName.toUpperCase(),
                 dateOfBirthMonth: values.dateOfBirthMonth,
@@ -34,12 +34,13 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                 zip: values.zip,
             })
                 .then(response => {
-                    if (response.data) {
+                    if (response.status === 200) {
                         setOpenNewPatient(false);
                         setSelectPatient(true);
                         setSelectedLastName(response.data.lastName);
                         setSelectedFirstName(response.data.firstName);
                         setSelectedId(response.data._id);
+                        handleCreateRx();
                         console.log(response.data);
                     } else {
                         console.log('unsuccessful');
