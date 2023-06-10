@@ -1,55 +1,64 @@
-.newpatient-container {
+.registerPatientContainer form {
     display: flex;
-    flex-wrap: wrap;
-    flex-shrink: 1;
+    flex-direction: column;
+    align-items: center;
 }
 
-.inputBox-name {
-    position: relative;
-    width: 500px;
-
+/* ERROR MESSAGE */
+.errMsgContent {
+    display: flex;
+    align-items: center;
 }
 
-.inputBox-name input {
-    width: 100%;
+.errMsgContent img {
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+.errMsgContent h4 {
+    color: red;
+}
+
+/* REGISTER PATIENT BUTTON ACTIVE */
+.registerPatientSubmitButtonActive {
+    color: #CFDDD1;
+    background-color: #01314C;
+    border: 1px solid #01314C;
     padding: 10px;
+    margin: 30px;
+    border-radius: 10px;
+}
+
+.registerPatientSubmitButtonActive:hover {
+    color: #CFDDD1;
+    background-color: #3385C4;
+    border: 1px solid #01314C;
+}
+
+/* REGISTER PATIENT BUTTON INACTIVE */
+.registerPatientSubmitButtonInactive {
+    color: #949BA4;
+    background-color: #CFDDD1;
     border: 1px solid #949BA4;
-    background: #CFDDD1;
-    border-radius: 5px;
-    outline: none;
-    color: #0D2018;
-    font-size: 1em;
-    margin: 10px;
-}
-
-.last-name-span {
-    position: absolute;
-    left: 275px;
     padding: 10px;
-    pointer-events: none;
-    font-size: 1em;
-    color: #949BA4;
-    text-transform: uppercase;
-    transition: 0.3s;
-    top: 10px;
-    opacity: 1;
+    margin: 30px;
+    border-radius: 10px;
+    cursor: not-allowed;
 }
 
-.first-name-span {
-    position: absolute;
-    left: 25px;
-    padding: 10px;
-    pointer-events: none;
-    font-size: 1em;
-    color: #949BA4;
-    text-transform: uppercase;
-    transition: 0.3s;
-    top: 10px;
-    opacity: 1;
+/*CITY, STATE, and ZIP CONTAINER*/
+
+.cityStateZipContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
 }
 
-.inputBox-name input:valid+span,
-.inputBox-name input:focus+span {
+.cityStateZipContainer input:valid+span,
+.cityStateZipContainer input:focus+span {
+    opacity: 1;
     color: #0D2018;
     transform: translateX(10px) translateY(-7px);
     font-size: 0.65em;
@@ -58,21 +67,15 @@
     border-left: 1px solid #0D2018;
     border-right: 1px solid #0D2018;
     letter-spacing: 0.2em;
-    opacity: 1;
 }
 
-.inputBox-name input:valid,
-.inputBox-name input:focus {
+.cityStateZipContainer input:valid,
+.cityStateZipContainer input:focus {
     border: 1px solid #0D2018;
 }
 
-.inputBox-dob {
-    position: relative;
-    width: 500px;
-}
-
-.inputBox-dob input {
-    width: 100%;
+.cityStateZipContainer input {
+    width: 153px;
     padding: 10px;
     border: 1px solid #949BA4;
     background: #CFDDD1;
@@ -80,10 +83,9 @@
     outline: none;
     color: #0D2018;
     font-size: 1em;
-    margin: 10px;
 }
 
-.inputBox-dob span {
+.cityStateZipContainer span {
     color: #949BA4;
     text-transform: uppercase;
     font-size: 1em;
@@ -94,20 +96,105 @@
     padding: 10px;
 }
 
-.dob-month-span {
-    left: 25px;
+.cityContainer span {
+    left: 0;
+    top: 0;
 }
 
-.dob-day-span {
-    left: 193px;
+.stateContainer span {
+    left: 173px;
+    top: 0;
 }
 
-.dob-year-span {
-    left: 360px;
+.zipContainer span {
+    left: 347px;
+    top: 0;
 }
 
-.inputBox-dob input:valid+span,
-.inputBox-dob input:focus+span {
+/*STREET INPUT BOX*/
+.streetContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.streetContainer input {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+}
+
+.streetContainer span {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    left: 0;
+    top: 0;
+    color: #949BA4;
+}
+
+.streetContainer input:valid+span,
+.streetContainer input:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+
+}
+
+.streetContainer input:valid,
+.streetContainer input:focus {
+    border: 1px solid #0D2018;
+}
+
+/* DOB CONTAINER */
+.dobContainer {
+    position: relative;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.dobContainer input {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+}
+
+.dobContainer span {
+    color: #949BA4;
+    text-transform: uppercase;
+    font-size: 1em;
+    pointer-events: none;
+    position: absolute;
+    top: 10px;
+    transition: 0.3s;
+    padding: 10px;
+}
+
+.dobContainer input:valid+span,
+.dobContainer input:focus+span {
     opacity: 1;
     color: #0D2018;
     transform: translateX(10px) translateY(-7px);
@@ -119,139 +206,328 @@
     letter-spacing: 0.07em;
 }
 
-.inputBox-dob input:valid,
-.inputBox-dob input:focus {
+.dobContainer input:valid,
+.dobContainer input:focus {
     border: 1px solid #0D2018;
 }
 
-.inputBox-street {
+.dobMonthContainer span {
+    left: 0;
+    top: 0;
+}
+
+.dobDayContainer span {
+    left: 173px;
+    top: 0;
+}
+
+.dobYearContainer span {
+    left: 347px;
+    top: 0;
+}
+
+/*NAME CONTAINER*/
+.nameContainer {
     position: relative;
     width: 500px;
-}
-
-.inputBox-street input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #949BA4;
-    background: #CFDDD1;
-    border-radius: 5px;
-    outline: none;
-    color: #0D2018;
-    font-size: 1em;
-    margin: 10px;
-}
-
-.inputBox-street-span {
-    position: absolute;
-    left: 25px;
-    padding: 10px;
-    pointer-events: none;
-    font-size: 1em;
-    opacity: 1;
-    text-transform: uppercase;
-    transition: 0.3s;
-    top: 10px;
-    color: #949BA4;
-}
-
-.inputBox-street input:valid+span,
-.inputBox-street input:focus+span {
-    opacity: 1;
-    color: #0D2018;
-    transform: translateX(10px) translateY(-7px);
-    font-size: 0.65em;
-    padding: 0 10px;
-    background: #CFDDD1;
-    border-left: 1px solid #0D2018;
-    border-right: 1px solid #0D2018;
-    letter-spacing: 0.2em;
-
-}
-
-.inputBox-street input:valid,
-.inputBox-street input:focus {
-    border: 1px solid #0D2018;
-}
-
-.inputBox-city-state-zip {
-    position: relative;
-    width: 500px;
-}
-
-.inputBox-city-state-zip input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #949BA4;
-    background: #CFDDD1;
-    border-radius: 5px;
-    outline: none;
-    color: #0D2018;
-    font-size: 1em;
-    margin: 10px;
-}
-
-.inputBox-city-state-zip span {
-    color: #949BA4;
-    text-transform: uppercase;
-    font-size: 1em;
-    pointer-events: none;
-    position: absolute;
-    top: 10px;
-    transition: 0.3s;
-    padding: 10px;
-}
-
-.inputBox-city-span {
-    left: 25px;
-}
-
-.inputBox-state-span {
-    left: 193px;
-}
-
-.inputBox-zip-span {
-    left: 360px;
-}
-
-.inputBox-city-state-zip input:valid+span,
-.inputBox-city-state-zip input:focus+span {
-    opacity: 1;
-    color: #0D2018;
-    transform: translateX(10px) translateY(-7px);
-    font-size: 0.65em;
-    padding: 0 10px;
-    background: #CFDDD1;
-    border-left: 1px solid #0D2018;
-    border-right: 1px solid #0D2018;
-    letter-spacing: 0.2em;
-}
-
-.inputBox-city-state-zip input:valid,
-.inputBox-city-state-zip input:focus {
-    border: 1px solid #0D2018;
-}
-
-.new-patient-submit-button-container {
     display: flex;
-    justify-content: center;
-    margin-top: 30px;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-.submit-button {
-    color: #CFDDD1;
-    background-color: #01314C;
-    border: 1px solid #01314C;
+.nameContainer input {
+    width: 240px;
     padding: 10px;
-    border-radius: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
 }
 
-.submit-button:hover {
-    color: #CFDDD1;
-    background-color: #3385C4;
-    border: 1px solid #01314C;
+.nameContainer input:valid+span,
+.nameContainer input:focus+span {
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+    opacity: 1;
 }
 
-.back-button {
+.nameContainer input:valid,
+.nameContainer input:focus {
+    border: 1px solid #0D2018;
+}
+
+.lastNameContainer span {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: #949BA4;
+    text-transform: uppercase;
+    transition: 0.3s;
+    left: 260px;
+    top: 0;
+    opacity: 1;
+}
+
+.firstNameContainer span {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: #949BA4;
+    text-transform: uppercase;
+    transition: 0.3s;
+    left: 0;
+    top: 0;
+    opacity: 1;
+}
+
+/* FIRST NAME ERROR */
+.firstNameContainerError input {
+    border: 1px solid red;
+    background: #CFDDD1;
+}
+
+.firstNameContainerError span {
+    color: red;
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: 0.3s;
+    left: 0;
+    top: 0;
+    opacity: 1;
+}
+
+.firstNameContainerError input:valid+span,
+.firstNameContainerError input:focus+span {
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+    opacity: 1;
+}
+
+.firstNameContainerError input:valid,
+.firstNameContainerError input:focus {
+    border: 1px solid red;
+}
+
+/* LAST NAME ERROR */
+.lastNameContainerError input {
+    border: 1px solid red;
+    background: #CFDDD1;
+}
+
+.lastNameContainerError span {
+    color: red;
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: 0.3s;
+    left: 260px;
+    top: 0;
+    opacity: 1;
+}
+
+.lastNameContainerError input:valid+span,
+.lastNameContainerError input:focus+span {
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+    opacity: 1;
+}
+
+.lastNameContainerError input:valid,
+.lastNameContainerError input:focus {
+    border: 1px solid red;
+}
+
+/* STREET ERROR */
+.streetContainerError {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.streetContainerError input {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+}
+
+.streetContainerError span {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    left: 0;
+    top: 0;
+    color: red;
+}
+
+.streetContainerError input:valid+span,
+.streetContainerError input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+
+}
+
+.streetContainerError input:valid,
+.streetContainerError input:focus {
+    border: 1px solid red;
+}
+
+/* CITY ERROR */
+
+.cityContainerError input:valid+span,
+.cityContainerError input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+}
+
+.cityContainerError input:valid,
+.cityContainerError input:focus {
+    border: 1px solid red;
+}
+
+.cityContainerError input {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+}
+
+.cityContainerError span {
+    left: 0;
+    top: 0;
+    color: red
+}
+
+/*STATE ERROR*/
+
+.stateContainerError input:valid+span,
+.stateContainerError input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+}
+
+.stateContainerError input:valid,
+.stateContainerError input:focus {
+    border: 1px solid red;
+}
+
+.stateContainerError input {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+}
+
+.stateContainerError span {
+    left: 173px;
+    top: 0;
+    color: red
+}
+
+/* ZIP ERROR */
+
+.zipContainerError input:valid+span,
+.zipContainerError input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+}
+
+.zipContainerError input:valid,
+.zipContainerError input:focus {
+    border: 1px solid red;
+}
+
+.zipContainerError input {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+}
+
+.zipContainerError span {
+    left: 347px;
+    top: 0;
+    color: red
+}
+
+/*REGISTER PATIENT BACK BUTTON  */
+.registerPatientBackButton {
     display: flex;
     color: #01314C;
     background-color: #CFDDD1;
@@ -260,8 +536,132 @@
     border-radius: 10px;
 }
 
-.back-button:hover {
+.registerPatientBackButton:hover {
     color: #CFDDD1;
     background-color: #3385C4;
     border: 1px solid #01314C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* DBO MONTH ERROR */
+
+.dobMonthContainerError input:valid+span,
+.dobMonthContainerError input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+}
+
+.dobMonthContainerError input:valid,
+.dobMonthContainerError input:focus {
+    border: 1px solid red;
+}
+
+.dobMonthContainerError input {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+}
+
+.dobMonthContainerError span {
+    left: 0;
+    top: 0;
+    color: red
+}
+
+/* DBO DAY ERROR */
+
+.dobDayContainerError input:valid+span,
+.dobDayContainerError input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+}
+
+.dobDayContainerError input:valid,
+.dobDayContainerError input:focus {
+    border: 1px solid red;
+}
+
+.dobDayContainerError input {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+}
+
+.dobDayContainerError span {
+    left: 173px;
+    top: 0;
+    color: red
+}
+
+/* DBO YEAR ERROR */
+
+.dobYearContainerError input:valid+span,
+.dobYearContainerError input:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.2em;
+}
+
+.dobYearContainerError input:valid,
+.dobYearContainerError input:focus {
+    border: 1px solid red;
+}
+
+.dobYearContainerError input {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+}
+
+.dobYearContainerError span {
+    left: 347px;
+    top: 0;
+    color: red
 }

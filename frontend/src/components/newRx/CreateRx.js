@@ -2,7 +2,7 @@ import SelectedPatient from './SelectedPatient';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { toggleOn, toggleOff } from '../../slice/toggleActiveCreateRxSlice';
-import { toggleAlertOn, toggleAlertOff } from '../../slice/toggleAlertSlice';
+import { toggleAlertOn } from '../../slice/toggleAlertSlice';
 import { useDispatch } from 'react-redux';
 import RedAlert from '../../app/assets/img/redAlert.svg';
 import './css/CreateRx.css';
@@ -158,7 +158,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                                 </div>
                             ) : ('')
                         }
-                        {drugName.length == 0 && drugNameMouseOff
+                        {drugName.length === 0 && drugNameMouseOff
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
@@ -166,7 +166,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                                 </div>
                             ) : ('')
                         }
-                        {direction.length == 0 && directionMouseOff
+                        {direction.length === 0 && directionMouseOff
                             ? (
                                 <div className='errMsgContent'>
                                     <img src={RedAlert} alt='Alert symbol' />
@@ -201,7 +201,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                     </div>
                     <h1>Create Rx:</h1>
                     <form className='createRxForm' onSubmit={handleSubmit}>
-                        <div className={drugName.length == 0 && drugNameMouseOff ? 'drugInputBoxErrorContainer' : 'drugInputBoxContainer'}>
+                        <div className={drugName.length === 0 && drugNameMouseOff ? 'drugInputBoxErrorContainer' : 'drugInputBoxContainer'}>
                             <input
                                 name='drug'
                                 value={drugName}
@@ -210,10 +210,10 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                                 onBlur={() => setDrugNameMouseOff(true)}
                                 required
                             />
-                            <span className={drugName.length == 0 && drugNameMouseOff ? 'drugErrorLabel' : 'drugLabel'}>Drug</span>
+                            <span className={drugName.length === 0 && drugNameMouseOff ? 'drugErrorLabel' : 'drugLabel'}>Drug</span>
                         </div>
 
-                        <div className={direction.length == 0 && directionMouseOff ? 'directionInputBoxErrorContainer' : 'directionInputBoxContainer'}>
+                        <div className={direction.length === 0 && directionMouseOff ? 'directionInputBoxErrorContainer' : 'directionInputBoxContainer'}>
                             <input
                                 name='direction'
                                 value={direction}
@@ -222,7 +222,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
                                 onBlur={() => setDirectionMouseOff(true)}
                                 required
                             />
-                            <span className={direction.length == 0 && directionMouseOff ? 'directionErrorLabel' : 'directionLabel'}>Direction</span>
+                            <span className={direction.length === 0 && directionMouseOff ? 'directionErrorLabel' : 'directionLabel'}>Direction</span>
                         </div>
 
                         <div className='qtyRefillDaySupplyContainer'>
