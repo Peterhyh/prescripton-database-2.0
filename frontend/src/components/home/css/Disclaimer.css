@@ -27,7 +27,7 @@
 .demoInstructionsContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     border: 5px solid #01304cc0;
     border-radius: 20px;
@@ -36,4 +36,18 @@
     background-color: #01304cc0;
     color: #CFDDD1;
     overflow: scroll;
+}
+
+.demoInstructions {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    color: #CFDDD1;
+}
+
+.demoDisclaimer {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    color: #CFDDD1;
 }

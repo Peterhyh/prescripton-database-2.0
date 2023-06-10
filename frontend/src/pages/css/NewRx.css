@@ -1,7 +1,7 @@
 .instructionContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     border: 5px solid #01304cc0;
     border-radius: 20px;
