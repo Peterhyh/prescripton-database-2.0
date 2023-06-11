@@ -87,7 +87,7 @@ const CreateRx = ({ uploadedRx, selectedLastName, selectedFirstName, setSelected
         };
     };
 
-    //QTY, REFILL, AND DAY SUPPLY REGEX CHECK
+    //REGEX CHECK
     useEffect(() => {
         const verify = VERIFY_NUMBER.test(qty);
         setVerifiedQty(verify);
