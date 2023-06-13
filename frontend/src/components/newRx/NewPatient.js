@@ -2,17 +2,20 @@ import axios from 'axios';
 import './css/NewPatient.css';
 import { useState, useEffect } from 'react';
 import RedAlert from '../../app/assets/img/redAlert.svg';
+import PlacesAutocomplete from '../PlacesAutocomplete.js';
+import { useSelector } from 'react-redux';
 
 
 const FOUR_DIGITS = /^\d{4,4}$/
 const FIVE_DIGITS = /^\d{5,5}$/
 const LETTERS_ONLY = /^[a-zA-Z]{1,}$/
 
-
 const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx, setPatientName }) => {
 
+    const addressStreet = useSelector((state) => state.streetAddress.street);
 
     const [toggleFormButton, setToggleFormButton] = useState(false);
+    const [address, setAddress] = useState('');
 
     const [firstName, setFirstName] = useState('');
     const [firstNameMouseOff, setFirstNameMouseOff] = useState(false);
@@ -151,6 +154,14 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
         verifiedZip,
     ]);
 
+    useEffect(() => {
+        const addressSplit = addressStreet.split(',');
+        setStreet(addressSplit[0]);
+        const spacesRemoved = addressStreet.replace(/\s/g, '');
+        const spacesRemovedSplit = spacesRemoved.split(',');
+        setCity(spacesRemovedSplit[1]);
+        setState(spacesRemovedSplit[2]);
+    }, [addressStreet]);
 
 
 
@@ -352,108 +363,111 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
 
 
 
-
-
-                <div className={street.length === 0 && streetMouseOff ? 'streetContainerError' : 'streetContainer'}>
-                    <input
-                        name='street'
-                        value={street}
-                        type='text'
-                        onChange={(e) => setStreet(e.target.value)}
-                        onBlur={() => setStreetMouseOff(true)}
-                        required
-                    />
-                    <span>Street</span>
+                <div className={street.length === 0 ? 'placesAutocompleteContainer' : 'hide'}>
+                    <PlacesAutocomplete setAddress={setAddress} setZip={setZip} street={street} />
                 </div>
-
-                <div className='cityStateZipContainer'>
-                    <div className={!verifiedCity && cityMouseOff ? 'cityContainerError' : 'cityContainer'}>
+                <div className={street.length > 0 ? '' : 'hide'}>
+                    <div className={street.length === 0 && streetMouseOff ? 'streetContainerError' : 'streetContainer'}>
                         <input
-                            name='city'
-                            value={city}
+                            name='street'
+                            value={street}
                             type='text'
-                            onChange={(e) => setCity(e.target.value)}
-                            onBlur={() => setCityMouseOff(true)}
+                            onChange={(e) => setStreet(e.target.value)}
+                            onBlur={() => setStreetMouseOff(true)}
                             required
                         />
-                        <span>City</span>
+                        <span>Street</span>
                     </div>
 
-                    <div className={state.length === 0 && stateMouseOff ? 'stateContainerError' : 'stateContainer'}>
-                        <select
-                            id='state'
-                            name='state'
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                            onBlur={() => setStateMouseOff(true)}
-                            required
-                        >
-                            <option value=''></option>
-                            <option value="AL">AL</option>
-                            <option value="AK">AK</option>
-                            <option value="AZ">AZ</option>
-                            <option value="AR">AR</option>
-                            <option value="CA">CA</option>
-                            <option value="CO">CO</option>
-                            <option value="CT">CT</option>
-                            <option value="DE">DE</option>
-                            <option value="DC">DC</option>
-                            <option value="FL">FL</option>
-                            <option value="GA">GA</option>
-                            <option value="HI">HI</option>
-                            <option value="ID">ID</option>
-                            <option value="IL">IL</option>
-                            <option value="IN">IN</option>
-                            <option value="IA">IA</option>
-                            <option value="KS">KS</option>
-                            <option value="KY">KY</option>
-                            <option value="LA">LA</option>
-                            <option value="ME">ME</option>
-                            <option value="MD">MD</option>
-                            <option value="MA">MA</option>
-                            <option value="MI">MI</option>
-                            <option value="MN">MN</option>
-                            <option value="MS">MS</option>
-                            <option value="MO">MO</option>
-                            <option value="MT">MT</option>
-                            <option value="NE">NE</option>
-                            <option value="NV">NV</option>
-                            <option value="NH">NH</option>
-                            <option value="NJ">NJ</option>
-                            <option value="NM">NM</option>
-                            <option value="NY">NY</option>
-                            <option value="NC">NC</option>
-                            <option value="ND">ND</option>
-                            <option value="OH">OH</option>
-                            <option value="OK">OK</option>
-                            <option value="OR">OR</option>
-                            <option value="PA">PA</option>
-                            <option value="RI">RI</option>
-                            <option value="SC">SC</option>
-                            <option value="SD">SD</option>
-                            <option value="TN">TN</option>
-                            <option value="TX">TX</option>
-                            <option value="UT">UT</option>
-                            <option value="VT">VT</option>
-                            <option value="VA">VA</option>
-                            <option value="WA">WA</option>
-                            <option value="WV">WV</option>
-                            <option value="WI">WI</option>
-                            <option value="WY">WY</option>
-                        </select>
-                        <span>State</span>
-                    </div>
+                    <div className='cityStateZipContainer'>
+                        <div className={!verifiedCity && cityMouseOff ? 'cityContainerError' : 'cityContainer'}>
+                            <input
+                                name='city'
+                                value={city}
+                                type='text'
+                                onChange={(e) => setCity(e.target.value)}
+                                onBlur={() => setCityMouseOff(true)}
+                                required
+                            />
+                            <span>City</span>
+                        </div>
 
-                    <div className={!verifiedZip && zipMouseOff ? 'zipContainerError' : 'zipContainer'}>
-                        <input
-                            name='zip'
-                            value={zip}
-                            type='text'
-                            onChange={(e) => setZip(e.target.value)}
-                            onBlur={() => setZipMouseOff(true)}
-                            required
-                        />
-                        <span>Zip</span>
+                        <div className={state.length === 0 && stateMouseOff ? 'stateContainerError' : 'stateContainer'}>
+                            <select
+                                id='state'
+                                name='state'
+                                value={state}
+                                onChange={(e) => setState(e.target.value)}
+                                onBlur={() => setStateMouseOff(true)}
+                                required
+                            >
+                                <option value=''></option>
+                                <option value="AL">AL</option>
+                                <option value="AK">AK</option>
+                                <option value="AZ">AZ</option>
+                                <option value="AR">AR</option>
+                                <option value="CA">CA</option>
+                                <option value="CO">CO</option>
+                                <option value="CT">CT</option>
+                                <option value="DE">DE</option>
+                                <option value="DC">DC</option>
+                                <option value="FL">FL</option>
+                                <option value="GA">GA</option>
+                                <option value="HI">HI</option>
+                                <option value="ID">ID</option>
+                                <option value="IL">IL</option>
+                                <option value="IN">IN</option>
+                                <option value="IA">IA</option>
+                                <option value="KS">KS</option>
+                                <option value="KY">KY</option>
+                                <option value="LA">LA</option>
+                                <option value="ME">ME</option>
+                                <option value="MD">MD</option>
+                                <option value="MA">MA</option>
+                                <option value="MI">MI</option>
+                                <option value="MN">MN</option>
+                                <option value="MS">MS</option>
+                                <option value="MO">MO</option>
+                                <option value="MT">MT</option>
+                                <option value="NE">NE</option>
+                                <option value="NV">NV</option>
+                                <option value="NH">NH</option>
+                                <option value="NJ">NJ</option>
+                                <option value="NM">NM</option>
+                                <option value="NY">NY</option>
+                                <option value="NC">NC</option>
+                                <option value="ND">ND</option>
+                                <option value="OH">OH</option>
+                                <option value="OK">OK</option>
+                                <option value="OR">OR</option>
+                                <option value="PA">PA</option>
+                                <option value="RI">RI</option>
+                                <option value="SC">SC</option>
+                                <option value="SD">SD</option>
+                                <option value="TN">TN</option>
+                                <option value="TX">TX</option>
+                                <option value="UT">UT</option>
+                                <option value="VT">VT</option>
+                                <option value="VA">VA</option>
+                                <option value="WA">WA</option>
+                                <option value="WV">WV</option>
+                                <option value="WI">WI</option>
+                                <option value="WY">WY</option>
+                            </select>
+                            <span>State</span>
+                        </div>
+
+                        <div className={!verifiedZip && zipMouseOff ? 'zipContainerError' : 'zipContainer'}>
+                            <input
+                                name='zip'
+                                value={zip}
+                                type='text'
+                                onChange={(e) => setZip(e.target.value)}
+                                onBlur={() => setZipMouseOff(true)}
+                                required
+                            />
+                            <span>Zip</span>
+                        </div>
                     </div>
                 </div>
                 {
@@ -466,6 +480,9 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                 }
             </form>
             <button className='registerPatientBackButton' onClick={() => toggleBack()}>Back</button>
+            <div>
+
+            </div>
         </div>
     )
 };

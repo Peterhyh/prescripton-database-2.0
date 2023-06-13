@@ -144,6 +144,7 @@
 .streetContainer {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 10px;
 }
@@ -466,6 +467,7 @@
 .streetContainerError {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 10px;
 }
@@ -764,7 +766,58 @@
     color: red
 }
 
-.places-container {
-    height: 100vh;
-    width: 100%;
+/* PLACES CONTAINER */
+
+
+
+
+.placesAutocompleteContainer input:valid+span,
+.placesAutocompleteContainer input:focus+span {
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+    opacity: 1;
+}
+
+.placesAutocompleteContainer input:valid,
+.placesAutocompleteContainer input:focus {
+    border: 1px solid #0D2018;
+}
+
+
+.placesAutocompleteContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.placesAutocompleteContainer input {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+}
+
+.placesAutocompleteContainer span {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    opacity: 1;
+    text-transform: uppercase;
+    transition: 0.3s;
+    left: 0;
+    top: 0;
+    color: red;
 }
