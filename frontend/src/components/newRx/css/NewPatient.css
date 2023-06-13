@@ -211,6 +211,39 @@
     font-size: 1em;
 }
 
+.dobContainer select {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid #949BA4;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: #0D2018;
+    font-size: 1em;
+}
+
+.dobMonthContainerError select {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+}
+
+.dobDayContainerError select {
+    width: 153px;
+    padding: 10px;
+    border: 1px solid red;
+    background: #CFDDD1;
+    border-radius: 5px;
+    outline: none;
+    color: red;
+    font-size: 1em;
+}
+
 .dobContainer span {
     color: #949BA4;
     text-transform: uppercase;
@@ -235,9 +268,45 @@
     letter-spacing: 0.07em;
 }
 
+.dobContainer select:valid+span,
+.dobContainer select:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.07em;
+}
+
+.dobMonthContainerError select:valid+span,
+.dobMonthContainerError select:focus+span {
+    opacity: 1;
+    color: red;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    letter-spacing: 0.07em;
+}
+
 .dobContainer input:valid,
 .dobContainer input:focus {
     border: 1px solid #0D2018;
+}
+
+.dobContainer select:valid,
+.dobContainer select:focus {
+    border: 1px solid #0D2018;
+}
+
+.dobMonthContainerError select:valid,
+.dobMonthContainerError select:focus {
+    border: 1px solid red;
 }
 
 .dobMonthContainer span {
@@ -693,4 +762,9 @@
     left: 347px;
     top: 0;
     color: red
+}
+
+.places-container {
+    height: 100vh;
+    width: 100%;
 }

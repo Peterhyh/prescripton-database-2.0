@@ -3,12 +3,14 @@ import './css/NewPatient.css';
 import { useState, useEffect } from 'react';
 import RedAlert from '../../app/assets/img/redAlert.svg';
 
-const TWO_DIGITS = /^\d{2,2}$/
+
 const FOUR_DIGITS = /^\d{4,4}$/
 const FIVE_DIGITS = /^\d{5,5}$/
 const LETTERS_ONLY = /^[a-zA-Z]{1,}$/
 
+
 const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx, setPatientName }) => {
+
 
     const [toggleFormButton, setToggleFormButton] = useState(false);
 
@@ -31,11 +33,9 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
     const [stateMouseOff, setStateMouseOff] = useState(false);
 
     const [birthMonth, setBirthMonth] = useState('');
-    const [verifiedBirthMonth, setVerifiedBirthMonth] = useState(false);
     const [birthMonthMouseOff, setBirthMonthMouseOff] = useState(false);
 
     const [birthDay, setBirthDay] = useState('');
-    const [verifiedBirthDay, setVerifiedBirthDay] = useState(false);
     const [birthDayMouseOff, setBirthDayMouseOff] = useState(false);
 
     const [birthYear, setBirthYear] = useState('');
@@ -69,7 +69,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
         e.preventDefault()
         try {
             await axios.post(
-                'http://18.212.66.103:8000/newPatient',
+                'http://localhost:3001/newPatient',
                 JSON.stringify({
                     firstName: firstName.toUpperCase(),
                     lastName: lastName.toUpperCase(),
@@ -104,13 +104,6 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
     };
 
     useEffect(() => {
-        const verifyBirthMonth = TWO_DIGITS.test(birthMonth);
-        const verifyBirthDay = TWO_DIGITS.test(birthDay);
-        setVerifiedBirthMonth(verifyBirthMonth);
-        setVerifiedBirthDay(verifyBirthDay);
-    }, [birthMonth, birthDay]);
-
-    useEffect(() => {
         const verifyBirthYear = FOUR_DIGITS.test(birthYear);
         setVerifiedBirthYear(verifyBirthYear);
     }, [birthYear]);
@@ -134,8 +127,8 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
         if (
             firstName.length > 0
             && lastName.length > 0
-            && verifiedBirthMonth
-            && verifiedBirthDay
+            && birthMonth.length > 0
+            && birthDay.length > 0
             && verifiedBirthYear
             && street.length > 0
             && city.length > 0
@@ -149,14 +142,15 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
     }, [
         firstName,
         lastName,
-        verifiedBirthMonth,
-        verifiedBirthDay,
+        birthMonth,
+        birthDay,
         verifiedBirthYear,
         street,
         city,
         state,
         verifiedZip,
     ]);
+
 
 
 
@@ -180,19 +174,19 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                         </div>
                     ) : ('')
                 }
-                {!verifiedBirthMonth && birthMonthMouseOff
+                {birthMonth.length === 0 && birthMonthMouseOff
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>"Birth Month" must be a number with 2 digits</h4>
+                            <h4>"Birth Month" cannot be blank</h4>
                         </div>
                     ) : ('')
                 }
-                {!verifiedBirthDay && birthDayMouseOff
+                {birthDay.length === 0 && birthDayMouseOff
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
-                            <h4>"Birth Day" must be a number with 2 digits</h4>
+                            <h4>"Birth Day" cannot be blank</h4>
                         </div>
                     ) : ('')
                 }
@@ -273,26 +267,73 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
 
 
                 <div className='dobContainer'>
-                    <div className={!verifiedBirthMonth && birthMonthMouseOff ? 'dobMonthContainerError' : 'dobMonthContainer'}>
-                        <input
+                    <div className={birthMonth.length === 0 && birthMonthMouseOff ? 'dobMonthContainerError' : 'dobMonthContainer'}>
+                        <select
                             name='dateOfBirthMonth'
                             value={birthMonth}
                             type='text'
                             onChange={(e) => setBirthMonth(e.target.value)}
                             onBlur={() => setBirthMonthMouseOff(true)}
                             required
-                        />
+                        >
+                            <option value=''></option>
+                            <option value='01'>01</option>
+                            <option value='02'>02</option>
+                            <option value='03'>03</option>
+                            <option value='04'>04</option>
+                            <option value='05'>05</option>
+                            <option value='06'>06</option>
+                            <option value='07'>07</option>
+                            <option value='08'>08</option>
+                            <option value='09'>09</option>
+                            <option value='10'>10</option>
+                            <option value='11'>11</option>
+                            <option value='12'>12</option>
+                        </select>
                         <span>Birth Month</span>
                     </div>
-                    <div className={!verifiedBirthDay && birthDayMouseOff ? 'dobDayContainerError' : 'dobDayContainer'}>
-                        <input
+                    <div className={birthDay.length === 0 && birthDayMouseOff ? 'dobDayContainerError' : 'dobDayContainer'}>
+                        <select
                             name='dateOfBirthDay'
                             value={birthDay}
                             type='text'
                             onChange={(e) => setBirthDay(e.target.value)}
                             onBlur={() => setBirthDayMouseOff(true)}
                             required
-                        />
+                        >
+                            <option value=''></option>
+                            <option value='01'>01</option>
+                            <option value='02'>02</option>
+                            <option value='03'>03</option>
+                            <option value='04'>04</option>
+                            <option value='05'>05</option>
+                            <option value='06'>06</option>
+                            <option value='07'>07</option>
+                            <option value='08'>08</option>
+                            <option value='09'>09</option>
+                            <option value='10'>10</option>
+                            <option value='11'>11</option>
+                            <option value='12'>12</option>
+                            <option value='13'>13</option>
+                            <option value='14'>14</option>
+                            <option value='15'>15</option>
+                            <option value='16'>16</option>
+                            <option value='17'>17</option>
+                            <option value='18'>18</option>
+                            <option value='19'>19</option>
+                            <option value='20'>20</option>
+                            <option value='21'>21</option>
+                            <option value='22'>22</option>
+                            <option value='23'>23</option>
+                            <option value='24'>24</option>
+                            <option value='25'>25</option>
+                            <option value='26'>26</option>
+                            <option value='27'>27</option>
+                            <option value='28'>28</option>
+                            <option value='29'>29</option>
+                            <option value='30'>30</option>
+                            <option value='31'>31</option>
+                        </select>
                         <span>Birth Day</span>
                     </div>
                     <div className={!verifiedBirthYear && birthYearMouseOff ? 'dobYearContainerError' : 'dobYearContainer'}>
@@ -324,12 +365,6 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                     />
                     <span>Street</span>
                 </div>
-
-
-
-
-
-
 
                 <div className='cityStateZipContainer'>
                     <div className={!verifiedCity && cityMouseOff ? 'cityContainerError' : 'cityContainer'}>
@@ -432,7 +467,6 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
             </form>
             <button className='registerPatientBackButton' onClick={() => toggleBack()}>Back</button>
         </div>
-
     )
 };
 
