@@ -766,31 +766,9 @@
     color: red
 }
 
-/* PLACES CONTAINER */
+/* PLACES AUTOCOMPLETE */
 
-
-
-
-.placesAutocompleteContainer input:valid+span,
-.placesAutocompleteContainer input:focus+span {
-    color: #0D2018;
-    transform: translateX(10px) translateY(-7px);
-    font-size: 0.65em;
-    padding: 0 10px;
-    background: #CFDDD1;
-    border-left: 1px solid #0D2018;
-    border-right: 1px solid #0D2018;
-    letter-spacing: 0.2em;
-    opacity: 1;
-}
-
-.placesAutocompleteContainer input:valid,
-.placesAutocompleteContainer input:focus {
-    border: 1px solid #0D2018;
-}
-
-
-.placesAutocompleteContainer {
+.placesAutocomplete {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -798,18 +776,18 @@
     margin-bottom: 10px;
 }
 
-.placesAutocompleteContainer input {
+.placesAutocomplete input {
     width: 500px;
     padding: 10px;
-    border: 1px solid red;
+    border: 1px solid #949BA4;
     background: #CFDDD1;
     border-radius: 5px;
     outline: none;
-    color: red;
+    color: #0D2018;
     font-size: 1em;
 }
 
-.placesAutocompleteContainer span {
+.placesAutocomplete span {
     position: absolute;
     padding: 10px;
     pointer-events: none;
@@ -819,5 +797,55 @@
     transition: 0.3s;
     left: 0;
     top: 0;
-    color: red;
+    color: #949BA4;
+}
+
+.placesAutocomplete input:valid+span,
+.placesAutocomplete input:focus+span {
+    opacity: 1;
+    color: #0D2018;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #CFDDD1;
+    border-left: 1px solid #0D2018;
+    border-right: 1px solid #0D2018;
+    letter-spacing: 0.2em;
+
+}
+
+/* .placesAutocomplete input:valid,
+.placesAutocomplete input:focus {
+    border: 1px solid #0D2018;
+} */
+
+*/
+
+/* PLACES AUTOCOMPLETE RESULTS TABLE */
+.placesAutocomplete table {
+    cursor: pointer;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.placesAutocompleteResults {
+    cursor: pointer;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #17382b76;
+    width: 500px;
+}
+
+.placesAutocompleteResults td {
+    border: 1px solid #17382b76;
+}
+
+.placesAutocompleteResults :nth-child(even) {
+    background-color: #ffffff36;
+}
+
+.placesAutocompleteResults td:hover {
+    background-color: #17382b76;
 }

@@ -10,12 +10,12 @@ const FOUR_DIGITS = /^\d{4,4}$/
 const FIVE_DIGITS = /^\d{5,5}$/
 const LETTERS_ONLY = /^[a-zA-Z]{1,}$/
 
-const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx, setPatientName }) => {
+const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx, setPatientName, openSelectPatient }) => {
 
     const addressStreet = useSelector((state) => state.streetAddress.street);
+    console.log(addressStreet);
 
     const [toggleFormButton, setToggleFormButton] = useState(false);
-    const [address, setAddress] = useState('');
 
     const [firstName, setFirstName] = useState('');
     const [firstNameMouseOff, setFirstNameMouseOff] = useState(false);
@@ -60,6 +60,15 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
         setBirthYear('');
         setZip('');
         setPatientName('');
+        setFirstNameMouseOff(false);
+        setLastNameMouseOff(false);
+        setBirthDayMouseOff(false);
+        setBirthMonthMouseOff(false);
+        setBirthYearMouseOff(false);
+        setCityMouseOff(false);
+        setStateMouseOff(false);
+        setZipMouseOff(false);
+        setStreetMouseOff(false);
     };
 
 
@@ -155,13 +164,28 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
     ]);
 
     useEffect(() => {
-        const addressSplit = addressStreet.split(',');
-        setStreet(addressSplit[0]);
-        const spacesRemoved = addressStreet.replace(/\s/g, '');
-        const spacesRemovedSplit = spacesRemoved.split(',');
-        setCity(spacesRemovedSplit[1]);
-        setState(spacesRemovedSplit[2]);
+        const splitAddress = addressStreet.split(',');
+        setStreet(splitAddress[0]);
+        const removeAddressSpaces = addressStreet.replace(/\s/g, '');
+        const splitFormattedAddress = removeAddressSpaces.split(',');
+        setCity(splitFormattedAddress[1]);
+        setState(splitFormattedAddress[2]);
+        setZip(splitFormattedAddress[3]);
     }, [addressStreet]);
+
+    useEffect(() => {
+        if (!openSelectPatient) {
+            handleClearForm();
+        };
+    }, [openSelectPatient]);
+
+    useEffect(() => {
+        if (street.length === 0) {
+            setStateMouseOff(false);
+            setZipMouseOff(false);
+            setStreetMouseOff(false);
+        }
+    }, [street]);
 
 
 
@@ -363,9 +387,12 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
 
 
 
-                <div className={street.length === 0 ? 'placesAutocompleteContainer' : 'hide'}>
-                    <PlacesAutocomplete setAddress={setAddress} setZip={setZip} street={street} />
-                </div>
+                <PlacesAutocomplete
+                    street={street} setCityMouseOff={setCityMouseOff}
+                    setStateMouseOff={setStateMouseOff}
+                    setZipMouseOff={setZipMouseOff}
+                    setStreetMouseOff={setStreetMouseOff}
+                />
                 <div className={street.length > 0 ? '' : 'hide'}>
                     <div className={street.length === 0 && streetMouseOff ? 'streetContainerError' : 'streetContainer'}>
                         <input

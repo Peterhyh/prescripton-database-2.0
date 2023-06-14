@@ -105,6 +105,7 @@ const NewRxPage = () => {
                         setSelectedId={setSelectedId}
                         patientName={patientName}
                         setPatientName={setPatientName}
+                        openSelectPatient={openSelectPatient}
                     />
 
                 </div>

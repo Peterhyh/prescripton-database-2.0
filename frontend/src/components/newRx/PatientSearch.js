@@ -22,10 +22,11 @@ const PatientSearch = ({
     openDataEntry,
     patientName,
     setPatientName,
+    openSelectPatient,
 }) => {
 
     const [openNewPatient, setOpenNewPatient] = useState(false);
-    const [openSelectPatient, setSelectPatient] = useState(true);
+    const [openPatientSelection, setSelectPatient] = useState(true);
 
     const handleCreateRx = () => {
         setOpenDataEntry(!openDataEntry);
@@ -61,7 +62,7 @@ const PatientSearch = ({
             </div>
 
             <div className='patientsearch-right'>
-                <div className={openSelectPatient ? 'searchbar-container' : 'hide'}>
+                <div className={openPatientSelection ? 'searchbar-container' : 'hide'}>
                     <div className='searchbar-row-top'>
                         <h1>Select Patient:</h1>
                     </div>
@@ -103,6 +104,7 @@ const PatientSearch = ({
                     setSelectedId={setSelectedId}
                     handleCreateRx={handleCreateRx}
                     setPatientName={setPatientName}
+                    openSelectPatient={openSelectPatient}
                 />
                 <div className='selectPatientInstruction'>
                     <div>

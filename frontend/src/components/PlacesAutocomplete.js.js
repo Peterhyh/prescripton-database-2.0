@@ -1,18 +1,18 @@
 import usePlacesAutocomplete, {
     getGeocode,
-    getLatLng,
     getZipCode
 } from "use-places-autocomplete";
 
 import useOnclickOutside from "react-cool-onclickoutside";
 import { useDispatch } from 'react-redux';
 import { updateStreet } from '../slice/newPatientSlice';
+import { useState } from 'react';
 
-const PlacesAutocomplete = ({ setZip, street }) => {
+const PlacesAutocomplete = ({ street }) => {
 
+    const [zipCode, setZipCode] = useState('');
 
     const dispatch = useDispatch();
-
 
     const {
         ready,
@@ -41,45 +41,42 @@ const PlacesAutocomplete = ({ setZip, street }) => {
         // When user selects a place, we can replace the keyword without request data from API
         // by setting the second parameter to "false"
 
-        dispatch(updateStreet(description));
+        dispatch(updateStreet(description.replace(/USA/, '') + zipCode));
         setValue(description, false);
         clearSuggestions();
+        setValue('');
 
-        // Get latitude and longitude via utility functions
         getGeocode({ address: description })
             .then((results) => {
-                const { lat, lng } = getLatLng(results[0]);
-                const zipCode = getZipCode(results[0], false)
-                console.log("📍 Coordinates: ", { lat, lng });
-                setZip(zipCode);
+                setZipCode(getZipCode(results[0], false));
             });
     };
 
     const renderSuggestions = () =>
-        data.map((suggestion) => {
-            const {
-                place_id,
-                structured_formatting: { main_text, secondary_text },
-            } = suggestion;
+        data.map((suggestion, i) => {
 
             return (
-                <li key={place_id} onClick={handleSelect(suggestion)}>
-                    <strong>{main_text}</strong> <small>{secondary_text}</small>
-                </li>
-            );
+                <td key={i} onClick={handleSelect(suggestion)}>
+                    {/* {suggestion.description.replace(/USA/, '')}{zipCode} */}
+                    {suggestion.description.replace(/USA/, '')}{zipCode}
+                </td>
+            )
         });
 
     return (
-        <div ref={ref}>
+        <div ref={ref} className={street.length === 0 ? 'placesAutocomplete' : 'hide'}>
             <input
                 value={value}
                 onChange={handleInput}
                 disabled={!ready}
-                placeholder="Where are you going?"
             />
             <span>Street</span>
             {/* We can use the "status" to decide whether we should display the dropdown or not */}
-            {status === "OK" && <ul>{renderSuggestions()}</ul>}
+            {status === "OK" &&
+                <table>
+                    <tr className='placesAutocompleteResults'>{renderSuggestions()}</tr>
+                </table>
+            }
         </div>
     );
 };
