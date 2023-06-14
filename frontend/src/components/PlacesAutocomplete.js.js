@@ -69,6 +69,7 @@ const PlacesAutocomplete = ({ street }) => {
                 value={value}
                 onChange={handleInput}
                 disabled={!ready}
+                required={street.length === 0 ? true : false}
             />
             <span>Street</span>
             {/* We can use the "status" to decide whether we should display the dropdown or not */}

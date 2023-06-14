@@ -814,12 +814,10 @@
 
 }
 
-/* .placesAutocomplete input:valid,
+.placesAutocomplete input:valid,
 .placesAutocomplete input:focus {
     border: 1px solid #0D2018;
-} */
-
-*/
+}
 
 /* PLACES AUTOCOMPLETE RESULTS TABLE */
 .placesAutocomplete table {

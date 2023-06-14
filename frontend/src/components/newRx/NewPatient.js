@@ -13,7 +13,6 @@ const LETTERS_ONLY = /^[a-zA-Z]{1,}$/
 const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx, setPatientName, openSelectPatient }) => {
 
     const addressStreet = useSelector((state) => state.streetAddress.street);
-    console.log(addressStreet);
 
     const [toggleFormButton, setToggleFormButton] = useState(false);
 
@@ -174,18 +173,20 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
     }, [addressStreet]);
 
     useEffect(() => {
-        if (!openSelectPatient) {
-            handleClearForm();
-        };
-    }, [openSelectPatient]);
-
-    useEffect(() => {
         if (street.length === 0) {
             setStateMouseOff(false);
             setZipMouseOff(false);
             setStreetMouseOff(false);
+            setCityMouseOff(false);
         }
     }, [street]);
+
+    //CLEAR FORM IF TOGGLED AWAY 
+    useEffect(() => {
+        if (!openNewPatient || !openSelectPatient) {
+            handleClearForm();
+        };
+    }, [openNewPatient, openSelectPatient]);
 
 
 
@@ -389,9 +390,6 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
 
                 <PlacesAutocomplete
                     street={street} setCityMouseOff={setCityMouseOff}
-                    setStateMouseOff={setStateMouseOff}
-                    setZipMouseOff={setZipMouseOff}
-                    setStreetMouseOff={setStreetMouseOff}
                 />
                 <div className={street.length > 0 ? '' : 'hide'}>
                     <div className={street.length === 0 && streetMouseOff ? 'streetContainerError' : 'streetContainer'}>
