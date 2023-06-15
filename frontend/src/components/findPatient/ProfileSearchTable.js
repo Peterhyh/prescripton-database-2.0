@@ -1,7 +1,11 @@
 import { useSelector } from 'react-redux';
+import { useContext } from 'react';
+import { profileSearchTableContext } from '../../context/FindPatient';
 import './css/ProfileSearchTable.css';
 
-const ProfileSearchTable = ({ query, setSelectedId, setPatientLastName, setPatientFirstName, setPatientAddress, setPatientDob, handleTabState, setSearchedName, setQuery }) => {
+const ProfileSearchTable = () => {
+
+    const { query, setSelectedId, setPatientLastName, setPatientFirstName, setPatientAddress, setPatientDob, handleTabState, setSearchedName, setQuery } = useContext(profileSearchTableContext);
 
     const patientList = useSelector(state => state.patientList.list);
 

@@ -80,7 +80,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
         e.preventDefault()
         try {
             await axios.post(
-                'http://18.212.66.103:8000/newPatient',
+                'http://localhost:3001/newPatient',
                 JSON.stringify({
                     firstName: firstName.toUpperCase(),
                     lastName: lastName.toUpperCase(),

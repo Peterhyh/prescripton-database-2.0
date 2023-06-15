@@ -1,9 +1,11 @@
 import './css/DrugTable.css';
 import { useSelector } from 'react-redux';
-import DownArrow from '../../app/assets/img/downArrow.svg'
-import RightArrow from '../../app/assets/img/rightArrow.svg';
+import { useContext } from 'react';
+import { drugTableContext } from '../../context/FindPatient';
 
-const DrugTable = ({ showDrugList }) => {
+const DrugTable = () => {
+
+    const { showDrugList } = useContext(drugTableContext);
 
     const prescriptionList = useSelector(state => state.prescriptionList.list);
 

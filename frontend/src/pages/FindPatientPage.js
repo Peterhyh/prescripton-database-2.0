@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import DownArrow from '../app/assets/img/downArrow.svg';
 import RightArrow from '../app/assets/img/rightArrow.svg';
-
+import { profileSearchTableContext, drugTableContext } from '../context/FindPatient';
 import { useDispatch } from 'react-redux';
 import { addToList } from '../slice/prescriptionListSlice';
 import { addToPatientList } from '../slice/patientSlice';
@@ -33,7 +33,7 @@ const FindPatientPage = () => {
 
 
     useEffect(() => {
-        axios.get('http://18.212.66.103:8000/newPatient')
+        axios.get('http://localhost:3001/newPatient')
             .then(json => {
                 dispatch(addToPatientList(json.data));
             })
@@ -44,7 +44,7 @@ const FindPatientPage = () => {
 
     useEffect(() => {
         axios.post(
-            'http://18.212.66.103:8000/newRx/data',
+            'http://localhost:3001/newRx/data',
             JSON.stringify({ patientId: selectedId }),
             {
                 headers: { 'Content-Type': 'application/json' },
@@ -77,17 +77,21 @@ const FindPatientPage = () => {
                             setSearchedName(e.target.value);
                         }}
                     />
-                    <ProfileSearchTable
-                        handleTabState={handleTabState}
-                        query={query}
-                        setSelectedId={setSelectedId}
-                        setPatientFirstName={setPatientFirstName}
-                        setPatientLastName={setPatientLastName}
-                        setPatientDob={setPatientDob}
-                        setPatientAddress={setPatientAddress}
-                        setSearchedName={setSearchedName}
-                        setQuery={setQuery}
-                    />
+                    <profileSearchTableContext.Provider
+                        value={{
+                            handleTabState,
+                            query,
+                            setSelectedId,
+                            setPatientFirstName,
+                            setPatientLastName,
+                            setPatientDob,
+                            setPatientAddress,
+                            setSearchedName,
+                            setQuery
+                        }}
+                    >
+                        <ProfileSearchTable />
+                    </profileSearchTableContext.Provider>
                     <div className='findPatientInstruction'>
                         <h1>Step 4:</h1>
                         <ul>
@@ -128,10 +132,9 @@ const FindPatientPage = () => {
                         <img className={showDrugList ? 'hide' : ''} src={DownArrow} alt='' />
                         <h5>PRESCRIPTION</h5>
                     </div>
-                    <DrugTable
-                        setShowDrugList={setShowDrugList}
-                        showDrugList={showDrugList}
-                    />
+                    <drugTableContext.Provider value={{ showDrugList }}>
+                        <DrugTable />
+                    </drugTableContext.Provider>
                 </div>
             </div>
         </>
