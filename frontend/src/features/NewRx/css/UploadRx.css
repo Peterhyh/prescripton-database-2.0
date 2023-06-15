@@ -6,8 +6,11 @@
 }
 
 .rx-container img {
+    display: flex;
     height: 400px;
     width: 400px;
+    border: 5px solid #000;
+    border-radius: 20px;
 }
 
 .rx-row {

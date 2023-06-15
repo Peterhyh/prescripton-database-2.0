@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react';
 import { Alert } from 'reactstrap';
 import { toggleAlertOff } from '../slice/toggleAlertSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import NewRxButtons from '../components/newRx/NewRxButtons';
-import CreateRx from '../components/newRx/CreateRx';
-import PatientSearch from '../components/newRx/PatientSearch';
-import UploadRx from '../components/newRx/UploadRx';
+import NewRxButtons from '../features/NewRx/NewRxButtons';
+import CreateRx from '../features/NewRx/CreateRx';
+import PatientSearch from '../features/NewRx/PatientSearch';
+import UploadRx from '../features/NewRx/UploadRx';
+import { newRxButtonsContext, newRxContext } from '../context/NewRxContext';
+import SelectedPatient from '../features/NewRx/SelectedPatient';
 import './css/NewRx.css';
 
 
@@ -23,8 +25,8 @@ const NewRxPage = () => {
     const [openSelectPatient, setOpenSelectPatient] = useState(false);
     const [openUploadRx, setOpenUploadRx] = useState(false);
     const [uploadedRx, setUploadedRx] = useState();
-    const [selectedFirstName, setSelectedFirstName] = useState();
-    const [selectedLastName, setSelectedLastName] = useState();
+    const [selectedFirstName, setSelectedFirstName] = useState('');
+    const [selectedLastName, setSelectedLastName] = useState('');
     const [selectedId, setSelectedId] = useState();
     const [patientName, setPatientName] = useState('');
 
@@ -37,7 +39,7 @@ const NewRxPage = () => {
     }, [alert]);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/newPatient')
+        axios.get('http://18.212.66.103:8000/newPatient')
             .then(json => {
                 setValue(json.data);
             })
@@ -73,57 +75,67 @@ const NewRxPage = () => {
                 Prescription saved successfully!
             </Alert>
             <div className='newRxPageContent'>
-                <NewRxButtons
-                    setOpenDataEntry={setOpenDataEntry}
-                    setOpenSelectPatient={setOpenSelectPatient}
-                    setOpenUploadRx={setOpenUploadRx}
-                    openSelectPatient={openSelectPatient}
-                    openUploadRx={openUploadRx}
-                    openDataEntry={openDataEntry}
-                    selectedFirstName={selectedFirstName}
-                    selectedLastName={selectedLastName}
-                />
+                <newRxButtonsContext.Provider
+                    value={{
+                        setOpenDataEntry,
+                        setOpenSelectPatient,
+                        setOpenUploadRx,
+                        openSelectPatient,
+                        openUploadRx,
+                        openDataEntry,
+                        selectedFirstName,
+                        selectedLastName
+                    }}
+                >
+                    <NewRxButtons />
+                </newRxButtonsContext.Provider>
 
                 <div className={openUploadRx ? 'newRxPageUploadRxContainer' : 'hide'}>
                     <UploadRx setUploadedRx={setUploadedRx} uploadedRx={uploadedRx} />
                 </div>
 
-                <div className={openSelectPatient ? 'newRxPageSelectPatientContainer' : 'hide'}>
-                    <PatientSearch
-                        openDataEntry={openDataEntry}
-                        setOpenDataEntry={setOpenDataEntry}
-                        setOpenSelectPatient={setOpenSelectPatient}
-                        setOpenUploadRx={setOpenUploadRx}
-                        value={value}
-                        setQuery={setQuery}
-                        query={query}
-                        uploadedRx={uploadedRx}
-                        selectedLastName={selectedLastName}
-                        selectedFirstName={selectedFirstName}
-                        setSelectedLastName={setSelectedLastName}
-                        setSelectedFirstName={setSelectedFirstName}
-                        setSelectedId={setSelectedId}
-                        patientName={patientName}
-                        setPatientName={setPatientName}
-                        openSelectPatient={openSelectPatient}
-                    />
+                <div className='newRxPageSelectPatientContainer'>
+                    <newRxContext.Provider
+                        value={{
+                            selectedId,
+                            openDataEntry,
+                            setOpenDataEntry,
+                            setOpenSelectPatient,
+                            setOpenUploadRx,
+                            openUploadRx,
+                            value,
+                            setQuery,
+                            query,
+                            uploadedRx,
+                            selectedLastName,
+                            selectedFirstName,
+                            setSelectedLastName,
+                            setSelectedFirstName,
+                            setSelectedId,
+                            patientName,
+                            setPatientName,
+                            openSelectPatient
+                        }}
+                    >
+                        <div className={openDataEntry || openSelectPatient ? 'uploadRxSelectedPatientContainer' : 'hide'}>
+                            <div className='uploadRxContainer'>
+                                <h1 className='uploadRxTitle'>Uploaded Rx:</h1>
+                                <img src={uploadedRx} alt='Uploaded rx' />
+                            </div>
+                            <div className={selectedLastName && selectedFirstName ? '' : 'hide'}>
+                                <SelectedPatient
+                                    selectedLastName={selectedLastName}
+                                    selectedFirstName={selectedFirstName}
+                                    setSelectedLastName={setSelectedLastName}
+                                    setSelectedFirstName={setSelectedFirstName}
+                                    setOpenDataEntry={setOpenDataEntry}
+                                    setOpenSelectPatient={setOpenSelectPatient} />
+                            </div>
+                        </div>
+                        <PatientSearch />
+                        <CreateRx />
 
-                </div>
-
-                <div className={openDataEntry ? 'data-entry-container' : 'hide'}>
-                    <CreateRx
-                        selectedId={selectedId}
-                        uploadedRx={uploadedRx}
-                        selectedLastName={selectedLastName}
-                        selectedFirstName={selectedFirstName}
-                        setSelectedLastName={setSelectedLastName}
-                        setSelectedFirstName={setSelectedFirstName}
-                        setOpenDataEntry={setOpenDataEntry}
-                        setOpenSelectPatient={setOpenSelectPatient}
-                        setOpenUploadRx={setOpenUploadRx}
-                        openUploadRx={openUploadRx}
-                        setPatientName={setPatientName}
-                    />
+                    </newRxContext.Provider>
                 </div>
 
                 <div className={openUploadRx || openSelectPatient || openDataEntry ? 'hide' : 'newRxInstructionContainer'}>
@@ -139,7 +151,6 @@ const NewRxPage = () => {
                     </div>
                 </div>
             </div>
-
         </div >
     )
 };

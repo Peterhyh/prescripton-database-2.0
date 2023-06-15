@@ -1,7 +1,11 @@
 import './css/SearchTable.css';
+import { newRxContext } from '../../context/NewRxContext';
+import { useContext } from 'react';
 
 
-const SearchTable = ({ value, query, setQuery, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx, setPatientName }) => {
+const SearchTable = ({ value, handleCreateRx }) => {
+
+    const { query, setQuery, setSelectedLastName, setSelectedFirstName, setSelectedId, setPatientName } = useContext(newRxContext);
 
     const results = value.length
 

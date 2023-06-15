@@ -1,10 +1,12 @@
 import './css/SelectedPatient.css';
 
-const SelectedPatient = ({ selectedLastName, selectedFirstName, setSelectedLastName, setSelectedFirstName }) => {
+const SelectedPatient = (props) => {
 
-    const handleClear = () => {
-        setSelectedLastName('');
-        setSelectedFirstName('');
+    const handleClearPatient = () => {
+        props.setSelectedLastName('');
+        props.setSelectedFirstName('');
+        props.setOpenDataEntry(false);
+        props.setOpenSelectPatient(true);
     };
 
 
@@ -17,8 +19,8 @@ const SelectedPatient = ({ selectedLastName, selectedFirstName, setSelectedLastN
             </div>
             <div className='selectedpatient-bottom-row'>
                 <div className='selectedpatient-content'>
-                    <h2>{`${selectedLastName}, ${selectedFirstName}`}</h2>
-                    <button className='selectedpatient-clear-button' onClick={handleClear}>x</button>
+                    <h2>{`${props.selectedLastName}, ${props.selectedFirstName}`}</h2>
+                    <button className='selectedpatient-clear-button' onClick={() => handleClearPatient()}>x</button>
                 </div>
             </div>
         </div>

@@ -2,34 +2,35 @@ import './css/NewRxButtons.css';
 import RightArrow from '../../app/assets/img/buttonRightArrow.svg';
 import CircleWithCheckmark from '../../app/assets/img/checkCircle.svg';
 import { useSelector } from 'react-redux';
+import { useContext } from 'react';
+import { newRxButtonsContext } from '../../context/NewRxContext';
 
-const NewRxButtons = ({
-    setOpenDataEntry,
-    setOpenSelectPatient,
-    setOpenUploadRx,
-    openSelectPatient,
-    openUploadRx,
-    openDataEntry,
-    selectedFirstName,
-    selectedLastName
-}) => {
+const NewRxButtons = () => {
+
+    const {
+        setOpenDataEntry,
+        setOpenSelectPatient,
+        setOpenUploadRx,
+        selectedFirstName,
+        selectedLastName
+    } = useContext(newRxButtonsContext);
 
     const toggleCreateRx = useSelector((state) => state.toggleActiveCreateRx.toggle);
 
     const handleSelectPatient = () => {
-        setOpenSelectPatient(!openSelectPatient);
+        setOpenSelectPatient(true);
         setOpenUploadRx(false);
         setOpenDataEntry(false);
     };
 
     const handleUploadRx = () => {
-        setOpenUploadRx(!openUploadRx);
+        setOpenUploadRx(true);
         setOpenDataEntry(false);
         setOpenSelectPatient(false);
     };
 
     const handleCreateRx = () => {
-        setOpenDataEntry(!openDataEntry);
+        setOpenDataEntry(true);
         setOpenSelectPatient(false);
         setOpenUploadRx(false);
     };

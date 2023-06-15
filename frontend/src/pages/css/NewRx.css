@@ -52,7 +52,32 @@
 
 .newRxPageSelectPatientContainer {
     display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+
+.uploadRxSelectedPatientContainer {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    border-right: 1px solid #000;
+    padding-right: 20px;
+    margin-right: 20px;
+    width: 50vw;
+}
+
+.uploadRxContainer img {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border: 5px solid #000;
+    border-radius: 20px;
+}
+
+.uploadRxTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.data-entry-container {
+    display: flex;
 }

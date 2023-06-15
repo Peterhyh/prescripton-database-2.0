@@ -1,16 +1,25 @@
 import axios from 'axios';
 import './css/NewPatient.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import RedAlert from '../../app/assets/img/redAlert.svg';
-import PlacesAutocomplete from '../PlacesAutocomplete.js';
+import PlacesAutocomplete from '../../services/PlacesAutocomplete.js';
 import { useSelector } from 'react-redux';
+import { newRxContext } from '../../context/NewRxContext';
 
 
 const FOUR_DIGITS = /^\d{4,4}$/
 const FIVE_DIGITS = /^\d{5,5}$/
 const LETTERS_ONLY = /^[a-zA-Z]{1,}$/
 
-const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSelectedLastName, setSelectedFirstName, setSelectedId, handleCreateRx, setPatientName, openSelectPatient }) => {
+const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatient, setOpenPatientSelection }) => {
+
+    const {
+        setSelectedLastName,
+        setSelectedFirstName,
+        setSelectedId,
+        setPatientName,
+        openSelectPatient
+    } = useContext(newRxContext);
 
     const addressStreet = useSelector((state) => state.streetAddress.street);
 
@@ -72,15 +81,15 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
 
 
     const toggleBack = () => {
-        setSelectPatient(true);
-        setOpenNewPatient(false);
+        setOpenPatientSelection(true);
+        setOpenRegisterPatient(false);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             await axios.post(
-                'http://localhost:3001/newPatient',
+                'http://18.212.66.103:8000/newPatient',
                 JSON.stringify({
                     firstName: firstName.toUpperCase(),
                     lastName: lastName.toUpperCase(),
@@ -102,8 +111,8 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
                         setSelectedLastName(response.data.lastName);
                         setSelectedFirstName(response.data.firstName);
                         setSelectedId(response.data._id);
-                        setOpenNewPatient(false);
-                        setSelectPatient(true);
+                        setOpenRegisterPatient(false);
+                        setOpenPatientSelection(true);
                         handleClearForm();
                         handleCreateRx();
                     }
@@ -183,15 +192,15 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
 
     //CLEAR FORM IF TOGGLED AWAY 
     useEffect(() => {
-        if (!openNewPatient || !openSelectPatient) {
+        if (!openRegisterPatient || !openSelectPatient) {
             handleClearForm();
         };
-    }, [openNewPatient, openSelectPatient]);
+    }, [openRegisterPatient, openSelectPatient]);
 
 
 
     return (
-        <div className={openNewPatient ? 'registerPatientContainer' : 'hide'}>
+        <div className={openRegisterPatient ? 'registerPatientContainer' : 'hide'}>
 
             <div className='errMsgContainer'>
                 {!verifiedFirstName && firstNameMouseOff
@@ -388,9 +397,7 @@ const NewPatient = ({ openNewPatient, setOpenNewPatient, setSelectPatient, setSe
 
 
 
-                <PlacesAutocomplete
-                    street={street} setCityMouseOff={setCityMouseOff}
-                />
+                <PlacesAutocomplete street={street} />
                 <div className={street.length > 0 ? '' : 'hide'}>
                     <div className={street.length === 0 && streetMouseOff ? 'streetContainerError' : 'streetContainer'}>
                         <input

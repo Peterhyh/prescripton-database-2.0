@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useContext } from 'react';
-import { profileSearchTableContext } from '../../context/FindPatient';
+import { profileSearchTableContext } from '../../context/FindPatientContext';
 import './css/ProfileSearchTable.css';
 
 const ProfileSearchTable = () => {

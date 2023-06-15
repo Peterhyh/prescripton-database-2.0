@@ -46,19 +46,20 @@ const PlacesAutocomplete = ({ street }) => {
         clearSuggestions();
         setValue('');
 
-        getGeocode({ address: description })
-            .then((results) => {
-                setZipCode(getZipCode(results[0], false));
-            });
+
     };
 
     const renderSuggestions = () =>
         data.map((suggestion, i) => {
-
+            getGeocode({ address: suggestion.description })
+                .then((results) => {
+                    const resultZipCode = getZipCode(results[0], false);
+                    setZipCode(resultZipCode);
+                });
             return (
                 <td key={i} onClick={handleSelect(suggestion)}>
                     {/* {suggestion.description.replace(/USA/, '')}{zipCode} */}
-                    {suggestion.description.replace(/USA/, '')}{zipCode}
+                    {suggestion.description.replace(/, USA/, '')}
                 </td>
             )
         });

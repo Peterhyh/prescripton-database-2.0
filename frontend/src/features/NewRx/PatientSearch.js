@@ -1,32 +1,26 @@
 import SearchTable from './SearchTable';
-import SelectedPatient from './SelectedPatient';
 import './css/PatientSearch.css';
 import NewPatient from './NewPatient';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { newRxContext } from '../../context/NewRxContext';
 
+const PatientSearch = () => {
 
+    const {
+        setQuery,
+        query,
+        value,
+        setOpenDataEntry,
+        setOpenSelectPatient,
+        openSelectPatient,
+        setOpenUploadRx,
+        openDataEntry,
+        patientName,
+        setPatientName,
+    } = useContext(newRxContext);
 
-const PatientSearch = ({
-    setQuery,
-    query,
-    value,
-    uploadedRx,
-    selectedLastName,
-    selectedFirstName,
-    setSelectedLastName,
-    setSelectedFirstName,
-    setSelectedId,
-    setOpenDataEntry,
-    setOpenSelectPatient,
-    setOpenUploadRx,
-    openDataEntry,
-    patientName,
-    setPatientName,
-    openSelectPatient,
-}) => {
-
-    const [openNewPatient, setOpenNewPatient] = useState(false);
-    const [openPatientSelection, setSelectPatient] = useState(true);
+    const [openRegisterPatient, setOpenRegisterPatient] = useState(false);
+    const [openPatientSelection, setOpenPatientSelection] = useState(true);
 
     const handleCreateRx = () => {
         setOpenDataEntry(!openDataEntry);
@@ -34,33 +28,17 @@ const PatientSearch = ({
         setOpenUploadRx(false);
     };
 
-
     const search = (value) => {
         return value.filter(patient => patient.lastName.toLowerCase().includes(query) || patient.firstName.toLowerCase().includes(query) || patient.lastName.toUpperCase().includes(query) || patient.firstName.toUpperCase().includes(query));
     }
 
     const toggleNewPatient = () => {
-        setOpenNewPatient(!openNewPatient);
-        setSelectPatient(false);
+        setOpenRegisterPatient(!openRegisterPatient);
+        setOpenPatientSelection(false);
     };
 
     return (
-        <div className='patientsearch-container'>
-
-            <div className='patientsearch-left'>
-                <div>
-                    <h1 className='uploaded-rx-title'>Uploaded Rx:</h1>
-                    <img src={uploadedRx} alt='Uploaded rx' />
-                </div>
-                <div className={selectedLastName && selectedFirstName ? 'selectedpatient-container' : 'hide'}>
-                    <SelectedPatient
-                        selectedLastName={selectedLastName}
-                        selectedFirstName={selectedFirstName}
-                        setSelectedLastName={setSelectedLastName}
-                        setSelectedFirstName={setSelectedFirstName} />
-                </div>
-            </div>
-
+        <div className={openSelectPatient ? 'patientsearch-container' : 'hide'}>
             <div className='patientsearch-right'>
                 <div className={openPatientSelection ? 'searchbar-container' : 'hide'}>
                     <div className='searchbar-row-top'>
@@ -83,29 +61,10 @@ const PatientSearch = ({
                         <button className='patientsearch-register-button' onClick={() => toggleNewPatient()}>Register Patient</button>
                     </div>
                     <div className='searchbar-row-bottom'>
-                        <SearchTable
-                            value={search(value)}
-                            query={query}
-                            setQuery={setQuery}
-                            setSelectedFirstName={setSelectedFirstName}
-                            setSelectedLastName={setSelectedLastName}
-                            setSelectedId={setSelectedId}
-                            handleCreateRx={handleCreateRx}
-                            setPatientName={setPatientName}
-                        />
+                        <SearchTable value={search(value)} handleCreateRx={handleCreateRx} />
                     </div>
                 </div>
-                <NewPatient
-                    setSelectPatient={setSelectPatient}
-                    openNewPatient={openNewPatient}
-                    setOpenNewPatient={setOpenNewPatient}
-                    setSelectedLastName={setSelectedLastName}
-                    setSelectedFirstName={setSelectedFirstName}
-                    setSelectedId={setSelectedId}
-                    handleCreateRx={handleCreateRx}
-                    setPatientName={setPatientName}
-                    openSelectPatient={openSelectPatient}
-                />
+                <NewPatient handleCreateRx={handleCreateRx} openRegisterPatient={openRegisterPatient} setOpenRegisterPatient={setOpenRegisterPatient} setOpenPatientSelection={setOpenPatientSelection} />
                 <div className='selectPatientInstruction'>
                     <div>
                         <h1>Step 2:</h1>
@@ -133,7 +92,6 @@ const PatientSearch = ({
                     </div>
                 </div>
             </div>
-
         </div>
     )
 };

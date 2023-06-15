@@ -1,7 +1,7 @@
 import './css/DrugTable.css';
 import { useSelector } from 'react-redux';
 import { useContext } from 'react';
-import { drugTableContext } from '../../context/FindPatient';
+import { drugTableContext } from '../../context/FindPatientContext';
 
 const DrugTable = () => {
 

@@ -1,11 +1,11 @@
-import ProfileSearchTable from '../components/findPatient/ProfileSearchTable';
-import DrugTable from '../components/findPatient/DrugTable';
+import ProfileSearchTable from '../features/FindPatient/ProfileSearchTable';
+import DrugTable from '../features/FindPatient/DrugTable';
 import './css/FindPatient.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import DownArrow from '../app/assets/img/downArrow.svg';
 import RightArrow from '../app/assets/img/rightArrow.svg';
-import { profileSearchTableContext, drugTableContext } from '../context/FindPatient';
+import { profileSearchTableContext, drugTableContext } from '../context/FindPatientContext';
 import { useDispatch } from 'react-redux';
 import { addToList } from '../slice/prescriptionListSlice';
 import { addToPatientList } from '../slice/patientSlice';
@@ -33,7 +33,7 @@ const FindPatientPage = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:3001/newPatient')
+        axios.get('http://18.212.66.103:8000/newPatient')
             .then(json => {
                 dispatch(addToPatientList(json.data));
             })
@@ -44,7 +44,7 @@ const FindPatientPage = () => {
 
     useEffect(() => {
         axios.post(
-            'http://localhost:3001/newRx/data',
+            'http://18.212.66.103:8000/newRx/data',
             JSON.stringify({ patientId: selectedId }),
             {
                 headers: { 'Content-Type': 'application/json' },
