@@ -1,7 +1,7 @@
 import SearchTable from './SearchTable';
 import './css/SelectPatient.css';
 import NewPatient from './NewPatient';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { newRxContext } from '../../context/NewRxContext';
 
 const SelectPatient = () => {
@@ -22,14 +22,36 @@ const SelectPatient = () => {
     const [openRegisterPatient, setOpenRegisterPatient] = useState(false);
     const [openPatientSelection, setOpenPatientSelection] = useState(true);
 
+    // const [searchedFirstName, setSearchedFirstName] = useState('');
+    // const [searchedLastName, setSearchedLastName] = useState('');
+
     const handleCreateRx = () => {
         setOpenDataEntry(!openDataEntry);
         setOpenSelectPatient(false);
         setOpenUploadRx(false);
     };
 
+    // useEffect(() => {
+    //     if (query.includes(',')) {
+    //         const removeNameSpaces = query.replace(/\s/g, '');
+    //         const splitNames = removeNameSpaces.split(',');
+    //         setSearchedLastName(splitNames[0]);
+    //         setSearchedFirstName(splitNames[1]);
+    //     } else if (query.includes(' ')) {
+    //         const splitNames = query.split(' ');
+    //         const removeExtraSpacings = splitNames.filter(name => {
+    //             return name != '';
+    //         });
+    //         setSearchedFirstName(removeExtraSpacings[0]);
+    //         setSearchedLastName(removeExtraSpacings[1]);
+    //     } else {
+    //         setSearchedLastName(query);
+    //         setSearchedFirstName(query);
+    //     }
+    // }, [query]);
+
     const search = (value) => {
-        return value.filter(patient => patient.lastName.toLowerCase().includes(query) || patient.firstName.toLowerCase().includes(query) || patient.lastName.toUpperCase().includes(query) || patient.firstName.toUpperCase().includes(query));
+        return value.filter(patient => patient.lastName.includes(query) || patient.firstName.includes(query));
     }
 
     const toggleNewPatient = () => {
@@ -55,7 +77,7 @@ const SelectPatient = () => {
                                 id='patientName'
                                 type='text'
                                 onChange={(e) => {
-                                    setQuery(e.target.value);
+                                    setQuery(e.target.value.toUpperCase());
                                     setPatientName(e.target.value);
                                 }}
                             />

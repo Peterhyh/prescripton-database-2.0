@@ -73,7 +73,7 @@ const SearchPatientPage = () => {
                         value={searchedName}
                         type='text'
                         onChange={(e) => {
-                            setQuery(e.target.value);
+                            setQuery(e.target.value.toUpperCase());
                             setSearchedName(e.target.value);
                         }}
                     />
