@@ -39,7 +39,7 @@ const NewRxPage = () => {
     }, [alert]);
 
     useEffect(() => {
-        axios.get('http://18.212.66.103:8000/newPatient')
+        axios.get('http://localhost:3001/newPatient')
             .then(json => {
                 setValue(json.data);
             })

@@ -18,7 +18,8 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
         setSelectedFirstName,
         setSelectedId,
         setPatientName,
-        openSelectPatient
+        openSelectPatient,
+        patientName,
     } = useContext(newRxContext);
 
     const addressStreet = useSelector((state) => state.streetAddress.street);
@@ -89,7 +90,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
         e.preventDefault()
         try {
             await axios.post(
-                'http://18.212.66.103:8000/newPatient',
+                'http://localhost:3001/newPatient',
                 JSON.stringify({
                     firstName: firstName.toUpperCase(),
                     lastName: lastName.toUpperCase(),
@@ -182,7 +183,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
     }, [addressStreet]);
 
     useEffect(() => {
-        if (street.length === 0) {
+        if (street.length < 1) {
             setStateMouseOff(false);
             setZipMouseOff(false);
             setStreetMouseOff(false);
@@ -197,7 +198,19 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
         };
     }, [openRegisterPatient, openSelectPatient]);
 
+    useEffect(() => {
+        if (openRegisterPatient) {
+            if (patientName.includes(',')) {
+                const filterNameSpaces = patientName.replace(/\s+/g, '');
+                const splitNameEntered = filterNameSpaces.split(',');
+                setLastName(splitNameEntered[0]);
+                setFirstName(splitNameEntered[1]);
+            } else {
+                setLastName(patientName);
+            }
 
+        }
+    }, [openRegisterPatient]);
 
     return (
         <div className={openRegisterPatient ? 'registerPatientContainer' : 'hide'}>
@@ -219,7 +232,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
                         </div>
                     ) : ('')
                 }
-                {birthMonth.length === 0 && birthMonthMouseOff
+                {birthMonth.length < 1 && birthMonthMouseOff
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
@@ -227,7 +240,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
                         </div>
                     ) : ('')
                 }
-                {birthDay.length === 0 && birthDayMouseOff
+                {birthDay.length < 1 && birthDayMouseOff
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
@@ -259,7 +272,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
                         </div>
                     ) : ('')
                 }
-                {state.length === 0 && stateMouseOff
+                {state.length < 1 && stateMouseOff
                     ? (
                         <div className='errMsgContent'>
                             <img src={RedAlert} alt='Alert symbol' />
@@ -312,7 +325,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
 
 
                 <div className='dobContainer'>
-                    <div className={birthMonth.length === 0 && birthMonthMouseOff ? 'dobMonthContainerError' : 'dobMonthContainer'}>
+                    <div className={birthMonth.length < 1 && birthMonthMouseOff ? 'dobMonthContainerError' : 'dobMonthContainer'}>
                         <select
                             name='dateOfBirthMonth'
                             value={birthMonth}
@@ -337,7 +350,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
                         </select>
                         <span>Birth Month</span>
                     </div>
-                    <div className={birthDay.length === 0 && birthDayMouseOff ? 'dobDayContainerError' : 'dobDayContainer'}>
+                    <div className={birthDay.length < 1 && birthDayMouseOff ? 'dobDayContainerError' : 'dobDayContainer'}>
                         <select
                             name='dateOfBirthDay'
                             value={birthDay}
@@ -399,7 +412,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
 
                 <PlacesAutocomplete street={street} />
                 <div className={street.length > 0 ? '' : 'hide'}>
-                    <div className={street.length === 0 && streetMouseOff ? 'streetContainerError' : 'streetContainer'}>
+                    <div className={street.length < 1 && streetMouseOff ? 'streetContainerError' : 'streetContainer'}>
                         <input
                             name='street'
                             value={street}
@@ -424,7 +437,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
                             <span>City</span>
                         </div>
 
-                        <div className={state.length === 0 && stateMouseOff ? 'stateContainerError' : 'stateContainer'}>
+                        <div className={state.length < 1 && stateMouseOff ? 'stateContainerError' : 'stateContainer'}>
                             <select
                                 id='state'
                                 name='state'
