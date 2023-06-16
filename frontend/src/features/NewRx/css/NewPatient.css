@@ -223,6 +223,11 @@
     font-size: 1em;
 }
 
+.dobContainer input:hover,
+select:hover {
+    border: 1px solid #0D2018;
+}
+
 .dobMonthContainerError select {
     width: 153px;
     padding: 10px;
@@ -343,6 +348,10 @@
     outline: none;
     color: #0D2018;
     font-size: 1em;
+}
+
+.nameContainer input:hover {
+    border: 1px solid #0D2018;
 }
 
 .nameContainer input:valid+span,
@@ -785,6 +794,10 @@
     outline: none;
     color: #0D2018;
     font-size: 1em;
+}
+
+.placesAutocomplete input:hover {
+    border: 1px solid #0D2018;
 }
 
 .placesAutocomplete span {

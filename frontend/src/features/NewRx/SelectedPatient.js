@@ -1,12 +1,23 @@
 import './css/SelectedPatient.css';
+import { useContext } from 'react';
+import { newRxContext } from '../../context/NewRxContext';
 
-const SelectedPatient = (props) => {
+const SelectedPatient = () => {
+
+    const {
+        selectedLastName,
+        selectedFirstName,
+        setSelectedLastName,
+        setSelectedFirstName,
+        setOpenDataEntry,
+        setOpenSelectPatient,
+    } = useContext(newRxContext);
 
     const handleClearPatient = () => {
-        props.setSelectedLastName('');
-        props.setSelectedFirstName('');
-        props.setOpenDataEntry(false);
-        props.setOpenSelectPatient(true);
+        setSelectedLastName('');
+        setSelectedFirstName('');
+        setOpenDataEntry(false);
+        setOpenSelectPatient(true);
     };
 
 
@@ -19,7 +30,7 @@ const SelectedPatient = (props) => {
             </div>
             <div className='selectedpatient-bottom-row'>
                 <div className='selectedpatient-content'>
-                    <h2>{`${props.selectedLastName}, ${props.selectedFirstName}`}</h2>
+                    <h2>{`${selectedLastName}, ${selectedFirstName}`}</h2>
                     <button className='selectedpatient-clear-button' onClick={() => handleClearPatient()}>x</button>
                 </div>
             </div>

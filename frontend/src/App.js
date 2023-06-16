@@ -8,7 +8,7 @@ import RegisterPage from './pages/RegisterPage';
 import NewRxPage from './pages/NewRxPage';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import HomePage from './pages/HomePage';
-import FindPatientPage from './pages/FindPatientPage';
+import SearchPatientPage from './pages/SearchPatientPage';
 
 
 
@@ -25,7 +25,7 @@ function App() {
       <Route element={<ProtectedRoutes />}>
         <Route path='/' element={<HomePage />} exact />
         <Route path='/newRx' element={<NewRxPage />} />
-        <Route path='/findPatient' element={<FindPatientPage />} />
+        <Route path='/findPatient' element={<SearchPatientPage />} />
       </Route>
     </Routes>
   );

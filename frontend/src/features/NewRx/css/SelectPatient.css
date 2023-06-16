@@ -92,6 +92,18 @@
     flex-direction: column;
 }
 
+.searchbarContainer input {
+    border: 1px solid #949BA4;
+}
+
+.searchbarContainer input:hover {
+    border: 1px solid #0D2018;
+}
+
+.searchbarContainer input:focus {
+    border: 1px solid #0D2018;
+}
+
 .searchbarContainer label {
     font-weight: bold;
 }

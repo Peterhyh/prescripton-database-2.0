@@ -198,6 +198,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
         };
     }, [openRegisterPatient, openSelectPatient]);
 
+    //CONVERTS SEARCH RESULTS TO APPROPRIATE INPUT FIELDS
     useEffect(() => {
         if (openRegisterPatient) {
             if (patientName.includes(',')) {
@@ -205,10 +206,16 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
                 const splitNameEntered = filterNameSpaces.split(',');
                 setLastName(splitNameEntered[0]);
                 setFirstName(splitNameEntered[1]);
+            } else if (patientName.includes(' ')) {
+                const splitNameEntered = patientName.split(' ');
+                const filterNameSpaces = splitNameEntered.filter(name => {
+                    return name != '';
+                })
+                setLastName(filterNameSpaces[1]);
+                setFirstName(filterNameSpaces[0]);
             } else {
                 setLastName(patientName);
             }
-
         }
     }, [openRegisterPatient]);
 

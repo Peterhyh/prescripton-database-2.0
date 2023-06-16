@@ -1,11 +1,11 @@
 import axios from 'axios';
+import SelectPatient from '../features/NewRx/SelectPatient';
 import { useState, useEffect } from 'react';
 import { Alert } from 'reactstrap';
 import { toggleAlertOff } from '../slice/toggleAlertSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import NewRxButtons from '../features/NewRx/NewRxButtons';
 import CreateRx from '../features/NewRx/CreateRx';
-import PatientSearch from '../features/NewRx/PatientSearch';
 import UploadRx from '../features/NewRx/UploadRx';
 import { newRxButtonsContext, newRxContext } from '../context/NewRxContext';
 import SelectedPatient from '../features/NewRx/SelectedPatient';
@@ -68,9 +68,7 @@ const NewRxPage = () => {
 
     return (
         <div className='newRxPageContainer'>
-            <div className='newRxPageTitle'>
-                <h1>New Rx</h1>
-            </div>
+            <h1 className='newRxPageTitle'>New Rx</h1>
             <Alert className='d-flex justify-content-center' color='success' isOpen={alert}>
                 Prescription saved successfully!
             </Alert>
@@ -123,16 +121,10 @@ const NewRxPage = () => {
                                 <img src={uploadedRx} alt='Uploaded rx' />
                             </div>
                             <div className={selectedLastName && selectedFirstName ? '' : 'hide'}>
-                                <SelectedPatient
-                                    selectedLastName={selectedLastName}
-                                    selectedFirstName={selectedFirstName}
-                                    setSelectedLastName={setSelectedLastName}
-                                    setSelectedFirstName={setSelectedFirstName}
-                                    setOpenDataEntry={setOpenDataEntry}
-                                    setOpenSelectPatient={setOpenSelectPatient} />
+                                <SelectedPatient />
                             </div>
                         </div>
-                        <PatientSearch />
+                        <SelectPatient />
                         <CreateRx />
 
                     </newRxContext.Provider>

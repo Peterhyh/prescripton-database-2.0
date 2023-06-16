@@ -21,10 +21,18 @@
 .find-patient-searchbar input {
     background-color: #CFDDD1;
     outline: none;
-    border: 1px solid #01314C;
+    border: 1px solid #949BA4;
     border-radius: 500px;
     padding: 7px;
     width: 250px;
+}
+
+.find-patient-searchbar input:hover {
+    border: 1px solid #01314C;
+}
+
+.find-patient-searchbar input:focus {
+    border: 1px solid #01314C;
 }
 
 .selected-patient-header {

@@ -1,10 +1,10 @@
 import SearchTable from './SearchTable';
-import './css/PatientSearch.css';
+import './css/SelectPatient.css';
 import NewPatient from './NewPatient';
 import { useState, useContext } from 'react';
 import { newRxContext } from '../../context/NewRxContext';
 
-const PatientSearch = () => {
+const SelectPatient = () => {
 
     const {
         setQuery,
@@ -46,7 +46,9 @@ const PatientSearch = () => {
                     </div>
                     <div className='searchbar-row-middle'>
                         <div className='searchbarContainer'>
-                            <label htmlFor='patientName'>{'Patient Name (Last, First):'}</label>
+                            <label htmlFor='patientName'>
+                                {'Patient Name (Last, First):'}
+                            </label>
                             <input
                                 placeholder='example: "Smoe, Joe"'
                                 value={patientName}
@@ -96,4 +98,4 @@ const PatientSearch = () => {
     )
 };
 
-export default PatientSearch;
+export default SelectPatient;

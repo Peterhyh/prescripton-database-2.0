@@ -1,6 +1,6 @@
 import ProfileSearchTable from '../features/FindPatient/ProfileSearchTable';
 import DrugTable from '../features/FindPatient/DrugTable';
-import './css/FindPatient.css';
+import './css/SearchPatient.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import DownArrow from '../app/assets/img/downArrow.svg';
@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { addToList } from '../slice/prescriptionListSlice';
 import { addToPatientList } from '../slice/patientSlice';
 
-const FindPatientPage = () => {
+const SearchPatientPage = () => {
     const [query, setQuery] = useState();
     const [selectedId, setSelectedId] = useState();
 
@@ -141,4 +141,4 @@ const FindPatientPage = () => {
     )
 };
 
-export default FindPatientPage;
+export default SearchPatientPage;
