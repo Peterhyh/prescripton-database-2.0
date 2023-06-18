@@ -4,6 +4,8 @@ import NewPatient from './NewPatient';
 import { useState, useContext, useEffect } from 'react';
 import { newRxContext } from '../../context/NewRxContext';
 
+const CHECK_COMMA = /^.*[,].*$/
+
 const SelectPatient = () => {
 
     const {
@@ -24,6 +26,7 @@ const SelectPatient = () => {
 
     // const [searchedFirstName, setSearchedFirstName] = useState('');
     // const [searchedLastName, setSearchedLastName] = useState('');
+    // const [list, setList] = useState('');
 
     const handleCreateRx = () => {
         setOpenDataEntry(!openDataEntry);
@@ -32,18 +35,15 @@ const SelectPatient = () => {
     };
 
     // useEffect(() => {
-    //     if (query.includes(',')) {
-    //         const removeNameSpaces = query.replace(/\s/g, '');
-    //         const splitNames = removeNameSpaces.split(',');
-    //         setSearchedLastName(splitNames[0]);
-    //         setSearchedFirstName(splitNames[1]);
-    //     } else if (query.includes(' ')) {
-    //         const splitNames = query.split(' ');
-    //         const removeExtraSpacings = splitNames.filter(name => {
+    //     const checkQuery = CHECK_COMMA.test(query);
+    //     if (checkQuery) {
+    //         const removeSpaces = query.replace(/\s/g, '');
+    //         const splitQuery = removeSpaces.split(',');
+    //         const filterWhiteSpaces = splitQuery.filter(name => {
     //             return name != '';
     //         });
-    //         setSearchedFirstName(removeExtraSpacings[0]);
-    //         setSearchedLastName(removeExtraSpacings[1]);
+    //         setSearchedLastName(filterWhiteSpaces[0]);
+    //         setSearchedFirstName(filterWhiteSpaces[1]);
     //     } else {
     //         setSearchedLastName(query);
     //         setSearchedFirstName(query);
@@ -52,7 +52,7 @@ const SelectPatient = () => {
 
     const search = (value) => {
         return value.filter(patient => patient.lastName.includes(query) || patient.firstName.includes(query));
-    }
+    };
 
     const toggleNewPatient = () => {
         setOpenRegisterPatient(!openRegisterPatient);
