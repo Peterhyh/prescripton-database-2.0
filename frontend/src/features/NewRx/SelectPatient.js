@@ -24,9 +24,9 @@ const SelectPatient = () => {
     const [openRegisterPatient, setOpenRegisterPatient] = useState(false);
     const [openPatientSelection, setOpenPatientSelection] = useState(true);
 
-    // const [searchedFirstName, setSearchedFirstName] = useState('');
-    // const [searchedLastName, setSearchedLastName] = useState('');
-    // const [list, setList] = useState('');
+    const [searchedFirstName, setSearchedFirstName] = useState('');
+    const [searchedLastName, setSearchedLastName] = useState('');
+    const [list, setList] = useState('');
 
     const handleCreateRx = () => {
         setOpenDataEntry(!openDataEntry);
