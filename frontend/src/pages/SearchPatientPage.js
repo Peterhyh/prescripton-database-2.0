@@ -33,7 +33,7 @@ const SearchPatientPage = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:3001/newPatient')
+        axios.get('http://18.212.66.103:8000/newPatient')
             .then(json => {
                 dispatch(addToPatientList(json.data));
             })
@@ -44,7 +44,7 @@ const SearchPatientPage = () => {
 
     useEffect(() => {
         axios.post(
-            'http://localhost:3001/newRx/data',
+            'http://18.212.66.103:8000/newRx/data',
             JSON.stringify({ patientId: selectedId }),
             {
                 headers: { 'Content-Type': 'application/json' },

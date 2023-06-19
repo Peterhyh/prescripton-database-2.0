@@ -73,7 +73,7 @@ const CreateRx = () => {
         e.preventDefault()
         try {
             await axios.post(
-                'http://localhost:3001/newRx',
+                'http://18.212.66.103:8000/newRx',
                 JSON.stringify({
                     patientId: selectedId,
                     drug: drugName.toUpperCase(),

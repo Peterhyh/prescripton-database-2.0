@@ -90,7 +90,7 @@ const NewPatient = ({ handleCreateRx, openRegisterPatient, setOpenRegisterPatien
         e.preventDefault()
         try {
             await axios.post(
-                'http://localhost:3001/newPatient',
+                'http://18.212.66.103:8000/newPatient',
                 JSON.stringify({
                     firstName: firstName.toUpperCase(),
                     lastName: lastName.toUpperCase(),
