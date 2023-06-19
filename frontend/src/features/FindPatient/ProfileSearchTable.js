@@ -1,17 +1,51 @@
 import { useSelector } from 'react-redux';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { profileSearchTableContext } from '../../context/FindPatientContext';
 import './css/ProfileSearchTable.css';
+
+const CHECK_COMMA = /^.*[,].*$/
+const CHECK_SPACES = /\s/
 
 const ProfileSearchTable = () => {
 
     const { query, setSelectedId, setPatientLastName, setPatientFirstName, setPatientAddress, setPatientDob, handleTabState, setSearchedName, setQuery } = useContext(profileSearchTableContext);
 
+    const [searchedFirstName, setSearchedFirstName] = useState('');
+    const [searchedLastName, setSearchedLastName] = useState('');
+
+    const checkComma = CHECK_COMMA.test(query);
+    const checkSpaces = CHECK_SPACES.test(query);
+
     const patientList = useSelector(state => state.patientList.list);
 
     const search = (patientList) => {
-        return patientList.filter(patient => patient.lastName.includes(query) || patient.firstName.includes(query));
+        if (checkComma || checkSpaces) {
+            return patientList.filter(patient => patient.lastName.includes(searchedLastName) && patient.firstName.includes(searchedFirstName));
+        }
+        return patientList.filter(patient => patient.lastName.includes(searchedLastName) || patient.firstName.includes(searchedFirstName));
     };
+
+    useEffect(() => {
+        if (checkComma) {
+            const removeSpaces = query.replace(/\s/g, '');
+            const splitQuery = removeSpaces.split(',');
+            const filterWhiteSpaces = splitQuery.filter(name => {
+                return name !== '';
+            });
+            setSearchedLastName(filterWhiteSpaces[0]);
+            setSearchedFirstName(filterWhiteSpaces[1]);
+        } else if (checkSpaces) {
+            const splitQuery = query.split(' ');
+            const filterWhiteSpaces = splitQuery.filter(name => {
+                return name !== '';
+            });
+            setSearchedLastName(filterWhiteSpaces[1]);
+            setSearchedFirstName(filterWhiteSpaces[0]);
+        } else {
+            setSearchedLastName(query);
+            setSearchedFirstName(query);
+        }
+    }, [query]);
 
     const patientQueriedList = search(patientList);
 

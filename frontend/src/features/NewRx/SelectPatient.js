@@ -5,6 +5,7 @@ import { useState, useContext, useEffect } from 'react';
 import { newRxContext } from '../../context/NewRxContext';
 
 const CHECK_COMMA = /^.*[,].*$/
+const CHECK_SPACES = /\s/
 
 const SelectPatient = () => {
 
@@ -26,7 +27,6 @@ const SelectPatient = () => {
 
     const [searchedFirstName, setSearchedFirstName] = useState('');
     const [searchedLastName, setSearchedLastName] = useState('');
-    const [list, setList] = useState('');
 
     const handleCreateRx = () => {
         setOpenDataEntry(!openDataEntry);
@@ -34,25 +34,39 @@ const SelectPatient = () => {
         setOpenUploadRx(false);
     };
 
-    // useEffect(() => {
-    //     const checkQuery = CHECK_COMMA.test(query);
-    //     if (checkQuery) {
-    //         const removeSpaces = query.replace(/\s/g, '');
-    //         const splitQuery = removeSpaces.split(',');
-    //         const filterWhiteSpaces = splitQuery.filter(name => {
-    //             return name != '';
-    //         });
-    //         setSearchedLastName(filterWhiteSpaces[0]);
-    //         setSearchedFirstName(filterWhiteSpaces[1]);
-    //     } else {
-    //         setSearchedLastName(query);
-    //         setSearchedFirstName(query);
-    //     }
-    // }, [query]);
+    const checkComma = CHECK_COMMA.test(query);
+    const checkSpaces = CHECK_SPACES.test(query);
+
+    useEffect(() => {
+        if (checkComma) {
+            const removeSpaces = query.replace(/\s/g, '');
+            const splitQuery = removeSpaces.split(',');
+            const filterWhiteSpaces = splitQuery.filter(name => {
+                return name !== '';
+            });
+            setSearchedLastName(filterWhiteSpaces[0]);
+            setSearchedFirstName(filterWhiteSpaces[1]);
+        } else if (checkSpaces) {
+            const splitQuery = query.split(' ');
+            const filterWhiteSpaces = splitQuery.filter(name => {
+                return name !== '';
+            });
+            setSearchedLastName(filterWhiteSpaces[1]);
+            setSearchedFirstName(filterWhiteSpaces[0]);
+        } else {
+            setSearchedLastName(query);
+            setSearchedFirstName(query);
+        }
+    }, [query]);
+
 
     const search = (value) => {
-        return value.filter(patient => patient.lastName.includes(query) || patient.firstName.includes(query));
+        if (checkComma || checkSpaces) {
+            return value.filter(patient => patient.lastName.includes(searchedLastName) && patient.firstName.includes(searchedFirstName));
+        }
+        return value.filter(patient => patient.lastName.includes(searchedLastName) || patient.firstName.includes(searchedFirstName));
     };
+
 
     const toggleNewPatient = () => {
         setOpenRegisterPatient(!openRegisterPatient);
@@ -85,7 +99,7 @@ const SelectPatient = () => {
                         <button className='patientsearch-register-button' onClick={() => toggleNewPatient()}>Register Patient</button>
                     </div>
                     <div className='searchbar-row-bottom'>
-                        <SearchTable value={search(value)} handleCreateRx={handleCreateRx} />
+                        <SearchTable value={search(value)} handleCreateRx={handleCreateRx} searchedFirstName={searchedFirstName} searchedLastName={searchedLastName} />
                     </div>
                 </div>
                 <NewPatient handleCreateRx={handleCreateRx} openRegisterPatient={openRegisterPatient} setOpenRegisterPatient={setOpenRegisterPatient} setOpenPatientSelection={setOpenPatientSelection} />
